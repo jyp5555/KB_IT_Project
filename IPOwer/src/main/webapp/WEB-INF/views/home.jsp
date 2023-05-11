@@ -7,5 +7,6 @@
 </head>
 <body>
 <h1>hello ${msg }</h1>
+<a href="mypage">mypage</a>
 </body>
 </html>
