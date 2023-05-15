@@ -4,14 +4,16 @@ import java.util.Date;
 
 public class NewsFileDto {
 	private String news_title,news_writer;
-	private int new_pk,news_view;
+	private int news_pk,news_view;
 	private Date news_regdate;
-	
-	public NewsFileDto(String news_title, String news_writer, int new_pk, int news_view, Date news_regdate) {
+	public NewsFileDto() {
+		// TODO Auto-generated constructor stub
+	}
+	public NewsFileDto(String news_title, String news_writer, int news_pk, int news_view, Date news_regdate) {
 		super();
 		this.news_title = news_title;
 		this.news_writer = news_writer;
-		this.new_pk = new_pk;
+		this.news_pk = news_pk;
 		this.news_view = news_view;
 		this.news_regdate = news_regdate;
 	}
@@ -32,12 +34,12 @@ public class NewsFileDto {
 		this.news_writer = news_writer;
 	}
 
-	public int getNew_pk() {
-		return new_pk;
+	public int getNews_pk() {
+		return news_pk;
 	}
 
-	public void setNew_pk(int new_pk) {
-		this.new_pk = new_pk;
+	public void setNews_pk(int news_pk) {
+		this.news_pk = news_pk;
 	}
 
 	public int getNews_view() {
@@ -58,7 +60,7 @@ public class NewsFileDto {
 
 	@Override
 	public String toString() {
-		return "NewsFileDto [news_title=" + news_title + ", news_writer=" + news_writer + ", new_pk=" + new_pk
+		return "NewsFileDto [news_title=" + news_title + ", news_writer=" + news_writer + ", news_pk=" + news_pk
 				+ ", news_view=" + news_view + ", news_regdate=" + news_regdate + "]";
 	}
 	
