@@ -16,14 +16,13 @@ public class IpOwerApplication {
 	public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(IpOwerApplication.class, args);
         context.getBean(IpOwerApplication.class).execute();
-        System.out.println("hello");
     }
     
     @Autowired
     private NewsFileDao dao;
-    
+   
     public void execute() {
-    	insert();
+//    	insert();
         selectAll();
     }
     
@@ -33,9 +32,15 @@ public class IpOwerApplication {
 
 	private void selectAll() {
         List<NewsFileDto> all = dao.selectAll();
-        System.out.println("hello");
         for(NewsFileDto nf : all) {
             System.out.println(nf);
         }
     }
+	
+	private void selectByTitle() {
+		List<NewsFileDto> dto = dao.selectByTitle("title");
+		for (NewsFileDto newsFileDto : dto) {
+			System.out.println(newsFileDto);
+		}
+	}
 }

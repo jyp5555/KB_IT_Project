@@ -38,14 +38,26 @@ public class JDBCTest {
 		}
 	}
 	
-	@Test
-	public void testSelect() {
-		try {
-			NewsFileDao dao = new NewsFileDao();
-			System.out.println( dao.selectAll());
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		
-	}
+//	@Test
+//	public void testSelectByTitle() {
+//		try {
+//			NewsFileDao dao = new NewsFileDao();
+//			dao.insert();
+//			dao.selectByTitle("title");
+//		}catch(Exception e) {
+//			e.printStackTrace();
+//		}
+//	}
+//	@Test
+//	public void testSelect() {
+//		try {
+//			NewsFileDao dao = new NewsFileDao();
+//			System.out.println( dao.selectAll());
+//		}catch(Exception e) {
+//			e.printStackTrace();
+//		}
+//		
+//	}
+	
+	
 }

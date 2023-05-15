@@ -17,7 +17,7 @@ public class NewsFileDao {
 		return dto;
 		
 	}
-	
+
 	public List<NewsFileDto> selectByTitle(String title){
 		List<NewsFileDto> dto = mapper.selectByTitle(title);
 		return dto;
@@ -29,6 +29,8 @@ public class NewsFileDao {
 		dto.setNews_title("title2");
 		dto.setNews_view(0);
 		dto.setNews_writer("관리자");
+		
 		mapper.save(dto);
+		
 	}
 }

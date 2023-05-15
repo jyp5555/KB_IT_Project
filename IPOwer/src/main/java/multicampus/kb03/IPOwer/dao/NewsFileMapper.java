@@ -21,7 +21,7 @@ public interface NewsFileMapper {
 	@Select("select n.news_title,n.news_regdate,n.news_view,n.news_writer,f.file_path\r\n" + 
 			"from news n\r\n" + 
 			"join files f on n.news_pk = f.news_pk\r\n" + 
-			"where n.new_title like '%#{title}%'")
+			"where n.new_title like '%'#{title}'%'")
 	List<NewsFileDto> selectByTitle(@Param("title") String title);
 	
 	@Select("select n.news_title,n.news_regdate,n.news_view,n.news_writer,f.file_path\r\n" + 
@@ -30,6 +30,6 @@ public interface NewsFileMapper {
 			"where n.news_regdate between #{start_date} and #{end_date}\r\n")
 	List<NewsFileDto> selectByDate(@Param("start_date")Date start_date, @Param("end_date") Date end_date);
 	
-	@Insert("insert into news values(#{dto.news_pk},#{dto.news_title},sysdate,#{dto.news_view},#{dto.news_writer)")
+	@Insert("insert into news(news_pk,news_title,news_regdate,news_view,news_writer) values(#{dto.news_pk},#{dto.news_title},SYSDATE,#{dto.news_view},#{dto.news_writer})")
 	int save(@Param("dto") NewsFileDto dto);
 }
