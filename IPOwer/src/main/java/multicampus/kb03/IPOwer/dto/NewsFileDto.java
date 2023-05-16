@@ -6,6 +6,13 @@ public class NewsFileDto {
 	private String news_title,news_writer;
 	private int news_pk,news_view;
 	private Date news_regdate;
+	private String file_path;
+	public String getFile_path() {
+		return file_path;
+	}
+	public void setFile_path(String file_path) {
+		this.file_path = file_path;
+	}
 	public NewsFileDto() {
 		// TODO Auto-generated constructor stub
 	}
@@ -61,7 +68,7 @@ public class NewsFileDto {
 	@Override
 	public String toString() {
 		return "NewsFileDto [news_title=" + news_title + ", news_writer=" + news_writer + ", news_pk=" + news_pk
-				+ ", news_view=" + news_view + ", news_regdate=" + news_regdate + "]";
+				+ ", news_view=" + news_view + ", news_regdate=" + news_regdate + "file_path:"+file_path+"]";
 	}
 	
 	

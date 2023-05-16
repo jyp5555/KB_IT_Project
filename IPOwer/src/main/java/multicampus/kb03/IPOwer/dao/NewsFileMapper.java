@@ -13,16 +13,24 @@ import multicampus.kb03.IPOwer.dto.NewsFileDto;
 @Mapper
 public interface NewsFileMapper {
 	
-	@Select("select n.news_title,n.news_regdate,n.news_view,n.news_writer,f.file_path\r\n" + 
+	@Select("select n.news_pk,n.news_title,n.news_regdate,n.news_view,n.news_writer,f.file_path\r\n" + 
 			"from news n\r\n" + 
 			"join files f on n.news_pk = f.news_pk")
 	List<NewsFileDto> selectAll();
 
-	@Select("select n.news_title,n.news_regdate,n.news_view,n.news_writer,f.file_path\r\n" + 
-			"from news n\r\n" + 
-			"join files f on n.news_pk = f.news_pk\r\n" + 
-			"where n.new_title like '%'#{title}'%'")
+//	@Select("select n.news_title,n.news_regdate,n.news_view,n.news_writer,f.file_path\r\n" + 
+//			"from news n\r\n" + 
+//			"join files f on n.news_pk = f.news_pk\r\n" + 
+//			"where n.news_title like '%'||#{title}||'%'")
+//	List<NewsFileDto> selectByTitle(@Param("title") String title);
+	
+	@Select("select nf.*\r\n" + 
+			"from (\r\n" + 
+			"select n.news_pk,n.news_title,n.news_regdate,n.news_view,n.news_writer,f.file_path\r\n" + 
+			"from news n join files f on n.news_pk = f.news_pk) nf\r\n" + 
+			"where nf.news_title like '%'||#{title}||'%'")
 	List<NewsFileDto> selectByTitle(@Param("title") String title);
+	
 	
 	@Select("select n.news_title,n.news_regdate,n.news_view,n.news_writer,f.file_path\r\n" + 
 			"from news n\r\n" + 

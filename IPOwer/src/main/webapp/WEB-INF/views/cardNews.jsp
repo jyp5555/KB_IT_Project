@@ -36,17 +36,19 @@
 </form>
 </div>  
 <p class="container mt-2">전체 26건</p>
+
 <hr>
 <div class="container mt-2">
 
   <div class="row">
-  	<c:forEach var="i" begin="1" end="8">
+  	<c:forEach var="i" begin="0" end="${count}">
     <div class="col-md-3 col-sm-6">
       <div class="card card-block">
-      <h4 class="card-title text-right"><i class="material-icons">settings</i></h4>
-      <img src="https://static.pexels.com/photos/326424/pexels-photo-326424.jpeg" alt="Photo of sunset">
-      <h5 class="card-title  mt-3 mb-3">ProVyuh</h5>
-      <p class="card-text">This is a company that builds websites, web apps and e-commerce solutions.</p> 
+     
+     <!--  <h4 class="card-title text-right"><i class="material-icons">settings</i></h4> -->
+      <img src="${all[i].file_path }" alt="Photo of sunset">
+      <h5 class="card-title  mt-3 mb-3">${all[i].news_title }</h5>
+      <p class="card-text">${all[i].news_regdate }</p> 
       </div>
     </div>
     

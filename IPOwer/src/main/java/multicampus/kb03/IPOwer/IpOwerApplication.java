@@ -24,8 +24,10 @@ public class IpOwerApplication {
     public void execute() {
 //    	insert();
         selectAll();
+        System.out.println("title");
+        selectByTitle();
     }
-    
+     
     private void insert() {
     	dao.insert();
 	}
