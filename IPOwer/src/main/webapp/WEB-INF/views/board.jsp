@@ -1,23 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
 <head>
+
+
 <meta charset="UTF-8">
 <title>게시판임</title>
 </head>
 <body>
-
-<table>
+<%@ include file="./header.jsp"%>
+<h1>
+USER Community
+</h1>
+<div>
+</div>
+<table class="table table-striped">
 <thead>
+<tr>
 <th>no</th>
 <th>title</th>
 <th>writer</th>
 <th>data</th>
 <th>count</th>
+</tr>
 </thead>
-
 <tbody>
 <c:forEach var="contactBoard" items="${articles}">
 <tr class="row body">
@@ -31,7 +40,7 @@
 </tbody>
 
 </table>
-
+ 
 <div>
 <a href="${contextPath }/board/write">
 <input type="button" value="글쓰기" class="btn btn-xs pull-right"  style= "font-size: 17px; ">
