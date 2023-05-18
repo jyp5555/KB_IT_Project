@@ -1,5 +1,6 @@
 package multicampus.kb03.IPOwer.dto;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class BoardDto {
@@ -88,6 +89,8 @@ public void setUSER_PK(String string) {
 	// TODO Auto-generated method stub
 	
 }
+
+
 }
    
   

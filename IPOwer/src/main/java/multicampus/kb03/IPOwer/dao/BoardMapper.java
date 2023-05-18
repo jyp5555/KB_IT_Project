@@ -37,7 +37,12 @@ public interface BoardMapper {
             "JOIN USERS u ON a.USER_PK = u.USER_PK")
     List<BoardDto> selectAllWithUserName();
     
-    @Select("update ARTICLE set article_regdate = #{article_regdate},article_title = #{article_title}, article_CONTENTE = #{article_CONTENTE}, updatedate = sysdate where bno = #{bno}")
-    List<BoardDto> modify();
+    @Select("update ARTICLE set article_regdate = #{article_regdate},article_title = #{article_title}, article_CONTENTE = #{article_CONTENTE}, updatedate = sysdate where ARTICLE_PK = #{ARTICLE_PK}")
+    List<BoardDto> modify(@Param("ARTICLE_PK") String ARTICLE_PK);
+    
+    @Select("delete from ARTICLE where ARTICLE_PK = #{ARTICLE_PK}")
+    List<BoardDto> delete(@Param("ARTICLE_PK") String ARTICLE_PK);
+    
+
     
 }
