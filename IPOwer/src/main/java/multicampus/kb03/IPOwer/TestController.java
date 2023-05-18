@@ -10,7 +10,6 @@ public class TestController {
 	@RequestMapping("/")
 	public String hello(Model model) {
 		
-		model.addAttribute("msg","반갑습니다.");
-		return "hello";
+		return "index";
 	}
 }
