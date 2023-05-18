@@ -17,12 +17,26 @@ public class NewsFileDao {
 		return dto;
 		
 	}
+	
+	public List<NewsFileDto> selectThumbnail(){
+		List<NewsFileDto> dto = mapper.selectThumbnail();
+		return dto;
+	}
 
-	public List<NewsFileDto> selectByTitle(String title){
-		List<NewsFileDto> dto = mapper.selectByTitle(title);
+	public List<NewsFileDto> selectThumbnailByTitle(String title){
+		List<NewsFileDto> dto = mapper.selectThumbnailByTitle(title);
 		return dto;
 	}
 	
+	public List<NewsFileDto> selectFilePath(int pk){
+		List<NewsFileDto> path = mapper.selectFilePath(pk);
+		return path;
+	}
+	
+	public NewsFileDto selectByPk(int pk) {
+		NewsFileDto dto = mapper.selectByPk(pk);
+		return dto;
+	}
 	public void insert() {
 		NewsFileDto dto = new NewsFileDto();
 		dto.setNews_pk(2);

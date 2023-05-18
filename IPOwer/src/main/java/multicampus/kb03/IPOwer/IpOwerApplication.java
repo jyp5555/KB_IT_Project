@@ -39,6 +39,7 @@ public class IpOwerApplication {
         }
     }
 	
+
 	private void selectByTitle() {
 		List<NewsFileDto> dto = dao.selectByTitle("title");
 		for (NewsFileDto newsFileDto : dto) {
