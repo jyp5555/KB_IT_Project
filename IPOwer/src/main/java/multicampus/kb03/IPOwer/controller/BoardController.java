@@ -16,16 +16,15 @@ import multicampus.kb03.IPOwer.dao.BoardDao;
 import multicampus.kb03.IPOwer.service.BoardService;
 @Controller
 //-http://localhost:8081/board/로 시작되는 요청을 다 boardController에서
-@RequestMapping("/board/")
+@RequestMapping("/board")
 public class BoardController {
 	    private BoardService service;
 	    private final BoardDao boardDao;
-
 	    @Autowired
 	    public BoardController(BoardDao boardDao) {
 	        this.boardDao = boardDao;
 	    }
-
+	    
 	    @GetMapping("")
 	    public String getAllArticles(Model model) {
 	        List<BoardDto> allArticles = boardDao.selectAll();
@@ -65,33 +64,9 @@ public class BoardController {
 	        model.addAttribute("boardList", service.listAll());
 	        
 	    }
+	       
+	    }
 	    
-	    
-//	    //상세보기 메서드 
-//	    @RequestMapping(value="/detail", method=RequestMethod.GET)
-//		public ModelAndView detail(@RequestParam Map<String, Object> map) {
-//			logger.info("map: "+ map);
-//			
-//			BookVO bookVO = new BookVO();
-//			bookVO.setBookId(Integer.parseInt((String)map.get("bookId")));
-//			//{bookId:1, 나머지는 null}
-//			logger.info("bookVO(before): "+ bookVO.toString());
-//			
-//			// 상세보기 데이터 가져오기
-//			bookVO = this.bookService.detail(bookVO);
-//			//{bookId:1, 나머지도 있음}
-//			logger.info("bookVO(after): "+ bookVO.toString());
-//			
-//			ModelAndView mav = new ModelAndView();
-//			// book/detail => 뷰의 경로
-//			// forwarding =>detail.jsp에 data가 같이간다.
-//			mav.addObject("data", bookVO); // 데이터를 담음
-//			mav.setViewName("book/detail");
-//			
-//			return mav;
-//		}
-	    
-	    
-	}
+	
 
 	
