@@ -38,24 +38,6 @@ body {
 </head>
 <body>
 	<%@ include file="./header.jsp"%>
-
-	<!-- <form >
-	<table>
-		<tr>
-			<td>아이디</td><td><input type="text" required="required" name="userId"></td>
-		</tr>
-		<tr>
-			<td>비밀번호</td><td><input type="password" required="required" name="userPw"></td>
-		</tr>
-		<tr>
-			<td>이름</td><td><input type="text" required="required" name="userName"></td>
-		</tr>
-		<tr>
-			<td>전화번호</td><td><input type="tel" required="required" name="userPhone"></td>
-		</tr>
-	</table>
-	<button class="btn btn-lg btn-warning btn-block" type="submit">회원가입</button>
-</form> -->
 	<div class="container">
 		<div class="input-form-backgroud row">
 			<div class="input-form col-md-12 mx-auto">
@@ -78,7 +60,7 @@ body {
 					</div>
 					
 					<div class="mb-3">
-						<label for="passwordChk">비밀번호 확인</label> <input type="password"	class="form-control" id="passwordChk" name="userPwChk" required>
+						<label for="passwordChk">비밀번호 확인</label> <input type="password" class="form-control" id="passwordChk" name="userPwChk" required>
 						<div class="valid-feedback"> 일치합니다.</div>
 						<div class="invalid-feedback">일치하지 않습니다.</div>
 					</div>
@@ -107,13 +89,7 @@ body {
 		<p class="mb-1">&copy; 2021 YD</p>
 	</footer>
 	</div>
-	<!-- <script>
-    window.addEventListener('load', () => {
-      const forms = document.getElementsByClassName('join_form');
-
-      
-    }, false);
-  </script> -->
+	
 	<script>
 		let isIdValid = false;
 	    let isPwValid = false;

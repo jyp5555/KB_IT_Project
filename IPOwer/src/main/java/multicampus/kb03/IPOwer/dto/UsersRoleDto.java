@@ -1,12 +1,12 @@
 package multicampus.kb03.IPOwer.dto;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class UsersRoleDto {
 	
 	private int userPk;
 	private String userId, userPw, userName, userPhone;
-	private Date userRegdate;
+	private LocalDate userRegdate;
 	private int userRolePk;
 	private String userRoleName;
 	private String userAuthtype;
@@ -15,29 +15,22 @@ public class UsersRoleDto {
 		super();
 	}
 	
-	public UsersRoleDto(String userId, String userPw, String userName, String userPhone, Date userRegdate) {
-		super();
-		this.userId = userId;
-		this.userPw = userPw;
-		this.userName = userName;
-		this.userPhone = userPhone;
-		this.userRegdate = userRegdate;
-	}
+	/*
+	 * public UsersRoleDto(String userId, String userPw, String userName, String
+	 * userPhone) { super(); this.userId = userId; this.userPw = userPw;
+	 * this.userName = userName; this.userPhone = userPhone; this.userRegdate =
+	 * LocalDate.now(); this.userRolePk = 1; this.userRoleName = "USER";
+	 * this.userAuthtype = "CRUD"; }
+	 * 
+	 * public UsersRoleDto(int userPk, String userId, String userPw, String
+	 * userName, String userPhone, LocalDate userRegdate, int userRolePk, String
+	 * userRoleName, String userAuthtype) { super(); this.userPk = userPk;
+	 * this.userId = userId; this.userPw = userPw; this.userName = userName;
+	 * this.userPhone = userPhone; this.userRegdate = userRegdate; this.userRolePk =
+	 * userRolePk; this.userRoleName = userRoleName; this.userAuthtype =
+	 * userAuthtype; }
+	 */
 	
-	public UsersRoleDto(int userPk, String userId, String userPw, String userName, String userPhone, Date userRegdate,
-			int userRolePk, String userRoleName, String userAuthtype) {
-		super();
-		this.userPk = userPk;
-		this.userId = userId;
-		this.userPw = userPw;
-		this.userName = userName;
-		this.userPhone = userPhone;
-		this.userRegdate = userRegdate;
-		this.userRolePk = userRolePk;
-		this.userRoleName = userRoleName;
-		this.userAuthtype = userAuthtype;
-	}
-
 	public int getUserPk() {
 		return userPk;
 	}
@@ -58,7 +51,7 @@ public class UsersRoleDto {
 		return userPhone;
 	}
 
-	public Date getUserRegdate() {
+	public LocalDate getUserRegdate() {
 		return userRegdate;
 	}
 
@@ -94,7 +87,7 @@ public class UsersRoleDto {
 		this.userPhone = userPhone;
 	}
 
-	public void setUserRegdate(Date userRegdate) {
+	public void setUserRegdate(LocalDate userRegdate) {
 		this.userRegdate = userRegdate;
 	}
 
@@ -102,10 +95,6 @@ public class UsersRoleDto {
 	public String toString() {
 		return "UsersRole [userPk=" + userPk + ", userId=" + userId + ", userPw=" + userPw + ", userName=" + userName
 				+ ", userPhone=" + userPhone + ", userRegdate=" + userRegdate + ", userRolePk=" + userRolePk
-				+ ", userRoleName=" + userRoleName + ", userAuthtype=" + userAuthtype + ", getUserPk()=" + getUserPk()
-				+ ", getUserId()=" + getUserId() + ", getUserPw()=" + getUserPw() + ", getUserName()=" + getUserName()
-				+ ", getUserPhone()=" + getUserPhone() + ", getUserRegdate()=" + getUserRegdate() + ", getUserRolePk()="
-				+ getUserRolePk() + ", getUserRoleName()=" + getUserRoleName() + ", getUserAuthtype()="
-				+ getUserAuthtype();
+				+ ", userRoleName=" + userRoleName + ", userAuthtype=" + userAuthtype+"]" ;
 	}
 }

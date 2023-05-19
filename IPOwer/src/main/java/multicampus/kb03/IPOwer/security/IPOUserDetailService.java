@@ -1,7 +1,9 @@
 package multicampus.kb03.IPOwer.security;
 
+import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -13,8 +15,10 @@ import multicampus.kb03.IPOwer.service.UserService;
 
 @Component
 public class IPOUserDetailService implements UserDetailsService{
+	
 	private final UserService userService;
 	
+	@Autowired
 	public IPOUserDetailService(UserService userService) {
 		this.userService = userService;
 	}
@@ -22,14 +26,14 @@ public class IPOUserDetailService implements UserDetailsService{
 	@Override
 	public UserDetails loadUserByUsername(String insertedUserId) throws UsernameNotFoundException {
 		
-		Optional<UsersRoleDto> authenticatedUser = userService.findByUserId(insertedUserId);
-		UsersRoleDto member = authenticatedUser.orElseThrow(() -> new UsernameNotFoundException("아이디나 비밀번호가 맞지 않습니다."));
+		UsersRoleDto user = userService.findByUserId(insertedUserId);
+        
+        if(user == null){
+            throw new UsernameNotFoundException(insertedUserId);
+        }
+        
+		System.out.println("IPOUserService user: "+user);
 		
-		return User.builder()
-				.username(member.getUserId())
-				.password(member.getUserPw())
-				.roles(member.getUserRoleName())
-				.build();
+		return new AuthenticatedUser(user);
 	}
-	
 }
