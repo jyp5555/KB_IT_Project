@@ -67,7 +67,7 @@ private final SqlSessionTemplate sqlSessionTemplate;
 //     		return dto;
 //     	}
         public void insert(BoardDto boardDto) {
-            mapper.insert(boardDto);
+            mapper.write(boardDto);
         }
        
       //목록 (페이지 나누기, 검색 기능 포함)

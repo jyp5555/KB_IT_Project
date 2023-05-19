@@ -35,9 +35,10 @@ public interface BoardMapper {
 //    		+ "values(#{dto.ARTICLE_PK},#{dto.ARTICLE_CONTENT},#{dto.article_title},SYSDATE,#{dto.article_view},#{dto.article_writer},#{dto.user_pk})")
 //	int insert(@Param("dto") BoardDto dto);
 
-    @Select("INSERT INTO ARTICLE (article_pk, article_title, ARTICLE_content, article_view, user_pk) " +
+    @Insert("INSERT INTO ARTICLE (article_pk, article_title, ARTICLE_content, article_view, user_pk) " +
             "VALUES (#{article_pk}, #{article_title}, #{ARTICLE_content}, #{article_view}, #{user_pk})")
     List<BoardDto> write(BoardDto boardDto);
+    
     //게시물 번호 자동 증가하는건 나중에 ...
     @Select("SELECT a.ARTICLE_PK, a.USER_PK, a.ARTICLE_TITLE, a.ARTICLE_CONTENT, a.ARTICLE_REGDATE, a.ARTICLE_VIEW, u.USER_NAME " +
             "FROM ARTICLE a " +
