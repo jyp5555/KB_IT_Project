@@ -56,6 +56,7 @@ public class BoardController {
 	    
 	    @PostMapping("/post")
 	    public String write(BoardDto boardDto) throws Exception {
+
 	    	boardDao.insert(boardDto);
 	        return "board";
 	    }

@@ -97,6 +97,7 @@ data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
           <label for="inputAuthor" class="col-sm-2 col-form-label"><strong>작성자</strong></label>
           <div class="col-sm-10">
             <input type="text" name="USER_NAME" class="form-control" id="inputAuthor" />
+
           </div>
         </div>
         

@@ -26,10 +26,12 @@ public interface BoardMapper {
     		"WHERE A.ARTICLE_TITLE = #{title}")
     List<BoardDto> selectByTitle(@Param("title") String title);
 
-    @Select("SELECT A.ARTICLE_PK, A.ARTICLE_TITLE, A.ARTICLE_content,A.ARTICLE_view, A.ARTICLE_REGDATE, U.USER_NAME FROM ARTICLE A\r\n" + 
+    @Select("SELECT A.ARTICLE_PK, A.sARTICLE_TITLE, A.ARTICLE_content,A.ARTICLE_view, A.ARTICLE_REGDATE, U.USER_NAME FROM ARTICLE A\r\n" + 
     		"JOIN USERS U ON A.USER_PK = U.USER_PK\r\n" + 
     		"WHERE A.ARTICLE_regdate = #{date}")
     List<BoardDto> selectByDate(@Param("date") Date date);
+      
+    
     
     
 //    @Insert("insert into articles(ARTICLE_PK,ARTICLE_CONTENT,article_title,article_regdate,article_view,user_pk) \r\\n"
@@ -40,7 +42,7 @@ public interface BoardMapper {
             "VALUES (12, #{dto.ARTICLE_TITLE},#{dto.USER_NAME}, #{dto.ARTICLE_CONTENT},sysdate)")
    int write(@Param("dto") BoardDto boardDto);
     
-    
+
     //게시물 번호 자동 증가하는건 나중에 ...
     @Select("SELECT a.ARTICLE_PK, a.USER_NAME, a.ARTICLE_TITLE, a.ARTICLE_CONTENT, a.ARTICLE_REGDATE, a.ARTICLE_VIEW, u.USER_NAME " +
             "FROM ARTICLE a " +
