@@ -5,11 +5,16 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.stereotype.Service;
+
 import multicampus.kb03.IPOwer.dto.BoardDto;
 
+@Service
 public interface BoardService {
 
-	String create(Map<String, Object> map);
+	//게시글 작성
+	public boolean insertpost(BoardDto dto)  throws Exception;
+	
 
 	Map<String, Object> detail(Map<String, Object> map);
 	

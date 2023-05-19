@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,6 +26,15 @@ public class BoardController {
 	    public BoardController(BoardDao boardDao) {
 	        this.boardDao = boardDao;
 	    }
+
+	    @RequestMapping(value = "/listAll", method=RequestMethod.GET)
+	    public void listAll(Model model) throws Exception{
+	        
+	        System.out.println("전체목록 페이지");
+	        
+	        model.addAttribute("boardList", service.listAll());
+	        
+	    }
 	    
 	    @GetMapping("")
 	    public String getAllArticles(Model model) {
@@ -36,33 +47,43 @@ public class BoardController {
 	        //succes.jsp에서 ${articles} 입력 allArticles 뜸 
 	        return "board"; 
 	    }
-	    
+	    //글쓰기 
 	    @RequestMapping("write.do")
 	    public String write() {
 	        // 글쓰기 폼 페이지로 이동
 	        return "board/write"; //write.jsp 페이지로 이동
 	    }
 	    
-	    @RequestMapping(value = "/create",method=RequestMethod.POST )
-	    public String createPOST(BoardDao board, RedirectAttributes rttr) throws Exception{
-	       //Model model
-	    	System.out.println(board.toString());
-	        
-	        
-	    	
-	        
-	        //model.addAttribute("result", "성공");
-	        rttr.addFlashAttribute("msg", "성공");
-	        return "redirect:/board/listaAll";
+	    @PostMapping("/post")
+	    public String write(BoardDto boardDto) throws Exception {
+	    	service.insertpost(boardDto);
+	        return "redirect:/";
 	    }
 	    
-	    @RequestMapping(value = "/listAll", method=RequestMethod.GET)
-	    public void listAll(Model model) throws Exception{
-	        
-	        System.out.println("전체목록 페이지");
-	        
-	        model.addAttribute("boardList", service.listAll());
-	        
+//	    @PostMapping("insert")
+//		public String insertreview(BoardDto dto) throws Exception{
+//			boolean result = service.insertpost(dto);
+//			if (result) {
+//				return "success";
+//			} else {
+//				return "error";
+//			}
+//		}
+	    
+	    @GetMapping("/success")
+	    public String showSuccessPage(Model model) {
+	        // 성공 메시지 표시
+	        String message = (String) model.getAttribute("message");
+	        model.addAttribute("message", message);
+
+	        return "success";
+	    }
+	    //수정
+	    @GetMapping("/edit/{id}")
+	    public String edit(@PathVariable("id") Long id, Model model) {
+	        BoardDto boardDto = service.getPost(id);
+	        model.addAttribute("post", boardDto);
+	        return "board/edit.html";
 	    }
 	       
 	    }

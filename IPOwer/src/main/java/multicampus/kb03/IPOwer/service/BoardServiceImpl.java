@@ -13,11 +13,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class BoardServiceImpl implements BoardService {
 
-	@Override
-	public String create(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public Map<String, Object> detail(Map<String, Object> map) {
@@ -106,6 +101,12 @@ public class BoardServiceImpl implements BoardService {
 //        dao.update(vo);
 // 
 //    }
+
+	@Override
+	public boolean insertpost(BoardDto dto) throws Exception {
+		// TODO Auto-generated method stub
+		return false;
+	}
  
 }
  
