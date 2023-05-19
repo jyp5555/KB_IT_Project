@@ -1,8 +1,12 @@
 package multicampus.kb03.IPOwer.service;
 
+import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -12,38 +16,38 @@ import multicampus.kb03.IPOwer.dto.UsersRoleDto;
 @Service
 public class RegisterUserService {
 	
+	@Autowired
     private final PasswordEncoder passwordEncoder;
+	
+	@Autowired
     private final UserDao userDao;
 
-    @Autowired
+    
     public RegisterUserService(PasswordEncoder passwordEncoder, UserDao userDao) {
         this.passwordEncoder = passwordEncoder;
         this.userDao = userDao;
     }
-    
-//  private int userPk;
-//	private String userId, userPw, userName, userPhone;
-//	private Date userRegdate;
-//	private int userRolePk;
-//	private String userRoleName;
-//	private String userAuthtype;
 
-    public Long join(String userId, String userPw, String userName, String userPhone) {
-		return null;
+    public String join(String userId, String userPw, String userName, String userPhone) {   	
     	
-    	
-    	
-//        validateDuplicateMember(member);
-//        repository.save(member);
-//
-//        return member.getId();
-    	
+    	UsersRoleDto user = new UsersRoleDto();
+    	user.setUserId(userId);    	
+    	user.setUserPw(passwordEncoder.encode(userPw));
+    	user.setUserName(userName);
+    	user.setUserPhone(userPhone);
+    	System.out.println("user: "+user);
+        validateDuplicateMember(user);
+        userDao.save(user);
+        return user.getUserId();    	
     }
 
-    private void validateDuplicateMember() {
-//        repository.findByUserid(member.getUserid())
-//                .ifPresent(m -> {
-//                    throw new IllegalStateException("이미 존재하는 회원입니다.");
-//                });
+    private void validateDuplicateMember(UsersRoleDto user) throws IllegalStateException {
+    	System.out.println("userId: "+user.getUserId());
+    	UsersRoleDto findByUserId = userDao.findByUserId(user.getUserId());
+    	
+    	System.out.println("findByUserId: "+findByUserId);
+		if(findByUserId != null){
+    		throw new IllegalStateException("이미 존재하는 회원입니다.");
+    	}
     }
 }

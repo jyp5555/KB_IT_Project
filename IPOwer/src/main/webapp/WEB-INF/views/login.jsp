@@ -7,13 +7,13 @@
 </head>
 <body>
 <%@ include file="./header.jsp" %>
-<form action="/user/me" method="post">
+<form action="/login-process" method="post">
 	<table>
 		<tr>
-			<td>아이디</td><td><input type="text" required="required" name="user_id"></td>
+			<td>아이디</td><td><input type="text" required="required" name="userId"></td>
 		</tr>
 		<tr>
-			<td>비밀번호</td><td><input type="password" required="required" name="user_pw"></td>
+			<td>비밀번호</td><td><input type="password" required="required" name="userPw"></td>
 		</tr>
 	</table>
 	<button class="btn btn-lg btn-primary btn-block" type="submit" id="login_btn">로그인</button>
@@ -22,6 +22,11 @@
 <form class="form-signin" method="get" action="/user/new">
         <button class="btn btn-lg btn-warning btn-block" type="submit">회원가입</button>
 </form>
-
+<script>
+	const errorMsg = <%=request.getAttribute("errorMsg")%>
+	if (errorMsg.length>0){
+		alert(errorMsg)
+	}
+</script>
 </body>
 </html>
