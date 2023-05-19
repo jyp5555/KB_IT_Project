@@ -26,7 +26,7 @@ public interface BoardService {
     
     public void delete(Integer b_no) throws Exception;
     
-    public void update(BoardDto vo) throws Exception;
+    public void modify(BoardDto vo) throws Exception;
   //목록 (페이지 나누기, 검색 기능 포함)
     //매개변수는 시작 레코드번호, 끝번호, 옵션과 키워드가 들어간다)
     public List<BoardDto> listAll(

@@ -48,10 +48,10 @@ public class BoardController {
 	        return "board"; 
 	    }
 	    //글쓰기 
-	    @RequestMapping("write.do")
+	    @RequestMapping("/write")
 	    public String write() {
 	        // 글쓰기 폼 페이지로 이동
-	        return "board/write"; //write.jsp 페이지로 이동
+	        return "write"; //write.jsp 페이지로 이동
 	    }
 	    
 	    @PostMapping("/post")
@@ -81,7 +81,7 @@ public class BoardController {
 	    //수정
 	    @GetMapping("/edit/{id}")
 	    public String edit(@PathVariable("id") Long id, Model model) {
-	        BoardDto boardDto = service.getPost(id);
+	        BoardDto boardDto = service.modify(id);
 	        model.addAttribute("post", boardDto);
 	        return "board/edit.html";
 	    }
