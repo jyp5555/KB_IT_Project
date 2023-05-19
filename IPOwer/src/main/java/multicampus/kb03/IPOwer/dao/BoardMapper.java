@@ -37,7 +37,7 @@ public interface BoardMapper {
 
     @Select("INSERT INTO ARTICLE (article_pk, article_title, ARTICLE_content, article_view, user_pk) " +
             "VALUES (#{article_pk}, #{article_title}, #{ARTICLE_content}, #{article_view}, #{user_pk})")
-    List<BoardDto> insert(BoardDto boardDto);
+    List<BoardDto> write(BoardDto boardDto);
     //게시물 번호 자동 증가하는건 나중에 ...
     @Select("SELECT a.ARTICLE_PK, a.USER_PK, a.ARTICLE_TITLE, a.ARTICLE_CONTENT, a.ARTICLE_REGDATE, a.ARTICLE_VIEW, u.USER_NAME " +
             "FROM ARTICLE a " +

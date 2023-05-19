@@ -18,7 +18,7 @@ public interface BoardService {
 
 	Map<String, Object> detail(Map<String, Object> map);
 	
-    public void create(BoardDto vo) throws Exception;
+    public void write(BoardDto vo) throws Exception;
     
     public List<BoardDto> listAll() throws Exception;
     

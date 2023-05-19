@@ -56,7 +56,7 @@ public class BoardController {
 	    
 	    @PostMapping("/post")
 	    public String write(BoardDto boardDto) throws Exception {
-	    	service.insertpost(boardDto);
+	    	service.write(boardDto);
 	        return "redirect:/";
 	    }
 	    
@@ -78,13 +78,13 @@ public class BoardController {
 
 	        return "success";
 	    }
-	    //수정
-	    @GetMapping("/edit/{id}")
-	    public String edit(@PathVariable("id") Long id, Model model) {
-	        BoardDto boardDto = service.modify(id);
-	        model.addAttribute("post", boardDto);
-	        return "board/edit.html";
-	    }
+//	    //수정
+//	    @GetMapping("/edit/{id}")
+//	    public String edit(@PathVariable("id") Long id, Model model) {
+//	        BoardDto boardDto = service.modify(id);
+//	        model.addAttribute("post", boardDto);
+//	        return "board/edit.html";
+//	    }
 	       
 	    }
 	    

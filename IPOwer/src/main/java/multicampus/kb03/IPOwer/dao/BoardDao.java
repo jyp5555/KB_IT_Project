@@ -35,10 +35,11 @@ private final SqlSessionTemplate sqlSessionTemplate;
 //        return boardMapper.selectByTitle(boardDto.getArticlePk());
 //    }
 //    
-    public List<BoardDto> modify(BoardDto boardDto) {
-    	mapper.modify(boardDto);
-    	return mapper.selectByTitle(boardDto.getArticlePk());
-    }
+//    public List<BoardDto> modify(BoardDto boardDto) {
+//    	mapper.modify(boardDto);
+//    	return mapper.selectByTitle(boardDto.getArticlePk());
+//    }
+
 
     public List<BoardDto> delete (String ARTICLE_PK){
  		List<BoardDto> dto = mapper.selectByTitle(ARTICLE_PK);

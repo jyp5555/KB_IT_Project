@@ -10,7 +10,7 @@ import multicampus.kb03.IPOwer.dto.*;
 import multicampus.kb03.IPOwer.dao.*;
 import org.springframework.stereotype.Service;
  
-@Service
+
 public class BoardServiceImpl implements BoardService {
 
 
@@ -21,7 +21,7 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public void create(BoardDto vo) throws Exception {
+	public void write(BoardDto vo) throws Exception {
 		// TODO Auto-generated method stub
 		
 	}
@@ -43,12 +43,12 @@ public class BoardServiceImpl implements BoardService {
 		// TODO Auto-generated method stub
 		
 	}
-
-	@Override
-	public void update(BoardDto vo) throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
+//
+//	@Override
+//	public void update(BoardDto vo) throws Exception {
+//		// TODO Auto-generated method stub
+//		
+//	}
 
 	@Override
 	public List<BoardDto> listAll(String search_option, String keyword, int start, int end) throws Exception {
@@ -106,6 +106,12 @@ public class BoardServiceImpl implements BoardService {
 	public boolean insertpost(BoardDto dto) throws Exception {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public void modify(BoardDto vo) throws Exception {
+		// TODO Auto-generated method stub
+		
 	}
  
 }
