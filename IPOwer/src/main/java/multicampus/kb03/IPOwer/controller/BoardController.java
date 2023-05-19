@@ -56,8 +56,8 @@ public class BoardController {
 	    
 	    @PostMapping("/post")
 	    public String write(BoardDto boardDto) throws Exception {
-	    	service.write(boardDto);
-	        return "redirect:/";
+	    	boardDao.insert(boardDto);
+	        return "board";
 	    }
 	    
 //	    @PostMapping("insert")

@@ -3,6 +3,7 @@ package multicampus.kb03.IPOwer.dao;
 import java.sql.Date;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
@@ -35,13 +36,15 @@ public interface BoardMapper {
 //    		+ "values(#{dto.ARTICLE_PK},#{dto.ARTICLE_CONTENT},#{dto.article_title},SYSDATE,#{dto.article_view},#{dto.article_writer},#{dto.user_pk})")
 //	int insert(@Param("dto") BoardDto dto);
 
-    @Insert("INSERT INTO ARTICLE (article_pk, article_title, ARTICLE_content, article_view, user_pk) " +
-            "VALUES (#{article_pk}, #{article_title}, #{ARTICLE_content}, #{article_view}, #{user_pk})")
-    List<BoardDto> write(BoardDto boardDto);
+    @Insert("INSERT INTO ARTICLE (ARTICLE_PK,ARTICLE_TITLE,USER_NAME ,ARTICLE_CONTENT,ARTICLE_REGDATE) " +
+            "VALUES (12, #{dto.ARTICLE_TITLE},#{dto.USER_NAME}, #{dto.ARTICLE_CONTENT},sysdate)")
+   int write(@Param("dto") BoardDto boardDto);
+    
+    
     //게시물 번호 자동 증가하는건 나중에 ...
-    @Select("SELECT a.ARTICLE_PK, a.USER_PK, a.ARTICLE_TITLE, a.ARTICLE_CONTENT, a.ARTICLE_REGDATE, a.ARTICLE_VIEW, u.USER_NAME " +
+    @Select("SELECT a.ARTICLE_PK, a.USER_NAME, a.ARTICLE_TITLE, a.ARTICLE_CONTENT, a.ARTICLE_REGDATE, a.ARTICLE_VIEW, u.USER_NAME " +
             "FROM ARTICLE a " +
-            "JOIN USERS u ON a.USER_PK = u.USER_PK")
+            "JOIN USERS u ON a.USER_PK = u.USER_NAME")
     List<BoardDto> selectAllWithUserName();
     
 //    @Select("update ARTICLE set article_regdate = #{article_regdate},ARTICLE_TITLE = #{ARTICLE_TITLE}, ARTICLE_CONTENTE = #{ARTICLE_CONTENTE}, updatedate = sysdate where ARTICLE_PK = #{ARTICLE_PK}")
@@ -56,7 +59,7 @@ public interface BoardMapper {
             "WHERE article_pk = #{articlePk}")
     void modify(BoardDto boardDto);
     
-    @Select("delete from ARTICLE where ARTICLE_PK = #{ARTICLE_PK}")
+    @Delete("delete from ARTICLE where ARTICLE_PK = #{ARTICLE_PK}")
     List<BoardDto> delete(@Param("ARTICLE_PK") String ARTICLE_PK);
     
 
