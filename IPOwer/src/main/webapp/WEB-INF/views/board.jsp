@@ -31,16 +31,14 @@ USER Community
 <c:forEach var="contactBoard" items="${articles}">
 <tr class="row body">
 <td class="col1">${contactBoard.ARTICLE_PK}</td>
-<td class="col2">${contactBoard.ARTICLE_TITLE}</td>
+<td><a class="col2" href="detailreview?ARTICLE_PK=${contactBoard.ARTICLE_PK}">${contactBoard.ARTICLE_TITLE}</a></td>
 <td class="col3">${contactBoard.USER_NAME}</td>
 <td class="col4">${contactBoard.ARTICLE_CONTENT}</td>
 <td class="col4">${contactBoard.ARTICLE_CONTENT}</td>
 </tr>
 </c:forEach>
 </tbody>
-
 </table>
- 
 <div>
 <a href="${contextPath }/board/write">
 <input type="button" value="글쓰기" class="btn btn-xs pull-right"  style= "font-size: 17px; ">

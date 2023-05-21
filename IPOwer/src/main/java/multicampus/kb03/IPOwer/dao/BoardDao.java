@@ -26,25 +26,20 @@ private final SqlSessionTemplate sqlSessionTemplate;
 		List<BoardDto> dto = mapper.selectAll();
 		return dto;
     }
-    public List<BoardDto> selectByTitle(String title){
-		List<BoardDto> dto = mapper.selectByTitle(title);
+    public List<BoardDto> detail(int ARTICLE_PK){
+		List<BoardDto> dto = mapper.detail(ARTICLE_PK);
 		return dto;
 	}
-//    public List<BoardDto> modify(String ARTICLE_PK){
-//    	mapper.modify(BoardDto);
-//        return boardMapper.selectByTitle(boardDto.getArticlePk());
-//    }
-//    
-//    public List<BoardDto> modify(BoardDto boardDto) {
-//    	mapper.modify(boardDto);
-//    	return mapper.selectByTitle(boardDto.getArticlePk());
-//    }
-
-
-    public List<BoardDto> delete (String ARTICLE_PK){
- 		List<BoardDto> dto = mapper.selectByTitle(ARTICLE_PK);
- 		return dto;
- 	}
+    public int updateBoard(BoardDto boardDto){
+    	return mapper.updateBoard(boardDto);
+    }
+    public BoardDto edit(int articlePk) {
+        return mapper.getBoardDetail(articlePk);
+    }
+    
+    public int deleteBoard(int articlePk) {
+        return mapper.deleteBoard(articlePk);
+    }
     
 //    public int insert() {
 //		BoardDto dto = new BoardDto();

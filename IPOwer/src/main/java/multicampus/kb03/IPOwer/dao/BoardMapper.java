@@ -24,7 +24,7 @@ public interface BoardMapper {
     @Select("SELECT A.ARTICLE_PK, A.ARTICLE_TITLE, A.ARTICLE_CONTENT,A.ARTICLE_VIEW, A.ARTICLE_REGDATE, U.USER_NAME FROM ARTICLE A\r\n" + 
     		"JOIN USERS U ON A.USER_PK = U.USER_PK\r\n" + 
     		"WHERE A.ARTICLE_TITLE = #{title}")
-    List<BoardDto> selectByTitle(@Param("title") String title);
+    List<BoardDto> selectByPk(@Param("title") String title);
 
     @Select("SELECT A.ARTICLE_PK, A.sARTICLE_TITLE, A.ARTICLE_content,A.ARTICLE_view, A.ARTICLE_REGDATE, U.USER_NAME FROM ARTICLE A\r\n" + 
     		"JOIN USERS U ON A.USER_PK = U.USER_PK\r\n" + 
@@ -52,18 +52,25 @@ public interface BoardMapper {
 //    @Select("update ARTICLE set article_regdate = #{article_regdate},ARTICLE_TITLE = #{ARTICLE_TITLE}, ARTICLE_CONTENTE = #{ARTICLE_CONTENTE}, updatedate = sysdate where ARTICLE_PK = #{ARTICLE_PK}")
 //    List<BoardDto> modify(@Param("ARTICLE_PK") String ARTICLE_PK);
     
+    //수정
+    @Select("SELECT * FROM ARTICLE WHERE ARTICLE_PK = #{ARTICLE_PK}")
+    BoardDto getBoardDetail(@Param("ARTICLE_PK") int ARTICLE_PK);
+    
     @Update("UPDATE ARTICLE " +
-            "SET article_title = #{articleTitle}, " +
-    		"article_regdate = #{article_regdate},"+
-            "ARTICLE_content = #{ARTICLE_content}, " +
-            "article_view = #{articleView}, " +
-            "user_pk = #{userPk} " +
-            "WHERE article_pk = #{articlePk}")
-    void modify(BoardDto boardDto);
+            "SET ARTICLE_TITLE = #{ARTICLE_TITLE}, " +
+    		"ARTICLE_REGDATE = #{ARTICLE_REGDATE},"+
+            "ARTICLE_CONTENT = #{ARTICLE_CONTENT}, " +
+            "ARTICLE_VIEW = #{ARTICLE_VIEW}, " +
+            "USER_PK = #{USER_PK} " +
+            "WHERE ARTICLE_PK = #{ARTICLE_PK}")
+    int updateBoard(BoardDto boardDto);
     
+    //삭제 
     @Delete("delete from ARTICLE where ARTICLE_PK = #{ARTICLE_PK}")
-    List<BoardDto> delete(@Param("ARTICLE_PK") String ARTICLE_PK);
+    int deleteBoard(int ARTICLE_PK);
     
-
+    
+    @Select("select * from article where ARTICLE_PK=#{ARTICLE_PK}")
+    List<BoardDto> detail (@Param("ARTICLE_PK")int ARTICLE_PK);
     
 }

@@ -79,15 +79,45 @@ public class BoardController {
 
 	        return "success";
 	    }
-//	    //수정
-//	    @GetMapping("/edit/{id}")
-//	    public String edit(@PathVariable("id") Long id, Model model) {
-//	        BoardDto boardDto = service.modify(id);
-//	        model.addAttribute("post", boardDto);
-//	        return "board/edit.html";
-//	    }
-	       
+	    
+	    //게시글 보기
+	
+	    @GetMapping("/detailreview/{ARTICLE_PK}")
+	    public String getDetail(@PathVariable("ARTICLE_PK") int ARTICLE_PK, Model model) {
+	        List<BoardDto> boardDtoList = boardDao.detail(ARTICLE_PK);
+	        if (boardDtoList != null && !boardDtoList.isEmpty()) {
+	            BoardDto boardDto = boardDtoList.get(0);
+	            model.addAttribute("detail1", boardDto);
+	        }
+	        return "detailreview"; // Assuming "detailreview.jsp" is your detail view JSP file
 	    }
+	    
+	    //수정 
+	    @GetMapping("/edit/{ARTICLE_PK}")
+	    public String getEditForm(@PathVariable int ARTICLE_PK, Model model) {
+	    	BoardDto boardDto = boardDao.edit(ARTICLE_PK);
+	        model.addAttribute("up", boardDto);
+	        return "edit";
+	    }
+	    
+	    @PostMapping("/updatereviewcommit")
+	    public String updateReview(BoardDto boardDto) {
+	        int result = boardDao.updateBoard(boardDto);
+	        // 수정 후의 처리 로직 추가
+	        return "redirect:/detailreview/" + boardDto.getARTICLE_PK();
+	    }
+	    //삭제
+	    @GetMapping("/deleteBoard/{ARTICLE_PK}")
+	    public String deleteBoard(@PathVariable int ARTICLE_PK) {
+	        int result = boardDao.deleteBoard(ARTICLE_PK);
+	        // 삭제 후의 처리 로직 추가
+	        return "redirect:/";
+	    }
+	    //조회수 자동 증가 
+	    
+	}
+	       
+	    
 	    
 	
 
