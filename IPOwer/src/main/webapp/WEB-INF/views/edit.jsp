@@ -12,7 +12,7 @@ window.onload = function() {
 		
 		if(confirm("정말수정할까요")) {
 	
-			frm.action="updatereviewcommit";
+			frm.action="/board/updatereviewcommit";
 			frm.submit();
 		}
 	}
@@ -28,11 +28,12 @@ window.onload = function() {
 	<tr>
 		<td>번호</td>
 		<td>${up.ARTICLE_PK}</td>
-		<input type="hidden" value="${up.ARTICLE_PK}" name="ARTICLE_PK">
+		<input value="${up.ARTICLE_PK}" name="ARTICLE_PK">
 	</tr>
 	<tr>
 		<td>작성자</td>
-		<td>${up.reUser}</td>	
+		<td>${up.USER_PK}</td>
+		<input value="${up.USER_PK}" name="USER_PK" type="hidden">	
 	</tr>
 		<tr>
 		<td>제목</td>

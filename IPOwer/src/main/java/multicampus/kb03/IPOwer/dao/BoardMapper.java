@@ -58,7 +58,7 @@ public interface BoardMapper {
     
     @Update("UPDATE ARTICLE " +
             "SET ARTICLE_TITLE = #{ARTICLE_TITLE}, " +
-    		"ARTICLE_REGDATE = #{ARTICLE_REGDATE},"+
+    		"ARTICLE_REGDATE = sysdate,"+
             "ARTICLE_CONTENT = #{ARTICLE_CONTENT}, " +
             "ARTICLE_VIEW = #{ARTICLE_VIEW}, " +
             "USER_PK = #{USER_PK} " +

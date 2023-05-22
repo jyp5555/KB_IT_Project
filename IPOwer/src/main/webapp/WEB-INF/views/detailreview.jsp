@@ -10,11 +10,11 @@ window.onload = function() {
 	document.getElementById("btnList").onclick = function() {
 		location.href="/";
 	}
-	document.getElementById("btnUpdate").onclick = function() {
+	document.getElementById("btnUpdate").onclick = function(e) {
 		
 		if(confirm("정말수정할까요")) {
 	
-			frm.action="/edit";
+			frm.action="/board/edit?ARTICLE_PK="+e.target.name;
 			frm.submit();
 		}
 	}
@@ -39,7 +39,7 @@ window.onload = function() {
 	<tr>
 		<td>번호</td>
 		<td>${detail1.ARTICLE_PK}</td>
-		<input type="hidden" value="${detail1.ARTICLE_PK}" name="reNum">	
+		<input type="hidden" value="${detail1.ARTICLE_PK}" name="ARTICLE_PK">	
 	</tr>
 	<tr>
 		<td>작성자</td>
@@ -64,7 +64,7 @@ window.onload = function() {
 	<tr colspan="3">
 		<td>
 			<input type="button" value="목록" id="btnList">
-			<input type="button" value="수정" id="btnUpdate">
+			<input type="button" value="수정" id="btnUpdate" name="${detail1.ARTICLE_PK }">
 			<input type="button" value="삭제" id="btnDelete">
 		</td>
 	</tr>

@@ -31,6 +31,7 @@ private final SqlSessionTemplate sqlSessionTemplate;
 		return dto;
 	}
     public int updateBoard(BoardDto boardDto){
+    	System.out.println("BoardDto="+boardDto);
     	return mapper.updateBoard(boardDto);
     }
     public BoardDto edit(int articlePk) {

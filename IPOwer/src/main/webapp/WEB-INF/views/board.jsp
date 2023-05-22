@@ -31,7 +31,7 @@ USER Community
 <c:forEach var="contactBoard" items="${articles}">
 <tr class="row body">
 <td class="col1">${contactBoard.ARTICLE_PK}</td>
-<td><a class="col2" href="detailreview?ARTICLE_PK=${contactBoard.ARTICLE_PK}">${contactBoard.ARTICLE_TITLE}</a></td>
+<td><a class="col2" href="board/detailreview?ARTICLE_PK=${contactBoard.ARTICLE_PK}">${contactBoard.ARTICLE_TITLE}</a></td>
 <td class="col3">${contactBoard.USER_NAME}</td>
 <td class="col4">${contactBoard.ARTICLE_CONTENT}</td>
 <td class="col4">${contactBoard.ARTICLE_CONTENT}</td>
