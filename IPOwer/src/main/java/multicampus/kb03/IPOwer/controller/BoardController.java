@@ -17,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import multicampus.kb03.IPOwer.dto.*;
 import multicampus.kb03.IPOwer.dao.BoardDao;
+import multicampus.kb03.IPOwer.dao.CmtDao;
 import multicampus.kb03.IPOwer.service.BoardService;
 @Controller
 //-http://localhost:8081/board/로 시작되는 요청을 다 boardController에서
@@ -24,9 +25,11 @@ import multicampus.kb03.IPOwer.service.BoardService;
 public class BoardController {
 	    private BoardService service;
 	    private final BoardDao boardDao;
+	    private final CmtDao cmtDao;
 	    @Autowired
 	    public BoardController(BoardDao boardDao) {
-	        this.boardDao = boardDao;
+	        this.cmtDao = new CmtDao();
+			this.boardDao = boardDao;
 	    }
 	    
 	    @GetMapping("")
@@ -68,12 +71,13 @@ public class BoardController {
 	
 	    @GetMapping("/detailreview")
 	    public String getDetail(@RequestParam("ARTICLE_PK") int ARTICLE_PK, Model model) {
-	    	System.out.println(ARTICLE_PK);
 	        BoardDto boardDto= boardDao.detail(ARTICLE_PK);
 	        boardDao.updatereviewcnt(ARTICLE_PK,boardDto.getARTICLE_VIEW());
 	        if (boardDto!= null) {
 	            model.addAttribute("detail1", boardDto);
 	        }
+	        List<CmtDto> comments=CmtDao.getCommentsByArticle(ARTICLE_PK);
+	       model.addAttribute("comments",comments);
 	        return "detailreview"; 
 	    }
 	   
