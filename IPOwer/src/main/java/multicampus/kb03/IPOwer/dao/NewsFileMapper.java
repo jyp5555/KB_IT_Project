@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import multicampus.kb03.IPOwer.dto.NewsFileDto;
 
@@ -22,8 +23,6 @@ public interface NewsFileMapper {
 	@Select("select * from view_thumbnail order by news_regdate desc")
 	List<NewsFileDto> selectThumbnail();  
 	
-	@Select("select * from view_thumbnail where news_title like '%'||#{title}||'%' order by news_regdate desc")
-	List<NewsFileDto> selectThumbnailByTitle(@Param("title") String title);  
 	
 	@Select("select f.*\r\n" + 
 			"from news n\r\n" + 
@@ -31,16 +30,30 @@ public interface NewsFileMapper {
 			"where n.news_pk = #{pk}")
 	List<NewsFileDto> selectFilePath(@Param("pk") int pk);
 	
+	@Select("select * from view_thumbnail where news_title like '%'||#{title}||'%' order by news_regdate desc")
+	List<NewsFileDto> selectThumbnailByTitle(@Param("title") String title);  
 	
-	@Select("select n.news_title,n.news_regdate,n.news_view,n.news_writer,f.file_path\r\n" + 
-			"from news n\r\n" + 
-			"join files f on n.news_pk = f.news_pk\r\n" + 
-			"where n.news_regdate between #{start_date} and #{end_date}\r\n")
-	List<NewsFileDto> selectByDate(@Param("start_date")Date start_date, @Param("end_date") Date end_date);
+	@Select("select * from view_thumbnail \r\n" + 
+			"where news_regdate between TO_DATE(#{start_date},'YYYY-MM-DD') and TO_DATE(#{end_date},'YYYY-MM-DD')+0.99999\r\n" +
+			"order by news_regdate desc")
+	List<NewsFileDto> selectThumbnailByDate(@Param("start_date")String start_date, @Param("end_date") String end_date);
+	
+	@Select("select * from view_thumbnail \r\n" + 
+			"where news_title like '%'||#{title}||'%'\r\n" + 
+			"and news_regdate between TO_DATE(#{start_date},'YYYY-MM-DD') and TO_DATE(#{end_date},'YYYY-MM-DD')+0.99999\r\n" + 
+			"order by news_regdate desc")
+	List<NewsFileDto> selectThumbnailByTitleDate(@Param("start_date")String start_date,@Param("end_date") String end_date, @Param("title") String title);
+	
 	
 	@Select("select * from news where news_pk=#{news_pk}")
 	NewsFileDto selectByPk(@Param("news_pk") int news_pk);
 	
 	@Insert("insert into news(news_pk,news_title,news_regdate,news_view,news_writer) values(#{dto.news_pk},#{dto.news_title},SYSDATE,#{dto.news_view},#{dto.news_writer})")
 	int save(@Param("dto") NewsFileDto dto);
+	
+	 @Update("UPDATE ARTICLE " +
+	            "SET ARTICLE_VIEW = #{ARTICLE_VIEW}+1" +
+	            "WHERE ARTICLE_PK = #{ARTICLE_PK}")
+	    int updatereviewcnt(int ARTICLE_PK);
+	
 }

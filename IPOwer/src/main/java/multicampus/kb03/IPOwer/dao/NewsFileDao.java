@@ -1,5 +1,6 @@
 package multicampus.kb03.IPOwer.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,16 @@ public class NewsFileDao {
 
 	public List<NewsFileDto> selectThumbnailByTitle(String title){
 		List<NewsFileDto> dto = mapper.selectThumbnailByTitle(title);
+		return dto;
+	}
+	
+	public List<NewsFileDto> selectThumbnailByDate(String start_date,String end_date){
+		List<NewsFileDto> dto = mapper.selectThumbnailByDate(start_date,end_date);
+		return dto;
+	}
+	
+	public List<NewsFileDto> selectThumbnailByTitleDate(String start_date,String end_date,String title){
+		List<NewsFileDto> dto = mapper.selectThumbnailByTitleDate(start_date,end_date,title);
 		return dto;
 	}
 	

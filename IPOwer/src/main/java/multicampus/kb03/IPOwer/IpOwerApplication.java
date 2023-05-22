@@ -25,7 +25,7 @@ public class IpOwerApplication {
 //    	insert();
         selectAll();
         System.out.println("title");
-        selectByTitle();
+      
     }
      
     private void insert() {
@@ -40,10 +40,5 @@ public class IpOwerApplication {
     }
 	
 
-	private void selectByTitle() {
-		List<NewsFileDto> dto = dao.selectByTitle("title");
-		for (NewsFileDto newsFileDto : dto) {
-			System.out.println(newsFileDto);
-		}
-	}
+	
 }

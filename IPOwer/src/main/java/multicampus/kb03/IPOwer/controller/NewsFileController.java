@@ -1,6 +1,9 @@
 package multicampus.kb03.IPOwer.controller;
 
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -50,27 +54,32 @@ public class NewsFileController {
 		return "cardNewsDetail";
 	}
 	
-	/*
-	 * @PostMapping() public @ResponseBody ResponseEntity<String>
-	 * joinPost(@RequestBody NewsFileDto dto){ try { // return
-	 * ResponseEntity.ok(userService.findUser(user));
-	 * registerUserService.join(dto.getUserId(), dto.getUserPw(), dto.getUserName(),
-	 * dto.getUserPhone()); return ResponseEntity.ok("join success");
-	 * }catch(Exception e) { return
-	 * ResponseEntity.badRequest().body(e.getMessage()); }
-	 * 
-	 * }
-	 */
-	
-	@PostMapping("")
-	public String findNews(String search_word,Model model) {
-		List<NewsFileDto> findAll = newsFileDao.selectThumbnailByTitle(search_word);
-		System.out.println("--------------find by title--------------");
-		for (NewsFileDto nf : findAll) {
-			System.out.println(nf);
+	@RequestMapping(value="", method= RequestMethod.POST)
+	@ResponseBody
+	public Map<String,Object> findNews(String search_word,String start_date,String end_date) {
+		Map<String,Object> all = new HashMap<String, Object>();
+		
+		System.out.println("------------------날짜-------------------");
+		System.out.println(start_date+"~"+end_date);
+		if(start_date == "" || end_date == "") {
+			List<NewsFileDto> findAll = newsFileDao.selectThumbnailByTitle(search_word);
+			System.out.println("--------------find by title--------------");
+			for (NewsFileDto nf : findAll) {
+				System.out.println(nf);
+			}			
+			all.put("list_news", findAll);
+			all.put("count", findAll.size());
 		}
-		model.addAttribute("all",findAll);
-		model.addAttribute("count",findAll.size()-1);
-		return "cardNews";
+		else {
+			List<NewsFileDto> find = newsFileDao.selectThumbnailByTitleDate(start_date, end_date,search_word);
+			
+			all.put("list_news", find);
+			all.put("count", find.size());
+		
+		}
+		
+		return all;
 	}
+	
+	
 }
