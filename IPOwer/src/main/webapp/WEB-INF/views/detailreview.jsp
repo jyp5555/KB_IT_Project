@@ -38,10 +38,13 @@ window.onload = function() {
 		<td>번호</td>
 		<td>${detail1.ARTICLE_PK}</td>
 		<input type="hidden" value="${detail1.ARTICLE_PK}" name="ARTICLE_PK">	
+		<td>작성자</td>
+		<td>${detail1.USER_NAME}</td>	
 	</tr>
 	<tr>
-		<td>작성자</td>
-		<td>${detail1.USER_PK}</td>	
+		<td>작성일</td>
+		<%-- <fmt:formatDate value="${reply.regDate}" pattern="yyyy-MM-dd" /> --%>
+		<td>${detail1.ARTICLE_REGDATE}</td>
 	</tr>
 	<tr>
 		<td>제목</td>
@@ -51,10 +54,7 @@ window.onload = function() {
 		<td>글내용</td>
 		<td>${detail1.ARTICLE_CONTENT}</td>
 	</tr>
-	<tr>
-		<td>작성일</td>
-		<td>${detail1.ARTICLE_REGDATE}</td>
-	</tr>
+
 	<tr>
 		<td>조회수</td>
 		<td>${detail1.ARTICLE_VIEW}</td>
@@ -68,5 +68,48 @@ window.onload = function() {
 	</tr>
 </table>
 </form>
+<hr />
+
+<!-- <ul>
+    <li>
+        <div>
+            <p>첫번째 댓글 작성자</p>
+            <p>첫번째 댓글</p>
+        </div>
+    </li>
+    <li>
+        <div>
+            <p>두번째 댓글 작성자</p>
+            <p>두번째 댓글</p>
+        </div>
+    </li>
+    <li>
+        <div>
+            <p>세번째 댓글 작성자</p>
+            <p>세번째 댓글</p>
+        </div>
+    </li>
+</ul> -->
+<ul>
+<c:forEach items="${reply}" var="reply">
+<li>
+    <div>
+        <p>${reply.writer} / ${reply.regDate}</p>
+        <p>${reply.content }</p>
+    </div>
+</li>    
+</c:forEach>
+</ul>
+<div>
+    <p>
+        <label>댓글 작성자</label> <input type="text">
+    </p>
+    <p>
+        <textarea rows="5" cols="50"></textarea>
+    </p>
+    <p>
+        <button type="button">댓글 작성</button>
+    </p>
+</div>
 </body>
 </html>

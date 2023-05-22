@@ -68,7 +68,9 @@ public interface BoardMapper {
     int deleteBoard(int ARTICLE_PK);
     
     
-    @Select("select * from article where ARTICLE_PK=#{ARTICLE_PK}")
+    @Select("SELECT A.ARTICLE_PK, A.ARTICLE_TITLE, A.ARTICLE_CONTENT, A.ARTICLE_VIEW, A.ARTICLE_REGDATE, U.USER_NAME FROM ARTICLE A\r\n" + 
+    		"JOIN USERS U ON A.USER_PK = U.USER_PK\r\n" + 
+    		"WHERE A.ARTICLE_PK =#{ARTICLE_PK}")
     BoardDto detail (@Param("ARTICLE_PK")int ARTICLE_PK);
     
     //조회수 자동 증가 
