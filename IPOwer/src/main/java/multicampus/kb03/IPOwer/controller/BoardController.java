@@ -126,11 +126,8 @@ public class BoardController {
 //			}
 //			return all;
 //		}
-<<<<<<< HEAD
+
 	    @GetMapping("/search")
-=======
-	    @GetMapping("/list")
->>>>>>> branch 'ksr' of https://github.com/jyp5555/KB_IT_Project
 	    public String boardList(Model model, @RequestParam(value = "searchType", required = false) String searchType,
 	                            @RequestParam(value = "keyword", required = false) String keyword) {
 	        List<BoardDto> articles;
