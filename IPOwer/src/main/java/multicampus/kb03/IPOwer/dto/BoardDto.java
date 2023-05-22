@@ -40,7 +40,7 @@ public int getARTICLE_PK() {
 public String getUSER_NAME() {
 	return USER_NAME;
 }
-public void setUSER_NAMEK(String uSER_NAME) {
+public void setUSER_NAME(String uSER_NAME) {
 	USER_NAME = uSER_NAME;
 }
 

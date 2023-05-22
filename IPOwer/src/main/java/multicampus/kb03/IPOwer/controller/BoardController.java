@@ -82,8 +82,9 @@ public class BoardController {
 	    
 	    //게시글 보기
 	
-	    @GetMapping("/detailreview/{ARTICLE_PK}")
-	    public String getDetail(@PathVariable("ARTICLE_PK") int ARTICLE_PK, Model model) {
+	    @GetMapping("/detailreview")
+	    public String getDetail(@RequestParam("ARTICLE_PK") int ARTICLE_PK, Model model) {
+	    	System.out.println(ARTICLE_PK);
 	        List<BoardDto> boardDtoList = boardDao.detail(ARTICLE_PK);
 	        if (boardDtoList != null && !boardDtoList.isEmpty()) {
 	            BoardDto boardDto = boardDtoList.get(0);
@@ -93,8 +94,8 @@ public class BoardController {
 	    }
 	    
 	    //수정 
-	    @GetMapping("/edit/{ARTICLE_PK}")
-	    public String getEditForm(@PathVariable int ARTICLE_PK, Model model) {
+	    @GetMapping("/edit")
+	    public String getEditForm(@RequestParam("ARTICLE_PK") int ARTICLE_PK, Model model) {
 	    	BoardDto boardDto = boardDao.edit(ARTICLE_PK);
 	        model.addAttribute("up", boardDto);
 	        return "edit";
