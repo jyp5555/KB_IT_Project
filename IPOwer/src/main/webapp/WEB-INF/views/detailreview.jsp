@@ -18,15 +18,13 @@ window.onload = function() {
 			frm.submit();
 		}
 	}
-	var apk="/deleteBoard/"+${detail1.ARTICLE_PK}
+	
 	document.getElementById("btnDelete").onclick = function() {
 		if(confirm("정말 삭제할까요?")) {
-			
-			frm.action=apk;
+			frm.action='deleteBoard';
 			frm.submit();
 		}
 	}
-
 }
 </script>
 

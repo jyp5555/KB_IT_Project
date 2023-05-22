@@ -45,7 +45,7 @@ public class BoardController {
 	        model.addAttribute("articles", allArticles);
             //article.jsp 로 전달됨 
 	        //succes.jsp에서 ${articles} 입력 allArticles 뜸 
-	        return "board"; 
+	        return "board";
 	    }
 	    //글쓰기 
 	    @RequestMapping("/write")
@@ -110,7 +110,7 @@ public class BoardController {
 	    }
 	    //삭제
 	    @GetMapping("/deleteBoard")
-	    public String deleteBoard(@PathVariable int ARTICLE_PK) {
+	    public String deleteBoard(@RequestParam int ARTICLE_PK) {
 	        int result = boardDao.deleteBoard(ARTICLE_PK);
 	        // 삭제 후의 처리 로직 추가
 	        return "board";
