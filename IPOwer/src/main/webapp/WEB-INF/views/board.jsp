@@ -5,18 +5,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-
 <meta charset="UTF-8">
 <title>게시판임</title>
 </head>
+
 <body>
 <%@ include file="./header.jsp"%>
-<h1>
-USER Community
-</h1>
-<div>
-</div>
+<h1> USER Community </h1>
+<div></div>
 <table class="table table-striped">
 <thead>
 <tr>
@@ -29,7 +25,7 @@ USER Community
 </thead>
 <tbody>
 <c:forEach var="contactBoard" items="${articles}">
-<tr class="row body">
+<tr>
 <td class="col1">${contactBoard.ARTICLE_PK}</td>
 <td><a class="col2" href="board/detailreview?ARTICLE_PK=${contactBoard.ARTICLE_PK}">${contactBoard.ARTICLE_TITLE}</a></td>
 <td class="col3">${contactBoard.USER_NAME}</td>
@@ -43,17 +39,39 @@ USER Community
 <a href="${contextPath }/board/write">
 <input type="button" value="글쓰기" class="btn btn-xs pull-right"  style= "font-size: 17px; ">
 </a>
+<!-- search{s} -->
+		<div class="form-group row justify-content-center">
+			<div class="w100" style="padding-right:10px">
+				<select class="form-control form-control-sm" name="searchType" id="searchType">
+					<option value="ARTICLE_TITLE">제목</option>
+					<option value="ARTICLE_CONTENT">본문</option>
+				</select>
+			</div>
+			<div class="w300" style="padding-right:10px">
+				<input type="text" class="form-control form-control-sm" name="keyword" id="keyword">
+			</div>
+			<div>
+				<button class="btn btn-sm btn-primary" name="btnSearch" id="btnSearch">검색</button>
+			</div>
+		</div>
+		<!-- search{e} -->
 </div>
 
-
+<c:url var="getBoardListURL" value="/board/getBoardList"></c:url>
 <script>
 $(function(){ //아이디가 btnWrite인 버튼을 누르게 되면 write.do 컨트롤러로 맵핑
     $("#btnWrite").click(function(){
         location.href="${path}/board/write.do";
     });
 });
+
+	$(document).on('click', '#btnSearch', function(e){
+		e.preventDefault();
+        var searchType = $('#searchType').val();
+        var keyword = $('#keyword').val();
+        var url = "${contextPath}/board/search?searchType=" + searchType + "&keyword=" + keyword;
+        location.href = url;
+    });
 </script>
-
-
 </body>
 </html>
