@@ -104,16 +104,17 @@ public class BoardController {
 	    public String updateReview(BoardDto boardDto) {
 	        int result = boardDao.updateBoard(boardDto);
 	        // 수정 후의 처리 로직 추가
-	        return "redirect:/detailreview/" + boardDto.getARTICLE_PK();
+	        return "redirect:/board/detailreview/" + boardDto.getARTICLE_PK();
 	    }
 	    //삭제
 	    @GetMapping("/deleteBoard/{ARTICLE_PK}")
 	    public String deleteBoard(@PathVariable int ARTICLE_PK) {
 	        int result = boardDao.deleteBoard(ARTICLE_PK);
 	        // 삭제 후의 처리 로직 추가
-	        return "redirect:/";
+	        return "redirect:/board/detailreview/" + ARTICLE_PK;
 	    }
 	    //조회수 자동 증가 
+	    
 	    
 	}
 	       

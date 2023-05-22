@@ -39,7 +39,7 @@ public interface BoardMapper {
 //	int insert(@Param("dto") BoardDto dto);
 
     @Insert("INSERT INTO ARTICLE (ARTICLE_PK,ARTICLE_TITLE,USER_NAME ,ARTICLE_CONTENT,ARTICLE_REGDATE) " +
-            "VALUES (12, #{dto.ARTICLE_TITLE},#{dto.USER_NAME}, #{dto.ARTICLE_CONTENT},sysdate)")
+            "VALUES (BOARD_SEQ.NEXT_VAL, #{dto.ARTICLE_TITLE},#{dto.USER_NAME}, #{dto.ARTICLE_CONTENT},sysdate)")
    int write(@Param("dto") BoardDto boardDto);
     
 
