@@ -26,8 +26,8 @@ private final SqlSessionTemplate sqlSessionTemplate;
 		List<BoardDto> dto = mapper.selectAll();
 		return dto;
     }
-    public List<BoardDto> detail(int ARTICLE_PK){
-		List<BoardDto> dto = mapper.detail(ARTICLE_PK);
+    public BoardDto detail(int ARTICLE_PK){
+		BoardDto dto = mapper.detail(ARTICLE_PK);
 		return dto;
 	}
     public int updateBoard(BoardDto boardDto){
@@ -41,6 +41,11 @@ private final SqlSessionTemplate sqlSessionTemplate;
     public int deleteBoard(int articlePk) {
         return mapper.deleteBoard(articlePk);
     }
+    public int updatereviewcnt(int articlePk,int articleview){
+    	return mapper.updatereviewcnt(articlePk,articleview);
+    }
+    
+    
     
 //    public int insert() {
 //		BoardDto dto = new BoardDto();
@@ -66,6 +71,25 @@ private final SqlSessionTemplate sqlSessionTemplate;
             mapper.write(boardDto);
         }
        
+        //검색
+//        public List<BoardDto> selectsearchByTitle(String title){
+//		List<BoardDto> dto = mapper.selectsearchByTitle(title);
+//		return dto;
+//        }
+//		public List<BoardDto> selectdateByTitleDate(String start_date,String end_date,String title){
+//			List<BoardDto> dto = mapper.selectdateByTitleDate(start_date,end_date,title);
+//			return dto;
+//		}
+		
+		 public List<BoardDto> getAllBoards() {
+		        return mapper.getAllBoards();
+		    }
+
+		    public List<BoardDto> searchBoards(String searchType, String keyword) {
+		        return mapper.searchBoards(searchType, keyword);
+		    }
+	
+        
       //목록 (페이지 나누기, 검색 기능 포함)
         //매개변수는 시작 레코드번호, 끝번호, 옵션과 키워드가 들어간다)
 //
