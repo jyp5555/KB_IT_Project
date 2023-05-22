@@ -91,7 +91,11 @@ public interface BoardMapper {
     @Select("SELECT * FROM ARTICLE")
     List<BoardDto> getAllBoards();
 
+<<<<<<< HEAD
     @Select("SELECT * FROM ARTICLE WHERE ${searchType} LIKE '%'||#{keyword}||'%'")
+=======
+    @Select("SELECT * FROM ARTICLE WHERE ${searchType} LIKE CONCAT('%', #{keyword}, '%')")
+>>>>>>> branch 'ksr' of https://github.com/jyp5555/KB_IT_Project
     List<BoardDto> searchBoards(@Param("searchType") String searchType, @Param("keyword") String keyword);
 
     
@@ -99,3 +103,8 @@ public interface BoardMapper {
     
     
 }
+
+
+
+
+
