@@ -1,5 +1,6 @@
 package multicampus.kb03.IPOwer.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -44,13 +45,23 @@ public class NewsFileController {
 	public String newsInfo(@PathVariable Integer news_pk, Model model) { 
 		List<NewsFileDto> pathAll = newsFileDao.selectFilePath(news_pk);
 		NewsFileDto dto = newsFileDao.selectByPk(news_pk);
+		ArrayList<String> path = new ArrayList<String>();
+		ArrayList<String> file_name = new ArrayList<String>();
+		ArrayList<String> type = new ArrayList<String>();
+		newsFileDao.updateNewsCnt(news_pk,dto.getNews_view());
 		System.out.println("----------------file path---------------");
 		for (NewsFileDto nf : pathAll) {
 			System.out.println(nf);
+			path.add("'"+nf.getFile_path()+"'");
+			file_name.add("'"+nf.getFile_name()+"'");
+			type.add("'"+nf.getFile_contenttype()+"'");
 		}
+	
 		model.addAttribute("files",pathAll);
-		model.addAttribute("count",pathAll.size()-1);
 		model.addAttribute("dto",dto);
+		model.addAttribute("path",path);
+		model.addAttribute("file_name",file_name);
+		model.addAttribute("type",type);
 		return "cardNewsDetail";
 	}
 	

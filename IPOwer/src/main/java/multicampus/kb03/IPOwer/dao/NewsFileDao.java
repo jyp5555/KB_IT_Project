@@ -58,4 +58,8 @@ public class NewsFileDao {
 		mapper.save(dto);
 		
 	}
+
+	public void updateNewsCnt(int news_pk,int news_view) {
+		mapper.updateNewsCnt(news_pk,news_view);
+	}
 }

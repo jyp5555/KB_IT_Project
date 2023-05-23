@@ -51,9 +51,9 @@ public interface NewsFileMapper {
 	@Insert("insert into news(news_pk,news_title,news_regdate,news_view,news_writer) values(#{dto.news_pk},#{dto.news_title},SYSDATE,#{dto.news_view},#{dto.news_writer})")
 	int save(@Param("dto") NewsFileDto dto);
 	
-	 @Update("UPDATE ARTICLE " +
-	            "SET ARTICLE_VIEW = #{ARTICLE_VIEW}+1" +
-	            "WHERE ARTICLE_PK = #{ARTICLE_PK}")
-	    int updatereviewcnt(int ARTICLE_PK);
+	 @Update("UPDATE news " +
+	            "SET news_view = #{news_view}+1" +
+	            "WHERE news_pk = #{news_pk}")
+	    int updateNewsCnt(@Param("news_pk") int news_pk, @Param("news_view") int news_view);
 	
 }

@@ -1,20 +1,23 @@
-.carousel {
-  width: 500px; /* 원하는 너비로 설정 */
-  height: 300px; /* 원하는 높이로 설정 */
-   margin: 0 auto;
+.carousel-item img {
+  width: 35%;
+  height: 500px;
 }
 hr {
  border: 10px solid #ff0000;
   background-color: black;
 }
 
-.carousel-control-prev,
+/* .carousel-control-prev,
 .carousel-control-next {
   top: 40%;
   transform: translateY(50%);
+} */
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(100%);
 }
 
 .carousel-inner {
   text-align: center;
 } 
-

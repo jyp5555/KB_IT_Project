@@ -52,14 +52,12 @@
 					<div id="card" class="card card-block"
 						onclick="location.href='http://localhost:8080/news/${all[i].news_pk}'">
 
-						<img
-							src="/${all[i].file_path}/${all[i].file_name}.${all[i].file_contenttype}"
-							alt="img">
+						<img src="/${all[i].file_path}/${all[i].file_name}.${all[i].file_contenttype}" alt="img">
 						<h5 class="card-title  mt-3 mb-3">${all[i].news_title }</h5>
 						<%-- <p class="card-text">${all[i].news_regdate }</p> --%>
-						<fmt:formatDate value="${all[i].news_regdate}"
-							pattern="yyyy-MM-dd" type="date" />
-
+						<fmt:formatDate value="${all[i].news_regdate}" pattern="yyyy-MM-dd" type="date" />
+						
+						<div>조회수 : ${all[i].news_view }</div>
 					</div>
 				</div>
 
