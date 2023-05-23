@@ -4,9 +4,9 @@ import java.util.Date;
 
 public class CompanyDemandDto {
 	
-	private int companyPk, companyCode;
+	private int companyPk, companyTicker;
 	private String companyName, companySite;
-	private int companyFaceprice, companyFixedPrice, companyTopprice, companyBottomprice;
+	private int companyFaceprice, companyFixedprice, companyTopprice, companyBottomprice;
 	private String companyManager;
 	private Date companyOfferingdate, companyRefundingdate, companyListingdate;
 	private int companyMinimumcount;
@@ -22,8 +22,8 @@ public class CompanyDemandDto {
 		return companyPk;
 	}
 
-	public int getCompanyCode() {
-		return companyCode;
+	public int getCompanyTicker() {
+		return companyTicker;
 	}
 
 	public String getCompanyName() {
@@ -38,8 +38,8 @@ public class CompanyDemandDto {
 		return companyFaceprice;
 	}
 
-	public int getCompanyFixedPrice() {
-		return companyFixedPrice;
+	public int getCompanyFixedprice() {
+		return companyFixedprice;
 	}
 
 	public int getCompanyTopprice() {
@@ -114,8 +114,8 @@ public class CompanyDemandDto {
 		this.companyPk = companyPk;
 	}
 
-	public void setCompanyCode(int companyCode) {
-		this.companyCode = companyCode;
+	public void setCompanyTicker(int companyTicker) {
+		this.companyTicker = companyTicker;
 	}
 
 	public void setCompanyName(String companyName) {
@@ -130,8 +130,8 @@ public class CompanyDemandDto {
 		this.companyFaceprice = companyFaceprice;
 	}
 
-	public void setCompanyFixedPrice(int companyFixedPrice) {
-		this.companyFixedPrice = companyFixedPrice;
+	public void setCompanyFixedprice(int companyFixedprice) {
+		this.companyFixedprice = companyFixedprice;
 	}
 
 	public void setCompanyTopprice(int companyTopprice) {
@@ -204,9 +204,9 @@ public class CompanyDemandDto {
 
 	@Override
 	public String toString() {
-		return "CompanyDemandDto [companyPk=" + companyPk + ", companyCode=" + companyCode + ", companyName="
+		return "CompanyDemandDto [companyPk=" + companyPk + ", companyTicker=" + companyTicker + ", companyName="
 				+ companyName + ", companySite=" + companySite + ", companyFaceprice=" + companyFaceprice
-				+ ", companyFixedPrice=" + companyFixedPrice + ", companyTopprice=" + companyTopprice
+				+ ", companyFixedprice=" + companyFixedprice + ", companyTopprice=" + companyTopprice
 				+ ", companyBottomprice=" + companyBottomprice + ", companyManager=" + companyManager
 				+ ", companyOfferingdate=" + companyOfferingdate + ", companyRefundingdate=" + companyRefundingdate
 				+ ", companyListingdate=" + companyListingdate + ", companyMinimumcount=" + companyMinimumcount
