@@ -56,7 +56,8 @@ public class SpringSecurityConfig {
 		
 		http.csrf().disable().cors().disable()
 			.authorizeRequests()
-				.antMatchers("/home/**", "/cards/**", "/user/new").permitAll()
+//				.antMatchers("/home/**", "/cards/**", "/user/new").permitAll()
+				.antMatchers("/**").permitAll()
 				.antMatchers("POST", "/community/articles/**").hasAnyRole("USER")
 				.antMatchers("PUT", "/community/articles/**").hasAnyRole("USER")
 				.antMatchers("DELETE", "/community/articles/**").hasAnyRole("USER")

@@ -18,7 +18,7 @@ public class UserDao {
 		UsersRoleDto findByUserId = null;
 		try {
 			findByUserId = mapper.findByUserId(userId);
-			System.out.println(findByUserId);
+			System.out.println("UserDao: "+findByUserId);
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -31,7 +31,7 @@ public class UserDao {
 	}
 
 	public void save(UsersRoleDto user) {
-		
+		System.out.println("save");
 		mapper.save(user);		
 	}
 }

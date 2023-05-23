@@ -22,6 +22,7 @@
 <form class="form-signin" method="get" action="/user/new">
         <button class="btn btn-lg btn-warning btn-block" type="submit">회원가입</button>
 </form>
+
 <script>
 	const errorMsg = <%=request.getAttribute("errorMsg")%>
 	if (errorMsg.length>0){

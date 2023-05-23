@@ -15,22 +15,6 @@ public class UsersRoleDto {
 		super();
 	}
 	
-	/*
-	 * public UsersRoleDto(String userId, String userPw, String userName, String
-	 * userPhone) { super(); this.userId = userId; this.userPw = userPw;
-	 * this.userName = userName; this.userPhone = userPhone; this.userRegdate =
-	 * LocalDate.now(); this.userRolePk = 1; this.userRoleName = "USER";
-	 * this.userAuthtype = "CRUD"; }
-	 * 
-	 * public UsersRoleDto(int userPk, String userId, String userPw, String
-	 * userName, String userPhone, LocalDate userRegdate, int userRolePk, String
-	 * userRoleName, String userAuthtype) { super(); this.userPk = userPk;
-	 * this.userId = userId; this.userPw = userPw; this.userName = userName;
-	 * this.userPhone = userPhone; this.userRegdate = userRegdate; this.userRolePk =
-	 * userRolePk; this.userRoleName = userRoleName; this.userAuthtype =
-	 * userAuthtype; }
-	 */
-	
 	public int getUserPk() {
 		return userPk;
 	}

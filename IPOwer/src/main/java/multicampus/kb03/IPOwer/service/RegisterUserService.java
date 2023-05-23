@@ -47,6 +47,7 @@ public class RegisterUserService {
     	
     	System.out.println("findByUserId: "+findByUserId);
 		if(findByUserId != null){
+			System.out.println("이미 존재함!");
     		throw new IllegalStateException("이미 존재하는 회원입니다.");
     	}
     }

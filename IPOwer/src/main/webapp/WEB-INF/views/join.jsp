@@ -44,170 +44,167 @@ body {
 				<h4 class="mb-3">회원가입</h4>
 				<form class="validation-form" id="join_form" novalidate><!-- https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css -->
 					<div class="mb-3">
-						<label for="userId">아이디</label> <input type="text" class="form-control" id="id" name="userId" placeholder=""value="" required>
+						<label for="userId">아이디</label> 
+						<input type="text" class="form-control" id="userId" name="userId" placeholder="" required>
 						<div class="valid-feedback">사용가능한 닉네임 입니다.</div>
          				<div class="invalid-feedback">5글자 이상 10글자 이하로 작성해 주세요.</div>
 					</div>
 					<div class="mb-3">
-						<label for="name">이름</label> <input type="text" class="form-control" id="name" name="userName" placeholder="" value="" required>
+						<label for="name">이름</label> 
+						<input type="text" class="form-control" id="userName" name="userName" placeholder="" required>
 						<div class="invalid-feedback">이름을 입력해주세요.</div>
 					</div>
 
 					<div class="mb-3">
-						<label for="password">비밀번호</label> <input type="password"	class="form-control" id="password" name="userPw" required>
+						<label for="password">비밀번호</label> 
+						<input type="password"	class="form-control" id="userPw" name="userPw" required>
 						<div class="valid-feedback">사용가능한 비밀번호 입니다.</div>
 						<div class="invalid-feedback">5글자 이상 10글자 이하로 작성해 주세요.</div>
-					</div>
-					
+					</div>					
 					<div class="mb-3">
-						<label for="passwordChk">비밀번호 확인</label> <input type="password" class="form-control" id="passwordChk" name="userPwChk" required>
+						<label for="passwordChk">비밀번호 확인</label> 
+						<input type="password" class="form-control" id="userPwChk" name="userPwChk" required>
 						<div class="valid-feedback"> 일치합니다.</div>
 						<div class="invalid-feedback">일치하지 않습니다.</div>
 					</div>
-
 					<div class="mb-3">
-						<label for="phone">전화번호</label> <input type="tel"	class="form-control" id="phone" name="userPhone"
-							placeholder="010-0000-0000" required>
+						<label for="phone">전화번호</label> 
+						<input type="tel"	class="form-control" id="userPhone" name="userPhone" placeholder="010-0000-0000" required>
 						<div class="invalid-feedback">전화번호를 입력해주세요.</div>
 					</div>
-
+					
 					<hr class="mb-4">
+					
 					<div class="custom-control custom-checkbox">
-						<input type="checkbox" class="custom-control-input" id="aggrement"
-							required> <label class="custom-control-label"
-							for="aggrement">개인정보 수집 및 이용에 동의합니다.</label>
+						<input type="checkbox" class="custom-control-input" id="agreement" required> 
+						<label class="custom-control-label"	for="agreement">개인정보 수집 및 이용에 동의합니다.</label>
 					</div>
-					<div class="mb-4"></div><button class="btn btn-primary btn-lg btn-block" type="submit">회원 가입 하기</button>
-				</form>
-				
-			</div>
-
-			
+					<div class="mb-4"></div><button class="btn btn-primary btn-lg btn-block" id="join_btn" type="submit">회원 가입 하기</button>
+				</form>				
+			</div>			
 		</div>
 	</div>
 	<footer class="my-3 text-center text-small">
 		<p class="mb-1">&copy; 2021 YD</p>
 	</footer>
 	</div>
-	
+
+</body>
 	<script>
+	
 		let isIdValid = false;
-	    let isPwValid = false;
-	    let isSamePw = false;
-	    
+		let isPwValid = false;
+		let isSamePw = false;
 		let isName = false;
 		let isPhone = false;
 		let isAgree = false;
-       
-        let inputPw = ""
-        
-        document.querySelector("#id").addEventListener("input", function(){
-            //1. 입력한 value 값을 읽어온다.
-            let inputId=this.value;
-            //2. 유효성(5글자이상 10글자 이하)을 검증한다.
-            isIdValid = inputId.length >= 5 && inputId.length <= 10;
-            //3. 유효하다면 input 요소에 is-valid 클래스 추가, 아니라면 is-invalid 클래스 추가
-            if(isIdValid){
-               this.classList.remove("is-invalid");
-               this.classList.add("is-valid");
-            }else{
-               this.classList.remove("is-valid");
-               this.classList.add("is-invalid");
-            }
-         }); 
-        
-        document.querySelector("#password").addEventListener("input", function(){
-            //1. 입력한 value 값을 읽어온다.
-            inputPw=this.value;
-            //2. 유효성(5글자이상 10글자 이하)을 검증한다.
-            isPwValid = inputPw.length >= 5 && inputPw.length <= 10;
-            //3. 유효하다면 input 요소에 is-valid 클래스 추가, 아니라면 is-invalid 클래스 추가
-            if(isPwValid){
-               this.classList.remove("is-invalid");
-               this.classList.add("is-valid");
-            }else{
-               this.classList.remove("is-valid");
-               this.classList.add("is-invalid");
-            }
-         });
-        
-        document.querySelector("#passwordChk").addEventListener("input", function(){
-            //1. 입력한 value 값을 읽어온다.
-            let inputPwChk=this.value;
-            //2. 유효성(5글자이상 10글자 이하)을 검증한다.
-           	isSamePw = inputPw === inputPwChk;
-            //3. 유효하다면 input 요소에 is-valid 클래스 추가, 아니라면 is-invalid 클래스 추가
-            if(isSamePw){
-               this.classList.remove("is-invalid");
-               this.classList.add("is-valid");
-            }else{
-               this.classList.remove("is-valid");
-               this.classList.add("is-invalid");
-            }
-         });
-        
-        document.querySelector("#name").addEventListener("input", function(){
-            //1. 입력한 value 값을 읽어온다.
-            let inputName=this.value;
-            if(inputName){
-       			isName = true;
-               this.classList.remove("is-invalid");
-               this.classList.add("is-valid");
-            }else{
-               this.classList.remove("is-valid");
-               this.classList.add("is-invalid");
-            }
-         });
-        
-        document.querySelector("#phone").addEventListener("input", function(){
-            //1. 입력한 value 값을 읽어온다.
-            let inputPhone=this.value;
-            if(inputPhone){
-            	isPhone = true;
-               this.classList.remove("is-invalid");
-               this.classList.add("is-valid");
-            }else{
-               this.classList.remove("is-valid");
-               this.classList.add("is-invalid");
-            }
-         });
-        
-        document.querySelector('#agreement').addEventListener("click",function(){
-    		isAgree = $('#agreement').is(':checked');
-    	});
-        
-       const form = document.getElementById('join_form');
-        
-        form.addEventListener('submit', e => {
-        	
-        	if(!isIdValid || !isPwValid || !isSamePw || !isName || !isPhone || !isAgree){
-                //이벤트 객체의 함수를 이용해서 폼 전송 막아주기 
-                e.preventDefault();
-             }
-
-            const data = new FormData(form);
-            const param = JSON.stringify(Object.fromEntries(data));
-
-            fetch('/user/new', {
-                method: "POST",
-                body: param,
-                headers: {
-                	"Content-Type": "application/json",
-                }
-            })
-            .then(response => {
-                if (response.status == 200) {
-                    window.location.href = '/user/me';
-                    alert("회원가입 성공")
-                } else {
-                	throw response
-                }
-            })
-            .catch(error => {
-            	error.text().then(msg => alert("회원가입 실패 "+msg))
-            })        
+		let inputPw = "";
+		
+		document.querySelector("#userId").addEventListener("input", function(){
+			let inputId=this.value;
+			isIdValid = inputId.length >= 5 && inputId.length <= 10;
+			if(isIdValid){
+				this.classList.remove("is-invalid");
+				this.classList.add("is-valid");
+			}else{
+				this.classList.remove("is-valid");
+				this.classList.add("is-invalid");
+			}
+		}); 
+	    
+	    document.querySelector("#userPw").addEventListener("input", function(){
+	        //1. 입력한 value 값을 읽어온다.
+	        inputPw=this.value;
+	        //2. 유효성(5글자이상 10글자 이하)을 검증한다.
+	        isPwValid = inputPw.length >= 5 && inputPw.length <= 10;
+	        //3. 유효하다면 input 요소에 is-valid 클래스 추가, 아니라면 is-invalid 클래스 추가
+	        if(isPwValid){
+	           this.classList.remove("is-invalid");
+	           this.classList.add("is-valid");
+	        }else{
+	           this.classList.remove("is-valid");
+	           this.classList.add("is-invalid");
+	        }
+	     });
+	    
+	    document.querySelector("#userPwChk").addEventListener("input", function(){
+	    	let inputPwChk=this.value;
+	    	isSamePw = inputPw === inputPwChk;
+	    	if(isSamePw){
+	    		this.classList.remove("is-invalid");
+	    		this.classList.add("is-valid");
+	    	}else{
+	    		this.classList.remove("is-valid");
+	    		this.classList.add("is-invalid");
+	    	}
+	    });
+	    
+	    document.querySelector("#userName").addEventListener("input", function(){
+	    	
+	    	let inputName=this.value;
+	    	
+	    	if(inputName){
+	    		isName = true;
+	    		this.classList.remove("is-invalid");
+	    		this.classList.add("is-valid");
+	    	}else{
+	    		this.classList.remove("is-valid");
+	    		this.classList.add("is-invalid");
+	    	}
+	    });
+	    
+	    document.querySelector("#userPhone").addEventListener("input", function(){
+	    	
+	    	let inputPhone=this.value;
+	    	
+	    	if(inputPhone){
+	    		isPhone = true;
+	    		this.classList.remove("is-invalid");
+	    		this.classList.add("is-valid");
+	    	}else{
+	    		this.classList.remove("is-valid");
+	    		this.classList.add("is-invalid");
+	    	}
+	    });
+	    
+	    document.querySelector('#agreement').addEventListener("click",function(){
+	    	isAgree = this.checked;
+	    });
+	    
+	    const form = document.getElementById('join_form');
+	    
+	    form.addEventListener('submit', e => {
+	    	if(!isIdValid || !isPwValid || !isSamePw || !isName || !isPhone || !isAgree){
+	    		e.preventDefault();
+	    	}
+	    	
+	    	const data = new FormData(form);
+	    	const param = JSON.stringify(Object.fromEntries(data));
+	    	console.log(param)
+	    	
+	    	fetch('/user/new',{
+	    		method: "POST",
+	    		body: param,
+	    		headers: {
+	    			"Content-Type": "application/json"
+	    		},
+	    		redirect: 'follow'
+	    	})
+	    	.then(response => {
+	    	})
+	    	.then(result=>{
+	    		if (result.message === 'SUCCESS') {
+	    			alert("회원가입 성공")
+	    		}else{
+	    			throw result
+	    		}
+	    	})
+	    	.catch(error=>{
+	    		console.log('회원 가입 실패')
+	    		error.text().then(msg => alert("회원가입 실패"+ msg))
+	    	})
+    	})   
+    	
     </script>
 
-
-</body>
 </html>
