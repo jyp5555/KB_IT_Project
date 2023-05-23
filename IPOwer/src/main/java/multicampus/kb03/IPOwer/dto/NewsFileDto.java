@@ -97,9 +97,5 @@ public class NewsFileDto {
 				+ ", file_contenttype=" + file_contenttype + ", news_pk=" + news_pk + ", news_view=" + news_view
 				+ ", file_pk=" + file_pk + ", file_size=" + file_size + ", news_regdate=" + news_regdate
 				+ ", file_path=" + file_path + "]";
-	}
-	
-
-	
-	
+	}	
 }

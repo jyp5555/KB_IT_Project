@@ -13,8 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class LoginController {
 	
 	@GetMapping("/me")
-	public String loginGet() {
-		
+	public String loginGet() {		
 		return "login";
 	}
 }
