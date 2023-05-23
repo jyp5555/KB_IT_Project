@@ -12,8 +12,6 @@ import org.apache.ibatis.annotations.Select;
 
 import multicampus.kb03.IPOwer.dto.CompanyDemandDto;
 import multicampus.kb03.IPOwer.dto.CompanyDto;
-import multicampus.kb03.IPOwer.dto.DemandDto;
-import multicampus.kb03.IPOwer.dto.UsersRoleDto;
 
 @Mapper
 public interface CompanyDemandMapper {
@@ -24,7 +22,7 @@ public interface CompanyDemandMapper {
 	@Select("select \r\n" + 
 			"c.*," + 
 			"d.* \r\n" + 
-			"from company c join demandforecast d on c.company_pk = d.company_pk;")
+			"from company c join demandforecast d on c.company_pk = d.company_pk")
 	List<CompanyDemandDto> findAllCompanyDemand();
 	
 	@Select("select \r\n" + 

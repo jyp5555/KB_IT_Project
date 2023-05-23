@@ -22,3 +22,4 @@ public class UserService {
 		return userDao.findByUserId(userId);
 	}
 }
+ 

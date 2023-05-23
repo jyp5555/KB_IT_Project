@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class IpOwerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(IpOwerApplication.class, args);
-	}
-
+        SpringApplication.run(IpOwerApplication.class, args);
+    }
+    
 }

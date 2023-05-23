@@ -24,4 +24,11 @@ public class CompanyDemandDao {
 		int result2 = mapper.insertDemand(companyDemandDto);
 		return result1 + result2;
 	}
+
+
+	public List<CompanyDemandDto> findAllCompanyDemand() {
+		// TODO Auto-generated method stub
+		return mapper.findAllCompanyDemand();
+	}
+
 }
