@@ -15,7 +15,6 @@ import multicampus.kb03.IPOwer.service.BoardService;
 @Controller
 @RequestMapping("/board")
 public class CmtController {
-	  private BoardService service;
 	    private final CmtDao Cmtdao;
 	    @Autowired
 	    public CmtController(CmtDao cmtdao) {

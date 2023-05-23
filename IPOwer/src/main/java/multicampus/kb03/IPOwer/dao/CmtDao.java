@@ -20,7 +20,7 @@ public CmtDao(CmtMapper mapper) {
 		return dto;
 		
 	}
-	 public void addComment(CmtDto dto ) {
+	 public void addComment(CmtDto dto) {
          mapper.addComment(dto);
      }
 

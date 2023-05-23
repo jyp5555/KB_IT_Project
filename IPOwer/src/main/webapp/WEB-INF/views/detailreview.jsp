@@ -94,8 +94,8 @@ window.onload = function() {
 <c:forEach items="${reply}" var="reply">
 <li>
     <div>
-        <p>${reply.writer} / ${reply.regDate}</p>
-        <p>${reply.content }</p>
+        <p>${reply.USER_NAME} / ${reply.COMMENT_REGDATE}</p>
+        <p>${reply.COMMENT_CONTENT }</p>
     </div>
 </li>    
 </c:forEach>

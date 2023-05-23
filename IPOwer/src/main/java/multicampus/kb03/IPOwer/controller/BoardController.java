@@ -77,11 +77,11 @@ public class BoardController {
 	            model.addAttribute("detail1", boardDto);
 	        }
 	        
-	        List<CmtDto> allComments = cmtDao.getCommentsByArticle(ARTICLE_PK);
-	        for (CmtDto newsCmtDto : allComments) {
+	        List<CmtDto> reply = cmtDao.getCommentsByArticle(ARTICLE_PK);
+	        for (CmtDto newsCmtDto : reply) {
 				System.out.println(newsCmtDto);
 			}
-	        model.addAttribute("Cmts", allComments);
+	        model.addAttribute("reply", reply);
 	        return "detailreview"; 
 	    }
 	   

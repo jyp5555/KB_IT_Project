@@ -96,6 +96,5 @@ private final SqlSessionTemplate sqlSessionTemplate;
 //        
 //        //레코드 조회
 //        public BoardDTO read(int bno) throws Exception;
-
     }
 
