@@ -15,10 +15,9 @@ import multicampus.kb03.IPOwer.dto.CmtDto;
 
 @Mapper
 public interface CmtMapper {
-	@Select("SELECT c.COMMENT_CONTENT, c.COMMENT_REGDATE, U.USER_NAME FROM comments c JOIN USERS U ON c.USER_PK = U.USER_PK\r\n" + 
-			"WHERE c.ARTICLE_PK =#{ARTICLE_PK}")
+	@Select("SELECT c.COMMENT_CONTENT, c.COMMENT_REGDATE, U.USER_NAME FROM comments c JOIN USERS U ON c.USER_PK = U.USER_PK WHERE c.ARTICLE_PK =#{ARTICLE_PK}")
     List<CmtDto> getCommentsByArticle(@Param("ARTICLE_PK") int ARTICLE_PK);
 
-    @Insert("INSERT INTO comments (COMMENT_CONTENT) VALUES (#{COMMENT_CONTENT})")
-    void addComment(CmtDto comment);
+    @Insert("INSERT INTO comments (COMMENT_CONTENT) VALUES (#{dto.COMMENT_CONTENT})")
+    void addComment(@Param("dto") CmtDto comment);
 }

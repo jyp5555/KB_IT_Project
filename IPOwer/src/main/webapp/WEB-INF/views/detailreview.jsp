@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -91,11 +93,11 @@ window.onload = function() {
     </li>
 </ul> -->
 <ul>
-<c:forEach items="${reply}" var="reply">
+<c:forEach items="${reply}" var="r">
 <li>
     <div>
-        <p>${reply.USER_NAME} / ${reply.COMMENT_REGDATE}</p>
-        <p>${reply.COMMENT_CONTENT }</p>
+        <p>${r.USER_NAME} / ${r.COMMENT_REGDATE}</p>
+        <p>${r.COMMENT_CONTENT }</p>
     </div>
 </li>    
 </c:forEach>
