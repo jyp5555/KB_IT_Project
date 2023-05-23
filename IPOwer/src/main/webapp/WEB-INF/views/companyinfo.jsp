@@ -1,119 +1,325 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!doctype html>
-<html>
-  <head>
-    <title>IPOwer</title>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<link href="/resources/css/style.css" rel="stylesheet" type="text/css">
+<link href="/resources/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <meta charset="utf-8">
     
-    <!-- BEGIN SENTRY -->
-    <script id="sentry">
-  (function(c,u,v,n,p,e,z,A,w){function k(a){if(!x){x=!0;var l=u.getElementsByTagName(v)[0],d=u.createElement(v);d.src=A;d.crossorigin="anonymous";d.addEventListener("load",function(){try{c[n]=r;c[p]=t;var b=c[e],d=b.init;b.init=function(a){for(var b in a)Object.prototype.hasOwnProperty.call(a,b)&&(w[b]=a[b]);d(w)};B(a,b)}catch(g){console.error(g)}});l.parentNode.insertBefore(d,l)}}function B(a,l){try{for(var d=m.data,b=0;b<a.length;b++)if("function"===typeof a[b])a[b]();var e=!1,g=c.__SENTRY__;"undefined"!==
-  typeof g&&g.hub&&g.hub.getClient()&&(e=!0);g=!1;for(b=0;b<d.length;b++)if(d[b].f){g=!0;var f=d[b];!1===e&&"init"!==f.f&&l.init();e=!0;l[f.f].apply(l,f.a)}!1===e&&!1===g&&l.init();var h=c[n],k=c[p];for(b=0;b<d.length;b++)d[b].e&&h?h.apply(c,d[b].e):d[b].p&&k&&k.apply(c,[d[b].p])}catch(C){console.error(C)}}for(var f=!0,y=!1,q=0;q<document.scripts.length;q++)if(-1<document.scripts[q].src.indexOf(z)){f="no"!==document.scripts[q].getAttribute("data-lazy");break}var x=!1,h=[],m=function(a){(a.e||a.p||a.f&&
-  -1<a.f.indexOf("capture")||a.f&&-1<a.f.indexOf("showReportDialog"))&&f&&k(h);m.data.push(a)};m.data=[];c[e]=c[e]||{};c[e].onLoad=function(a){h.push(a);f&&!y||k(h)};c[e].forceLoad=function(){y=!0;f&&setTimeout(function(){k(h)})};"init addBreadcrumb captureMessage captureException captureEvent configureScope withScope showReportDialog".split(" ").forEach(function(a){c[e][a]=function(){m({f:a,a:arguments})}});var r=c[n];c[n]=function(a,e,d,b,f){m({e:[].slice.call(arguments)});r&&r.apply(c,arguments)};
-  var t=c[p];c[p]=function(a){m({p:a.reason});t&&t.apply(c,arguments)};f||setTimeout(function(){k(h)})})(window,document,"script","onerror","onunhandledrejection","Sentry","b4e7a2b423b54000ac2058644c76f718","https://static.parastorage.com/unpkg/@sentry/browser@5.27.4/build/bundle.min.js",{"dsn":"https://b4e7a2b423b54000ac2058644c76f718@sentry.wixpress.com/217"});
-  </script>
+    <title>Startup - Startup Website Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
 
-    <script type="text/javascript">
-    window.Sentry.onLoad(function () {
-      window.Sentry.init({
-        "release": "1.2033.0",
-        "environment": "production",
-        "allowUrls": undefined,
-        "denyUrls": undefined
-});
-      window.Sentry.configureScope(function (scope) {
-        scope.setUser({
-          id: "null-user-id:9ca23245-2677-4ef7-9e1f-6e2af4eb7b2b",
-          clientId: "9ca23245-2677-4ef7-9e1f-6e2af4eb7b2b",
-        });
-        scope.setExtra("user.authenticated", false);
-        scope.setExtra("sessionId", "5056ed79-d3f9-4c97-92b0-803926719d1d");
-      });
-    });
-    </script>
-    <!-- END SENTRY -->
-    <script src="https://static.parastorage.com/polyfill/v3/polyfill.min.js?features=default,es6,es7,es2017,es2018,es2019,fetch&flags=gated&unknown=polyfill"></script>
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
 
-    <script>
-      window.onWixFedopsLoggerLoaded = function () {
-        window.fedopsLogger && window.fedopsLogger.reportAppLoadStarted('marketing-template-viewer');
-      }
-    </script>
-    <script onload="onWixFedopsLoggerLoaded()" src="//static.parastorage.com/unpkg/@wix/fedops-logger@5.471.0/dist/statics/fedops-logger.bundle.min.js" crossorigin></script>
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Spinner Start -->
+   <!--  <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner"></div>
+    </div> -->
+    <!-- Spinner End -->
+    <!-- Topbar Start -->
+    <div class="container-fluid bg-dark px-5 d-none d-lg-block">
+        <div class="row gx-0">
+            <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
+                <div class="d-inline-flex align-items-center" style="height: 45px;">
+                    <small class="me-3 text-light"><i class="fa fa-map-marker-alt me-2"></i>123 Street, New York, USA</small>
+                    <small class="me-3 text-light"><i class="fa fa-phone-alt me-2"></i>+012 345 6789</small>
+                    <small class="text-light"><i class="fa fa-envelope-open me-2"></i>info@example.com</small>
+                </div>
+            </div>
+            <div class="col-lg-4 text-center text-lg-end">
+                <div class="d-inline-flex align-items-center" style="height: 45px;">
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-twitter fw-normal"></i></a>
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-facebook-f fw-normal"></i></a>
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-linkedin-in fw-normal"></i></a>
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-instagram fw-normal"></i></a>
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle" href=""><i class="fab fa-youtube fw-normal"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+
+    <!-- Navbar Start -->
+    <div class="container-fluid position-relative p-0">
+        <nav class="navbar navbar-expand-lg navbar-light px-5 py-3 py-lg-0">
+            <a href="index.html" class="navbar-brand p-0">
+                <h1 class="m-0"><i class="fa fa-user-tie me-2"></i>IPOwer</h1>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="fa fa-bars"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto py-0">
+                    <a href="detailreview.html" class="nav-item nav-link" style="color:navy;font-weight:bold">Home</a>
+                    <a href="cardNews.html" class="nav-item nav-link" style="color:navy;font-weight:bold">About</a>
+                    <a href="service.html" class="nav-item nav-link" style="color:navy;font-weight:bold">Services</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"style="color:navy;font-weight:bold">Blog</a>
+                        <div class="dropdown-menu m-0">
+                            <a href="blog.html" class="dropdown-item" style="color:navy;font-weight:bold">Blog Grid</a>
+                            <a href="detail.html" class="dropdown-item" style="color:navy;font-weight:bold">Blog Detail</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown"style="color:navy;font-weight:bold">Pages</a>
+                        <div class="dropdown-menu m-0">
+                            <a href="price.html" class="dropdown-item" style="color:navy;font-weight:bold">Pricing Plan</a>
+                            <a href="feature.html" class="dropdown-item active"style="color:navy;font-weight:bold">Our features</a>
+                            <a href="team.html" class="dropdown-item"style="color:navy;font-weight:bold">Team Members</a>
+                            <a href="testimonial.html" class="dropdown-item"style="color:navy;font-weight:bold">Testimonial</a>
+                            <a href="quote.html" class="dropdown-item"style="color:navy;font-weight:bold">Free Quote</a>
+                        </div>
+                    </div>
+                    <a href="contact.html" class="nav-item nav-link"style="color:navy;font-weight:bold">Contact</a>
+                </div>
+                <butaton type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></butaton>
+                <a href="https://htmlcodex.com/startup-company-website-template" class="btn btn-primary py-2 px-4 ms-3">Download Pro Version</a>
+            </div>
+        </nav>
+
+        <div class="container-fluid bg-primary py-5 bg-header" style="margin-bottom: 90px;">
+            <div class="row py-5">
+                <div class="col-12 pt-lg-5 mt-lg-5 text-center"style="color:navy;font-weight:bold">
+                    <h1 class="display-4 text-white animated zoomIn"style="color:navy;font-weight:bold">카카오게임즈</h1>
+                    <a href="" class="h5 text-white"style="color:navy;font-weight:bold">Home</a>
+                    <i class="far fa-circle text-white px-2"></i>
+                    <a href="" class="h5 text-white"style="color:navy;font-weight:bold">Features</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Navbar End -->
+
+
+    <!-- Full Screen Search Start -->
+    <div class="modal fade" id="searchModal" tabindex="-1">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content" style="background: rgba(9, 30, 62, .7);">
+                <div class="modal-header border-0">
+                    <button type="button" class="btn bg-white btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body d-flex align-items-center justify-content-center">
+                    <div class="input-group" style="max-width: 600px;">
+                        <input type="text" class="form-control bg-transparent border-primary p-3" placeholder="Type search keyword">
+                        <button class="btn btn-primary px-4"><i class="bi bi-search"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Full Screen Search End -->
+
+
+    <!-- Features Start -->
+    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
+                <h5 class="fw-bold text-primary text-uppercase">카카오게임즈</h5>
+                <h1 class="mb-0">공모기업현황 상세</h1>
+            </div>
+            <div class="row g-5">
+                <div class="col-lg-4">
+                    <div class="row g-5">
+                        <div class="col-12 wow zoomIn" data-wow-delay="0.2s">
+                            <div class="bg-primary rounded d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                                <i class="fa fa-cubes text-white"></i>
+                            </div>
+                            dddd
+                            <h4>Best In Industry</h4>
+                            <p class="mb-0">Magna sea eos sit dolor, ipsum amet lorem diam dolor eos et diam dolor</p>
+                        </div>
+                        <div class="col-12 wow zoomIn" data-wow-delay="0.6s">
+                            <div class="bg-primary rounded d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                                <i class="fa fa-award text-white"></i>
+                            </div>
+                            <h4>Award Winning</h4>
+                            <p class="mb-0">Magna sea eos sit dolor, ipsum amet lorem diam dolor eos et diam dolor</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4  wow zoomIn" data-wow-delay="0.9s" style="min-height: 350px;">
+                    <div class="position-relative h-100">
+                        <img class="position-absolute w-100 h-100 rounded wow zoomIn" data-wow-delay="0.1s" src="img/feature.jpg" style="object-fit: cover;">
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="row g-5">
+                        <div class="col-12 wow zoomIn" data-wow-delay="0.4s">
+                            <div class="bg-primary rounded d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                                <i class="fa fa-users-cog text-white"></i>
+                            </div>
+                            <h4>Professional Staff</h4>
+                            <p class="mb-0">Magna sea eos sit dolor, ipsum amet lorem diam dolor eos et diam dolor</p>
+                        </div>
+                        <div class="col-12 wow zoomIn" data-wow-delay="0.8s">
+                            <div class="bg-primary rounded d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                                <i class="fa fa-phone-alt text-white"></i>
+                            </div>
+                            <h4>24/7 Support</h4>
+                            <p class="mb-0">Magna sea eos sit dolor, ipsum amet lorem diam dolor eos et diam dolor</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Features Start -->
+
+
+    <!-- Vendor Start -->
+    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container py-5 mb-5">
+            <div class="bg-white">
+                <div class="owl-carousel vendor-carousel">
+                    <img src="img/vendor-1.jpg" alt="">
+                    <img src="img/vendor-2.jpg" alt="">
+                    <img src="img/vendor-3.jpg" alt="">
+                    <img src="img/vendor-4.jpg" alt="">
+                    <img src="img/vendor-5.jpg" alt="">
+                    <img src="img/vendor-6.jpg" alt="">
+                    <img src="img/vendor-7.jpg" alt="">
+                    <img src="img/vendor-8.jpg" alt="">
+                    <img src="img/vendor-9.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Vendor End -->
     
-      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    
-    <link type="image/x-icon" href="//www.wix.com/favicon.ico" rel="shortcut icon">
-    <link rel="stylesheet" href="https://static.parastorage.com/services/third-party/fonts/Helvetica/fontFace.css">
-    <link rel="stylesheet" href="https://static.parastorage.com/unpkg/@wix/wix-fonts@1.14.0/madefor.min.css">
-    <link rel="stylesheet" href="https://static.parastorage.com/unpkg/@wix/wix-fonts@1.14.0/madeforDisplay.min.css">
-    <link rel="stylesheet" href="//static.parastorage.com/services/marketing-template-viewer/1.2033.0/app.min.css">
 
-    <meta name="description" content="어반 파밍과 같은 도심 속의 친환경 프로젝트 게시판이 필요하다면 본 템플릿을 이용해보세요. 텍스트 및 이미지로 친환경 메시지를 전달하고 게시판을 운영하여 온라인 커뮤니티를 구축할 수 있습니다. 내 사이트만의 스토리를 공유하여 다양한 주제의 토론도 시작해보세요.">
-    <meta name="author" content="Wixpress">
-    <meta http-equiv="content-language" content="ko"/>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light mt-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="row gx-5">
+                <div class="col-lg-4 col-md-6 footer-about">
+                    <div class="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-primary p-4">
+                        <a href="index.html" class="navbar-brand">
+                            <h1 class="m-0 text-white"><i class="fa fa-user-tie me-2"></i>Startup</h1>
+                        </a>
+                        <p class="mt-3 mb-4">Lorem diam sit erat dolor elitr et, diam lorem justo amet clita stet eos sit. Elitr dolor duo lorem, elitr clita ipsum sea. Diam amet erat lorem stet eos. Diam amet et kasd eos duo.</p>
+                        <form action="">
+                            <div class="input-group">
+                                <input type="text" class="form-control border-white p-3" placeholder="Your Email">
+                                <button class="btn btn-dark">Sign Up</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-6">
+                    <div class="row gx-5">
+                        <div class="col-lg-4 col-md-12 pt-5 mb-5">
+                            <div class="section-title section-title-sm position-relative pb-3 mb-4">
+                                <h3 class="text-light mb-0">Get In Touch</h3>
+                            </div>
+                            <div class="d-flex mb-2">
+                                <i class="bi bi-geo-alt text-primary me-2"></i>
+                                <p class="mb-0">123 Street, New York, USA</p>
+                            </div>
+                            <div class="d-flex mb-2">
+                                <i class="bi bi-envelope-open text-primary me-2"></i>
+                                <p class="mb-0">info@example.com</p>
+                            </div>
+                            <div class="d-flex mb-2">
+                                <i class="bi bi-telephone text-primary me-2"></i>
+                                <p class="mb-0">+012 345 67890</p>
+                            </div>
+                            <div class="d-flex mt-4">
+                                <a class="btn btn-primary btn-square me-2" href="#"><i class="fab fa-twitter fw-normal"></i></a>
+                                <a class="btn btn-primary btn-square me-2" href="#"><i class="fab fa-facebook-f fw-normal"></i></a>
+                                <a class="btn btn-primary btn-square me-2" href="#"><i class="fab fa-linkedin-in fw-normal"></i></a>
+                                <a class="btn btn-primary btn-square" href="#"><i class="fab fa-instagram fw-normal"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
+                            <div class="section-title section-title-sm position-relative pb-3 mb-4">
+                                <h3 class="text-light mb-0">Quick Links</h3>
+                            </div>
+                            <div class="link-animated d-flex flex-column justify-content-start">
+                                <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Home</a>
+                                <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>About Us</a>
+                                <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Our Services</a>
+                                <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Meet The Team</a>
+                                <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Latest Blog</a>
+                                <a class="text-light" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Contact Us</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
+                            <div class="section-title section-title-sm position-relative pb-3 mb-4">
+                                <h3 class="text-light mb-0">Popular Links</h3>
+                            </div>
+                            <div class="link-animated d-flex flex-column justify-content-start">
+                                <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Home</a>
+                                <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>About Us</a>
+                                <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Our Services</a>
+                                <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Meet The Team</a>
+                                <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Latest Blog</a>
+                                <a class="text-light" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Contact Us</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid text-white" style="background: #061429;">
+        <div class="container text-center">
+            <div class="row justify-content-end">
+                <div class="col-lg-8 col-md-6">
+                    <div class="d-flex align-items-center justify-content-center" style="height: 75px;">
+                        <p class="mb-0">&copy; <a class="text-white border-bottom" href="#">Your Site Name</a>. All Rights Reserved. 
+						
+						<!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+						Designed by <a class="text-white border-bottom" href="https://htmlcodex.com">HTML Codex</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
 
-    <meta property="og:title" content="정원 관리 블로그 및 게시판 템플릿 | WIX"/>
-    <meta property="og:type" content="website"/>
-    <meta property="og:url" content="https://ko.wix.com/website-template/view/html/2168"/>
-    <meta property="og:image" content="//static.wixstatic.com/media//templates/image/1d19927958398d84fe098d15108cb2d299cf4e037caf8441e730bff88f931f66.jpg"/>
-    <meta content="Wix" property="og:site_name">
-    <meta property="og:description" content="어반 파밍과 같은 도심 속의 친환경 프로젝트 게시판이 필요하다면 본 템플릿을 이용해보세요. 텍스트 및 이미지로 친환경 메시지를 전달하고 게시판을 운영하여 온라인 커뮤니티를 구축할 수 있습니다. 내 사이트만의 스토리를 공유하여 다양한 주제의 토론도 시작해보세요."/>
-    <meta property="fb:admins" content="731184828"/>
-    <meta name="fb:app_id" content="236335823061286"/>
-    <meta name="google-site-verification" content="QXhlrY-V2PWOmnGUb8no0L-fKzG48uJ5ozW0ukU7Rpo"/>
 
-    <link rel="canonical" href="https://ko.wix.com/website-template/view/html/2168"/>
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded back-to-top"><i class="bi bi-arrow-up"></i></a>
 
-    <link rel="alternate" hreflang="fr" href="https://fr.wix.com/website-template/view/html/2168"/>
-    <link rel="alternate" hreflang="pt" href="https://pt.wix.com/website-template/view/html/2168"/>
-    <link rel="alternate" hreflang="cs" href="https://cs.wix.com/website-template/view/html/2168"/>
-    <link rel="alternate" hreflang="it" href="https://it.wix.com/website-template/view/html/2168"/>
-    <link rel="alternate" hreflang="nl" href="https://nl.wix.com/website-template/view/html/2168"/>
-    <link rel="alternate" hreflang="ko" href="https://ko.wix.com/website-template/view/html/2168"/>
-    <link rel="alternate" hreflang="de" href="https://de.wix.com/website-template/view/html/2168"/>
-    <link rel="alternate" hreflang="ru" href="https://ru.wix.com/website-template/view/html/2168"/>
-    <link rel="alternate" hreflang="sv" href="https://sv.wix.com/website-template/view/html/2168"/>
-    <link rel="alternate" hreflang="tr" href="https://tr.wix.com/website-template/view/html/2168"/>
-    <link rel="alternate" hreflang="da" href="https://da.wix.com/website-template/view/html/2168"/>
-    <link rel="alternate" hreflang="en" href="https://www.wix.com/website-template/view/html/2168"/>
-    <link rel="alternate" hreflang="es" href="https://es.wix.com/website-template/view/html/2168"/>
-    <link rel="alternate" hreflang="hi" href="https://hi.wix.com/website-template/view/html/2168"/>
-    <link rel="alternate" hreflang="ja" href="https://ja.wix.com/website-template/view/html/2168"/>
-    <link rel="alternate" hreflang="no" href="https://no.wix.com/website-template/view/html/2168"/>
-    <link rel="alternate" hreflang="pl" href="https://pl.wix.com/website-template/view/html/2168"/>
-    <link rel="alternate" hreflang="vi" href="https://vi.wix.com/website-template/view/html/2168"/>
-    <link rel="alternate" hreflang="uk" href="https://uk.wix.com/website-template/view/html/2168"/>
-    <link rel="alternate" hreflang="zh" href="https://zh.wix.com/website-template/view/html/2168"/>
-    <link rel="alternate" hreflang="th" href="https://th.wix.com/website-template/view/html/2168"/>
-    <link rel="alternate" hreflang="x-default" href="https://www.wix.com/website-template/view/html/2168" />
 
-  </head>
-  <body>
-    <script>
-      window.onWixRecorderLoaded = function () {
-        window.dispatchEvent(new Event('wixRecorderReady'));
-      };
-    </script>
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
-    <script async src="//static.parastorage.com/unpkg-semver/wix-recorder/app.bundle.min.js"
-      crossorigin onload="onWixRecorderLoaded()"></script>
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
 
-    <script src="//static.parastorage.com/services/cookie-sync-service/1.347.4/embed-cidx.bundle.min.js"></script>
-    <script src="//static.parastorage.com/services/tag-manager-client/1.705.0/hostTags.bundle.min.js"></script>
-    <div id="root"><div data-hook="app"><div data-hook="tool-bar" class="sbWfkE"><div class="Mn4893"><div class="bZOLNF"><a data-hook="logo" href="/" class="nHuSJZ"><span class="AV8G6s">wix.com</span></a></div><div class="wKSaYa"><button data-hook="desktop-view" class="is65hl sdsgLW"><span class="XFdFwl">데스크톱뷰 보기</span></button><hr class="hS1yv1"/><button data-hook="mobile-view" class="fB70N2"><span class="XFdFwl">모바일뷰 보기</span></button></div></div><div class="TYXuEX"><div class="RyxoSg"><p data-hook="tool-bar-title" class="VaexPL">Click edit and create your own amazing website</p><a data-hook="info-view" class="bggdgE" tabindex="0" role="dialog" href="#">자세히 보기</a><a class="Ydu4WK" data-hook="editor-link" href="https://manage.wix.com/edit-template/from-intro?originTemplateId=25031f5c-5758-4035-88bc-4486d41b727b&amp;editorSessionId=8dd6269b-a62d-480d-98e5-8b5fada27d24" target="_blank" tabindex="0">시작하기</a></div></div></div><div data-hook="template-demo" class="CJ4D6R"><div data-hook="desktop-view" class="Woz8P7 pLF8IX"><iframe data-hook="desktop-iframe" src="https://www.wix.com/demone2/urban-farming-forum" title="정원 관리 블로그 및 게시판" width="100%" height="100%" class="eZTjsa"></iframe></div></div><div data-hook="info-pop-up" class="M05QSQ"><div class="E0wHmq"><button data-hook="card-close" class="eds_d0"><span class="ydbrSa">정보 닫기</span></button><div class="qLnKwP"><h1 data-hook="card-title" class="PHJvhr">정원 관리 블로그 및 게시판 - Website Template</h1><div class="CEjC4K"><h3 data-hook="card-good-for-title" class="xqspyG">용도:</h3><p data-hook="card-good-for" class="gsbPc5">농업, 어반 파밍, 온라인 커뮤니티, 유기농, 친환경 등</p></div><div class="CEjC4K"><h3 class="xqspyG">설명</h3><p data-hook="card-description" class="gsbPc5">어반 파밍과 같은 도심 속의 친환경 프로젝트 게시판이 필요하다면 본 템플릿을 이용해보세요. 텍스트 및 이미지로 친환경 메시지를 전달하고 게시판을 운영하여 온라인 커뮤니티를 구축할 수 있습니다. 내 사이트만의 스토리를 공유하여 다양한 주제의 토론도 시작해보세요.</p></div></div><div class="KiqsRq"><a data-hook="card-editor-url" class="XpwCp3 sKD7vO" target="_blank" href="https://manage.wix.com/edit-template/from-intro?originTemplateId=25031f5c-5758-4035-88bc-4486d41b727b&amp;editorSessionId=8dd6269b-a62d-480d-98e5-8b5fada27d24">편집하기</a></div></div></div></div></div>
-    <script>
-      window.__BASEURL__ = "https:\u002F\u002Fko.wix.com\u002Fwebsite-template\u002Fview\u002Fhtml\u002F";
-      window.__INITIAL_I18N__ = {"locale":"ko","resources":{"errorPage.templatesLinkText":"템플릿","template.viewer.page.title":"{{- title}} 템플릿 | WIX","template_button_label":"편집하기","template_seeFeatures_label":"전체 기능 보기","template_expand_examples_text":"용도","template_expand_header":"템플릿 기능","template.viewer.title":"Click edit and create your own amazing website","template.viewer.edit.button":"시작하기","template.viewer.use.button":"Use this template","template.viewer.read.more":"자세히 보기","template.viewer.more.info":"More Info","template.viewer.back":"뒤로","template.viewer.info.edit.button":"편집하기","template.viewer.price":"요금:","template.viewer.info.title":"{{- title}} - Website Template","template.viewer.info.goodFor":"용도:","template.viewer.info.description":"설명","template.viewer.info.desktop.only.notice":"해당 템플릿을 편집하려며 데스크톱 PC에서 Wix.com으로 이동하세요. 모든 템플릿은 자유자재로 편집하실 수 있습니다.","template.viewer.see.all.templates":"See All Templates","template.viewer.seeAllExpressions":"See all expressions","template.viewer.goToBiggerScreen":"To start designing, go to your desktop.","template.viewer.getStarted":"Get Started","template.viewer.startNow":"Start Now","template.viewer.features":"Features","template.viewer.allFeatures":"All Features","template.viewer.expressions":"Expressions","template.viewer.tutorials":"Tutorials","template.viewer.updatesAndReleases":"Updates & Releases","template.viewer.comingSoon":"Coming soon","template.viewer.academy":"Academy","template.viewer.editTemplate":"템플릿 편집","template.viewer.theme.default":"Site theme","template.viewer.theme.Dynamic":"Dynamic","template.viewer.theme.Savvy":"Savvy","template.viewer.theme.Vivid":"Vivid","template.viewer.theme.Mature":"Mature","template.viewer.theme.Contemporary":"Contemporary","template.viewer.theme.Laid-back":"Laid-back","template.viewer.theme.Bohemian":"Bohemian","template.viewer.theme.Fashionable":"Fashionable","template.viewer.theme.Technical":"Technical","template.viewer.theme.Energetic":"Energetic","template.viewer.theme.Nostalgic":"Nostalgic","template.viewer.theme.Natural":"Natural","template.viewer.theme.RetroVibrant":"RetroVibrant","template.viewer.theme.Warm":"Warm","template.viewer.theme.Eclectic":"Eclectic","template.viewer.theme.Creamy":"Creamy","template.viewer.theme.Tangy":"Tangy","template.viewer.theme.Placid":"Placid","template.viewer.sidebar.title":"Choose your theme","template.viewer.sidebar.description":"Start with one you like, you’ll be able to edit everything later.","template.viewer.sidebar.defaultTheme":"Default theme","template.viewer.sidebar.featuredThemes":"Featured themes","template.viewer.header.backToTemplates":"Back to Templates","a11y.desktop.button":"데스크톱뷰 보기","a11y.mobile.button":"모바일뷰 보기","a11y.close.popup.button":"정보 닫기","toolbar.tooltip.desktop":"1001px 이상","toolbar.tooltip.tablet":"751-1000px","toolbar.tooltip.mobile":"320-750px","errorPage.4xx.title":"검색한 템플릿을 찾을 수 없습니다.","errorPage.5xx.title":"템플릿을 불러올 수 없습니다.","errorPage.subTitle":"오류 {{- code }}","errorPage.4xx.details":"\u003Clink\u003E여기\u003C\u002Flink\u003E서 다른 템플릿을 검색 해 보세요. ","errorPage.5xx.details":"당사 측의 일시적인 기술 문제로 인해 현재 페이지를 로드하지 못했습니다.  잠시 후에 다시 시도해주세요.","errorPage.5xx.action":"새로고침"}};
-      window.__INITIAL_STATE__ = {"viewMode":"desktop","isInfoShown":false,"isEditButtonHidden":false,"template":{"title":"정원 관리 블로그 및 게시판","description":"어반 파밍과 같은 도심 속의 친환경 프로젝트 게시판이 필요하다면 본 템플릿을 이용해보세요. 텍스트 및 이미지로 친환경 메시지를 전달하고 게시판을 운영하여 온라인 커뮤니티를 구축할 수 있습니다. 내 사이트만의 스토리를 공유하여 다양한 주제의 토론도 시작해보세요.","image":"\u002Ftemplates\u002Fimage\u002F1d19927958398d84fe098d15108cb2d299cf4e037caf8441e730bff88f931f66.jpg","id":"2168","lng":"ko","price":"무료","docUrl":"https:\u002F\u002Fwww.wix.com\u002Fdemone2\u002Furban-farming-forum","editorUrl":"https:\u002F\u002Fmanage.wix.com\u002Fedit-template\u002Ffrom-intro?originTemplateId=25031f5c-5758-4035-88bc-4486d41b727b&editorSessionId=8dd6269b-a62d-480d-98e5-8b5fada27d24","goodFor":"농업, 어반 파밍, 온라인 커뮤니티, 유기농, 친환경 등","siteId":"35787068-71f2-4d5a-8e17-f85f35cbb836","metaSiteId":"25031f5c-5758-4035-88bc-4486d41b727b","editorSessionId":"8dd6269b-a62d-480d-98e5-8b5fada27d24","isResponsive":false,"url":"https:\u002F\u002Fwww.wix.com\u002Fdemone2\u002Furban-farming-forum"},"activeExperiments":["TemplateViewerHydrationRender","TemplateViewerCollapsibleSidebar","OpenTemplateInSameTabForDashboardFirstUsers"],"config":{"locale":"ko","dealerCmsTranslationsUrl":"\u002F\u002Fstatic.parastorage.com\u002Fservices\u002Fdealer-cms-translations\u002F1.6216.0\u002F","dealerLightboxUrl":"\u002F\u002Fstatic.parastorage.com\u002Fservices\u002Fdealer-lightbox\u002F2.0.260\u002F"}};
-      window.__BI__ = {"siteId":"35787068-71f2-4d5a-8e17-f85f35cbb836","originUrl":"https:\u002F\u002Fko.wix.com\u002Fwebsite\u002Ftemplates\u002Fhtml\u002Fcommunities\u002Fonline-forum","editorSessionId":"8dd6269b-a62d-480d-98e5-8b5fada27d24"};
-      window.__DEVICE__ = "desktop";
-      window.__CONSENT_POLICY__ = {"essential":true,"functional":true,"analytics":true,"advertising":true,"dataToThirdParty":true};
-    </script>
-
-    <script src="//static.parastorage.com/unpkg/react@18.2.0/umd/react.production.min.js" crossorigin></script>
-    <script src="//static.parastorage.com/unpkg/react-dom@18.2.0/umd/react-dom.production.min.js" crossorigin></script>
-    <script src="//static.parastorage.com/services/cookie-consent-policy-client/1.717.0/app.bundle.min.js"></script>
+</html>

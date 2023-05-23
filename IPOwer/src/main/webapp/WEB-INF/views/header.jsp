@@ -5,6 +5,8 @@
 
 <!DOCTYPE html>
 <html>
+
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title></title>
@@ -12,6 +14,8 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
 	integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
 	crossorigin="anonymous" />
+
+	
 <style>
 
  .navbar-nav > li
@@ -22,7 +26,12 @@
  }
 
 </style>
+
+
 </head>
+
+
+
 <sec:authentication property="principal" var="prc"/>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark main-nav">
     <div class="collapse navbar-collapse flex-1 nav navbar-nav justify-content-center">
@@ -42,5 +51,8 @@
 		</div>
 	</div>
 </nav>
+
+
+
 </body>
 </html>
