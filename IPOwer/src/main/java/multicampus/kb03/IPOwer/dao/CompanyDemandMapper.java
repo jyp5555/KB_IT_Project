@@ -12,7 +12,6 @@ import org.apache.ibatis.annotations.Select;
 
 import multicampus.kb03.IPOwer.dto.CompanyDemandDto;
 import multicampus.kb03.IPOwer.dto.CompanyDto;
-/*import multicampus.kb03.IPOwer.dto.UsersRoleDto;*/
 
 @Mapper
 public interface CompanyDemandMapper {

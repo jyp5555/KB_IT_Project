@@ -8,16 +8,6 @@
     <script>
     	document.addEventListener('DOMContentLoaded', function() {
         	var calendarEl = document.getElementById('calendar');
-        	var c_name = ${c_name}
-        	var c_offering = ${c_offering}
-        	var c_listing = ${c_listing}
-        	var result = []
-       
-        	 for(var i = 0 ; i < c_name.length ; i++){
-        		result.push({title: c_name[i], start: c_offering[i]})
-        		result.push({title: c_name[i], start: c_listing[i]})
-        	}
-        	 console.log(result)
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 // Tool Bar 목록 document : https://fullcalendar.io/docs/toolbar
                 headerToolbar: {
@@ -30,9 +20,9 @@
                 selectMirror: true,
 
                 navLinks: true, // can click day/week names to navigate views
-                editable: false,
+                editable: true,
                 // Create new event
-               /*  select: function (arg) {
+                select: function (arg) {
                     Swal.fire({
                         html: "<div class='mb-7'>Create new event?</div><div class='fw-bold mb-5'>Event Name:</div><input type='text' class='form-control' name='event_name' />",
                         icon: "info",
@@ -46,7 +36,7 @@
                         }
                     }).then(function (result) {
                         if (result.value) {
-                            var title = document.querySelector("input[name=;']").value;
+                            var title = document.querySelector("input[name=;event_name']").value;
                             if (title) {
                                 calendar.addEvent({
                                     title: title,
@@ -68,9 +58,9 @@
                             });
                         }
                     });
-                }, */
+                },
 
-                /* // Delete event
+                // Delete event
                 eventClick: function (arg) {
                     Swal.fire({
                         text: "Are you sure you want to delete this event?",
@@ -98,11 +88,65 @@
                             });
                         }
                     });
-                }, */
+                },
                 dayMaxEvents: true, // allow "more" link when too many events
                 // 이벤트 객체 필드 document : https://fullcalendar.io/docs/event-object
-                
-                events: result
+                events: [
+                    {
+                    title: 'All Day Event',
+                    start: '2023-05-01'
+                    },
+                    {
+                    title: 'Long Event',
+                    start: '2023-05-01',
+                    end: '2023-05-03'
+                    },
+                    {
+                    groupId: 999,
+                    title: 'Repeating Event',
+                    start: '2023-05-01T16:00:00'
+                    },
+                    {
+                    groupId: 999,
+                    title: 'Repeating Event',
+                    start: '2023-05-01T16:00:00'
+                    },
+                    {
+                    title: 'Conference',
+                    start: '2023-05-01',
+                    end: '2023-05-03'
+                    },
+                    {
+                    title: 'Meeting',
+                    start: '2023-05-01T10:30:00',
+                    end: '2023-05-03T12:30:00'
+                    },
+                    {
+                    title: 'Lunch',
+                    start: '2023-05-01T12:00:00'
+                    },
+                    {
+                    title: 'Meeting',
+                    start: '2023-05-01T14:30:00'
+                    },
+                    {
+                    title: 'Happy Hour',
+                    start: '2023-05-01T17:30:00'
+                    },
+                    {
+                    title: 'Dinner',
+                    start: '2023-05-01T20:00:00'
+                    },
+                    {
+                    title: 'Birthday Party',
+                    start: '2023-05-01T07:00:00'
+                    },
+                    {
+                    title: 'Click for Google',
+                    url: 'http://google.com/',
+                    start: '2023-05-01'
+                    }
+                ]
             });
 
             calendar.render();
@@ -118,7 +162,7 @@
         <button onclick="location.href='/admin'" class="btn btn-sm btn-success">관리자 설정 페이지(관리자만)</button>
         <button onclick="location.href='/home'" class="btn btn-sm btn-info">유저 설정 페이지(유저만)</button>
     </p>
-  
+    
     <hr/>
     <form method="post" action="/logout">
         <button class="btn btn-sm btn-danger btn-block" type="submit">로그아웃</button>
