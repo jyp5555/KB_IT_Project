@@ -20,6 +20,6 @@ public interface CmtMapper {
 			"    		\"WHERE A.ARTICLE_PK =#{ARTICLE_PK}")
     List<CmtDto> getCommentsByArticle(@Param("ARTICLE_PK") int ARTICLE_PK);
 
-    @Insert("INSERT INTO comments (WRITER, CONTENT) VALUES (#{writer}, #{content})")
+    @Insert("INSERT INTO comments (COMMENT_CONTENT) VALUES (#{COMMENT_CONTENT})")
     void addComment(CmtDto comment);
 }

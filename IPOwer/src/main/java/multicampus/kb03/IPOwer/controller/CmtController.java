@@ -21,6 +21,7 @@ public class CmtController {
 	    public CmtController(CmtDao cmtdao) {
 	        this.Cmtdao = cmtdao;
 	    }
+	    
 	    //댓글조회
 	    
 //	    @GetMapping("/detailreview")

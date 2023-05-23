@@ -56,17 +56,7 @@ private final SqlSessionTemplate sqlSessionTemplate;
 //		return mapper.save(dto);
 //		
 //	}
-    
-    
-        public BoardDao(SqlSessionTemplate sqlSessionTemplate) {
-            this.sqlSessionTemplate = null;
-			this.mapper = null;
-        }
         
-//        public List<BoardDto> insert (String ARTICLE_PK){
-//     		List<BoardDto> dto = mapper.selectByTitle(ARTICLE_PK);
-//     		return dto;
-//     	}
         public void insert(BoardDto boardDto) {
             mapper.write(boardDto);
         }

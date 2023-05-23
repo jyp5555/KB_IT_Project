@@ -23,12 +23,11 @@ import multicampus.kb03.IPOwer.service.BoardService;
 //-http://localhost:8081/board/로 시작되는 요청을 다 boardController에서
 @RequestMapping("/board")
 public class BoardController {
-	    private BoardService service;
 	    private final BoardDao boardDao;
 	    private final CmtDao cmtDao;
 	    @Autowired
-	    public BoardController(BoardDao boardDao) {
-	        this.cmtDao = new CmtDao();
+	    public BoardController(BoardDao boardDao,CmtDao cmtDao) {
+	        this.cmtDao = cmtDao;
 			this.boardDao = boardDao;
 	    }
 	    
@@ -41,6 +40,7 @@ public class BoardController {
 	        model.addAttribute("articles", allArticles);
             //article.jsp 로 전달됨 
 	        //succes.jsp에서 ${articles} 입력 allArticles 뜸 
+	      
 	        return "board";
 	    }
 	    
@@ -76,8 +76,12 @@ public class BoardController {
 	        if (boardDto!= null) {
 	            model.addAttribute("detail1", boardDto);
 	        }
-	        List<CmtDto> comments=CmtDao.getCommentsByArticle(ARTICLE_PK);
-	       model.addAttribute("comments",comments);
+	        
+	        List<CmtDto> allComments = cmtDao.getCommentsByArticle(ARTICLE_PK);
+	        for (CmtDto newsCmtDto : allComments) {
+				System.out.println(newsCmtDto);
+			}
+	        model.addAttribute("Cmts", allComments);
 	        return "detailreview"; 
 	    }
 	   
