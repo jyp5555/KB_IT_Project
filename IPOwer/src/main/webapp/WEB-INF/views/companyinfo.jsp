@@ -3,7 +3,7 @@
 <!doctype html>
 <html>
   <head>
-    <title>정원 관리 블로그 및 게시판 템플릿 | WIX</title>
+    <title>IPOwer</title>
     
     <!-- BEGIN SENTRY -->
     <script id="sentry">
