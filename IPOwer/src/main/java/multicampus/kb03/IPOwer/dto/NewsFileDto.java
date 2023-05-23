@@ -3,9 +3,11 @@ package multicampus.kb03.IPOwer.dto;
 import java.util.Date;
 
 public class NewsFileDto {
-	private String news_title,news_writer;
-	private int news_pk,news_view;
+	private String news_title,news_writer,file_name,file_contenttype;
+	private int news_pk,news_view,file_pk;
+	private double file_size;
 	private Date news_regdate;
+	private String file_path;
 	public NewsFileDto() {
 		// TODO Auto-generated constructor stub
 	}
@@ -18,6 +20,12 @@ public class NewsFileDto {
 		this.news_regdate = news_regdate;
 	}
 
+	public String getFile_path() {
+		return file_path;
+	}
+	public void setFile_path(String file_path) {
+		this.file_path = file_path;
+	}
 	public String getNews_title() {
 		return news_title;
 	}
@@ -58,12 +66,36 @@ public class NewsFileDto {
 		this.news_regdate = news_regdate;
 	}
 
-	@Override
-	public String toString() {
-		return "NewsFileDto [news_title=" + news_title + ", news_writer=" + news_writer + ", news_pk=" + news_pk
-				+ ", news_view=" + news_view + ", news_regdate=" + news_regdate + "]";
+	public int getFile_pk() {
+		return file_pk;
+	}
+	public void setFile_pk(int file_pk) {
+		this.file_pk = file_pk;
 	}
 	
-	
-	
+	public String getFile_name() {
+		return file_name;
+	}
+	public void setFile_name(String file_name) {
+		this.file_name = file_name;
+	}
+	public String getFile_contenttype() {
+		return file_contenttype;
+	}
+	public void setFile_contenttype(String file_contenttype) {
+		this.file_contenttype = file_contenttype;
+	}
+	public double getFile_size() {
+		return file_size;
+	}
+	public void setFile_size(double file_size) {
+		this.file_size = file_size;
+	}
+	@Override
+	public String toString() {
+		return "NewsFileDto [news_title=" + news_title + ", news_writer=" + news_writer + ", file_name=" + file_name
+				+ ", file_contenttype=" + file_contenttype + ", news_pk=" + news_pk + ", news_view=" + news_view
+				+ ", file_pk=" + file_pk + ", file_size=" + file_size + ", news_regdate=" + news_regdate
+				+ ", file_path=" + file_path + "]";
+	}	
 }
