@@ -148,6 +148,14 @@ public class BoardController {
 	        return "board";
 	    }
 	    
+	  //글쓰기 
+	    @RequestMapping("/companyinfo")
+	    public String companyinfo() {
+	        // 글쓰기 폼 페이지로 이동
+	        return "companyinfo"; //write.jsp 페이지로 이동
+	    }
+	    
+	    
 	}
 	  
 	    
