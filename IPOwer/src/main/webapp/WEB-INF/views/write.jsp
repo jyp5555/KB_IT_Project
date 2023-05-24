@@ -90,13 +90,13 @@ data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
         <div class="form-group row">
           <label for="inputTitle" class="col-sm-2 col-form-label"><strong>제목</strong></label>
           <div class="col-sm-10">
-            <input type="text" name="ARTICLE_TITLE" class="form-control" id="inputTitle" />
+            <input type="text" name="articleTitle" class="form-control" id="inputTitle" />
           </div>
         </div>
         <div class="form-group row">
           <label for="inputAuthor" class="col-sm-2 col-form-label"><strong>작성자</strong></label>
           <div class="col-sm-10">
-            <input type="text" name="USER_NAME" class="form-control" id="inputAuthor" />
+            <input type="text" name="userPk" class="form-control" id="inputAuthor" />
 
           </div>
         </div>
@@ -104,7 +104,7 @@ data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
         <div class="form-group row">
           <label for="inputContent" class="col-sm-2 col-form-label"><strong>내용</strong></label>
           <div class="col-sm-10">
-            <textarea type="text" name="ARTICLE_CONTENT" class="form-control" id="inputContent"></textarea>
+            <textarea type="text" name="articleContent" class="form-control" id="inputContent"></textarea>
           </div>
         </div>
         <div class="row">

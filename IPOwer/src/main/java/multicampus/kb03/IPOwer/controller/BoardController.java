@@ -1,4 +1,5 @@
 package multicampus.kb03.IPOwer.controller;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -53,9 +54,10 @@ public class BoardController {
 	    
 	    @PostMapping("/post")
 	    public String write(BoardDto boardDto) throws Exception {
-
+			/* boardDto.setArticleRegdate(new Date()); */
 	    	boardDao.insert(boardDto);
-	        return "board";
+	    	int newArticlePk = boardDao.getLastArticlePk();
+	        return "redirect:/board/detailreview?ARTICLE_PK=" + newArticlePk;
 	    }  
 	    
 	    @GetMapping("/success")
@@ -95,6 +97,7 @@ public class BoardController {
 	    
 	    @PostMapping("/updatereviewcommit")
 	    public String updateReview(BoardDto boardDto) {
+	    	System.out.println(boardDto);
 	        int result = boardDao.updateBoard(boardDto);
 	        // 수정 후의 처리 로직 추가
 
@@ -102,12 +105,11 @@ public class BoardController {
 	    }
 	    //삭제
 	    @GetMapping("/deleteBoard")
-	    public String deleteBoard(@RequestParam int ARTICLE_PK) {
+	    public String deleteBoard(@RequestParam("articlePk") int ARTICLE_PK) {
 	        int result = boardDao.deleteBoard(ARTICLE_PK);
 	        // 삭제 후의 처리 로직 추가
-	        return "board";
+	        return "redirect:/board";
 	    }
-	    
 //	    
 //	    //검색
 //	    @RequestMapping(value="", method= RequestMethod.POST)

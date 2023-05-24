@@ -96,3 +96,5 @@ public class BoardDto {
 				+ userName + ", articleRegdate=" + articleRegdate + "]";
 	}
 }
+   
+  

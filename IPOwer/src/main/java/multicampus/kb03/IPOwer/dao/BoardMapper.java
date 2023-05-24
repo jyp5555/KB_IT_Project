@@ -26,7 +26,7 @@ public interface BoardMapper {
     		"WHERE A.ARTICLE_TITLE = #{title}")
     List<BoardDto> selectByPk(@Param("title") String title);
 
-    @Select("SELECT A.ARTICLE_PK, A.sARTICLE_TITLE, A.ARTICLE_content,A.ARTICLE_view, A.ARTICLE_REGDATE, U.USER_NAME FROM ARTICLE A\r\n" + 
+    @Select("SELECT A.ARTICLE_PK, A.sARTICLE_TITLE, A.ARTICLE_CONTENT,A.ARTICLE_view, A.ARTICLE_REGDATE, U.USER_NAME FROM ARTICLE A\r\n" + 
     		"JOIN USERS U ON A.USER_PK = U.USER_PK\r\n" + 
     		"WHERE A.ARTICLE_regdate = #{date}")
     List<BoardDto> selectByDate(@Param("date") Date date);
@@ -35,12 +35,15 @@ public interface BoardMapper {
 //    @Insert("insert into articles(ARTICLE_PK,ARTICLE_CONTENT,article_title,article_regdate,article_view,user_pk) \r\\n"
 //    		+ "values(#{dto.ARTICLE_PK},#{dto.ARTICLE_CONTENT},#{dto.article_title},SYSDATE,#{dto.article_view},#{dto.article_writer},#{dto.user_pk})")
 //	int insert(@Param("dto") BoardDto dto);
-
-    @Insert("INSERT INTO ARTICLE (articlePk,articleTitle,userName ,articleContent,articleRegdate) " +
-            "VALUES (BOARD_SEQ.NEXT_VAL, #{dto.articleTitle},#{dto.userName}, #{dto.articleContent},sysdate)")
+    
+    //작성
+    @Insert("INSERT INTO ARTICLE (ARTICLE_PK,ARTICLE_TITLE,USER_PK,ARTICLE_CONTENT,ARTICLE_REGDATE) " +
+            "VALUES (BOARD_SEQ.NEXTVAL, #{dto.articleTitle},#{dto.userPk}, #{dto.articleContent},sysdate)")
    int write(@Param("dto") BoardDto boardDto);
     
-
+    @Select("SELECT MAX(ARTICLE_PK) FROM ARTICLE")
+    int getLastArticlePk();
+    
     //게시물 번호 자동 증가하는건 나중에 ...
     @Select("SELECT a.ARTICLE_PK, a.USER_NAME, a.ARTICLE_TITLE, a.ARTICLE_CONTENT, a.ARTICLE_REGDATE, a.ARTICLE_VIEW, u.USER_NAME " +
             "FROM ARTICLE a " +
@@ -55,17 +58,17 @@ public interface BoardMapper {
     BoardDto getBoardDetail(@Param("ARTICLE_PK") int ARTICLE_PK);
     
     @Update("UPDATE ARTICLE " +
-            "SET articleTitle = #{articleTitle}, " +
+            "SET ARTICLE_TITLE = #{dto.articleTitle}, " +
     		"ARTICLE_REGDATE = sysdate,"+
-            "ARTICLE_CONTENT = #{articleContent}, " +
-            "ARTICLE_VIEW = #{articleView}, " +
-            "USER_PK = #{userPk} " +
-            "WHERE ARTICLE_PK = #{articlePk}")
-    int updateBoard(BoardDto boardDto);
+            "ARTICLE_CONTENT = #{dto.articleContent}, " +
+            "ARTICLE_VIEW = #{dto.articleView}, " +
+            "USER_PK = #{dto.userPk} " +
+            "WHERE ARTICLE_PK = #{dto.articlePk}")
+    int updateBoard(@Param("dto") BoardDto boardDto);
     
     //삭제 
     @Delete("delete from ARTICLE where ARTICLE_PK = #{ARTICLE_PK}")
-    int deleteBoard(int ARTICLE_PK);
+    int deleteBoard(@Param("ARTICLE_PK")int ARTICLE_PK);
     
     
     @Select("SELECT A.ARTICLE_PK, A.ARTICLE_TITLE, A.ARTICLE_CONTENT, A.ARTICLE_VIEW, A.ARTICLE_REGDATE, U.USER_NAME FROM ARTICLE A\r\n" + 

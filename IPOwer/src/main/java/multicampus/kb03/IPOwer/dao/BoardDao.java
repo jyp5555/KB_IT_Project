@@ -78,6 +78,11 @@ private final SqlSessionTemplate sqlSessionTemplate;
 		    public List<BoardDto> searchBoards(String searchType, String keyword) {
 		        return mapper.searchBoards(searchType, keyword);
 		    }
+
+			public int getLastArticlePk() {
+				// TODO Auto-generated method stub
+				return mapper.getLastArticlePk();
+			}
 	
         
       //목록 (페이지 나누기, 검색 기능 포함)

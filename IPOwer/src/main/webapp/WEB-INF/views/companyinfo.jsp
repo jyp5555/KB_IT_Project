@@ -43,7 +43,7 @@
     </div> -->
     <!-- Spinner End -->
     <!-- Topbar Start -->
-    <div class="container-fluid bg-dark px-5 d-none d-lg-block">
+   <!--  <div class="container-fluid bg-dark px-5 d-none d-lg-block">
         <div class="row gx-0">
             <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
                 <div class="d-inline-flex align-items-center" style="height: 45px;">
@@ -62,13 +62,14 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- Topbar End -->
 
 
     <!-- Navbar Start -->
     <div class="container-fluid position-relative p-0">
-        <nav class="navbar navbar-expand-lg navbar-light px-5 py-3 py-lg-0">
+    	<%@ include file="./header.jsp" %>
+       <!--  <nav class="navbar navbar-expand-lg navbar-light px-5 py-3 py-lg-0">
             <a href="index.html" class="navbar-brand p-0">
                 <h1 class="m-0"><i class="fa fa-user-tie me-2"></i>IPOwer</h1>
             </a>
@@ -103,7 +104,7 @@
                 <a href="https://htmlcodex.com/startup-company-website-template" class="btn btn-primary py-2 px-4 ms-3">Download Pro Version</a>
             </div>
         </nav>
-
+ -->
         <div class="container-fluid bg-primary py-5 bg-header" style="margin-bottom: 90px;">
             <div class="row py-5">
                 <div class="col-12 pt-lg-5 mt-lg-5 text-center"style="color:navy;font-weight:bold">

@@ -27,7 +27,7 @@
 <c:forEach var="contactBoard" items="${articles}">
 <tr>
 <td class="col1">${contactBoard.articlePk}</td>
-<td><a class="col2" href="board/detailreview?ARTICLE_PK=${contactBoard.articlePk}">${contactBoard.articleTitle}</a></td>
+<td><a class="col2" href="detailreview?ARTICLE_PK=${contactBoard.articlePk}">${contactBoard.articleTitle}</a></td>
 <td class="col3">${contactBoard.userName}</td>
 <td class="col4">${contactBoard.articleContent}</td>
 <td class="col4">${contactBoard.articleView}</td>

@@ -28,20 +28,20 @@ window.onload = function() {
 	<tr>
 		<td>번호</td>
 		<td>${up.articlePk}</td>
-		<input value="${up.articlePk}" >
+		<input value="${up.articlePk}"name="articlePk" >
 	</tr>
 	<tr>
 		<td>작성자</td>
 		<td>${up.userPk}</td>
-		<input value="${up.userPk}"type="hidden">	
+		<input value="${up.userPk}"type="hidden"name="userPk">	
 	</tr>
 		<tr>
 		<td>제목</td>
-		<td><input type="text" value="${up.articleTitle}"></td>
+		<td><input type="text" value="${up.articleTitle}"name="articleTitle"></td>
 	</tr>
 		<tr>
 		<td>글내용</td>
-		<td><textarea rows="5" cols="50">${up.articleContent}</textarea></td>
+		<td><textarea rows="5" cols="50"name="articleContent">${up.articleContent}</textarea></td>
 	</tr>
 	</tr>
 	<tr>
