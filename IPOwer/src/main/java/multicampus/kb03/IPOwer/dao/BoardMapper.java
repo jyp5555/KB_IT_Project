@@ -36,8 +36,8 @@ public interface BoardMapper {
 //    		+ "values(#{dto.ARTICLE_PK},#{dto.ARTICLE_CONTENT},#{dto.article_title},SYSDATE,#{dto.article_view},#{dto.article_writer},#{dto.user_pk})")
 //	int insert(@Param("dto") BoardDto dto);
 
-    @Insert("INSERT INTO ARTICLE (ARTICLE_PK,ARTICLE_TITLE,USER_NAME ,ARTICLE_CONTENT,ARTICLE_REGDATE) " +
-            "VALUES (BOARD_SEQ.NEXT_VAL, #{dto.ARTICLE_TITLE},#{dto.USER_NAME}, #{dto.ARTICLE_CONTENT},sysdate)")
+    @Insert("INSERT INTO ARTICLE (articlePk,articleTitle,userName ,articleContent,articleRegdate) " +
+            "VALUES (BOARD_SEQ.NEXT_VAL, #{dto.articleTitle},#{dto.userName}, #{dto.articleContent},sysdate)")
    int write(@Param("dto") BoardDto boardDto);
     
 
@@ -55,12 +55,12 @@ public interface BoardMapper {
     BoardDto getBoardDetail(@Param("ARTICLE_PK") int ARTICLE_PK);
     
     @Update("UPDATE ARTICLE " +
-            "SET ARTICLE_TITLE = #{ARTICLE_TITLE}, " +
+            "SET articleTitle = #{articleTitle}, " +
     		"ARTICLE_REGDATE = sysdate,"+
-            "ARTICLE_CONTENT = #{ARTICLE_CONTENT}, " +
-            "ARTICLE_VIEW = #{ARTICLE_VIEW}, " +
-            "USER_PK = #{USER_PK} " +
-            "WHERE ARTICLE_PK = #{ARTICLE_PK}")
+            "ARTICLE_CONTENT = #{articleContent}, " +
+            "ARTICLE_VIEW = #{articleView}, " +
+            "USER_PK = #{userPk} " +
+            "WHERE ARTICLE_PK = #{articlePk}")
     int updateBoard(BoardDto boardDto);
     
     //삭제 
