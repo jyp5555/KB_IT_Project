@@ -50,14 +50,14 @@
 			<c:forEach var="i" begin="0" end="${count}">
 				<div class="col-md-3 col-sm-6">
 					<div id="card" class="card card-block"
-						onclick="location.href='http://localhost:8080/news/${all[i].news_pk}'">
+						onclick="location.href='http://localhost:8080/news/${all[i].newsPk}'">
 
-						<img src="/${all[i].file_path}/${all[i].file_name}.${all[i].file_contenttype}" alt="img">
-						<h5 class="card-title  mt-3 mb-3">${all[i].news_title }</h5>
+						<img src="/${all[i].filePath}/${all[i].fileName}.${all[i].fileContenttype}" alt="img">
+						<h5 class="card-title  mt-3 mb-3">${all[i].newsTitle }</h5>
 						<%-- <p class="card-text">${all[i].news_regdate }</p> --%>
-						<fmt:formatDate value="${all[i].news_regdate}" pattern="yyyy-MM-dd" type="date" />
+						<fmt:formatDate value="${all[i].newsRegdate}" pattern="yyyy-MM-dd" type="date" />
 						
-						<div>조회수 : ${all[i].news_view }</div>
+						<div>조회수 : ${all[i].newsView }</div>
 					</div>
 				</div>
 
@@ -170,8 +170,8 @@
 	        			count.append('<p class="container mt-2">전체 '+ res.count +'건</p>')
 	        			$.each(res.list_news, function(index, item) {
 	        				card_news.append('<div class="col-md-3 col-sm-6"><div class="card card-block" onclick="location.href=\'http://localhost:8080/news/' 
-	        						+ item.news_pk + '\'"><img src="/' + item.file_path + '/' + item.file_name + '.' + item.file_contenttype + '" alt="img"><h5 class="card-title  mt-3 mb-3">'
-	        						+ item.news_title + '</h5></div></div>')
+	        						+ item.newsPk + '\'"><img src="/' + item.filePath + '/' + item.fileName + '.' + item.fileContenttype + '" alt="img"><h5 class="card-title  mt-3 mb-3">'
+	        						+ item.newsTitle + '</h5></div></div>')
 	        			})
         				/* $("#test").html(res);  */
 	        		},

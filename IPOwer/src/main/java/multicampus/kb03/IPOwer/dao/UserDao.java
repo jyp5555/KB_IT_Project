@@ -31,7 +31,7 @@ public class UserDao {
 	}
 
 	public void save(UsersRoleDto user) {
-		System.out.println("save");
-		mapper.save(user);		
+		System.out.println("userdao save :  "+user);
+		System.out.println(mapper.save(user));		
 	}
 }

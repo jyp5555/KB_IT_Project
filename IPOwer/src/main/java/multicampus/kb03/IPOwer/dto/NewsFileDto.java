@@ -3,100 +3,100 @@ package multicampus.kb03.IPOwer.dto;
 import java.util.Date;
 
 public class NewsFileDto {
-	private String news_title,news_writer,file_name,file_contenttype;
-	private int news_pk,news_view,file_pk;
-	private double file_size;
-	private Date news_regdate;
-	private String file_path;
+	private String newsTitle,newsWriter,fileName,fileContenttype;
+	private int newsPk,newsView,filePk;
+	private double fileSize;
+	private Date newsRegdate;
+	private String filePath;
 	public NewsFileDto() {
 		// TODO Auto-generated constructor stub
 	}
 	public NewsFileDto(String news_title, String news_writer, int news_pk, int news_view, Date news_regdate) {
 		super();
-		this.news_title = news_title;
-		this.news_writer = news_writer;
-		this.news_pk = news_pk;
-		this.news_view = news_view;
-		this.news_regdate = news_regdate;
+		this.newsTitle = news_title;
+		this.newsWriter = news_writer;
+		this.newsPk = news_pk;
+		this.newsView = news_view;
+		this.newsRegdate = news_regdate;
 	}
 
-	public String getFile_path() {
-		return file_path;
+	public String getFilePath() {
+		return filePath;
 	}
-	public void setFile_path(String file_path) {
-		this.file_path = file_path;
+	public void setFilePath(String file_path) {
+		this.filePath = file_path;
 	}
-	public String getNews_title() {
-		return news_title;
-	}
-
-	public void setNews_title(String news_title) {
-		this.news_title = news_title;
+	public String getNewsTitle() {
+		return newsTitle;
 	}
 
-	public String getNews_writer() {
-		return news_writer;
+	public void setNewsTitle(String news_title) {
+		this.newsTitle = news_title;
 	}
 
-	public void setNews_writer(String news_writer) {
-		this.news_writer = news_writer;
+	public String getNewsWriter() {
+		return newsWriter;
 	}
 
-	public int getNews_pk() {
-		return news_pk;
+	public void setNewsWriter(String news_writer) {
+		this.newsWriter = news_writer;
 	}
 
-	public void setNews_pk(int news_pk) {
-		this.news_pk = news_pk;
+	public int getNewsPk() {
+		return newsPk;
 	}
 
-	public int getNews_view() {
-		return news_view;
+	public void setNewsPk(int news_pk) {
+		this.newsPk = news_pk;
 	}
 
-	public void setNews_view(int news_view) {
-		this.news_view = news_view;
+	public int getNewsView() {
+		return newsView;
 	}
 
-	public Date getNews_regdate() {
-		return news_regdate;
+	public void setNewsView(int news_view) {
+		this.newsView = news_view;
 	}
 
-	public void setNews_regdate(Date news_regdate) {
-		this.news_regdate = news_regdate;
+	public Date getNewsRegdate() {
+		return newsRegdate;
 	}
 
-	public int getFile_pk() {
-		return file_pk;
+	public void setNewsRegdate(Date news_regdate) {
+		this.newsRegdate = news_regdate;
 	}
-	public void setFile_pk(int file_pk) {
-		this.file_pk = file_pk;
+
+	public int getFilePk() {
+		return filePk;
+	}
+	public void setFilePk(int file_pk) {
+		this.filePk = file_pk;
 	}
 	
-	public String getFile_name() {
-		return file_name;
+	public String getFileName() {
+		return fileName;
 	}
-	public void setFile_name(String file_name) {
-		this.file_name = file_name;
+	public void setFileName(String file_name) {
+		this.fileName = file_name;
 	}
-	public String getFile_contenttype() {
-		return file_contenttype;
+	public String getFileContenttype() {
+		return fileContenttype;
 	}
-	public void setFile_contenttype(String file_contenttype) {
-		this.file_contenttype = file_contenttype;
+	public void setFileContenttype(String file_contenttype) {
+		this.fileContenttype = file_contenttype;
 	}
-	public double getFile_size() {
-		return file_size;
+	public double getFileSize() {
+		return fileSize;
 	}
-	public void setFile_size(double file_size) {
-		this.file_size = file_size;
+	public void setFileSize(double file_size) {
+		this.fileSize = file_size;
 	}
 	@Override
 	public String toString() {
-		return "NewsFileDto [news_title=" + news_title + ", news_writer=" + news_writer + ", file_name=" + file_name
-				+ ", file_contenttype=" + file_contenttype + ", news_pk=" + news_pk + ", news_view=" + news_view
-				+ ", file_pk=" + file_pk + ", file_size=" + file_size + ", news_regdate=" + news_regdate
-				+ ", file_path=" + file_path + "]";
+		return "NewsFileDto [news_title=" + newsTitle + ", news_writer=" + newsWriter + ", file_name=" + fileName
+				+ ", file_contenttype=" + fileContenttype + ", news_pk=" + newsPk + ", news_view=" + newsView
+				+ ", file_pk=" + filePk + ", file_size=" + fileSize + ", news_regdate=" + newsRegdate
+				+ ", file_path=" + filePath + "]";
 	}
 	
 

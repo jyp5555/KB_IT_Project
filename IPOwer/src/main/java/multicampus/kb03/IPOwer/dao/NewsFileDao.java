@@ -50,10 +50,10 @@ public class NewsFileDao {
 	}
 	public void insert() {
 		NewsFileDto dto = new NewsFileDto();
-		dto.setNews_pk(2);
-		dto.setNews_title("title2");
-		dto.setNews_view(0);
-		dto.setNews_writer("관리자");
+		dto.setNewsPk(2);
+		dto.setNewsTitle("title2");
+		dto.setNewsView(0);
+		dto.setNewsWriter("관리자");
 		
 		mapper.save(dto);
 		

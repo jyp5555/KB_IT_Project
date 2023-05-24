@@ -38,7 +38,7 @@ public class NewsFileController {
 		}
 		model.addAttribute("all",selectThumbnail);
 		model.addAttribute("count",selectThumbnail.size()-1);
-		return "cardNews";
+		return "card";
 	}
 
 	@GetMapping("{news_pk}")
@@ -48,13 +48,13 @@ public class NewsFileController {
 		ArrayList<String> path = new ArrayList<String>();
 		ArrayList<String> file_name = new ArrayList<String>();
 		ArrayList<String> type = new ArrayList<String>();
-		newsFileDao.updateNewsCnt(news_pk,dto.getNews_view());
+		newsFileDao.updateNewsCnt(news_pk,dto.getNewsView());
 		System.out.println("----------------file path---------------");
 		for (NewsFileDto nf : pathAll) {
 			System.out.println(nf);
-			path.add("'"+nf.getFile_path()+"'");
-			file_name.add("'"+nf.getFile_name()+"'");
-			type.add("'"+nf.getFile_contenttype()+"'");
+			path.add("'"+nf.getFilePath()+"'");
+			file_name.add("'"+nf.getFileName()+"'");
+			type.add("'"+nf.getFileContenttype()+"'");
 		}
 	
 		model.addAttribute("files",pathAll);
@@ -78,7 +78,7 @@ public class NewsFileController {
 			for (NewsFileDto nf : findAll) {
 				System.out.println(nf);
 			}			
-			all.put("list_news", findAll);
+			all.put("listNews", findAll);
 			all.put("count", findAll.size());
 		}
 		else {
