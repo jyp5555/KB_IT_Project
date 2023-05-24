@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,7 +34,10 @@ window.onload = function() {
 	<tr>
 		<td>작성자</td>
 		<td>${up.userPk}</td>
-		<input value="${up.userPk}"type="hidden"name="userPk">	
+		<%-- <sec:authentication var="user" property="principal"/>
+		<p>${user.username}</p>  
+		<td>${user.userName}</td> --%>
+		<input value="${up.userPk}"type="hidden"name="userPk">
 	</tr>
 		<tr>
 		<td>제목</td>
