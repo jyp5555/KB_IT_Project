@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<body>
+
 <!-- exampleModalLongTitle -->
 		<!-- Modal -->
 		<div class="modal fade" id="exampleModalLong" tabindex="-1"
@@ -17,78 +15,113 @@
 						</button>
 					</div>
 					<div class="modal-body">
-						<form id="">
+						<form id="frm">
 							<div class="form-row">
 								<div class="form-group col-md-4">
 									<label for="companyTicker" class="col-form-label">기업 코드 *</label>
-									<input type="number" class="form-control" id="companyTicker" required="required">
+									<input type="number" class="form-control" id="companyTicker" name="companyTicker" required="required">
 								</div>
 								<div class="form-group col-md-4">
 									<label for="companyName" class="col-form-label">기업명 *</label> 
-									<input type="text" class="form-control" id="companyName" required="required">
+									<input type="text" class="form-control" id="companyName" name="companyName" required="required">
 								</div>
 								<div class="form-group col-md-4">
 									<label for="companySite" class="col-form-label">기업 사이트</label>
-									<input type="text" class="form-control" id="companySite">
+									<input type="text" class="form-control" id="companySite" name="companySite">
 								</div>
 							</div>
 							
 							<div class="form-row">
 								<div class="form-group col-md-3">
 									<label for="companyFaceprice" class="col-form-label">액면가 *</label>
-									<input type="number" class="form-control" id="companyFaceprice" required="required">
+									<input type="number" class="form-control" id="companyFaceprice" name="companyFaceprice"  required="required">
 								</div>
 								<div class="form-group col-md-3">
 									<label for="companyTopprice" class="col-form-label">희망 공모가액 상단 *</label> 
-									<input type="number" class="form-control" id="companyTopprice">
+									<input type="number" class="form-control" id="companyTopprice" name="companyTopprice"  required="required">
 								</div>
 								<div class="form-group col-md-3">
 									<label for="companyBottomprice" class="col-form-label">희망공모가액 하단 *</label> 
-									<input type="number" class="form-control" id="companyBottomprice">
+									<input type="number" class="form-control" id="companyBottomprice" name="companyBottomprice"  required="required">
 								</div>
 								<div class="form-group col-md-3">
 									<label for="companyFixedprice" class="col-form-label">확정 공모가액</label> 
-									<input type="number" class="form-control" id="companyFixedprice">
+									<input type="number" class="form-control" id="companyFixedprice" name="companyFixedprice">
 								</div>								
 							</div>
 							<div class="form-row">
 								<div class="form-group col-md-3">
 									<label for="companyManager" class="col-form-label">주간사 *</label>
-									<input type="text" class="form-control" id="companyManager" required="required">
+									<input type="text" class="form-control" id="companyManager" name="companyManager" required="required">
 								</div>
 								<div class="form-group col-md-3">
 									<label for="companyOfferingdate" class="col-form-label">청약일 *</label>
-									<input type="date" class="form-control" id="companyOfferingdate" required="required">
+									<input type="date" class="form-control" id="companyOfferingdate" name="companyOfferingdate" required="required">
 								</div>
 								<div class="form-group col-md-3">
 									<label for="companyRefundingdate" class="col-form-label">환불일</label>
-									<input type="date" class="form-control" id="companyRefundingdate">
+									<input type="date" class="form-control" id="companyRefundingdate" name="companyRefundingdate">
 								</div>
 								<div class="form-group col-md-3">
 									<label for="companyListingdate" class="col-form-label">상장일</label>
-									<input type="date" class="form-control" id="companyListingdate">
+									<input type="date" class="form-control" id="companyListingdate"name="companyListingdate">
 								</div>
 							</div>
 							<div class="form-row">
 								<div class="form-group col-md-6">
 									<label for="companyMinimumcount" class="col-form-label">최소청약주수</label> 
-									<input type="number" class="form-control" id="companyMinimumcount" required="required">
+									<input type="number" class="form-control" id="companyMinimumcount" name="companyMinimumcount" required="required">
 								</div>
 								<div class="form-group col-md-6">
 									<label for="companyCompetitiveratio" class="col-form-label">청약경쟁률</label>
-									<input type="number" class="form-control" id="companyCompetitiveratio">
+									<input type="number" class="form-control" id="companyCompetitiveratio" name="companyCompetitiveratio">
 								</div>
+							</div>
+							<hr>
+							<div class="form-row">
+								<div class="form-group col-md-6">
+									<label for="companyMinimumcount" class="col-form-label">기관 수요예측 경쟁률</label> 
+									<input type="number" class="form-control" id="demandRatio" name="demandRatio">
+								</div>
+								<div class="form-group col-md-6">
+									<label for="companyCompetitiveratio" class="col-form-label">의무 보유 확약비율</label>
+									<input type="number" class="form-control" id="demandLockup" name="demandLockup">
+								</div>
+							</div>
+							<div class="form-row">
+								<div class="form-group col-md-2">
+									<label for="companyFaceprice" class="col-form-label">가격미제시</label>
+									<input type="number" class="form-control" id="demandNoprice" name="demandNoprice">
+								</div>
+								<div class="form-group col-md-2">
+									<label for="companyTopprice" class="col-form-label">공모가 밴드 하단 미만</label> 
+									<input type="number" class="form-control" id="demandUnderbottom" name="demandUnderbottom">
+								</div>
+								<div class="form-group col-md-2">
+									<label for="companyBottomprice" class="col-form-label">공모가 밴드 하단</label> 
+									<input type="number" class="form-control" id="demandBottom" name="demandBottom">
+								</div>
+								<div class="form-group col-md-2">
+									<label for="companyFaceprice" class="col-form-label">공모가 밴드 하단 내</label>
+									<input type="number" class="form-control" id="demandBand" name="demandBand">
+								</div>
+								<div class="form-group col-md-2">
+									<label for="companyTopprice" class="col-form-label">공모가 밴드 상단</label> 
+									<input type="number" class="form-control" id="demandTop" name="demandTop">
+								</div>
+								<div class="form-group col-md-2">
+									<label for="companyBottomprice" class="col-form-label">공모가 밴드 상단 초과</label> 
+									<input type="number" class="form-control" id="demandOvertop" name="demandOvertop">
+								</div>							
 							</div>
 						</form>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary"
-							data-dismiss="modal">취소</button>
-						<button type="button" class="btn btn-primary">저장</button>
+						<button type="button" class="btn btn-secondary"	data-dismiss="modal">취소</button>
+						<button type="submit" form="frm" class="btn btn-primary" id="btnSave">저장</button>
 					</div>
 				</div>
 			</div>
 		</div>
-
-</body>
-</html>
+		
+		

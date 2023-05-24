@@ -60,7 +60,6 @@ public class DomainSuccessHandler implements AuthenticationSuccessHandler{
         roleTargetUrlMap.put("ROLE_ADMIN", "/admin");
 
         final Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
-        System.out.println(authorities.toString());
         for (final GrantedAuthority grantedAuthority : authorities) {
 
             String authorityName = grantedAuthority.getAuthority();
