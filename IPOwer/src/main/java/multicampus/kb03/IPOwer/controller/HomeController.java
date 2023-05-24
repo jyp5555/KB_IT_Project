@@ -28,7 +28,6 @@ public class HomeController {
 	@RequestMapping(value="/test", method= {RequestMethod.GET,RequestMethod.POST})
 	public @ResponseBody ResponseEntity<String> test(@RequestBody String test) {
     	try {
-    		System.out.println(test);
         	return ResponseEntity.ok("success");
     	}catch(Exception e) {
     		return ResponseEntity.badRequest().body(e.getMessage());

@@ -35,19 +35,14 @@ public class RegisterUserService {
     	user.setUserPw(passwordEncoder.encode(userPw));
     	user.setUserName(userName);
     	user.setUserPhone(userPhone);
-    	System.out.println("user: "+user);
         validateDuplicateMember(user);
         userDao.save(user);
         return user.getUserId();    	
     }
 
     private void validateDuplicateMember(UsersRoleDto user) throws IllegalStateException {
-    	System.out.println("userId: "+user.getUserId());
     	UsersRoleDto findByUserId = userDao.findByUserId(user.getUserId());
-    	
-    	System.out.println("findByUserId: "+findByUserId);
 		if(findByUserId != null){
-			System.out.println("이미 존재함!");
     		throw new IllegalStateException("이미 존재하는 회원입니다.");
     	}
     }

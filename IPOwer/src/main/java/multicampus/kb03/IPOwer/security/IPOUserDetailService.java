@@ -31,8 +31,6 @@ public class IPOUserDetailService implements UserDetailsService{
         if(user == null){
             throw new UsernameNotFoundException(insertedUserId);
         }
-        
-		System.out.println("IPOUserService user: "+user);
 		
 		return new AuthenticatedUser(user);
 	}
