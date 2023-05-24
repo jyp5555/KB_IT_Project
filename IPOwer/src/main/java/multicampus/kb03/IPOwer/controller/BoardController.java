@@ -72,7 +72,7 @@ public class BoardController {
 	    @GetMapping("/detailreview")
 	    public String getDetail(@RequestParam("ARTICLE_PK") int ARTICLE_PK, Model model) {
 	        BoardDto boardDto= boardDao.detail(ARTICLE_PK);
-	        boardDao.updatereviewcnt(ARTICLE_PK,boardDto.getARTICLE_VIEW());
+	        boardDao.updatereviewcnt(ARTICLE_PK,boardDto.getArticleView());
 	        if (boardDto!= null) {
 	            model.addAttribute("detail1", boardDto);
 	        }
@@ -98,7 +98,7 @@ public class BoardController {
 	        int result = boardDao.updateBoard(boardDto);
 	        // 수정 후의 처리 로직 추가
 
-	        return "redirect:/detailreview?ARTICLE_PK=" + boardDto.getARTICLE_PK();
+	        return "redirect:/detailreview?ARTICLE_PK=" + boardDto.getArticlePk();
 	    }
 	    //삭제
 	    @GetMapping("/deleteBoard")

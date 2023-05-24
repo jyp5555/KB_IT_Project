@@ -29,7 +29,7 @@ if (userID==null){
 	script.println("location.href='login.jsp'");
 	script.println("</script>");}
 else{
-	if (board.getARTICLE_TITLE()==null||board.getARTICLE_CONTENT()==null){
+	if (board.getArticleTitle()==null||board.getArticleContent()==null){
 		PrintWriter script=response.getWriter();
 		script.println("<script>");
 		script.println("alert('모든 칸을 입력해주십시오.')");
@@ -38,7 +38,7 @@ else{
 	}
 	else{
 		BoardDao dao;
-		int result=dao.insert(board.getARTICLE_TITLE(),board.getARTICLE_CONTENT(),board.getARTICLE_VIEW(),userID);
+		/* int result=dao.insert(board.getArticlePk(),board.getArticleTitle(),board.board.getArticleContent(),board.getArticleView(),userID); */
 		
 	}
 }

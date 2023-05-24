@@ -27,30 +27,30 @@ window.onload = function() {
 <table border="2">
 	<tr>
 		<td>번호</td>
-		<td>${up.ARTICLE_PK}</td>
-		<input value="${up.ARTICLE_PK}" name="ARTICLE_PK">
+		<td>${up.articlePk}</td>
+		<input value="${up.articlePk}" name="ARTICLE_PK">
 	</tr>
 	<tr>
 		<td>작성자</td>
 		<td>${up.USER_PK}</td>
-		<input value="${up.USER_PK}" name="USER_PK" type="hidden">	
+		<input value="${up.userPk}" name="USER_PK" type="hidden">	
 	</tr>
 		<tr>
 		<td>제목</td>
-		<td><input type="text" value="${up.ARTICLE_TITLE}" name="ARTICLE_TITLE"></td>
+		<td><input type="text" value="${up.articleTitle}" name="ARTICLE_TITLE"></td>
 	</tr>
 		<tr>
 		<td>글내용</td>
-		<td><textarea rows="5" cols="50" name="ARTICLE_CONTENT">${up.ARTICLE_CONTENT}</textarea></td>
+		<td><textarea rows="5" cols="50" name="ARTICLE_CONTENT">${up.articleContent}</textarea></td>
 	</tr>
 	</tr>
 	<tr>
 		<td>작성일</td>
-		<td>${up.ARTICLE_REGDATE}</td>
+		<td>${up.articleRegdate}</td>
 	</tr>
 	<tr>
 		<td>조회수</td>
-		<td>${up.ARTICLE_VIEW}</td>
+		<td>${up.articleView}</td>
 	</tr>
 		<tr colspan="3">
 		<td colspan="3">
