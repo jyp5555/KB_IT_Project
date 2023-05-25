@@ -1,0 +1,23 @@
+.carousel-item img {
+  width: 35%;
+  height: 500px;
+}
+hr {
+ border: 10px solid #ff0000;
+  background-color: black;
+}
+
+/* .carousel-control-prev,
+.carousel-control-next {
+  top: 40%;
+  transform: translateY(50%);
+} */
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(100%);
+}
+
+.carousel-inner {
+  text-align: center;
+} 

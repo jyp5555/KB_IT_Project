@@ -92,23 +92,23 @@
 									<input type="number" class="form-control" id="demandNoprice" name="demandNoprice">
 								</div>
 								<div class="form-group col-md-2">
-									<label for="companyTopprice" class="col-form-label">공모가 밴드 하단 미만</label> 
+									<label for="companyTopprice" class="col-form-label">밴드 하단 미만</label> 
 									<input type="number" class="form-control" id="demandUnderbottom" name="demandUnderbottom">
 								</div>
 								<div class="form-group col-md-2">
-									<label for="companyBottomprice" class="col-form-label">공모가 밴드 하단</label> 
+									<label for="companyBottomprice" class="col-form-label">밴드 하단</label> 
 									<input type="number" class="form-control" id="demandBottom" name="demandBottom">
 								</div>
 								<div class="form-group col-md-2">
-									<label for="companyFaceprice" class="col-form-label">공모가 밴드 하단 내</label>
+									<label for="companyFaceprice" class="col-form-label">밴드  내</label>
 									<input type="number" class="form-control" id="demandBand" name="demandBand">
 								</div>
 								<div class="form-group col-md-2">
-									<label for="companyTopprice" class="col-form-label">공모가 밴드 상단</label> 
+									<label for="companyTopprice" class="col-form-label">밴드 상단</label> 
 									<input type="number" class="form-control" id="demandTop" name="demandTop">
 								</div>
 								<div class="form-group col-md-2">
-									<label for="companyBottomprice" class="col-form-label">공모가 밴드 상단 초과</label> 
+									<label for="companyBottomprice" class="col-form-label">밴드 상단 초과</label> 
 									<input type="number" class="form-control" id="demandOvertop" name="demandOvertop">
 								</div>							
 							</div>
