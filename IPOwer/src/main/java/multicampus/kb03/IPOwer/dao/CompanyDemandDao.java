@@ -29,6 +29,16 @@ public class CompanyDemandDao {
 		return result;
 	}
 	
+	public CompanyDemandDto findOneCompanyByName(String name) {
+		CompanyDemandDto result =null;
+		try {
+			result = mapper.findOneCompanyDemandByName(name);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
 	public int insertCompanyDemand(CompanyDemandDto companyDemandDto) {
 		int result1 = mapper.insertCompany(companyDemandDto);
 		int result2 = mapper.insertDemand(companyDemandDto);
@@ -58,5 +68,5 @@ public class CompanyDemandDao {
 			e.printStackTrace();
 		}		
 		return result1+result2;
-	}	
+	}
 }

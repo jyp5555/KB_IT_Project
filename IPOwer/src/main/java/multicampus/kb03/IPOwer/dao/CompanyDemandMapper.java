@@ -33,6 +33,11 @@ public interface CompanyDemandMapper {
 			"where c.company_pk = ${id}")
 	CompanyDemandDto findOneCompanyDemand(@Param("id") int id);
 	
+	@Select("select c.*, d.*\r\n" + 
+			"from company c join demandforecast d on c.company_pk=d.company_pk\r\n" + 
+			"where c.company_name = '${name}'")
+	CompanyDemandDto findOneCompanyDemandByName(@Param("name") String name);
+	
 	@Insert("insert into company \r\n" + 
 			"values(\r\n" + 
 			"4,#{dto.companyTicker}, \r\n" + 

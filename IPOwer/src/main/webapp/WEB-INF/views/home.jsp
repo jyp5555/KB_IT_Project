@@ -1,15 +1,39 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang='en'>
+<html>
   <head>
     <meta charset='utf-8' />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.7/index.global.min.js'></script>
+    <script src='fullcalendar/core/locales/ko.js'></script>
     <script>
+    var data1= []
     	document.addEventListener('DOMContentLoaded', function() {
         	var calendarEl = document.getElementById('calendar');
+        	var c_name = ${c_name}
+        	var c_offering = ${c_offering}
+        	var c_listing = ${c_listing}
+        	var result = []
+        	let backgroundColor = (c_offering) ? '#FF6666' : '#99CCFF';
+       
+        	 for(var i = 0 ; i < c_name.length ; i++){
+        		result.push({
+        			title: c_name[i], 
+        			start: c_offering[i],
+        			backgroundColor : backgroundColor,
+        			borderColor :backgroundColor
+        		})
+        		result.push({title: c_name[i], start: c_listing[i]})
+        	}
+        	 console.log(result)
             var calendar = new FullCalendar.Calendar(calendarEl, {
-                // Tool Bar 목록 document : https://fullcalendar.io/docs/toolbar
+                // Tool Bar ëª©ë¡ document : https://fullcalendar.io/docs/toolbar
                 headerToolbar: {
                     left: 'prevYear,prev,next,nextYear today',
                     center: 'title',
@@ -20,133 +44,63 @@
                 selectMirror: true,
 
                 navLinks: true, // can click day/week names to navigate views
-                editable: true,
-                // Create new event
-                select: function (arg) {
-                    Swal.fire({
-                        html: "<div class='mb-7'>Create new event?</div><div class='fw-bold mb-5'>Event Name:</div><input type='text' class='form-control' name='event_name' />",
-                        icon: "info",
-                        showCancelButton: true,
-                        buttonsStyling: false,
-                        confirmButtonText: "Yes, create it!",
-                        cancelButtonText: "No, return",
-                        customClass: {
-                            confirmButton: "btn btn-primary",
-                            cancelButton: "btn btn-active-light"
-                        }
-                    }).then(function (result) {
-                        if (result.value) {
-                            var title = document.querySelector("input[name=;event_name']").value;
-                            if (title) {
-                                calendar.addEvent({
-                                    title: title,
-                                    start: arg.start,
-                                    end: arg.end,
-                                    allDay: arg.allDay
-                                })
-                            }
-                            calendar.unselect()
-                        } else if (result.dismiss === "cancel") {
-                            Swal.fire({
-                                text: "Event creation was declined!.",
-                                icon: "error",
-                                buttonsStyling: false,
-                                confirmButtonText: "Ok, got it!",
-                                customClass: {
-                                    confirmButton: "btn btn-primary",
-                                }
-                            });
-                        }
-                    });
+                editable: false,
+                eventClick: function(info){
+                	console.log(info.event.title)
+                	$.ajax({
+                		url:"/company/detail",
+                		type:"GET",
+                		data:{
+                			name: info.event.title
+                		},
+                		dataType: "json",
+                		contentType:"application/json",
+                		success:function(result){
+                			$("#companyTicker").html(result.companyTicker);
+            				$("#companyName").html(result.companyName);
+            				$("#companySite").html("<a href="+result.companySite+" target='_blank'>"+result.companySite+"</a>");
+            				$("#companyFaceprice").html(result.companyFaceprice+" 원");
+            				$("#companyFixedprice").html(result.companyFixedprice+" 원");
+            				$("#companyTopprice").html(result.companyTopprice+" 원");
+            				$("#companyBottomprice").html(result.companyBottomprice+" 원");
+            				$("#companyManager").html(result.companyManager);
+            				$("#companyOfferingdate").html(new Date(result.companyOfferingdate).toISOString().slice(0, 10));
+            				$("#companyRefundingdate").html(new Date(result.companyRefundingdate).toISOString().slice(0, 10));
+            				$("#companyListingdate").html(new Date(result.companyListingdate).toISOString().slice(0, 10));
+            				$("#companyMinimumcount").html(result.companyMinimumcount);
+            				
+            				
+            				data1.push(result.demandNoprice)
+            				data1.push(result.demandUnderbottom)
+            				data1.push(result.demandBottom)
+            				data1.push(result.demandBand)
+            				data1.push(result.demandTop)
+            				data1.push(result.demandOvertop)
+            				/*$("#companyCompetitiveratio").val(result.companyCompetitiveratio);*/
+            				$("#demandRatio").html(result.demandRatio+":1");
+            				$("#demandLockup").html(result.demandLockup+"%");
+            				/*$("#demandNoprice").val(result.demandNoprice);
+            				$("#demandUnderbottom").val(result.demandUnderbottom);
+            				$("#demandBottom").val(result.demandBottom);
+            				$("#demandBand").val(result.demandBand);
+            				$("#demandTop").val(result.demandTop);
+            				$("#demandOvertop").val(result.demandOvertop);*/
+            				
+            				$("#exampleModalLongTitle").text(info.event.title);
+            				$("#exampleModalLong").modal('toggle');
+                		},
+                		error:function(result){
+                			console.log(result)
+                			alert("error!")
+                		}
+                	})
+                	$("#exampleModalLongTitle").text(info.event.title)
+                	$("#exampleModalLong").modal(); 
+                	
                 },
-
-                // Delete event
-                eventClick: function (arg) {
-                    Swal.fire({
-                        text: "Are you sure you want to delete this event?",
-                        icon: "warning",
-                        showCancelButton: true,
-                        buttonsStyling: false,
-                        confirmButtonText: "Yes, delete it!",
-                        cancelButtonText: "No, return",
-                        customClass: {
-                            confirmButton: "btn btn-primary",
-                            cancelButton: "btn btn-active-light"
-                        }
-                    }).then(function (result) {
-                        if (result.value) {
-                            arg.event.remove()
-                        } else if (result.dismiss === "cancel") {
-                            Swal.fire({
-                                text: "Event was not deleted!.",
-                                icon: "error",
-                                buttonsStyling: false,
-                                confirmButtonText: "Ok, got it!",
-                                customClass: {
-                                    confirmButton: "btn btn-primary",
-                                }
-                            });
-                        }
-                    });
-                },
-                dayMaxEvents: true, // allow "more" link when too many events
-                // 이벤트 객체 필드 document : https://fullcalendar.io/docs/event-object
-                events: [
-                    {
-                    title: 'All Day Event',
-                    start: '2023-05-01'
-                    },
-                    {
-                    title: 'Long Event',
-                    start: '2023-05-01',
-                    end: '2023-05-03'
-                    },
-                    {
-                    groupId: 999,
-                    title: 'Repeating Event',
-                    start: '2023-05-01T16:00:00'
-                    },
-                    {
-                    groupId: 999,
-                    title: 'Repeating Event',
-                    start: '2023-05-01T16:00:00'
-                    },
-                    {
-                    title: 'Conference',
-                    start: '2023-05-01',
-                    end: '2023-05-03'
-                    },
-                    {
-                    title: 'Meeting',
-                    start: '2023-05-01T10:30:00',
-                    end: '2023-05-03T12:30:00'
-                    },
-                    {
-                    title: 'Lunch',
-                    start: '2023-05-01T12:00:00'
-                    },
-                    {
-                    title: 'Meeting',
-                    start: '2023-05-01T14:30:00'
-                    },
-                    {
-                    title: 'Happy Hour',
-                    start: '2023-05-01T17:30:00'
-                    },
-                    {
-                    title: 'Dinner',
-                    start: '2023-05-01T20:00:00'
-                    },
-                    {
-                    title: 'Birthday Party',
-                    start: '2023-05-01T07:00:00'
-                    },
-                    {
-                    title: 'Click for Google',
-                    url: 'http://google.com/',
-                    start: '2023-05-01'
-                    }
-                ]
+                dayMaxEvents: true,
+                events: result,
+                locale: 'ko'
             });
 
             calendar.render();
@@ -156,17 +110,17 @@
   </head>
   <body>
   	<%@ include file="./header.jsp" %>
-	
-	<h3 class="overview-normalize">역할에 따른 페이지 이동 권한 확인</h3>
+	<%@ include file="./companyInfoModal.jsp"%>
+	<!-- <h3 class="overview-normalize">이</h3>
     <p>
-        <button onclick="location.href='/admin'" class="btn btn-sm btn-success">관리자 설정 페이지(관리자만)</button>
-        <button onclick="location.href='/home'" class="btn btn-sm btn-info">유저 설정 페이지(유저만)</button>
+        <button onclick="location.href='/admin'" class="btn btn-sm btn-success">ê´ë¦¬ì ì¤ì  íì´ì§(ê´ë¦¬ìë§)</button>
+        <button onclick="location.href='/home'" class="btn btn-sm btn-info">ì ì  ì¤ì  íì´ì§(ì ì ë§)</button>
     </p>
-    
+  
     <hr/>
     <form method="post" action="/logout">
-        <button class="btn btn-sm btn-danger btn-block" type="submit">로그아웃</button>
-    </form>
-    <div id='calendar'></div>
+        <button class="btn btn-sm btn-danger btn-block" type="submit">ë¡ê·¸ìì</button>
+    </form> -->
+    <div id='calendar' class='container-md'></div>
   </body>
 </html>

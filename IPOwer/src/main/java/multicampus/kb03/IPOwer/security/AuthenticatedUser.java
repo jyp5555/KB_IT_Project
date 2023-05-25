@@ -69,5 +69,4 @@ public class AuthenticatedUser implements UserDetails{
 		// TODO Auto-generated method stub
 		return this.authenticatedUser.getUserName();
 	}
-
 }

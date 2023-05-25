@@ -29,7 +29,6 @@ $(document).ready(function(){
 				
 				$("#exampleModalLongTitle").text("회사 정보 수정");
 				$("#exampleModalLong").modal('toggle');
-
 				
 				$("#companyTicker").val(result.companyTicker);
 				$("#companyName").val(result.companyName);
@@ -52,7 +51,6 @@ $(document).ready(function(){
 				$("#demandBand").val(result.demandBand);
 				$("#demandTop").val(result.demandTop);
 				$("#demandOvertop").val(result.demandOvertop);
-				
 			},
 			complete: function(result){
 				if(result){

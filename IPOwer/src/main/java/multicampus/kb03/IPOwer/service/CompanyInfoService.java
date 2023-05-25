@@ -28,6 +28,11 @@ public class CompanyInfoService {
 		return result;
 	}
 	
+	public CompanyDemandDto getCompanyOneByName(String name) {
+		CompanyDemandDto result = companyDemandDao.findOneCompanyByName(name);
+		return result;
+	}
+	
 	public int createCompanyDemand(CompanyDemandDto companyDemandDto) {
 		return companyDemandDao.insertCompanyDemand(companyDemandDto);
 	}
