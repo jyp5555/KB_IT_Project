@@ -12,7 +12,25 @@
     
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.7/index.global.min.js'></script>
     <script src='fullcalendar/core/locales/ko.js'></script>
-    <script>
+
+  </head>
+  <body>
+  	<%@ include file="./header.jsp" %>
+	<!-- <h3 class="overview-normalize">이</h3>
+    <p>
+        <button onclick="location.href='/admin'" class="btn btn-sm btn-success">ê´ë¦¬ì ì¤ì  íì´ì§(ê´ë¦¬ìë§)</button>
+        <button onclick="location.href='/home'" class="btn btn-sm btn-info">ì ì  ì¤ì  íì´ì§(ì ì ë§)</button>
+    </p>
+  
+    <hr/>
+    <form method="post" action="/logout">
+        <button class="btn btn-sm btn-danger btn-block" type="submit">ë¡ê·¸ìì</button>
+    </form> -->
+    <div id='calendar' class='container-md' style="padding:15px"></div>
+    
+	<%@ include file="./companyInfoModal.jsp"%>
+  </body>
+      <script>
     var data1= []
     	document.addEventListener('DOMContentLoaded', function() {
         	var calendarEl = document.getElementById('calendar');
@@ -47,6 +65,7 @@
                 editable: false,
                 eventClick: function(info){
                 	console.log(info.event.title)
+                	data1=[]
                 	$.ajax({
                 		url:"/company/detail",
                 		type:"GET",
@@ -68,7 +87,12 @@
             				$("#companyRefundingdate").html(new Date(result.companyRefundingdate).toISOString().slice(0, 10));
             				$("#companyListingdate").html(new Date(result.companyListingdate).toISOString().slice(0, 10));
             				$("#companyMinimumcount").html(result.companyMinimumcount);
+            				$("#demandRatio").html(result.demandRatio+":1");
+            				$("#demandLockup").html(result.demandLockup+"%");
             				
+            				
+            				$("#exampleModalLongTitle").text(info.event.title);
+            				$("#exampleModalLong").modal('toggle');
             				
             				data1.push(result.demandNoprice)
             				data1.push(result.demandUnderbottom)
@@ -76,18 +100,36 @@
             				data1.push(result.demandBand)
             				data1.push(result.demandTop)
             				data1.push(result.demandOvertop)
-            				/*$("#companyCompetitiveratio").val(result.companyCompetitiveratio);*/
-            				$("#demandRatio").html(result.demandRatio+":1");
-            				$("#demandLockup").html(result.demandLockup+"%");
-            				/*$("#demandNoprice").val(result.demandNoprice);
-            				$("#demandUnderbottom").val(result.demandUnderbottom);
-            				$("#demandBottom").val(result.demandBottom);
-            				$("#demandBand").val(result.demandBand);
-            				$("#demandTop").val(result.demandTop);
-            				$("#demandOvertop").val(result.demandOvertop);*/
             				
-            				$("#exampleModalLongTitle").text(info.event.title);
-            				$("#exampleModalLong").modal('toggle');
+            				const ctx = document.getElementById('myChart');
+
+            				  new Chart(ctx, {
+            				    type: 'doughnut',
+            				    data: {
+            				      labels: ['가격 미제시', '밴드 하단 미만', '밴드 하단', '밴드 내', '밴드 상단', '밴드 상단 초과'],
+            				      datasets: [{
+            				        label: '# of Votes',
+            				        data:data1,
+            				        backgroundColor: [
+            				            '#c0cffa',
+            				            '#9daddf',
+            				            '#7d8ec4',
+            				            '#6171a9',
+            				            '#4857be',
+            				            '#334173'
+            				          ],
+            				        borderWidth: 1
+            				      }]
+            				    },
+            				    options: {
+            				    	maintainAspectRatio: false,
+            				    	plugins: {
+            				    		legend:{
+            				    			position:'right'
+            				    		}
+            				    	}
+            				    }
+            				  });
                 		},
                 		error:function(result){
                 			console.log(result)
@@ -107,20 +149,4 @@
         });
 
     </script>
-  </head>
-  <body>
-  	<%@ include file="./header.jsp" %>
-	<%@ include file="./companyInfoModal.jsp"%>
-	<!-- <h3 class="overview-normalize">이</h3>
-    <p>
-        <button onclick="location.href='/admin'" class="btn btn-sm btn-success">ê´ë¦¬ì ì¤ì  íì´ì§(ê´ë¦¬ìë§)</button>
-        <button onclick="location.href='/home'" class="btn btn-sm btn-info">ì ì  ì¤ì  íì´ì§(ì ì ë§)</button>
-    </p>
-  
-    <hr/>
-    <form method="post" action="/logout">
-        <button class="btn btn-sm btn-danger btn-block" type="submit">ë¡ê·¸ìì</button>
-    </form> -->
-    <div id='calendar' class='container-md'></div>
-  </body>
 </html>
