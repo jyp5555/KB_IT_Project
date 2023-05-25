@@ -48,21 +48,7 @@ public class HomeController {
 
 	@RequestMapping("/")
 	public String homeGet1(Model model) {
-		List<CompanyDto> all = companyDemandDao.findAllCompany();
-		List<String> c_name = new ArrayList<String>();
-		List<String> c_offering = new ArrayList<String>();
-		List<String> c_listing = new ArrayList<String>();
-		System.out.println("-------------company all---------------"); 
-			for (CompanyDto cd : all) { 
-				c_name.add("'"+cd.getCompanyName()+"'");
-				c_offering.add("'"+get_date(cd.getCompanyOfferingdate())+"'");
-				c_listing.add("'"+get_date(cd.getCompanyListingdate())+"'");
-				
-			}
-		model.addAttribute("all",all);
-		model.addAttribute("c_name",c_name);
-		model.addAttribute("c_offering",c_offering);
-		model.addAttribute("c_listing",c_listing);
+		
 		return "redirect:/home";
 	}
 	
@@ -76,7 +62,12 @@ public class HomeController {
 			for (CompanyDto cd : all) { 
 				c_name.add("'"+cd.getCompanyName()+"'");
 				c_offering.add("'"+get_date(cd.getCompanyOfferingdate())+"'");
-				c_listing.add("'"+get_date(cd.getCompanyListingdate())+"'");
+				if(cd.getCompanyListingdate() == null) {
+					c_listing.add("''");
+				}else {
+                    c_listing.add("'"+get_date(cd.getCompanyListingdate())+"'");
+                }
+				
 				
 			}
 		model.addAttribute("all",all);

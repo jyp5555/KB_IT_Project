@@ -14,8 +14,10 @@
         	var result = []
        
         	 for(var i = 0 ; i < c_name.length ; i++){
+        		 
         		result.push({title: c_name[i], start: c_offering[i]})
-        		result.push({title: c_name[i], start: c_listing[i]})
+        		if(c_listing[i]!='')
+        			result.push({title: c_name[i], start: c_listing[i]}) 
         	}
         	 console.log(result)
             var calendar = new FullCalendar.Calendar(calendarEl, {

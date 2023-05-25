@@ -32,6 +32,8 @@
    
     <link href="/resources/css/style.css" rel="stylesheet" type="text/css">
 	<link href="/resources/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+	
 </head>
 
 <body>
@@ -39,22 +41,22 @@
 
 <sec:authentication property="principal" var="prc"/>
     <!-- Topbar Start -->
-    <div class="container-fluid bg-dark px-5 d-none d-lg-block">
+    <div class="container-fluid bg-white px-5 d-none d-lg-block">
         <div class="row gx-0">
             <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
                 <div class="d-inline-flex align-items-center" style="height: 45px;">
-                    <small class="me-3 text-light"><i class="fa fa-map-marker-alt me-2"></i>서울 강남구 선릉로 428</small>
-                    <small class="me-3 text-light"><i class="fa fa-phone-alt me-2"></i>+012 345 6789</small>
-                    <small class="text-light"><i class="fa fa-envelope-open me-2"></i>IPOwer@naver.com</small>
+                    <small class="me-3 text-dark"><i class="fa fa-map-marker-alt me-2"></i>서울 강남구 선릉로 428</small>
+                    <small class="me-3 text-dark"><i class="fa fa-phone-alt me-2"></i>+012 345 6789</small>
+                    <small class="text-dark"><i class="fa fa-envelope-open me-2"></i>IPOwer@naver.com</small>
                 </div>
             </div>
             <div class="col-lg-4 text-center text-lg-end">
                 <div class="d-inline-flex align-items-center" style="height: 45px;">
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-twitter fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-facebook-f fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-linkedin-in fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-instagram fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle" href=""><i class="fab fa-youtube fw-normal"></i></a>
+                    <a class="btn btn-sm btn-outline-dark btn-sm-square rounded-circle me-2" href=""><i class="fab fa-twitter fw-normal"></i></a>
+                    <a class="btn btn-sm btn-outline-dark btn-sm-square rounded-circle me-2" href=""><i class="fab fa-facebook-f fw-normal"></i></a>
+                    <a class="btn btn-sm btn-outline-dark btn-sm-square rounded-circle me-2" href=""><i class="fab fa-linkedin-in fw-normal"></i></a>
+                    <a class="btn btn-sm btn-outline-dark btn-sm-square rounded-circle me-2" href=""><i class="fab fa-instagram fw-normal"></i></a>
+                    <a class="btn btn-sm btn-outline-dark btn-sm-square rounded-circle" href=""><i class="fab fa-youtube fw-normal"></i></a>
                 
                 </div>
             </div>
@@ -67,20 +69,20 @@
     <div class="container-fluid position-relative p-0">
         <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
             <a href="/" class="navbar-brand p-0">
-                <h1 class="m-0"><i class="fa fa-user-tie me-2"></i>IPOwer</h1>
+               <img src="/resources/img/character.png" width="40"><!-- <img src="/resources/img/icon.png" width="30"><img src="/resources/img/icon.png" width="20"> -->
+               <h1 style="display: inline;color:white;" class="m-0"> IPOwer</h1>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="fa fa-bars"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav ms-auto py-0">
+                <div class="navbar-nav ms-auto py-0" >
 					
                      <li class="nav-item nav-link"><a href="/home">Home</a></li>
-                     <li class="nav-item nav-link"><a href="community">Community</a></li>
-                     <li class="nav-item nav-link"><a href="news">Contents</a></li>
-                     <li class="nav-item nav-link"><sec:authorize access="isAuthenticated()"><a href="/mypage">My Page</a></sec:authorize></li>
+                     <li class="nav-item nav-link"><a href="/news">Contents</a></li>
+                     <li class="nav-item nav-link"><sec:authorize access="isAuthenticated()"><a href="/myPage">My Page</a></sec:authorize></li>
 					<li class="nav-item nav-link"><sec:authorize access="isAnonymous()" ><a href="/user/me">로그인</a></sec:authorize></li>
-					<li class="nav-item nav-link"><sec:authorize access="isAuthenticated()"><a href="/home">로그아웃</a></sec:authorize></li>
+					<li class="nav-item nav-link"><sec:authorize access="isAuthenticated()"><a href="/logout">로그아웃</a></sec:authorize></li>
 		
                    
                  

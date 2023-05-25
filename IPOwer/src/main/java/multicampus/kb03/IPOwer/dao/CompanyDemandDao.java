@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import multicampus.kb03.IPOwer.dto.CompanyDemandDto;
 import multicampus.kb03.IPOwer.dto.CompanyDto;
+import multicampus.kb03.IPOwer.dto.CompanyUserDto;
 
 
 @Component
@@ -24,5 +25,7 @@ public class CompanyDemandDao {
 		return mapper.findAllCompanyDemand();
 	}
 	
-	
+	public List<CompanyUserDto> findLikeAll(String userId){
+		return mapper.findLikeAll(userId);
+	}
 }

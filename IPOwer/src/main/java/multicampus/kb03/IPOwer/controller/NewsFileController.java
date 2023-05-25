@@ -38,7 +38,7 @@ public class NewsFileController {
 		}
 		model.addAttribute("all",selectThumbnail);
 		model.addAttribute("count",selectThumbnail.size()-1);
-		return "card";
+		return "cardNews";
 	}
 
 	@GetMapping("{news_pk}")
@@ -62,12 +62,27 @@ public class NewsFileController {
 		model.addAttribute("path",path);
 		model.addAttribute("file_name",file_name);
 		model.addAttribute("type",type);
-		return "cardNewsDetail";
+		return "detail";
 	}
 	
 	@RequestMapping(value="", method= RequestMethod.POST)
 	@ResponseBody
-	public Map<String,Object> findNews(String search_word,String start_date,String end_date) {
+	public Map<String,Object> findNews(String search_word) {
+		Map<String,Object> all = new HashMap<String, Object>();
+		
+		List<NewsFileDto> find = newsFileDao.selectThumbnailByTitle(search_word);
+		System.out.println("--------------find by title---------------");
+		for (NewsFileDto nf : find) {
+			System.out.println(nf);
+		}	
+		all.put("list_news", find);
+		all.put("count", find.size());
+		
+		
+		
+		return all;
+	}
+	/*public Map<String,Object> findNews(String search_word,String start_date,String end_date) {
 		Map<String,Object> all = new HashMap<String, Object>();
 		
 		System.out.println("------------------날짜-------------------");
@@ -90,7 +105,7 @@ public class NewsFileController {
 		}
 		
 		return all;
-	}
+	}*/
 	
 	
 }
