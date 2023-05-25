@@ -32,12 +32,32 @@ public interface CompanyDemandMapper {
 			"where company_ticker=#{ticker}")
 	CompanyDemandDto findOneCompanyDemand(@Param("ticker") int companyTicker);
 	
-	@Insert("")
-	int saveCompany(CompanyDto companyDto);
+
 	
 	@Select("select c.company_pk, u.user_id, c.company_name\r\n" + 
 			"from company c\r\n" + 
 			"join likecompany l on c.company_pk = l.company_pk\r\n" + 
 			"join users u on l.user_pk = u.user_pk where u.user_id=#{userId}")
 	List<CompanyUserDto> findLikeAll(@Param("userId") String userId);
+
+	@Insert("insert into company \r\n" + 
+			"values(\r\n" + 
+			"3,#{dto.companyTicker}, \r\n" + 
+			"#{dto.companyName}, \r\n" + 
+			"#{dto.companySite}, \r\n" + 
+			"#{dto.companyFaceprice}, \r\n" + 
+			"#{dto.companyTopprice}, \r\n" + 
+			"#{dto.companyBottomprice}, \r\n" + 
+			"#{dto.companyFixedprice, jdbcType=VARCHAR}, \r\n" + 
+			"#{dto.companyMinimumcount}, \r\n" + 
+			"#{dto.companyManager}, \r\n" + 
+			"#{dto.companyOfferingdate}, \r\n" + 
+			"#{dto.companyRefundingdate, jdbcType=VARCHAR}, \r\n" + 
+			"#{dto.companyListingdate, jdbcType=VARCHAR}, \r\n" + 
+			"#{dto.companyCompetitiveratio, jdbcType=VARCHAR})")
+	int insertCompany(@Param("dto") CompanyDemandDto dto);
+	
+	@Insert("insert into demandforecast values(3,2,#{dto.demandRatio},#{dto.demandLockup},#{dto.demandNoprice},#{dto.demandUnderbottom},#{dto.demandBottom},#{dto.demandBand},#{dto.demandTop},#{dto.demandOvertop})")
+	int insertDemand(@Param("dto") CompanyDemandDto dto);
+
 }

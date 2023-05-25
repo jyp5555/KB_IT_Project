@@ -21,10 +21,14 @@
 			</thead>
 			<tbody>
 				<c:forEach var="company" items="${companyList}" >
-					<th scope="col">${company.companyPk }</th>
-					<td>${company.companyName }</td>
-					<td>${company.companyOfferingdate }</td>
-					<td><a href="/admin/company/${company.companyPk }">수정</a>/<a href="">삭제</a></td>
+					<tr>
+						<th scope="col">${company.companyPk }</th>
+						<td>${company.companyName }</td>
+						<td>${company.companyOfferingdate }</td>
+						<td>
+							
+						</td>
+					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
@@ -32,23 +36,8 @@
 	<hr>
 	<div>
 		<!-- Button trigger modal -->
-		<button type="button" class="btn btn-primary" data-toggle="modal"
-			data-target="#exampleModalLong" data-whatever="회사 정보 입력">회사 정보 입력</button>
+		<button id="createBtn" type="button" class="btn btn-primary" data-toggle="modal">회사 정보 입력</button>
 		<%@ include file="./adminCompanyInfoModal.jsp"%>
 	</div>
-
-
-
-
-	<script>
-		$('#exampleModalLong').on('show.bs.modal', function(event) {
-			var button = $(event.relatedTarget) // Button that triggered the modal
-			var recipient = button.data('whatever') // Extract info from data-* attributes
-			
-			var modal = $(this)
-			modal.find('.modal-title').text(recipient)
-		})
-	</script>
-
 </body>
 </html>

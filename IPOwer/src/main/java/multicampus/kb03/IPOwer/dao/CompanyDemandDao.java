@@ -20,12 +20,22 @@ public class CompanyDemandDao {
 		return mapper.findAllCompany();
 	}
 
+	public int insertCompanyDemand(CompanyDemandDto companyDemandDto) {
+		int result1 = mapper.insertCompany(companyDemandDto);
+		int result2 = mapper.insertDemand(companyDemandDto);
+		return result1 + result2;
+	}
+
+
 	public List<CompanyDemandDto> findAllCompanyDemand() {
 		// TODO Auto-generated method stub
 		return mapper.findAllCompanyDemand();
 	}
+
 	
 	public List<CompanyUserDto> findLikeAll(String userId){
 		return mapper.findLikeAll(userId);
 	}
 }
+
+

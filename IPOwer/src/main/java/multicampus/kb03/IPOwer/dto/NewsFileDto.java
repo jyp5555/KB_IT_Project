@@ -93,13 +93,13 @@ public class NewsFileDto {
 	}
 	@Override
 	public String toString() {
+
 		return "NewsFileDto [news_title=" + newsTitle + ", news_writer=" + newsWriter + ", file_name=" + fileName
 				+ ", file_contenttype=" + fileContenttype + ", news_pk=" + newsPk + ", news_view=" + newsView
 				+ ", file_pk=" + filePk + ", file_size=" + fileSize + ", news_regdate=" + newsRegdate
 				+ ", file_path=" + filePath + "]";
 	}
+}
 	
 
 	
-	
-}
