@@ -30,11 +30,17 @@ public interface AdminNewsFileMapper {
 	
 	@Insert("insert into news (news_pk, news_title, news_regdate, news_view, news_writer) " +
 	        "values (news_seq.nextval, #{news_title}, sysdate, 0, '관리자')")
-	int saveNews(@Param("news_title") String newsTitle);
+	int saveCreateNews(@Param("news_title") String newsTitle);
 
-	@Insert("insert into files values(files_seq.nextval,news_seq.CURRVAL,#{dto.fileName},#{dto.fileContenttype},#{dto.fileSize},#{dto.filePath})")
-	int saveFiles(@Param("dto") AdminNewsFileDto dto);
+	@Insert("insert into news (news_pk, news_title, news_regdate, news_view, news_writer) " +
+			"values (news_seq.nextval, #{news_title}, sysdate, 0, '관리자')")
+	int saveUpdateNews(@Param("news_title") String newsTitle);
 	
+	@Insert("insert into files values(files_seq.nextval,news_seq.CURRVAL,#{dto.fileName},#{dto.fileContenttype},#{dto.fileSize},#{dto.filePath})")
+	int saveCreateFiles(@Param("dto") AdminNewsFileDto dto);
+	
+	@Insert("insert into files values(files_seq.nextval,#{dto.newsPk},#{dto.fileName},#{dto.fileContenttype},#{dto.fileSize},#{dto.filePath})")
+	int saveUpdateFiles(@Param("dto") AdminNewsFileDto dto);
 //	@Select("select n.news_pk, n.news_title,n.news_regdate,n.news_view,n.news_writer,f.file_pk,f.file_name,f.file_contenttype,f.file_path\r\n" + 
 //			"from news n\r\n" + 
 //			"join files f on n.news_pk = f.news_pk\r\n" + 
@@ -45,10 +51,13 @@ public interface AdminNewsFileMapper {
 	int updateNewsTitle(@Param("newsPk") int newsPk, @Param("newsTitle") String newsTitle);
 	
 	@Delete("Delete from files where news_pk = #{newsPk}")
-	int deleteFilesByNewsPk(@Param("newsPk") int newPk);
+	int deleteAllFilesByNewsPk(@Param("newsPk") int newPk);
 
 	@Delete("Delete from news where news_pk = #{newsPk}")
 	int deleteNewsByNewsPk(@Param("newsPk") int newsPk);
+	
+	@Delete("Delete from files where file_pk= #{filePk}")
+	int deleteFilesByFilePk(@Param("filePk") int filePk);
 
 	
 	

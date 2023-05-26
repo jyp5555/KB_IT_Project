@@ -16,10 +16,16 @@
 <script>
 var cnt = 1;
 var existingFilesCount=${selectAllFilesByNewsPkSize};
+var deleteExistFileDivCount = 0;
+var addAndRemoveZeroSumCount = 0;
 console.log("존재하는 파일의 수:"+existingFilesCount);
+
 function file_add() {
 	//$("#add_file").append("<br><input type='file' name='file'/>");
 	$("#add_file").append("<br><input type='file' accept='image/*' name='file" + cnt + "'/>");
+	console.log("add버튼 실행됨")
+	addAndRemoveZeroSumCount = addAndRemoveZeroSumCount+1;
+	console.log(addAndRemoveZeroSumCount)
 	cnt++;
 }
 
@@ -28,15 +34,17 @@ function file_remove() {
 		cnt--; // Decrement the cnt variable if there are file inputs to remove
 		$("#add_file").find("input[name='file" + cnt + "']").last().remove();
 		$("#add_file").find("br").last().remove(); // Remove the last line break tag
+	console.log("remove버튼 실행됨")
+	addAndRemoveZeroSumCount = addAndRemoveZeroSumCount-1;
+	console.log(addAndRemoveZeroSumCount)
 	}
 }
 
 var deletedFilePkList = []; // 파일 삭제 시 filePk를 저장할 배열
-
 function removeFileDiv(index) {
   var fileDiv = $("#file_" + index);
   if (fileDiv.length > 0) {
-    var filePk = fileDiv.attr("data-filepk").toString();
+    var filePk = fileDiv.attr("data-filepk");
     var newsPk = ${newsPk};
 
     // filePk를 배열에 저장
@@ -47,18 +55,20 @@ function removeFileDiv(index) {
 
     fileDiv.remove(); // Remove the div element from the DOM
 	existingFilesCount = existingFilesCount - 1;
+	deleteExistFileDivCount = deleteExistFileDivCount + 1;
 	console.log("존재하는 파일의 수:"+existingFilesCount);
   }
 }
 function deleteExistFile() {
 	  var newsPk = ${newsPk};
-
+	  var deletedFilePks = deletedFilePkList.length > 0 ? deletedFilePkList : [null];
 	  $.ajax({
 	    url: "deleteExistFile",
 	    type: "POST",
 	    data: {
 	      newsPk: newsPk,
-	      deletedFilePkList: deletedFilePkList
+	      //deletedFilePkList: deletedFilePkList
+	      deletedFilePkList: deletedFilePks
 	    },
 	    success: function(response) {
 	      // ...
@@ -99,24 +109,28 @@ function deleteExistFile() {
  			  var filesSelected = false;
  			  var newsTitle = $("input[name='newsTitle']").val();
  			  var existingFilesCount = ${selectAllFilesByNewsPkSize}; // 기존 파일의 개수를 변수에 할당
-
+				//alert("validateForm부분에서 존재하는 파일 수와 deleteExistFileDivCount의 파일 수:"+existingFilesCount+","+deleteExistFileDivCount);
  			  if (newsTitle === "") {
  			    alert("뉴스 제목을 입력해주세요.");
  			    return false; // Form submission prevented
  			  }
 
  			  // Check if at least one file is selected
- 			  for (var i = 0; i < fileInputs.length; i++) {
- 			    if (fileInputs[i].files.length > 0) {
- 			      filesSelected = true;
- 			      break;
- 			    }
- 			  }
-
+			  for (var i = 0; i < fileInputs.length; i++) {
+			    if (fileInputs[i].files.length === 0) {
+			      alert("파일을 선택해주시기 바랍니다.");
+			      return false; // Prevent form submission
+			    } else {
+			      filesSelected = true;
+			    }
+			  }
+ 			  
+ 			  //alert("validateForm부분에서 filesSelected의 참/거짓:"+filesSelected);
  			  // Add the count of existing files to the selected files count
  			  var totalFilesSelected = fileInputs.length + existingFilesCount;
 
- 			  if (!filesSelected && totalFilesSelected === 0) {
+ 			  //if (!filesSelected && totalFilesSelected === deleteExistFileDivCount) {
+ 			  if (addAndRemoveZeroSumCount===0 && totalFilesSelected === deleteExistFileDivCount) {
  			    alert("파일은 하나 이상 첨부해야 합니다.");
  			    return false; // Form submission prevented
  			  }
@@ -136,7 +150,7 @@ function deleteExistFile() {
 			<div class="panel-heading">스프링을 이용한 다중 파일 업로드 구현</div>
 			<div class="panel-body">
 				<!-- <form class="form-horizontal" action="newsUpdate" method="post"> -->
-				<form class="form-horizontal" action="newsContents" enctype="multipart/form-data" method="post" onsubmit="return validateForm();">
+				<form class="form-horizontal" action="newsUpdate" enctype="multipart/form-data" method="post" onsubmit="return validateForm();">
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="newsTitle">뉴스 제목:</label>
 						<div class="col-sm-10">

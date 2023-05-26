@@ -3,13 +3,13 @@ package multicampus.kb03.IPOwer.dto;
 import java.util.Date;
 
 public class AdminNewsFileDto {
-	private String fileSize,newsTitle,newsWriter,filePk,fileName,fileContenttype,filePath;
-	private int newsPk,newsView;
+	private String fileSize,newsTitle,newsWriter,fileName,fileContenttype,filePath;
+	private int newsPk,newsView,filePk;
 	private Date newsRegdate;
 
 	public AdminNewsFileDto() {
 	}
-	public AdminNewsFileDto(String newsTitle, String newsWriter, String filePk, String fileName, String fileContenttype,
+	public AdminNewsFileDto(String newsTitle, String newsWriter, int filePk, String fileName, String fileContenttype,
 			String filePath, int newsPk, int newsView, String fileSize, Date newsRegdate) {
 		super();
 		this.newsTitle = newsTitle;
@@ -41,10 +41,10 @@ public class AdminNewsFileDto {
 	public void setNewsWriter(String newsWriter) {
 		this.newsWriter = newsWriter;
 	}
-	public String getFilePk() {
+	public int getFilePk() {
 		return filePk;
 	}
-	public void setFilePk(String filePk) {
+	public void setFilePk(int filePk) {
 		this.filePk = filePk;
 	}
 	public String getFileName() {

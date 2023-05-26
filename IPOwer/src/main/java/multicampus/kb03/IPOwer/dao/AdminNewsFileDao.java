@@ -22,6 +22,8 @@ public class AdminNewsFileDao {
 	
 	public AdminNewsFileDto selectByNewsPk(int newsPk){
 		AdminNewsFileDto dto = mapper.selectByNewsPk(newsPk);
+		System.out.println("dto.getNewsPk()값:"+dto.getNewsPk());
+		System.out.println("dto.getNewsTitle()값:"+dto.getNewsTitle());
 		return dto;
 	}
 	
@@ -30,24 +32,34 @@ public class AdminNewsFileDao {
 		List<AdminNewsFileDto> list = mapper.selectAllFilesByNewsPk(newsPk); 
 		return list; 
 	}
-	public void deleteFilesByNewsPk(int newsPk) {
-		mapper.deleteFilesByNewsPk(newsPk);
+	public void deleteAllFilesByNewsPk(int newsPk) {
+		mapper.deleteAllFilesByNewsPk(newsPk);
 	}
 	
 	public void deleteNewsByNewsPk(int newsPk) {
 		// TODO Auto-generated method stub
 		mapper.deleteNewsByNewsPk(newsPk);
 	}
+	
+	public void deleteFilesByFilePk(int filePk) {
+		// TODO Auto-generated method stub
+		mapper.deleteFilesByFilePk(filePk);
+	}
 	 
 	
 
-	public void saveFiles(AdminNewsFileDto dto) {
+	public void saveCreateFiles(AdminNewsFileDto dto) {
 		System.out.println("dao: "+dto);
-		mapper.saveFiles(dto);
+		mapper.saveCreateFiles(dto);
 	}
 	
-	public void saveNews(String newsTitle) {
-		mapper.saveNews(newsTitle);
+	public void saveUpdateFiles(AdminNewsFileDto dto) {
+		System.out.println("dao: "+dto);
+		mapper.saveUpdateFiles(dto);
+	}
+	
+	public void saveCreateNews(String newsTitle) {
+		mapper.saveCreateNews(newsTitle);
 	}
 
 	public void updateNewsTitle(int newsPk, String newsTitle) {

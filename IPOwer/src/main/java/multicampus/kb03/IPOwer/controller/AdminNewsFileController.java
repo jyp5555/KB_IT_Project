@@ -71,7 +71,7 @@ public class AdminNewsFileController {
 			@RequestParam("newsTitle") String newsTitle,
 			Model model) throws IOException {
     	AdminNewsFileDto dto = new AdminNewsFileDto();
-    	AdminNewsFileDao.saveNews(newsTitle);
+    	AdminNewsFileDao.saveCreateNews(newsTitle);
     	
     	String UPLOAD_DIR = "img";	
     	
@@ -144,7 +144,7 @@ public class AdminNewsFileController {
 			dto.setFileSize(oSize);
 			dto.setFilePath(uploadPath);
 			System.out.println("before:"+dto);
-			AdminNewsFileDao.saveFiles(dto);
+			AdminNewsFileDao.saveCreateFiles(dto);
 		}
 		//map.put("fileList", fileList);
 		model.addAttribute("dto", dto);
@@ -248,13 +248,16 @@ public class AdminNewsFileController {
 			 * //여기서 files테이블에 insert문으로 파일 하나씩 추가.
 			 * System.out.println("★★★맵★★★맵★★★"+map.toString()+"★★★맵★★★맵★★★");
 			 */
-			
+			System.out.println("여기는 업데이트다!!!!!!!!");
+			dto.setNewsPk(newsPk);
+			dto.setFilePk(filePk);
 			dto.setFileName(oName);
 			dto.setFileContenttype(oContentType);
 			dto.setFileSize(oSize);
 			dto.setFilePath(uploadPath);
 			System.out.println("before:"+dto);
-			AdminNewsFileDao.saveFiles(dto);
+			AdminNewsFileDao.saveUpdateFiles(dto);
+			System.out.println("after:"+dto);
 		}
 		//map.put("fileList", fileList);
 		model.addAttribute("dto", dto);
@@ -264,7 +267,7 @@ public class AdminNewsFileController {
     	model.addAttribute("newsPk", newsPk);
     	model.addAttribute("selectByNewsPk",selectByNewsPk);
     	//return "redirect:newsContents";
-        return "adminCardNewsUpdate";
+    	return "redirect:newsContents";
     }
     
     @GetMapping("/updateNewsTitle")
@@ -272,7 +275,7 @@ public class AdminNewsFileController {
     		@RequestParam("newsPk") int newsPk,
     		@RequestParam("newsTitle") String newsTitle,
     		Model model) {
-    		
+    		System.out.println("newsPk값:"+newsPk);
     		model.addAttribute("newsPk",newsPk);
     		model.addAttribute("newsTitle",newsTitle);
     		AdminNewsFileDao.updateNewsTitle(newsPk,newsTitle);
@@ -301,21 +304,21 @@ public class AdminNewsFileController {
 
     @PostMapping("/deleteExistFile")
     public String adminNewsDeleteSaveFilePost(
-            //@RequestParam("newsPk[]") int[] newsPk,
             @RequestParam("newsPk") int newsPk,
-            //@RequestParam("filePk[]") int[] filePk,
             @RequestParam("deletedFilePkList[]") int[] deletedFilePkList,
             Model model) {
-    	System.out.println("★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★"
-    			+ "★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★"
-    			+ "★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★");
         System.out.println("adminNewsDeleteSaveFilePost() 실행");
         System.out.println("newsPk: " + newsPk);
         //System.out.println("filePk: " + Arrays.toString(filePk));
         if(deletedFilePkList.length==0) {
-        	System.out.println("값 없다!");        	
+        	System.out.println("등록삭제한 파일이 없습니다.");        	
+        	System.out.println("deletedFilePkList: " + Arrays.toString(deletedFilePkList));
+        }else {
+        	System.out.println("deletedFilePkList: " + Arrays.toString(deletedFilePkList));
+        	for(int deletedFilePk : deletedFilePkList) {
+        		AdminNewsFileDao.deleteFilesByFilePk(deletedFilePk);
+        	}
         }
-        System.out.println("deletedFilePkList: " + Arrays.toString(deletedFilePkList));
         
         // 추가적인 처리 로직 수행
         // ...
@@ -336,7 +339,7 @@ public class AdminNewsFileController {
     	System.out.println(newsPk);
     	//List<AdminNewsFileDto> selectAllFilesByNewsPk = AdminNewsFileDao.selectAllFilesByNewsPk(newsPk);
 
-		AdminNewsFileDao.deleteFilesByNewsPk(newsPk);
+		AdminNewsFileDao.deleteAllFilesByNewsPk(newsPk);
 		AdminNewsFileDao.deleteNewsByNewsPk(newsPk);
     	
     	return "redirect:newsContents";
