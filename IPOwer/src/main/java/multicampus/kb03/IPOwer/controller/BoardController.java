@@ -86,6 +86,22 @@ public class BoardController {
 	        model.addAttribute("reply", reply);
 	        return "detailreview"; 
 	    }
+
+	    @GetMapping("/htmldetailreview")
+	    public String getDetail1(@RequestParam("ARTICLE_PK") int ARTICLE_PK, Model model) {
+	        BoardDto boardDto= boardDao.detail(ARTICLE_PK);
+	        boardDao.updatereviewcnt(ARTICLE_PK,boardDto.getArticleView());
+	        if (boardDto!= null) {
+	            model.addAttribute("detail1", boardDto);
+	        }
+	        
+	        List<CmtDto> reply = cmtDao.getCommentsByArticle(ARTICLE_PK);
+	        for (CmtDto newsCmtDto : reply) {
+				System.out.println(newsCmtDto);
+			}
+	        model.addAttribute("reply", reply);
+	        return "htmldetailreview"; 
+	    }
 	   
 	    //수정
 	    @GetMapping("/edit")
@@ -162,6 +178,11 @@ public class BoardController {
 	        return "htmlcommunity";
 	    }
 	    
+	    @RequestMapping("/detailreview")
+	    public String detailreview() {
+	        // 글쓰기 폼 페이지로 이동
+	        return "detailreview";
+	    }
 	    @RequestMapping("/htmldetailreview")
 	    public String htmldetailreview() {
 	        // 글쓰기 폼 페이지로 이동

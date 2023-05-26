@@ -163,7 +163,7 @@
                 <c:forEach var="contactBoard" items="${articles}">
                 <tr class="row100 body">
                 <td class="cell100 column1">${contactBoard.articlePk}</td>
-                <td class="cell100 column2"><a href="board/detailreview?ARTICLE_PK=${contactBoard.articlePk}">${contactBoard.articleTitle}</a></td>
+                <td class="cell100 column2"><a href="board/htmldetailreview?ARTICLE_PK=${contactBoard.articlePk}">${contactBoard.articleTitle}</a></td>
                 <td class="cell100 column3">${contactBoard.userName}</td>
                 <td class="cell100 column4">${contactBoard.articleRegdate}</td>
                 <td class="cell100 column5">${contactBoard.articleView}</td>
