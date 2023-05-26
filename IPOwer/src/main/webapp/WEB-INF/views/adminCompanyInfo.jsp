@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +26,7 @@
 					<tr>
 						<th scope="col">${company.companyPk }</th>
 						<td>${company.companyName }</td>
-						<td>${company.companyOfferingdate }</td>
+						<td><fmt:formatDate value="${company.companyOfferingdate }" pattern="yyyy-MM-dd"/></td>
 						<td>
 							<div class="btn-group">
 								<button name="modify" value="${company.companyPk }" class="btn btn-xs btn-warning">수정</button>
