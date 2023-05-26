@@ -21,7 +21,7 @@
                     <a class="nav-link" href="/admin/company">회사 정보 관리</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/admin/cards">콘텐츠 관리</a>
+					<a class="nav-link" href="/admin/newsContents">콘텐츠 관리</a>
                 </li>
                 <form method="post" action="/logout">
         			<button class="btn btn-sm btn-danger btn-block" type="submit">로그아웃</button>

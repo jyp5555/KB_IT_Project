@@ -35,6 +35,32 @@
 			$("#add_file").find("br").last().remove(); // Remove the last line break tag
 		}
 	}
+	function validateForm() {
+		  var fileInputs = $("input[type='file']");
+		  var filesSelected = false;
+		  var newsTitle = $("input[name='newsTitle']").val();
+
+
+		  if (newsTitle === "") {
+		    alert("뉴스 제목을 입력해주세요.");
+		    return false; // Prevent form submission
+		  }
+		  
+		  for (var i = 0; i < fileInputs.length; i++) {
+		    if (fileInputs[i].files.length === 0) {
+		      alert("파일을 추가해주시기 바랍니다.");
+		      return false; // Prevent form submission
+		    } else {
+		      filesSelected = true;
+		    }
+		  }
+
+		  if (!filesSelected) {
+		    alert("파일은 하나 이상 첨부해야 합니다.");
+		    return false; // Prevent form submission
+		  }
+		  return true; // Allow form submission
+		}
 </script>
 </head>
 <body>
@@ -43,11 +69,11 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">스프링을 이용한 다중 파일 업로드 구현</div>
 			<div class="panel-body">
-				<form class="form-horizontal" action="newsCreate" enctype="multipart/form-data" method="post">
+				<form class="form-horizontal" action="newsCreate" enctype="multipart/form-data" method="post" onsubmit="return validateForm();">
 					<div class="form-group">
-						<label class="control-label col-sm-2" for="news_title">뉴스 제목:</label>
+						<label class="control-label col-sm-2" for="newsTitle">뉴스 제목:</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" name="news_title" placeholder="뉴스 제목을 입력하세요." style="width: 30%;">
+							<input type="text" class="form-control" name="newsTitle" placeholder="뉴스 제목을 입력하세요." style="width: 30%;">
 						</div>
 					</div>
 					<div class="form-group">

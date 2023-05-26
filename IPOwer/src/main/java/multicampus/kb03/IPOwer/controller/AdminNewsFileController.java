@@ -11,7 +11,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-//import org.apache.commons.fileupload.ParameterParser;
+import org.apache.commons.fileupload.ParameterParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -67,7 +67,7 @@ public class AdminNewsFileController {
     public String adminNewsCreatePost(
     		MultipartHttpServletRequest multipartRequest, 
 			HttpServletRequest request, 
-			@RequestParam("news_title") String newsTitle,
+			@RequestParam("newsTitle") String newsTitle,
 			Model model) throws IOException {
     	AdminNewsFileDto dto = new AdminNewsFileDto();
     	AdminNewsFileDao.saveNews(newsTitle);
@@ -126,23 +126,23 @@ public class AdminNewsFileController {
 				mFile.transferTo(new File(uploadPath + "\\" + originName));	// 파일 업로드
 				System.out.println("File saved at: " + uploadPath);
 			}
-			fileList.add(oName);
-			fileList.add(oContentType);
-			fileList.add(oSize);
-			fileList.add(uploadPath);
+			/*
+			 * fileList.add(oName); fileList.add(oContentType); fileList.add(oSize);
+			 * fileList.add(uploadPath);
+			 * 
+			 * System.out.println("newsTitle 출력:"+newsTitle);
+			 * System.out.println("fileList 출력:"+fileList.toString()); map.put("fileList",
+			 * fileList);
+			 * 
+			 * //여기서 files테이블에 insert문으로 파일 하나씩 추가.
+			 * System.out.println("★★★맵★★★맵★★★"+map.toString()+"★★★맵★★★맵★★★");
+			 */
 			
-			System.out.println("newsTitle 출력:"+newsTitle);
-			System.out.println("fileList 출력:"+fileList.toString());
-			map.put("fileList", fileList);
-			
-			//여기서 files테이블에 insert문으로 파일 하나씩 추가.
-			System.out.println("★★★맵★★★맵★★★"+map.toString()+"★★★맵★★★맵★★★");
-			
-			dto.setFile_name(oName);
-			dto.setFile_content_type(oContentType);
-			dto.setFile_size(oSize);
-			dto.setFile_path(uploadPath);
-			
+			dto.setFileName(oName);
+			dto.setFileContenttype(oContentType);
+			dto.setFileSize(oSize);
+			dto.setFilePath(uploadPath);
+			System.out.println("before:"+dto);
 			AdminNewsFileDao.saveFiles(dto);
 		}
 		//map.put("fileList", fileList);
@@ -152,21 +152,21 @@ public class AdminNewsFileController {
     }
     @GetMapping("/newsUpdate")
     public String adminNewsUpdateGet(
-    		@RequestParam("news_pk") int news_pk,
+    		@RequestParam("newsPk") int newsPk,
     		Model model) {
     	
-    	AdminNewsFileDto selectByNewsPk = AdminNewsFileDao.selectByNewsPk(news_pk);
-    	String news_title = selectByNewsPk.getNews_title();
-//    	System.out.println(news_title);
-    	List<AdminNewsFileDto> selectAllFilesByNewsPk = AdminNewsFileDao.selectAllFilesByNewsPk(news_pk);
+    	AdminNewsFileDto selectByNewsPk = AdminNewsFileDao.selectByNewsPk(newsPk);
+    	String newsTitle = selectByNewsPk.getNewsTitle();
+//    	System.out.println(newsTitle);
+    	List<AdminNewsFileDto> selectAllFilesByNewsPk = AdminNewsFileDao.selectAllFilesByNewsPk(newsPk);
     	System.out.println("★★★★★★★★★★★★★★★★★★★★★★★★");
 		for (AdminNewsFileDto AdminNewsFileDto : selectAllFilesByNewsPk) {
 			System.out.println(AdminNewsFileDto);
 		}
 		System.out.println("★★★★★★★★★★★★★★★★★★★★★★★★");
     	
-		model.addAttribute("news_pk", news_pk);
-		model.addAttribute("news_title", news_title);
+		model.addAttribute("newsPk", newsPk);
+		model.addAttribute("newsTitle", newsTitle);
 		model.addAttribute("selectAllFilesByNewsPkSize", selectAllFilesByNewsPk.size());
 		model.addAttribute("selectAllFilesByNewsPk",selectAllFilesByNewsPk);
     	
@@ -175,70 +175,42 @@ public class AdminNewsFileController {
 
     @PostMapping("/newsUpdate")
     public String adminNewsUpdatePost(
-    		@RequestParam("news_pk") int news_pk, 
+    		@RequestParam("newsPk") int newsPk, 
     		Model model) {
     	
-    	System.out.println(news_pk);
+    	System.out.println(newsPk);
     	System.out.println("출력");
-    	AdminNewsFileDto selectByNewsPk = AdminNewsFileDao.selectByNewsPk(news_pk);
+    	AdminNewsFileDto selectByNewsPk = AdminNewsFileDao.selectByNewsPk(newsPk);
     	
-    	model.addAttribute("news_pk", news_pk);
+    	model.addAttribute("newsPk", newsPk);
     	model.addAttribute("selectByNewsPk",selectByNewsPk);
         return "adminCardNewsUpdate";
     }
-    @GetMapping("/newsDelete")
-    public String adminNewsDeleteGet(
-		@RequestParam("news_pk") int news_pk, 
-		@RequestParam("selectAllFilesByNewsPk") String selectAllFilesByNewsPk, 
-		Model model) {
-	System.out.println(news_pk);
-	System.out.println(selectAllFilesByNewsPk);
-	System.out.println("출력");
-	//AdminNewsFileDto selectByNewsPk = AdminNewsFileDao.selectByNewsPk(news_pk);
-	
-	//model.addAttribute("selectByNewsPk",selectByNewsPk);
-    	
-        return "adminCardNewsContents";
-    }
-
-    @PostMapping("/newsDelete")
-    public String adminNewsDeletePost(
-    		@RequestParam("news_pk") int news_pk, 
-    		@RequestParam("file_pk") int file_pk, 
-    		Model model) {
-    	System.out.println(news_pk);
-    	System.out.println(file_pk);
-    	System.out.println("출력");
-    	AdminNewsFileDto selectByNewsPk = AdminNewsFileDao.selectByNewsPk(news_pk);
-		
-    	model.addAttribute("selectByNewsPk",selectByNewsPk);
-        return "adminCardNewsContents";
-    }
     
-    @GetMapping("/updateNickname")
-    public String updateNicknameGet(
-    		@RequestParam("news_pk") int news_pk,
-    		@RequestParam("news_title") String news_title,
+    @GetMapping("/updateNewsTitle")
+    public String updateNewTitleGet(
+    		@RequestParam("newsPk") int newsPk,
+    		@RequestParam("newsTitle") String newsTitle,
     		Model model) {
     		
-    		model.addAttribute("news_pk",news_pk);
-    		model.addAttribute("news_title",news_title);
-    		AdminNewsFileDao.updateNewsTitle(news_pk,news_title);
+    		model.addAttribute("newsPk",newsPk);
+    		model.addAttribute("newsTitle",newsTitle);
+    		AdminNewsFileDao.updateNewsTitle(newsPk,newsTitle);
     		
     	return "adminCardNewsUpdate";
     }
     
-    @PostMapping("/updateNickname")
-    public String updateNicknamePost(
-		@RequestParam("news_pk") int news_pk,
-		@RequestParam("news_title") String news_title,
-		Model model) {
-    	
-		model.addAttribute("news_pk",news_pk);
-		model.addAttribute("news_title",news_title);
-		AdminNewsFileDao.updateNewsTitle(news_pk,news_title);
+    @PostMapping("/updateNewsTitle")
+    public String updateNewsTitlePost(
+		@RequestParam("newsPk") int newsPk,
+		@RequestParam("newsTitle") String newsTitle) {
+    	try {
+    		AdminNewsFileDao.updateNewsTitle(newsPk,newsTitle);
+    	}catch(Exception e) {
+    		e.printStackTrace();
+    	}
 		
-	return "adminCardNewsUpdate";
+		return "adminCardNewsUpdate";
 	}
     
     @GetMapping("/deleteSaveFile")
@@ -250,15 +222,50 @@ public class AdminNewsFileController {
     @PostMapping("/deleteSaveFile")
     public String adminNewsDeleteSaveFilePost(
     		@RequestParam("index") int index, 
-    		@RequestParam("news_pk") int news_pk, 
+    		@RequestParam("newsPk") int newsPk, 
     		Model model) {
     	System.out.println("index:"+index);
-    	System.out.println("newsPK:"+news_pk);
+    	System.out.println("newsPK:"+newsPk);
     	System.out.println("출력");
-    	AdminNewsFileDto selectByNewsPk = AdminNewsFileDao.selectByNewsPk(news_pk);
+    	AdminNewsFileDto selectByNewsPk = AdminNewsFileDao.selectByNewsPk(newsPk);
 		
     	model.addAttribute("selectByNewsPk",selectByNewsPk);
         return "adminCardNewsDelete";
+    }
+
+    @GetMapping("/newsDelete")
+    public String adminNewsDeleteGet() {
+    		
+    	return "redirect:newsContents";
+    }
+    
+    @PostMapping("/newsDelete")
+    public String adminNewsDeletePost(
+    		@RequestParam("newsPk") int newsPk, 
+    		Model model) {
+    	System.out.println(newsPk);
+    	//List<AdminNewsFileDto> selectAllFilesByNewsPk = AdminNewsFileDao.selectAllFilesByNewsPk(newsPk);
+
+		AdminNewsFileDao.deleteFilesByNewsPk(newsPk);
+		AdminNewsFileDao.deleteNewsByNewsPk(newsPk);
+    	
+    	return "redirect:newsContents";
+    }
+    @GetMapping("UpdateNewsTitle")
+    public String UpdateNewsTitlePageGet(Model model) {
+      // Add necessary logic and data to the model if needed
+      // ...
+    	System.out.println("UpdateNewsTitlePageGet출력");
+      return "UpdateNewsTitlePage"; // Return the name of the JSP page
+    }
+    @PostMapping("UpdateNewsTitle")
+    public String UpdateNewsTitlePagePost(@RequestParam("newsTitle") String newsTitle,Model model) {
+      // Add necessary logic and data to the model if needed
+        model.addAttribute(newsTitle);
+        System.out.println(newsTitle);
+    	System.out.println("UpdateNewsTitlePagePost출력");
+
+      return "adminCardNewsUpdate"; // Return the name of the JSP page
     }
     	
 }

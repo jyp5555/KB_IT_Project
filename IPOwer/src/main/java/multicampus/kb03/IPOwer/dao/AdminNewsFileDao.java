@@ -16,34 +16,44 @@ public class AdminNewsFileDao {
 	
 	public List<AdminNewsFileDto> selectAll(){
 		List<AdminNewsFileDto> dto = mapper.selectAll();
+		System.out.println("mapper.selectAll의dto의 값은:"+dto.toString());
 		return dto;
 	}	
 	
-	public AdminNewsFileDto selectByNewsPk(int news_pk){
-		AdminNewsFileDto dto = mapper.selectByNewsPk(news_pk);
+	public AdminNewsFileDto selectByNewsPk(int newsPk){
+		AdminNewsFileDto dto = mapper.selectByNewsPk(newsPk);
 		return dto;
 	}
 	
 	
-	public List<AdminNewsFileDto> selectAllFilesByNewsPk(int news_pk){ 
-		List<AdminNewsFileDto> list = mapper.selectAllFilesByNewsPk(news_pk); 
+	public List<AdminNewsFileDto> selectAllFilesByNewsPk(int newsPk){ 
+		List<AdminNewsFileDto> list = mapper.selectAllFilesByNewsPk(newsPk); 
 		return list; 
+	}
+	public void deleteFilesByNewsPk(int newsPk) {
+		mapper.deleteFilesByNewsPk(newsPk);
+	}
+	
+	public void deleteNewsByNewsPk(int newsPk) {
+		// TODO Auto-generated method stub
+		mapper.deleteNewsByNewsPk(newsPk);
 	}
 	 
 	
 
 	public void saveFiles(AdminNewsFileDto dto) {
+		System.out.println("dao: "+dto);
 		mapper.saveFiles(dto);
 	}
 	
-	public void saveNews(String news_title) {
-		mapper.saveNews(news_title);
+	public void saveNews(String newsTitle) {
+		mapper.saveNews(newsTitle);
 	}
 
-	public void updateNewsTitle(int news_pk, String news_title) {
+	public void updateNewsTitle(int newsPk, String newsTitle) {
 		// TODO Auto-generated method stub
-		System.out.println("정상:"+news_pk+","+news_title);
-		mapper.updateNewsTitle(news_pk,news_title);
+		System.out.println("정상:"+newsPk+","+newsTitle);
+		mapper.updateNewsTitle(newsPk,newsTitle);
 	}
 	
 //	public List<AdminNewsFileDto> selectByTitle(String title){
