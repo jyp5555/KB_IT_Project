@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <!-- exampleModalLongTitle -->
 		<!-- Modal -->
 		<div class="modal fade" id="exampleModalLong" tabindex="-1"	role="dialog" aria-labelledby="myExtraLargeModalLabel"	aria-hidden="true">

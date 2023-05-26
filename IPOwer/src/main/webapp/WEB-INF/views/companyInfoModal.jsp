@@ -5,8 +5,7 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<h4 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-				<button type="button" class="close" data-dismiss="modal"
-					aria-label="Close">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
@@ -46,7 +45,7 @@
   						<tr>
   						<tr>
   							<td colspan=4>
-  								<div style="position: relative; height:50vh; width:50vw">
+  								<div style="position: relative; height:30vh; width:30vw">
 									<canvas id="myChart"></canvas>
 								</div>
   							</td>

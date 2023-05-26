@@ -199,7 +199,7 @@ sup {
 }
 
 a {
-	color: #0000a0;
+	color: #ffffff;
 	font-weight: bolder;
 	text-decoration: none
 	
@@ -493,14 +493,14 @@ progress {
 }
 
 .display-6 {
-	font-size: calc(1.375rem + 1.5vw);
+	font-size: xx-small;
 	font-weight: 800;
 	line-height: 1.2
 }
 
 @media ( min-width : 1200px) {
 	.display-6 {
-		font-size: 2.5rem
+		font-size: 20px;
 	}
 }
 
@@ -3786,7 +3786,7 @@ textarea.form-control-lg {
 .nav-link {
 	display: block;
 	padding: .5rem 1rem;
-	color: #0000a0;
+	color: #79dddb;
 	transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
 		border-color 0.15s ease-in-out
 }
@@ -3885,7 +3885,8 @@ textarea.form-control-lg {
 	align-items: center;
 	justify-content: space-between;
 	padding-top: .5rem;
-	padding-bottom: .5rem
+	padding-bottom: .5rem;
+	background-color: #79dddb;
 }
 
 .navbar>.container, .navbar>.container-fluid, .navbar>.container-sm,
@@ -7399,8 +7400,8 @@ opacity
 }
 
 .py-5 {
-	padding-top: 3rem !important;
-	padding-bottom: 3rem !important
+	padding-top: 2rem !important;
+	padding-bottom: 2rem !important
 }
 
 .pt-0 {

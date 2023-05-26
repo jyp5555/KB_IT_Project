@@ -186,7 +186,7 @@ h6,
     
     .sticky-top.navbar-dark {
         position: fixed;
-        background: #FFFFFF;
+        background: #79dddb;
     }
 
     .navbar-dark .navbar-nav .nav-link::before {
@@ -474,7 +474,11 @@ h6,
 }
 
 .bg-header {
-    background: linear-gradient(rgba(9, 30, 62, .7), rgba(9, 30, 62, .7)), url(../img/5.png) center center no-repeat;
+    background: linear-gradient(rgba(9, 30, 62, .7), rgba(9, 30, 62, .7)), url(../img/background.png) center center no-repeat;
+    background-size: cover;
+}
+.news-header {
+    background: linear-gradient(rgba(9, 30, 62, .7), rgba(9, 30, 62, .7)), url(../img/cardNewsMain.png) center center no-repeat;
     background-size: cover;
 }
 
@@ -490,4 +494,36 @@ h6,
     .footer-about {
         margin-bottom: -75px;
     }
+}
+
+
+table.type02 {
+  border-collapse: separate;
+  border-spacing: 0;
+  text-align: left;
+  line-height: 1.5;
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  margin : 20px 10px;
+  margin-left:auto;
+
+margin-right:auto;
+}
+table.type02 th {
+  width: 150px;
+  padding: 10px;
+  font-weight: bold;
+  vertical-align: top;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #fff;
+  border-left: 1px solid #fff;
+  background: #eee;
+}
+table.type02 td {
+  width: 350px;
+  padding: 10px;
+  vertical-align: top;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
 }
