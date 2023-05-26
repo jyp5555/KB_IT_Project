@@ -6,7 +6,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>로그인</title>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
@@ -15,13 +14,14 @@
 <style>
 body {
 	min-height: 100vh;
-	/* background: -webkit-gradient(linear, left bottom, right top, from(#92b5db),
-		to(#1d466c));
-	background: -webkit-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
-	background: -moz-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
-	background: -o-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
-	background: linear-gradient(to top right, #92b5db 0%, #1d466c 100%);
-} */ . input-form { max-width : 680px;
+	. input-form { max-width : 680px;
+=======
+	background: linear-gradient(0deg, rgba(9,30,62,1) 0%, rgba(9,30,62,0.8) 25%, rgba(6,163,218,0.5) 60%, rgba(121,221,219,0.25) 100%);
+}
+
+.input-form {
+	max-width: 680px;
+>>>>>>> refs/heads/jyp
 	margin-top: 80px;
 	padding: 32px;
 	background: #fff;
@@ -37,59 +37,6 @@ body {
 <body>
 	<%@ include file="./header.jsp"%>
 	<div class="container">
-		<!--	<div class="input-form-backgroud row">
-			<div class="input-form col-md-12 mx-auto">
-				<h4 class="mb-3">회원가입</h4>
-				<form class="validation-form" id="join_form" novalidate>
-					https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css
-					<div class="mb-3">
-						<label for="userId">아이디</label> <input type="text"
-							class="form-control" id="userId" name="userId" placeholder=""
-							required>
-						<div class="valid-feedback">사용가능한 닉네임 입니다.</div>
-						<div class="invalid-feedback">5글자 이상 10글자 이하로 작성해 주세요.</div>
-					</div>
-					<div class="mb-3">
-						<label for="name">이름</label> <input type="text"
-							class="form-control" id="userName" name="userName" placeholder=""
-							required>
-						<div class="invalid-feedback">이름을 입력해주세요.</div>
-					</div>
-
-					<div class="mb-3">
-						<label for="password">비밀번호</label> <input type="password"
-							class="form-control" id="userPw" name="userPw" required>
-						<div class="valid-feedback">사용가능한 비밀번호 입니다.</div>
-						<div class="invalid-feedback">5글자 이상 10글자 이하로 작성해 주세요.</div>
-					</div>
-					<div class="mb-3">
-						<label for="passwordChk">비밀번호 확인</label> <input type="password"
-							class="form-control" id="userPwChk" name="userPwChk" required>
-						<div class="valid-feedback">일치합니다.</div>
-						<div class="invalid-feedback">일치하지 않습니다.</div>
-					</div>
-					<div class="mb-3">
-						<label for="phone">전화번호</label> <input type="tel"
-							class="form-control" id="userPhone" name="userPhone"
-							placeholder="010-0000-0000" required>
-						<div class="invalid-feedback">전화번호를 입력해주세요.</div>
-					</div>
-
-					<hr class="mb-4">
-
-					<div class="custom-control custom-checkbox">
-						<input type="checkbox" class="custom-control-input" id="agreement"
-							required> <label class="custom-control-label"
-							for="agreement">개인정보 수집 및 이용에 동의합니다.</label>
-					</div>
-					<div class="mb-4"></div>
-					<button class="btn btn-primary btn-lg btn-block" id="join_btn"
-						type="submit">회원 가입 하기</button>
-				</form>
-			</div>
-		</div>
-	</div>
- -->
 		<div class="sign_form">
 			<div class="form__box">
 				<div class="form__left">
@@ -154,12 +101,6 @@ body {
 				</div>
 			</div>
 		</div>
-<!-- 
-		<footer class="my-3 text-center text-small">
-			<p class="mb-1">&copy; 2021 YD</p>
-		</footer> -->
-	</div>
-
 </body>
 <script>
 	

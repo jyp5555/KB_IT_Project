@@ -23,8 +23,29 @@ public class CompanyInfoService {
 		return companyDemandDao.findAllCompany();
     }
 	
+	public CompanyDemandDto getCompanyOne(int id) {
+		CompanyDemandDto result = companyDemandDao.findOneCompany(id);
+		return result;
+	}
+	
+	public CompanyDemandDto getCompanyOneByName(String name) {
+		CompanyDemandDto result = companyDemandDao.findOneCompanyByName(name);
+		return result;
+	}
+	
 	public int createCompanyDemand(CompanyDemandDto companyDemandDto) {
 		return companyDemandDao.insertCompanyDemand(companyDemandDto);
 	}
+
+	public void updateCompanyDemand(CompanyDemandDto companyDemandDto, int id) {
+		companyDemandDao.updateCompanyDemand(companyDemandDto, id);
+	}
+
+	public void deleteCompanyDemand(int id) {
+		companyDemandDao.deleteCompanyDemand(id);
+	}
 	
+	public void insertLikeCompany(int userPk, int companyPk) {
+		companyDemandDao.insertLikeCompany(userPk, companyPk);
+	}
 }

@@ -16,4 +16,4 @@ public class LoginController {
 	public String loginGet() {		
 		return "login";
 	}
-}
+} 

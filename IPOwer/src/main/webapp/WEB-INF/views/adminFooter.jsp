@@ -55,12 +55,9 @@
                                 <h3 class="text-light mb-0">Quick Links</h3>
                             </div>
                             <div class="link-animated d-flex flex-column justify-content-start">
-                                <a class="text-light mb-2" href="/home"><i class="bi bi-arrow-right text-primary me-2"></i>Home</a>
-                                <a class="text-light mb-2" href="/community"><i class="bi bi-arrow-right text-primary me-2"></i>Community</a>
-                                <a class="text-light mb-2" href="/cards"><i class="bi bi-arrow-right text-primary me-2"></i>Contents</a>
-                                <sec:authorize access="isAuthenticated()"><a class="text-light mb-2" href="/myPage"><i class="bi bi-arrow-right text-primary me-2"></i>My Page</a></sec:authorize>
-
-
+                                <a class="text-light mb-2" href="/admin/company"><i class="bi bi-arrow-right text-primary me-2"></i>회사 정보 관리</a>
+                                <a class="text-light mb-2" href="/admin/cards"><i class="bi bi-arrow-right text-primary me-2"></i>카드 콘텐츠 관리</a>
+                                <sec:authorize access="isAuthenticated()"><a class="text-light mb-2" href="/logout"><i class="bi bi-arrow-right text-primary me-2"></i>로그 아웃</a></sec:authorize>
                             </div>
                         </div>
 

@@ -3,14 +3,19 @@ package multicampus.kb03.IPOwer.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import multicampus.kb03.IPOwer.dao.CompanyDemandDao;
 import multicampus.kb03.IPOwer.dao.UserDao;
+import multicampus.kb03.IPOwer.dto.CompanyDemandDto;
 import multicampus.kb03.IPOwer.dto.CompanyUserDto;
 import multicampus.kb03.IPOwer.dto.UsersRoleDto;
 import multicampus.kb03.IPOwer.security.AuthenticatedUser;
@@ -37,6 +42,17 @@ public class MyPageController {
 			System.out.println(cd);
 		}
 		return "myPage";
+	}
+	
+	@GetMapping("/company")
+	public @ResponseBody ResponseEntity<CompanyDemandDto> companyInfoGet(@RequestParam("id") int id){
+		System.out.println("controller "+ id);
+		try {
+			return ResponseEntity.ok(companyDemandDao.findOneCompany(id));
+		}catch(Exception e) {
+			e.printStackTrace();
+			return ResponseEntity.badRequest().body(null);
+		}
 	}
 	
 }

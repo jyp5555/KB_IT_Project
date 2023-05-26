@@ -206,7 +206,14 @@ a {
 }
 
 a:hover {
-	color: #0582ae
+	color: #0582ae;
+	font-weight: bolder;
+	text-decoration: none
+	
+}
+
+.custom{
+	color: #ffffff;
 }
 
 a:not ([href] ):not ([class] ), a:not ([href] ):not ([class] ):hover {

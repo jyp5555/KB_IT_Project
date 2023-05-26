@@ -32,8 +32,6 @@
    
     <link href="/resources/css/style.css" rel="stylesheet" type="text/css">
 	<link href="/resources/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-
-	
 </head>
 
 <body>
@@ -77,10 +75,10 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0" >
-					
-                     <li class="nav-item nav-link"><a href="/home">Home</a></li>
-                     <li class="nav-item nav-link"><a href="/news">Contents</a></li>
-                     <li class="nav-item nav-link"><sec:authorize access="isAuthenticated()"><a href="/myPage">My Page</a></sec:authorize></li>
+                	<li class="nav-item nav-link"><a href="/home">Home</a></li>
+                	<li class="nav-item nav-link"><a href="/community">Community</a></li>
+                	<li class="nav-item nav-link"><a href="/news">Contents</a></li>
+                	<li class="nav-item nav-link"><sec:authorize access="isAuthenticated()"><a href="/myPage">My Page</a></sec:authorize></li>
 					<li class="nav-item nav-link"><sec:authorize access="isAnonymous()" ><a href="/user/me">로그인</a></sec:authorize></li>
 					<li class="nav-item nav-link"><sec:authorize access="isAuthenticated()"><a href="/logout">로그아웃</a></sec:authorize></li>
 		
