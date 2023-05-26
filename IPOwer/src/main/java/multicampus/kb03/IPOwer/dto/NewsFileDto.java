@@ -8,6 +8,7 @@ public class NewsFileDto {
 	private double file_size;
 	private Date news_regdate;
 	private String file_path;
+	
 	public NewsFileDto() {
 		// TODO Auto-generated constructor stub
 	}

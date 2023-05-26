@@ -52,7 +52,6 @@ public class AdminNewsFileDao {
 
 	public void updateNewsTitle(int newsPk, String newsTitle) {
 		// TODO Auto-generated method stub
-		System.out.println("정상:"+newsPk+","+newsTitle);
 		mapper.updateNewsTitle(newsPk,newsTitle);
 	}
 	
