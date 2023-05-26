@@ -1,7 +1,12 @@
 package multicampus.kb03.IPOwer.dto;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
+import java.util.Locale;
 
 public class BoardDto {
 	private int articlePk,userPk,rolePk,articleView;
@@ -95,6 +100,26 @@ public class BoardDto {
 				+ articleView + ", articleTitle=" + articleTitle + ", articleContent=" + articleContent + ", userName="
 				+ userName + ", articleRegdate=" + articleRegdate + "]";
 	}
+	public void setArticleRegdateFormatted(String formattedDate) {
+        // formattedDate를 Date 객체로 변환하여 articleRegdate 필드에 설정하는 로직을 구현합니다.
+        // 예시로는 SimpleDateFormat을 사용하여 변환하는 방법을 보여줍니다.
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy년 MM월 dd일 EEEE", new Locale("ko"));
+        try {
+            Date regDate = formatter.parse(formattedDate);
+            setArticleRegdate(regDate);
+        } catch (ParseException e) {
+            // 예외 처리 로직을 구현합니다.
+            e.printStackTrace();
+        }
+    }
+
+    public LocalDate toLocalDate() {
+        // articleRegdate 필드의 값을 LocalDate로 변환하는 로직을 구현합니다.
+        Instant instant = articleRegdate.toInstant();
+        ZoneId zoneId = ZoneId.systemDefault();
+        LocalDate localDate = instant.atZone(zoneId).toLocalDate();
+        return localDate;
+    }
 }
    
   

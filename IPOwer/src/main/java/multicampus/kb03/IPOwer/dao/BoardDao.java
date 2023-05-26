@@ -1,6 +1,9 @@
 package multicampus.kb03.IPOwer.dao;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -24,6 +27,12 @@ private final SqlSessionTemplate sqlSessionTemplate;
 
     public List<BoardDto> selectAll() {
 		List<BoardDto> dto = mapper.selectAll();
+//		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 EEEE", new Locale("ko"));
+//		for (BoardDto board : dto) {
+//		    LocalDate regDate = board.getArticleRegdate().toLocalDate();
+//		    String formattedDate = regDate.format(formatter);
+//		    board.setArticleRegdateFormatted(formattedDate);
+//		}
 		return dto;
     }
     public BoardDto detail(int ARTICLE_PK){

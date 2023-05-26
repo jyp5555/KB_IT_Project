@@ -150,11 +150,22 @@ public class BoardController {
 	        return "board";
 	    }
 	    
-	  //글쓰기 
+	  //html 템플릿 적용 
 	    @RequestMapping("/companyinfo")
 	    public String companyinfo() {
 	        // 글쓰기 폼 페이지로 이동
-	        return "companyinfo"; //write.jsp 페이지로 이동
+	        return "companyinfo"; 
+	    }
+	    @RequestMapping("/htmlcommunity")
+	    public String htmlcommunity() {
+	        // 글쓰기 폼 페이지로 이동
+	        return "htmlcommunity";
+	    }
+	    
+	    @RequestMapping("/htmldetailreview")
+	    public String htmldetailreview() {
+	        // 글쓰기 폼 페이지로 이동
+	        return "htmldetailreview";
 	    }
 	    
 	    
