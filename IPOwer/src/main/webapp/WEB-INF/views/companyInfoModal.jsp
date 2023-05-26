@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-lg modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h4 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+				<h4 class="modal-title" id="exampleModalLongTitle">Modal title</h5><h3 id="rating"></h3>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
@@ -45,7 +46,7 @@
   						<tr>
   						<tr>
   							<td colspan=4>
-  								<div style="position: relative; height:30vh; width:30vw">
+  								<div style=" height:30vh; width:30vw">
 									<canvas id="myChart"></canvas>
 								</div>
   							</td>
@@ -63,5 +64,7 @@
 	</div>
 </div>
 <script>
-  
+  $(".close").click(function(e){
+	  $("#exampleModalLong").modal("hide")
+  })
 </script>

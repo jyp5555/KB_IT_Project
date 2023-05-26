@@ -199,14 +199,22 @@ sup {
 }
 
 a {
-	color: #ffffff;
+	color: #0582ae;
 	font-weight: bolder;
 	text-decoration: none
 	
 }
 
+.custom{
+	color: #ffffff;
+}
+
+/* .custom:hover {
+	color: #0582ae;
+} */
+
 a:hover {
-	color: #0582ae
+	color: #0582ae;
 }
 
 a:not ([href] ):not ([class] ), a:not ([href] ):not ([class] ):hover {

@@ -66,7 +66,7 @@
 							</div>
 							<div class="form-row">
 								<div class="form-group col-md-6">
-									<label for="companyMinimumcount" class="col-form-label">최소청약주수</label> 
+									<label for="companyMinimumcount" class="col-form-label">최소청약주수 *</label> 
 									<input type="number" class="form-control" id="companyMinimumcount" name="companyMinimumcount" required="required">
 								</div>
 								<div class="form-group col-md-6">
@@ -120,5 +120,4 @@
 				</div>
 			</div>
 		</div>
-		
 		

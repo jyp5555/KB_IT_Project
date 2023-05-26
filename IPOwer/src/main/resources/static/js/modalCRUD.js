@@ -4,7 +4,11 @@ var type = '';
 var companyPk = 0;
 
 $(document).ready(function(){
-
+	
+	$(".close").click(function(e){
+		console.log(e)
+		$("#exampleModalLong").modal("hide")
+	})
 // 새 글 쓰기 버튼 클릭
 	$("#btnSave").click(function(){
 		action='create';
@@ -51,17 +55,8 @@ $(document).ready(function(){
 				$("#demandBand").val(result.demandBand);
 				$("#demandTop").val(result.demandTop);
 				$("#demandOvertop").val(result.demandOvertop);
-			},
-			complete: function(result){
-				if(result){
-					console.log(result)
-				}
 			}
 		})
-
-		
-
-		
 	});
 	
 	// 삭제하기 버튼 클릭
@@ -196,63 +191,4 @@ $(document).ready(function(){
 				}			
 			}
 		})
-	
-	
-	
-	
-	
-	
-//	// Modal의 Submit 버튼 클릭
-//	$("#btnSave").click(function(){
-//		
-//		if(action=='create')
-//		{
-//			url = '/test'
-//		}
-////		if(action == 'create'){
-////			bno = 0;
-////			url = '/admin/new/company';
-////		}else if(action == 'modify'){
-////			url = '/admin/company';
-////		}
-////
-////		var data = {
-////			companyTicker      : $('input[name=companyTicker]').val(),
-////			companyName      : $('input[name=companyName]').val(),
-////			companySite      : $('input[name=companySite]').val(),
-////			companyFaceprice      : $('input[name=companyFaceprice]').val(),
-////			companyFixedprice      : $('input[name=companyFixedprice]').val(),
-////			companyTopprice      : $('input[name=companyTopprice]').val(),
-////			companyBottomprice      : $('input[name=companyBottomprice]').val(),
-////			companyManager      : $('input[name=companyManager]').val(),
-////			companyOfferingdate      : $('input[name=companyOfferingdate]').val(),
-////			companyRefundingdate      : $('input[name=companyRefundingdate]').val(),
-////			companyListingdate      : $('input[name=companyListingdate]').val(),
-////			companyMinimumcount      : $('input[name=companyMinimumcount]').val(),
-////			companyCompetitiveratio      : $('input[name=companyCompetitiveratio]').val(),
-////			demandRatio      : $('input[name=demandRatio]').val(),
-////			demandLockup      : $('input[name=demandLockup]').val(),
-////			demandNoprice      : $('input[name=demandNoprice]').val(),
-////			demandUnderbottom      : $('input[name=demandUnderbottom]').val(), 
-////			demandBottom      : $('input[name=demandBottom]').val(),
-////			demandBand      : $('input[name=demandBand]').val(),
-////			demandTop      : $('input[name=demandTop]').val(),
-////			demandOvertop      : $('input[name=demandOvertop]').val()
-////		};
-////		
-//		var data = {
-//			test : $('input[name=test]').val()
-//		}
-//		$.ajax({
-//			url : url,
-//			type : type,
-//			data : data,
-//			success: function(data){$("#exampleModalLong").modal('toggle');},
-//			complete: function(data){location.reload();}
-//		})
-//		
-//		location.reload();
-//	});
-//	
-
-});
+})

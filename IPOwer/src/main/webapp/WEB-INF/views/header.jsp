@@ -75,12 +75,12 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
 					
-                     <li class="nav-item nav-link"><a href="/home">Home</a></li>
-                     <li class="nav-item nav-link"><a href="community">Community</a></li>
-                     <li class="nav-item nav-link"><a href="news">Contents</a></li>
-                     <li class="nav-item nav-link"><sec:authorize access="isAuthenticated()"><a href="/mypage">My Page</a></sec:authorize></li>
-					<li class="nav-item nav-link"><sec:authorize access="isAnonymous()" ><a href="/user/me">로그인</a></sec:authorize></li>
-					<li class="nav-item nav-link"><sec:authorize access="isAuthenticated()"><a href="/home">로그아웃</a></sec:authorize></li>
+                     <li class="nav-item nav-link"><a href="/home" class="custom">Home</a></li>
+                     <li class="nav-item nav-link"><a href="community" class="custom">Community</a></li>
+                     <li class="nav-item nav-link"><a href="news" class="custom">Contents</a></li>
+                     <li class="nav-item nav-link"><sec:authorize access="isAuthenticated()"><a href="/myPage" class="custom">My Page</a></sec:authorize></li>
+					<li class="nav-item nav-link"><sec:authorize access="isAnonymous()" ><a href="/user/me" class="custom">로그인</a></sec:authorize></li>
+					<li class="nav-item nav-link"><sec:authorize access="isAuthenticated()"><a href="/home" class="custom">로그아웃</a></sec:authorize></li>
 		
                    
                  
@@ -94,6 +94,7 @@
     
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/resources/lib/wow/wow.min.js"></script>
     <script src="/resources/lib/easing/easing.min.js"></script>
