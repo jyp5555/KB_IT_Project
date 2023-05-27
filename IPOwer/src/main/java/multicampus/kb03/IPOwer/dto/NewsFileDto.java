@@ -3,11 +3,13 @@ package multicampus.kb03.IPOwer.dto;
 import java.util.Date;
 
 public class NewsFileDto {
+
 	private String newsTitle,newsWriter,fileName,fileContenttype;
 	private int newsPk,newsView,filePk;
 	private double fileSize;
 	private Date newsRegdate;
 	private String filePath;
+
 	public NewsFileDto() {
 		// TODO Auto-generated constructor stub
 	}

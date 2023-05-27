@@ -16,34 +16,55 @@ public class AdminNewsFileDao {
 	
 	public List<AdminNewsFileDto> selectAll(){
 		List<AdminNewsFileDto> dto = mapper.selectAll();
+		System.out.println("mapper.selectAll의dto의 값은:"+dto.toString());
 		return dto;
 	}	
 	
-	public AdminNewsFileDto selectByNewsPk(int news_pk){
-		AdminNewsFileDto dto = mapper.selectByNewsPk(news_pk);
+	public AdminNewsFileDto selectByNewsPk(int newsPk){
+		AdminNewsFileDto dto = mapper.selectByNewsPk(newsPk);
+		System.out.println("dto.getNewsPk()값:"+dto.getNewsPk());
+		System.out.println("dto.getNewsTitle()값:"+dto.getNewsTitle());
 		return dto;
 	}
 	
 	
-	public List<AdminNewsFileDto> selectAllFilesByNewsPk(int news_pk){ 
-		List<AdminNewsFileDto> list = mapper.selectAllFilesByNewsPk(news_pk); 
+	public List<AdminNewsFileDto> selectAllFilesByNewsPk(int newsPk){ 
+		List<AdminNewsFileDto> list = mapper.selectAllFilesByNewsPk(newsPk); 
 		return list; 
+	}
+	public void deleteAllFilesByNewsPk(int newsPk) {
+		mapper.deleteAllFilesByNewsPk(newsPk);
+	}
+	
+	public void deleteNewsByNewsPk(int newsPk) {
+		// TODO Auto-generated method stub
+		mapper.deleteNewsByNewsPk(newsPk);
+	}
+	
+	public void deleteFilesByFilePk(int filePk) {
+		// TODO Auto-generated method stub
+		mapper.deleteFilesByFilePk(filePk);
 	}
 	 
 	
 
-	public void saveFiles(AdminNewsFileDto dto) {
-		mapper.saveFiles(dto);
+	public void saveCreateFiles(AdminNewsFileDto dto) {
+		System.out.println("dao: "+dto);
+		mapper.saveCreateFiles(dto);
 	}
 	
-	public void saveNews(String news_title) {
-		mapper.saveNews(news_title);
+	public void saveUpdateFiles(AdminNewsFileDto dto) {
+		System.out.println("dao: "+dto);
+		mapper.saveUpdateFiles(dto);
+	}
+	
+	public void saveCreateNews(String newsTitle) {
+		mapper.saveCreateNews(newsTitle);
 	}
 
-	public void updateNewsTitle(int news_pk, String news_title) {
+	public void updateNewsTitle(int newsPk, String newsTitle) {
 		// TODO Auto-generated method stub
-		System.out.println("정상:"+news_pk+","+news_title);
-		mapper.updateNewsTitle(news_pk,news_title);
+		mapper.updateNewsTitle(newsPk,newsTitle);
 	}
 	
 //	public List<AdminNewsFileDto> selectByTitle(String title){

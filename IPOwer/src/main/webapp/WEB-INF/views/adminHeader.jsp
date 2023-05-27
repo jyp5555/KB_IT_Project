@@ -53,10 +53,9 @@
                     <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-linkedin-in fw-normal"></i></a>
                     <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-instagram fw-normal"></i></a>
                     <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle" href=""><i class="fab fa-youtube fw-normal"></i></a>
-                
-                </div>
-            </div>
-        </div>
+				</div>
+			</div>
+		</div>
     </div>
     <!-- Topbar End -->
     <!-- Navbar Start -->
@@ -72,7 +71,7 @@
                 <div class="navbar-nav ms-auto py-0">
 					
                      <li class="nav-item nav-link"><a href="/admin/company">회사 정보 관리</a></li>
-                     <li class="nav-item nav-link"><a href="/admin/cards">콘텐츠 관리</a></li>
+                     <li class="nav-item nav-link"><a href="/admin/newsContents">콘텐츠 관리</a></li>
                      <li class="nav-item nav-link"><sec:authorize access="isAuthenticated()"><a href="/logout">로그아웃</a></sec:authorize></li>
 				</div>
                 <!-- <butaton type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></butaton> -->

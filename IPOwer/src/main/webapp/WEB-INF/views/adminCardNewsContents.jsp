@@ -22,14 +22,22 @@
 					<td><a href="#" onclick="sendDataToController('${all[i].news_pk}')">${all[i].news_title}</a></td>
 				</tr>
 			</c:forEach> --%>
-			<c:if test="${count > 0}">
-			  <c:forEach var="i" begin="0" end="${count}">
+			<c:if test="${count>0}">		
+			  <c:forEach var="i" begin="0" end="${count-1}">
 			    <tr>
-			      <td>${all[i].news_pk}</td>
-			      <td><a href="#" onclick="sendDataToController('${all[i].news_pk}')">${all[i].news_title}</a></td>
+			      <td>${i+1}</td>
+			      <%-- <td>${all[i].newsPk}</td> --%>
+			      <td><a href="#" onclick="sendDataToController('${all[i].newsPk}')">${all[i].newsTitle}</a></td>
 			    </tr>
 			  </c:forEach>
 			</c:if>
+<%-- 			<c:if test="${count-1>0}">
+				<c:forEach var="item" items="${all}">
+					<tr>
+						<td>${item.news_pk}</td>
+					</tr>
+				</c:forEach>
+			</c:if>	 --%>
 		</tbody>
 	</table>
 	<hr>
@@ -38,6 +46,7 @@
 	</form>
 
 	<script>
+	console.log(${count})
 	function sendDataToController(data) {
 	  var form = document.createElement('form');
 	  form.method = 'GET';
@@ -45,7 +54,7 @@
 	
 	  var input = document.createElement('input');
 	  input.type = 'hidden';
-	  input.name = 'news_pk';
+	  input.name = 'newsPk';
 	  input.value = data;
 	
 	  form.appendChild(input);

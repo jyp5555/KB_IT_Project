@@ -3,6 +3,7 @@ package multicampus.kb03.IPOwer.controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -11,7 +12,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-//import org.apache.commons.fileupload.ParameterParser;
+import org.apache.commons.fileupload.ParameterParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -67,10 +68,10 @@ public class AdminNewsFileController {
     public String adminNewsCreatePost(
     		MultipartHttpServletRequest multipartRequest, 
 			HttpServletRequest request, 
-			@RequestParam("news_title") String newsTitle,
+			@RequestParam("newsTitle") String newsTitle,
 			Model model) throws IOException {
     	AdminNewsFileDto dto = new AdminNewsFileDto();
-    	AdminNewsFileDao.saveNews(newsTitle);
+    	AdminNewsFileDao.saveCreateNews(newsTitle);
     	
     	String UPLOAD_DIR = "img";	
     	
@@ -126,24 +127,24 @@ public class AdminNewsFileController {
 				mFile.transferTo(new File(uploadPath + "\\" + originName));	// 파일 업로드
 				System.out.println("File saved at: " + uploadPath);
 			}
-			fileList.add(oName);
-			fileList.add(oContentType);
-			fileList.add(oSize);
-			fileList.add(uploadPath);
+			/*
+			 * fileList.add(oName); fileList.add(oContentType); fileList.add(oSize);
+			 * fileList.add(uploadPath);
+			 * 
+			 * System.out.println("newsTitle 출력:"+newsTitle);
+			 * System.out.println("fileList 출력:"+fileList.toString()); map.put("fileList",
+			 * fileList);
+			 * 
+			 * //여기서 files테이블에 insert문으로 파일 하나씩 추가.
+			 * System.out.println("★★★맵★★★맵★★★"+map.toString()+"★★★맵★★★맵★★★");
+			 */
 			
-			System.out.println("newsTitle 출력:"+newsTitle);
-			System.out.println("fileList 출력:"+fileList.toString());
-			map.put("fileList", fileList);
-			
-			//여기서 files테이블에 insert문으로 파일 하나씩 추가.
-			System.out.println("★★★맵★★★맵★★★"+map.toString()+"★★★맵★★★맵★★★");
-			
-			dto.setFile_name(oName);
-			dto.setFile_content_type(oContentType);
-			dto.setFile_size(oSize);
-			dto.setFile_path(uploadPath);
-			
-			AdminNewsFileDao.saveFiles(dto);
+			dto.setFileName(oName);
+			dto.setFileContenttype(oContentType);
+			dto.setFileSize(oSize);
+			dto.setFilePath(uploadPath);
+			System.out.println("before:"+dto);
+			AdminNewsFileDao.saveCreateFiles(dto);
 		}
 		//map.put("fileList", fileList);
 		model.addAttribute("dto", dto);
@@ -152,21 +153,21 @@ public class AdminNewsFileController {
     }
     @GetMapping("/newsUpdate")
     public String adminNewsUpdateGet(
-    		@RequestParam("news_pk") int news_pk,
+    		@RequestParam("newsPk") int newsPk,
     		Model model) {
     	
-    	AdminNewsFileDto selectByNewsPk = AdminNewsFileDao.selectByNewsPk(news_pk);
-    	String news_title = selectByNewsPk.getNews_title();
-//    	System.out.println(news_title);
-    	List<AdminNewsFileDto> selectAllFilesByNewsPk = AdminNewsFileDao.selectAllFilesByNewsPk(news_pk);
+    	AdminNewsFileDto selectByNewsPk = AdminNewsFileDao.selectByNewsPk(newsPk);
+    	String newsTitle = selectByNewsPk.getNewsTitle();
+//    	System.out.println(newsTitle);
+    	List<AdminNewsFileDto> selectAllFilesByNewsPk = AdminNewsFileDao.selectAllFilesByNewsPk(newsPk);
     	System.out.println("★★★★★★★★★★★★★★★★★★★★★★★★");
 		for (AdminNewsFileDto AdminNewsFileDto : selectAllFilesByNewsPk) {
 			System.out.println(AdminNewsFileDto);
 		}
 		System.out.println("★★★★★★★★★★★★★★★★★★★★★★★★");
     	
-		model.addAttribute("news_pk", news_pk);
-		model.addAttribute("news_title", news_title);
+		model.addAttribute("newsPk", newsPk);
+		model.addAttribute("newsTitle", newsTitle);
 		model.addAttribute("selectAllFilesByNewsPkSize", selectAllFilesByNewsPk.size());
 		model.addAttribute("selectAllFilesByNewsPk",selectAllFilesByNewsPk);
     	
@@ -175,90 +176,189 @@ public class AdminNewsFileController {
 
     @PostMapping("/newsUpdate")
     public String adminNewsUpdatePost(
-    		@RequestParam("news_pk") int news_pk, 
-    		Model model) {
+    		MultipartHttpServletRequest multipartRequest, 
+			HttpServletRequest request, 
+    		@RequestParam("newsPk") int newsPk,
+    		@RequestParam("filePk") int filePk,
+			Model model) throws IOException {
+    	AdminNewsFileDto dto = new AdminNewsFileDto();
     	
-    	System.out.println(news_pk);
-    	System.out.println("출력");
-    	AdminNewsFileDto selectByNewsPk = AdminNewsFileDao.selectByNewsPk(news_pk);
+    	String UPLOAD_DIR = "img";	
     	
-    	model.addAttribute("news_pk", news_pk);
-    	model.addAttribute("selectByNewsPk",selectByNewsPk);
-        return "adminCardNewsUpdate";
-    }
-    @GetMapping("/newsDelete")
-    public String adminNewsDeleteGet(
-		@RequestParam("news_pk") int news_pk, 
-		@RequestParam("selectAllFilesByNewsPk") String selectAllFilesByNewsPk, 
-		Model model) {
-	System.out.println(news_pk);
-	System.out.println(selectAllFilesByNewsPk);
-	System.out.println("출력");
-	//AdminNewsFileDto selectByNewsPk = AdminNewsFileDao.selectByNewsPk(news_pk);
-	
-	//model.addAttribute("selectByNewsPk",selectByNewsPk);
-    	
-        return "adminCardNewsContents";
-    }
+		// UPLOAD_DIR의 실제 경로 가져오는 것.
+		//String uploadPath = request.getServletContext().getRealPath("") + File.separator + UPLOAD_DIR;
+    	String uploadPath = request.getServletContext().getRealPath("/WEB-INF/")+ UPLOAD_DIR;
 
-    @PostMapping("/newsDelete")
-    public String adminNewsDeletePost(
-    		@RequestParam("news_pk") int news_pk, 
-    		@RequestParam("file_pk") int file_pk, 
-    		Model model) {
-    	System.out.println(news_pk);
-    	System.out.println(file_pk);
-    	System.out.println("출력");
-    	AdminNewsFileDto selectByNewsPk = AdminNewsFileDao.selectByNewsPk(news_pk);
+		// 1. id, name 파라미터 읽어오기
+		Map map = new HashMap();	// (KEY, Value)
+		//String multipartRequestid = multipartRequest.getParameter("id");
+		//String multipartRequestname = multipartRequest.getParameter("name");
+		Enumeration<String> e = multipartRequest.getParameterNames();
 		
+		while (e.hasMoreElements()) {
+			String name = e.nextElement();
+			String value = multipartRequest.getParameter(name);
+			
+			map.put(name, value);
+		}
+		
+		// 2. 파일 담고있는 파라미터 읽어오기
+		Iterator<String> it = multipartRequest.getFileNames();
+		//List<String> fileList = new ArrayList<String>();
+		
+		while (it.hasNext()) {
+			List<String> fileList = new ArrayList<String>();
+			String paramfName = it.next();
+			MultipartFile mFile = multipartRequest.getFile(paramfName);
+			String originName = mFile.getOriginalFilename();	// 실제 업로드된 파일 이름
+			String oName = originName.split("\\.")[0];
+//			String oContentType = mFile.getContentType();	// 실제 업로드된 파일 확장자
+//			oContentType = oContentType.split("/")[1];
+			String oContentType = originName.split("\\.")[1];	// 실제 업로드된 파일 확장자
+			long fileSizeBytes = mFile.getSize(); // 파일 크기(byte)를 가져옴
+			String oSize = ""; // 파일 크기(byte)를 가져옴
+			if(fileSizeBytes/(1024*1024)>0) {
+				long fileSizeMegabytes = fileSizeBytes / (1024*1024); // 바이트를 키로바이트로 변환				
+				oSize = Long.toString(fileSizeMegabytes)+"MB"; // 메가바이트 크기를 문자열로 변환
+			}else if(fileSizeBytes/(1024)>0){
+				long fileSizeKilobytes = fileSizeBytes / (1024); // 바이트를 키로바이트로 변환						
+				oSize = Long.toString(fileSizeKilobytes)+"KB"; // 메가바이트 크기를 문자열로 변환		
+			}
+			
+			// 파일 업로드할 경로 확인
+			File file = new File(uploadPath + "\\" + paramfName);
+			
+			if (mFile.getSize() != 0) {
+				if (!file.exists()) {
+					if (file.getParentFile().mkdirs()) {
+						file.createNewFile(); 	// 임시로 파일을 생성한다.
+					}
+				}
+				mFile.transferTo(new File(uploadPath + "\\" + originName));	// 파일 업로드
+				System.out.println("File saved at: " + uploadPath);
+			}
+			/*
+			 * fileList.add(oName); fileList.add(oContentType); fileList.add(oSize);
+			 * fileList.add(uploadPath);
+			 * 
+			 * System.out.println("newsTitle 출력:"+newsTitle);
+			 * System.out.println("fileList 출력:"+fileList.toString()); map.put("fileList",
+			 * fileList);
+			 * 
+			 * //여기서 files테이블에 insert문으로 파일 하나씩 추가.
+			 * System.out.println("★★★맵★★★맵★★★"+map.toString()+"★★★맵★★★맵★★★");
+			 */
+			System.out.println("여기는 업데이트다!!!!!!!!");
+			dto.setNewsPk(newsPk);
+			dto.setFilePk(filePk);
+			dto.setFileName(oName);
+			dto.setFileContenttype(oContentType);
+			dto.setFileSize(oSize);
+			dto.setFilePath(uploadPath);
+			System.out.println("before:"+dto);
+			AdminNewsFileDao.saveUpdateFiles(dto);
+			System.out.println("after:"+dto);
+		}
+		//map.put("fileList", fileList);
+		model.addAttribute("dto", dto);
+    		
+    	AdminNewsFileDto selectByNewsPk = AdminNewsFileDao.selectByNewsPk(newsPk);
+    	System.out.println("중요한 값인가?: newPK,selectByNewsPk:"+newsPk+","+selectByNewsPk);
+    	model.addAttribute("newsPk", newsPk);
     	model.addAttribute("selectByNewsPk",selectByNewsPk);
-        return "adminCardNewsContents";
+    	//return "redirect:newsContents";
+    	return "redirect:newsContents";
     }
     
-    @GetMapping("/updateNickname")
-    public String updateNicknameGet(
-    		@RequestParam("news_pk") int news_pk,
-    		@RequestParam("news_title") String news_title,
+    @GetMapping("/updateNewsTitle")
+    public String updateNewTitleGet(
+    		@RequestParam("newsPk") int newsPk,
+    		@RequestParam("newsTitle") String newsTitle,
     		Model model) {
-    		
-    		model.addAttribute("news_pk",news_pk);
-    		model.addAttribute("news_title",news_title);
-    		AdminNewsFileDao.updateNewsTitle(news_pk,news_title);
+    		System.out.println("newsPk값:"+newsPk);
+    		model.addAttribute("newsPk",newsPk);
+    		model.addAttribute("newsTitle",newsTitle);
+    		AdminNewsFileDao.updateNewsTitle(newsPk,newsTitle);
     		
     	return "adminCardNewsUpdate";
     }
     
-    @PostMapping("/updateNickname")
-    public String updateNicknamePost(
-		@RequestParam("news_pk") int news_pk,
-		@RequestParam("news_title") String news_title,
-		Model model) {
-    	
-		model.addAttribute("news_pk",news_pk);
-		model.addAttribute("news_title",news_title);
-		AdminNewsFileDao.updateNewsTitle(news_pk,news_title);
+    @PostMapping("/updateNewsTitle")
+    public String updateNewsTitlePost(
+		@RequestParam("newsPk") int newsPk,
+		@RequestParam("newsTitle") String newsTitle) {
+    	try {
+    		AdminNewsFileDao.updateNewsTitle(newsPk,newsTitle);
+    	}catch(Exception e) {
+    		e.printStackTrace();
+    	}
 		
-	return "adminCardNewsUpdate";
+		return "adminCardNewsUpdate";
 	}
     
-    @GetMapping("/deleteSaveFile")
+    @GetMapping("/deleteExistFile")
     public String adminNewsDeleteSaveFileGet() {
-    	
+    	System.out.println("adminNewsDeleteSaveFileGet() 실행");
         return "adminCardNewsUpdate";
     }
 
-    @PostMapping("/deleteSaveFile")
+    @PostMapping("/deleteExistFile")
     public String adminNewsDeleteSaveFilePost(
-    		@RequestParam("index") int index, 
-    		@RequestParam("news_pk") int news_pk, 
-    		Model model) {
-    	System.out.println("index:"+index);
-    	System.out.println("newsPK:"+news_pk);
-    	System.out.println("출력");
-    	AdminNewsFileDto selectByNewsPk = AdminNewsFileDao.selectByNewsPk(news_pk);
-		
-    	model.addAttribute("selectByNewsPk",selectByNewsPk);
+            @RequestParam("newsPk") int newsPk,
+            @RequestParam("deletedFilePkList[]") int[] deletedFilePkList,
+            Model model) {
+        System.out.println("adminNewsDeleteSaveFilePost() 실행");
+        System.out.println("newsPk: " + newsPk);
+        //System.out.println("filePk: " + Arrays.toString(filePk));
+        if(deletedFilePkList.length==0) {
+        	System.out.println("등록삭제한 파일이 없습니다.");        	
+        	System.out.println("deletedFilePkList: " + Arrays.toString(deletedFilePkList));
+        }else {
+        	System.out.println("deletedFilePkList: " + Arrays.toString(deletedFilePkList));
+        	for(int deletedFilePk : deletedFilePkList) {
+        		AdminNewsFileDao.deleteFilesByFilePk(deletedFilePk);
+        	}
+        }
+        
+        // 추가적인 처리 로직 수행
+        // ...
+
         return "adminCardNewsDelete";
+    }
+
+    @GetMapping("/newsDelete")
+    public String adminNewsDeleteGet() {
+    		
+    	return "redirect:newsContents";
+    }
+    
+    @PostMapping("/newsDelete")
+    public String adminNewsDeletePost(
+    		@RequestParam("newsPk") int newsPk, 
+    		Model model) {
+    	System.out.println(newsPk);
+    	//List<AdminNewsFileDto> selectAllFilesByNewsPk = AdminNewsFileDao.selectAllFilesByNewsPk(newsPk);
+
+		AdminNewsFileDao.deleteAllFilesByNewsPk(newsPk);
+		AdminNewsFileDao.deleteNewsByNewsPk(newsPk);
+    	
+    	return "redirect:newsContents";
+    }
+    @GetMapping("UpdateNewsTitle")
+    public String UpdateNewsTitlePageGet(Model model) {
+      // Add necessary logic and data to the model if needed
+      // ...
+    	System.out.println("UpdateNewsTitlePageGet출력");
+      return "UpdateNewsTitlePage"; // Return the name of the JSP page
+    }
+    @PostMapping("UpdateNewsTitle")
+    public String UpdateNewsTitlePagePost(@RequestParam("newsTitle") String newsTitle,Model model) {
+      // Add necessary logic and data to the model if needed
+        model.addAttribute(newsTitle);
+        System.out.println(newsTitle);
+    	System.out.println("UpdateNewsTitlePagePost출력");
+
+      return "adminCardNewsUpdate"; // Return the name of the JSP page
     }
     	
 }
