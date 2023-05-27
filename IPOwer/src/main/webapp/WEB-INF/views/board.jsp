@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +14,7 @@
 
     <link href="/resources/css/style.css" rel="stylesheet" type="text/css">
 <link href="/resources/css/bootstrap.min.css" rel="stylesheet"
-	type="text/css">
+   type="text/css">
 
 
 <!-- Favicon -->
@@ -24,20 +24,20 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
-	href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Rubik:wght@400;500;600;700&display=swap"
-	rel="stylesheet">
+   href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Rubik:wght@400;500;600;700&display=swap"
+   rel="stylesheet">
 
 <!-- Icon Font Stylesheet -->
 <link
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
-	rel="stylesheet">
+   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+   rel="stylesheet">
 <link
-	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
-	rel="stylesheet">
+   href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
+   rel="stylesheet">
 
 <!-- Libraries Stylesheet -->
 <link href="lib/owlcarousel/assets/owl.carousel.min.css"
-	rel="stylesheet">
+   rel="stylesheet">
 <link href="lib/animate/animate.min.css" rel="stylesheet">
 
 <!-- Customized Bootstrap Stylesheet -->
@@ -63,7 +63,96 @@
 <link rel="stylesheet" href="/resources/css/main.css">
 <meta name="robots" content="noindex, follow">
     
+    <style type="text/css">
+    body{
+        line-height:5em;        
+        font-family:"맑은 고딕";
+}
+    ul, li{ 
+        list-style:none;
+        text-align:center;
+        padding:0;
+        margin:10;
+}
+
+    #mainWrapper{
+        width: 1000px;
+        margin: auto; /*가운데 정렬*/
+    }
+
+    #mainWrapper > ul > li:first-child {
+        text-align: center;
+        font-size:30pt;
+        height:50px;
+        vertical-align:middle;
+        line-height:30px;
+}
+
+    #ulTable {margin-top:20px;}
     
+
+    #ulTable > li:first-child > ul > li {
+        background-color:#79dddb;
+        font-weight:bold;
+        text-align:center;
+        height:40px;
+       line-height:40px;
+       font-size:13pt;
+       color:white;
+       font-family:"맑은 고딕";
+}
+
+    #ulTable > li > ul {
+        clear:both;
+        padding:auto;
+        position:relative;
+        min-width:40px;
+        font-size:12pt;
+}
+    #ulTable > li > ul > li { 
+        float:left;
+        font-size:12pt;
+        border-bottom:1px solid silver;
+        vertical-align:middle;
+        
+}    
+
+    #ulTable > li > ul > li:first-child               {width:10%;} /*No 열 크기*/
+    #ulTable > li > ul > li:first-child +li           {width:45%;} /*제목 열 크기*/
+    #ulTable > li > ul > li:first-child +li+li        {width:20%;} /*작성일 열 크기*/
+    #ulTable > li > ul > li:first-child +li+li+li     {width:15%;} /*작성자 열 크기*/
+    #ulTable > li > ul > li:first-child +li+li+li+li{width:10%;} /*조회수 열 크기*/
+
+    #divPaging {
+          clear:both; 
+        margin:0 auto; 
+        width:220px; 
+        height:50px;
+}
+
+    #divPaging > div {
+        float:left;
+        width: 30px;
+        margin:0 auto;
+        text-align:center;
+}
+
+    #liSearchOption {clear:both;}
+    #liSearchOption > div {
+        margin:0 auto; 
+        margin-top: 30px; 
+        width:auto; 
+        height:100px;
+        float:left;
+
+}
+
+    .left {
+        text-align : left;
+}
+
+
+</style>
 </head>
 
 <body>
@@ -81,10 +170,9 @@
         <div class="container-fluid bg-primary py-5 bg-header" style="margin-bottom: 90px;">
             <div class="row py-5">
                 <div class="col-12 pt-lg-5 mt-lg-5 text-center">
-                    <h1 class="display-4 text-white animated zoomIn">Blog Detail</h1>
-                    <a href="" class="h5 text-white">Home</a>
-                    <i class="far fa-circle text-white px-2"></i>
-                    <a href="" class="h5 text-white">Blog Detail</a>
+                    <h1 class="display-4 text-white animated zoomIn">게시판</h1>
+
+
                 </div>
             </div>
         </div>
@@ -112,7 +200,7 @@
 
 
     <!-- Blog Start -->
-    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+    <%-- <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">
             <div class="row g-5">
                 <div class="col-lg-8">
@@ -155,80 +243,113 @@
                     </div>
                 
                 
+                <div> --%>
+                <div id="mainWrapper">
+                  <ul>
+            <!-- 게시판 제목 -->
+            <li> Community </li>
+<!-- 검색 폼 영역 -->
+            <li id='liSearchOption'>
                 <div>
+                    <select id='selSearchOption' >
+                        <option value='T'>제목</option>
+                        <option value='C'>내용</option>
+                    </select>
+                    
+                   <fieldset class="field-container">
+  <input type="text" placeholder="Search..." class="field" />
+  <div class="icons-container">
+    <div class="icon-search"></div>
+    <div class="icon-close">
+      <div class="x-up"></div>
+      <div class="x-down"></div>
+    </div>
+  </div>
+</fieldset>
+                    
+                    <input type='button' value='검색'/>
+                </div>
+                </li>
+                
+                <!-- search{s} -->
+		<div class="form-group row justify-content-center">
+			<div class="w100" style="padding-right:10px">
+				<select class="form-control form-control-sm" name="searchType" id="searchType">
+					<option value="ARTICLE_TITLE">제목</option>
+					<option value="ARTICLE_CONTENT">본문</option>
+				</select>
+			</div>
+			<div class="w300" style="padding-right:10px">
+				<input type="text" class="form-control form-control-sm" name="keyword" id="keyword">
+			</div>
+			<div>
+				<button class="btn btn-sm btn-primary" name="btnSearch" id="btnSearch">검색</button>
+			</div>
+		</div>
+		
+		<div class="box">
+  <div class="container-4">
+    <input type="search" id="search" placeholder="Search...">
+    <button class="icon" name="btnSearch" id="btnSearch"><i class="fa fa-search"></i></button>
+  </div>
+</div>
+		<!-- search{e} -->  
+            <!-- 게시판 목록  -->
+            <li>
+              
+                <ul id ="ulTable">
+                    <li>
+                        <ul>
+                            <li>No</li>
+                            <li>제목</li>
+                            <li>작성자</li>
+                            <li>작성일</li>
+                            <li>조회수</li>
+                        </ul>
+                    </li>
+                    
+                    <c:forEach var="contactBoard" items="${articles}">
+                   <li>
+                        <ul>
+                  
+                <!-- <tr class="row100 body"> -->
+              
+                
+                            <li>${contactBoard.articlePk}</li>
+                            <li class="left"><a href="board/detailreview?ARTICLE_PK=${contactBoard.articlePk}">${contactBoard.articleTitle}</a></li>
+                            <li>${contactBoard.userName}</li>
+                            <li>${contactBoard.articleRegdate}</li>
+                            <li>${contactBoard.articleView}</li>
+                        </ul>
+                    </li>
+                    </c:forEach>
+                    
+                  </ul>
+              </li>
+              </ul>
+              </div>
+                  <!-- 게시판 페이징 영역 -->
+            <li>
+                <div id="divPaging">
+                    <div>◀</div>
+                       <div><b>1</b></div>
+                    <div>2</div>
+                    <div>3</div>
+                    <div>4</div>
+                    <div>5</div>
+                    <div>▶</div>
+                </div>
+            </li>
+
+            
+                 
 <a href="${contextPath }/board/write">
 <input type="button" value="글쓰기" class="btn btn-xs pull-right"  style= "font-size: 17px; ">
 </a>
-</div>
-                    <!-- Blog Detail End -->
+             <!-- Blog Detail End -->
     
-                    <!-- Comment List Start -->
-                    <div class="mb-5">
-                        <div class="section-title section-title-sm position-relative pb-3 mb-4">
-                            <h3 class="mb-0">3 Comments</h3>
-                        </div>
-                        <div class="d-flex mb-4">
-                            <img src="img/user.jpg" class="img-fluid rounded" style="width: 45px; height: 45px;">
-                            <div class="ps-3">
-                                <h6><a href="">John Doe</a> <small><i>01 Jan 2045</i></small></h6>
-                                <p>Diam amet duo labore stet elitr invidunt ea clita ipsum voluptua, tempor labore
-                                    accusam ipsum et no at. Kasd diam tempor rebum magna dolores sed eirmod</p>
-                                <button class="btn btn-sm btn-light">Reply</button>
-                            </div>
-                        </div>
-                        <div class="d-flex mb-4">
-                            <img src="img/user.jpg" class="img-fluid rounded" style="width: 45px; height: 45px;">
-                            <div class="ps-3">
-                                <h6><a href="">John Doe</a> <small><i>01 Jan 2045</i></small></h6>
-                                <p>Diam amet duo labore stet elitr invidunt ea clita ipsum voluptua, tempor labore
-                                    accusam ipsum et no at. Kasd diam tempor rebum magna dolores sed eirmod</p>
-                                <button class="btn btn-sm btn-light">Reply</button>
-                            </div>
-                        </div>
-                        <div class="d-flex ms-5 mb-4">
-                            <img src="img/user.jpg" class="img-fluid rounded" style="width: 45px; height: 45px;">
-                            <div class="ps-3">
-                                <h6><a href="">John Doe</a> <small><i>01 Jan 2045</i></small></h6>
-                                <p>Diam amet duo labore stet elitr invidunt ea clita ipsum voluptua, tempor labore
-                                    accusam ipsum et no at. Kasd diam tempor rebum magna dolores sed eirmod</p>
-                                <button class="btn btn-sm btn-light">Reply</button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Comment List End -->
-    
-                    <!-- Comment Form Start -->
-                    <div class="bg-light rounded p-5">
-                        <div class="section-title section-title-sm position-relative pb-3 mb-4">
-                            <h3 class="mb-0">Leave A Comment</h3>
-                        </div>
-                        <form>
-                            <div class="row g-3">
-                                <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control bg-white border-0" placeholder="Your Name" style="height: 55px;">
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <input type="email" class="form-control bg-white border-0" placeholder="Your Email" style="height: 55px;">
-                                </div>
-                                <div class="col-12">
-                                    <input type="text" class="form-control bg-white border-0" placeholder="Website" style="height: 55px;">
-                                </div>
-                                <div class="col-12">
-                                    <textarea class="form-control bg-white border-0" rows="5" placeholder="Comment"></textarea>
-                                </div>
-                                <div class="col-12">
-                                    <button class="btn btn-primary w-100 py-3" type="submit">Leave Your Comment</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <!-- Comment Form End -->
-                </div>
-    
-               
-            </div>
-        </div>
-    </div>
+                 
+           
     <!-- Blog End -->
 
 
@@ -261,7 +382,7 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+   src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="lib/wow/wow.min.js"></script>
 <script src="lib/easing/easing.min.js"></script>
 <script src="lib/waypoints/waypoints.min.js"></script>
@@ -276,19 +397,19 @@
 
 <script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 <script>
-		$('.js-pscroll').each(function(){
-			var ps = new PerfectScrollbar(this);
+      $('.js-pscroll').each(function(){
+         var ps = new PerfectScrollbar(this);
 
-			$(window).on('resize', function(){
-				ps.update();
-			})
-		});
+         $(window).on('resize', function(){
+            ps.update();
+         })
+      });
 
 
-	</script>
+   </script>
 
 <script async
-	src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+   src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -299,12 +420,27 @@
 
 <script src="js/main.js"></script>
 <script defer
-	src="https://static.cloudflareinsights.com/beacon.min.js/v52afc6f149f6479b8c77fa569edb01181681764108816"
-	integrity="sha512-jGCTpDpBAYDGNYR5ztKt4BQPGef1P0giN6ZGVUi835kFF88FOmmn8jBQWNgrNd8g/Yu421NdgWhwQoaOPFflDw=="
-	data-cf-beacon='{"rayId":"7ccb23f2eb0b19e6","token":"cd0b4b3a733644fc843ef0b185f98241","version":"2023.4.0","si":100}'
-	crossorigin="anonymous"></script>
+   src="https://static.cloudflareinsights.com/beacon.min.js/v52afc6f149f6479b8c77fa569edb01181681764108816"
+   integrity="sha512-jGCTpDpBAYDGNYR5ztKt4BQPGef1P0giN6ZGVUi835kFF88FOmmn8jBQWNgrNd8g/Yu421NdgWhwQoaOPFflDw=="
+   data-cf-beacon='{"rayId":"7ccb23f2eb0b19e6","token":"cd0b4b3a733644fc843ef0b185f98241","version":"2023.4.0","si":100}'
+   crossorigin="anonymous"></script>
 <!-- Template Javascript -->
 <script src="js/main.js"></script>
+<script>
+$(function(){ //아이디가 btnWrite인 버튼을 누르게 되면 write.do 컨트롤러로 맵핑
+    $("#btnWrite").click(function(){
+        location.href="${path}/board/write.do";
+    });
+});
+
+	$(document).on('click', '#btnSearch', function(e){
+		e.preventDefault();
+        var searchType = $('#searchType').val();
+        var keyword = $('#keyword').val();
+        var url = "${contextPath}/board/search?searchType=" + searchType + "&keyword=" + keyword;
+        location.href = url;
+    });
+</script>
 </body>
 
 </html>
@@ -350,21 +486,21 @@
 <input type="button" value="글쓰기" class="btn btn-xs pull-right"  style= "font-size: 17px; ">
 </a>
 <!-- search{s} -->
-		<div class="form-group row justify-content-center">
-			<div class="w100" style="padding-right:10px">
-				<select class="form-control form-control-sm" name="searchType" id="searchType">
-					<option value="ARTICLE_TITLE">제목</option>
-					<option value="ARTICLE_CONTENT">본문</option>
-				</select>
-			</div>
-			<div class="w300" style="padding-right:10px">
-				<input type="text" class="form-control form-control-sm" name="keyword" id="keyword">
-			</div>
-			<div>
-				<button class="btn btn-sm btn-primary" name="btnSearch" id="btnSearch">검색</button>
-			</div>
-		</div>
-		<!-- search{e} -->
+      <div class="form-group row justify-content-center">
+         <div class="w100" style="padding-right:10px">
+            <select class="form-control form-control-sm" name="searchType" id="searchType">
+               <option value="ARTICLE_TITLE">제목</option>
+               <option value="ARTICLE_CONTENT">본문</option>
+            </select>
+         </div>
+         <div class="w300" style="padding-right:10px">
+            <input type="text" class="form-control form-control-sm" name="keyword" id="keyword">
+         </div>
+         <div>
+            <button class="btn btn-sm btn-primary" name="btnSearch" id="btnSearch">검색</button>
+         </div>
+      </div>
+      <!-- search{e} -->
 </div>
 
 <c:url var="getBoardListURL" value="/board/getBoardList"></c:url>
@@ -375,8 +511,8 @@ $(function(){ //아이디가 btnWrite인 버튼을 누르게 되면 write.do 컨
     });
 });
 
-	$(document).on('click', '#btnSearch', function(e){
-		e.preventDefault();
+   $(document).on('click', '#btnSearch', function(e){
+      e.preventDefault();
         var searchType = $('#searchType').val();
         var keyword = $('#keyword').val();
         var url = "${contextPath}/board/search?searchType=" + searchType + "&keyword=" + keyword;

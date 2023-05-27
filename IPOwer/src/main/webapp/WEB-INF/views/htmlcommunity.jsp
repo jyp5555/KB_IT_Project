@@ -181,6 +181,25 @@
 <a href="${contextPath }/board/write">
 <input type="button" value="글쓰기" class="btn btn-xs pull-right"  style= "font-size: 17px; ">
 </a>
+
+<!-- search{s} -->
+		<div class="form-group row justify-content-center">
+			<div class="w100" style="padding-right:10px">
+				<select class="form-control form-control-sm" name="searchType" id="searchType">
+					<option value="ARTICLE_TITLE">제목</option>
+					<option value="ARTICLE_CONTENT">본문</option>
+				</select>
+			</div>
+			<div class="w300" style="padding-right:10px">
+				<input type="text" class="form-control form-control-sm" name="keyword" id="keyword">
+			</div>
+			<div>
+				<button class="btn btn-sm btn-primary" name="btnSearch" id="btnSearch">검색</button>
+			</div>
+		</div>
+		<!-- search{e} -->
+		
+		
 </div>
                     <!-- Blog Detail End -->
     
@@ -311,6 +330,22 @@
 
 <script async
 	src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+	<script>
+$(function(){ //아이디가 btnWrite인 버튼을 누르게 되면 write.do 컨트롤러로 맵핑
+    $("#btnWrite").click(function(){
+        location.href="${path}/board/write.do";
+    });
+});
+
+	$(document).on('click', '#btnSearch', function(e){
+		e.preventDefault();
+        var searchType = $('#searchType').val();
+        var keyword = $('#keyword').val();
+        var url = "${contextPath}/board/search?searchType=" + searchType + "&keyword=" + keyword;
+        location.href = url;
+    });
+</script>
+
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
