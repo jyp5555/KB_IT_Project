@@ -30,13 +30,13 @@
         </tr>
  
  
-    <c:forEach items="${boardList }" var="boardVO">
+    <c:forEach items="${boardList}" var="boardVO">
         <tr>
-            <td>${boardVO.ARTICLE_PK }</td>
-            <td><a href="/board/detail?b_no=${boardVO.ARTICLE_PK}">${boardVO.ARTICLE_TITLE }</a></td>
-            <td>${boardVO.ARTICLE_USER_NAME }</td>
-            <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${boardVO.ARTICLE_REGDATE }" /> </td>
-            <td><span> ${boardVO.ARTICLE_VIEW }</span> </td>
+            <td>${boardVO.articlePk }</td>
+            <td><a href="/board/detail?b_no=${boardVO.articlePk}">${boardVO.articleTitle }</a></td>
+            <td>${boardVO.userName }</td>
+            <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${boardVO.articleRegdate }" /> </td>
+            <td><span> ${boardVO.articleView }</span> </td>
         </tr>
     </c:forEach>
     </table>

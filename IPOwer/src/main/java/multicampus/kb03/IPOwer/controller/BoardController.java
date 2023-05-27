@@ -1,4 +1,5 @@
 package multicampus.kb03.IPOwer.controller;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -53,9 +54,10 @@ public class BoardController {
 	    
 	    @PostMapping("/post")
 	    public String write(BoardDto boardDto) throws Exception {
-
+			/* boardDto.setArticleRegdate(new Date()); */
 	    	boardDao.insert(boardDto);
-	        return "board";
+	    	int newArticlePk = boardDao.getLastArticlePk();
+	        return "redirect:/board/detailreview?ARTICLE_PK=" + newArticlePk;
 	    }  
 	    
 	    @GetMapping("/success")
@@ -72,7 +74,7 @@ public class BoardController {
 	    @GetMapping("/detailreview")
 	    public String getDetail(@RequestParam("ARTICLE_PK") int ARTICLE_PK, Model model) {
 	        BoardDto boardDto= boardDao.detail(ARTICLE_PK);
-	        boardDao.updatereviewcnt(ARTICLE_PK,boardDto.getARTICLE_VIEW());
+	        boardDao.updatereviewcnt(ARTICLE_PK,boardDto.getArticleView());
 	        if (boardDto!= null) {
 	            model.addAttribute("detail1", boardDto);
 	        }
@@ -83,6 +85,22 @@ public class BoardController {
 			}
 	        model.addAttribute("reply", reply);
 	        return "detailreview"; 
+	    }
+
+	    @GetMapping("/htmldetailreview")
+	    public String getDetail1(@RequestParam("ARTICLE_PK") int ARTICLE_PK, Model model) {
+	        BoardDto boardDto= boardDao.detail(ARTICLE_PK);
+	        boardDao.updatereviewcnt(ARTICLE_PK,boardDto.getArticleView());
+	        if (boardDto!= null) {
+	            model.addAttribute("detail1", boardDto);
+	        }
+	        
+	        List<CmtDto> reply = cmtDao.getCommentsByArticle(ARTICLE_PK);
+	        for (CmtDto newsCmtDto : reply) {
+				System.out.println(newsCmtDto);
+			}
+	        model.addAttribute("reply", reply);
+	        return "htmldetailreview"; 
 	    }
 	   
 	    //수정
@@ -95,19 +113,19 @@ public class BoardController {
 	    
 	    @PostMapping("/updatereviewcommit")
 	    public String updateReview(BoardDto boardDto) {
+	    	System.out.println(boardDto);
 	        int result = boardDao.updateBoard(boardDto);
 	        // 수정 후의 처리 로직 추가
 
-	        return "redirect:/detailreview?ARTICLE_PK=" + boardDto.getARTICLE_PK();
+	        return "redirect:/detailreview?ARTICLE_PK=" + boardDto.getArticlePk();
 	    }
 	    //삭제
 	    @GetMapping("/deleteBoard")
-	    public String deleteBoard(@RequestParam int ARTICLE_PK) {
+	    public String deleteBoard(@RequestParam("articlePk") int ARTICLE_PK) {
 	        int result = boardDao.deleteBoard(ARTICLE_PK);
 	        // 삭제 후의 처리 로직 추가
-	        return "board";
+	        return "redirect:/board";
 	    }
-	    
 //	    
 //	    //검색
 //	    @RequestMapping(value="", method= RequestMethod.POST)
@@ -147,6 +165,30 @@ public class BoardController {
 	        model.addAttribute("articles", articles);
 	        return "board";
 	    }
+	    
+	  //html 템플릿 적용 
+	    @RequestMapping("/companyinfo")
+	    public String companyinfo() {
+	        // 글쓰기 폼 페이지로 이동
+	        return "companyinfo"; 
+	    }
+	    @RequestMapping("/htmlcommunity")
+	    public String htmlcommunity() {
+	        // 글쓰기 폼 페이지로 이동
+	        return "htmlcommunity";
+	    }
+	    
+	    @RequestMapping("/detailreview")
+	    public String detailreview() {
+	        // 글쓰기 폼 페이지로 이동
+	        return "detailreview";
+	    }
+	    @RequestMapping("/htmldetailreview")
+	    public String htmldetailreview() {
+	        // 글쓰기 폼 페이지로 이동
+	        return "htmldetailreview";
+	    }
+	    
 	    
 	}
 	  
