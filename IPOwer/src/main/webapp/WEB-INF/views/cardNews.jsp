@@ -38,8 +38,8 @@
 
 
 <link href="/resources/css/style.css" rel="stylesheet" type="text/css">
-<link href="/resources/css/bootstrap.min.css" rel="stylesheet"
-	type="text/css">
+<link href="/resources/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
 
 
 </head>
@@ -55,7 +55,7 @@
     <div class="container-fluid  position-relative p-0">
        
 
-        <div class="container-fluid bg-primary py-5 bg-header" style="margin-bottom: 90px;">
+        <div class="container-fluid bg-primary py-5 bg-header" style="margin-bottom: 30px;">
             <div class="row py-5">
                 <div class="col-12 pt-lg-5 mt-lg-5 text-center">
                     <h1 class="display-2 text-white animated zoomIn">Card News</h1>
@@ -101,32 +101,15 @@
 	<div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
 		<%-- <h2>카드 뉴스</h2>
 		<p class="container mt-2" id="count">전체 ${count+1}건</p> --%>
-		<h2 class="display-6 animated zoomIn">전체 ${count+1}건 </h2>
 		<div class="container py-5">
+			<h2 id="count" class="display-6 animated zoomIn">전체 ${count+1}건 </h2>
 			<div class="row g-5">
 				<!-- Blog list Start -->
 				<div class="col-lg-8">
 					<div id="card_news" class="row g-5">
-						<!--  <div class="col-md-6 wow slideInUp" data-wow-delay="0.1s">
-                            <div class="blog-item bg-light rounded overflow-hidden">
-                                <div class="blog-img position-relative overflow-hidden">
-                                    <img class="img-fluid" src="/resources/img/2.png" alt="">
-                                    
-                                </div>
-                                <div class="p-4">
-                                    <div class="d-flex mb-3">
-                                        <small class="me-3"><i class="far fa-user text-primary me-2"></i>John Doe</small>
-                                        <small><i class="far fa-calendar-alt text-primary me-2"></i>01 Jan, 2045</small>
-                                    </div>
-                                    <h4 class="mb-3">How to build a website</h4>
-                                    <p>Dolor et eos labore stet justo sed est sed sed sed dolor stet amet</p>
-                                    <a class="text-uppercase" href="">Read More <i class="bi bi-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div> -->
 						<c:forEach var="i" begin="0" end="${count}">
-							<div class="col-md-6 wow slideInUp" data-wow-delay="0.1s">
-								<div class="blog-item bg-light rounded overflow-hidden">
+							<div class="col-md-4 wow slideInUp space-bottom" data-wow-delay="0.1s">
+								<div class="blog-item bg-light rounded-3 overflow-hidden">
 									<div class="blog-img position-relative overflow-hidden"
 										onclick="location.href='http://localhost:8080/news/${all[i].newsPk}'">
 
@@ -135,7 +118,7 @@
 											alt="img">
 										
 
-										<div class="p-4">
+										<div class="p-3">
 											<div class="d-flex mb-3">
 												<small class="me-3"><i
 													class="far fa-user text-primary me-2" id="count"></i>조회수 : ${all[i].newsView }</small>
@@ -155,7 +138,7 @@
 						</c:forEach>
 
 						<div class="col-12 wow slideInUp" data-wow-delay="0.1s">
-							<nav aria-label="Page navigation">
+							<nav aria-label="Page navigation" class="space-top">
 								<ul class="pagination pagination-lg m-0">
 									<li class="page-item disabled"><a
 										class="page-link rounded-0" href="#" aria-label="Previous">
@@ -180,12 +163,12 @@
 					<!-- Search Form Start -->
 					<div class="mb-5 wow slideInUp" data-wow-delay="0.1s">
 						<div class="input-group">
-						<form id="search_form">
-							<input type="text" class="form-control p-3" placeholder="검색" name="search_word">
-						</form>
+						<form id="search_form" >
+							<input type="text"  class="form-control p-3" placeholder="검색" name="search_word">
 							<button type="submit" class="btn btn-primary px-4">
 								<i class="bi bi-search"></i>
 							</button> 
+						</form>
 						</div>
 					</div>
 					<!-- Search Form End -->
@@ -198,21 +181,13 @@
 							<h3 class="mb-0">Recent Post</h3>
 						</div>
 						
-					<!-- 	
-						<div class="d-flex rounded overflow-hidden mb-3">
-							<img class="img-fluid" src="img/blog-3.jpg"
-								style="width: 100px; height: 100px; object-fit: cover;" alt="">
-							<a href=""
-								class="h5 fw-semi-bold d-flex align-items-center bg-light px-3 mb-0">Lorem
-								ipsum dolor sit amet adipis elit </a>
-						</div> -->
 						<c:forEach var="item" items="${all }" varStatus="status">
 							<c:if test="${status.index<6}">
 								<div class="d-flex rounded overflow-hidden mb-3">
 								<img class="img-fluid" src="/${item.filePath}/${item.fileName}.${item.fileContenttype}"
-									style="width: 100px; height: 100px; object-fit: cover;" alt="">
+									style="width: 70px; height: 70px; object-fit: cover;" alt="">
 								<a href='http://localhost:8080/news/${item.newsPk}'
-									class="h5 fw-semi-bold d-flex align-items-center bg-light px-3 mb-0">우리아이 경제교육 ${item.newsTitle }</a>
+									class="h5 fw-semi-bold d-flex align-items-center bg-light px-3 mb-0" style="width:70%">${item.newsTitle }</a>
 							</div> 
 							
 							</c:if>
@@ -220,15 +195,12 @@
 					</div>
 					<!-- Recent Post End -->
 
-
-				
 				</div>
 				<!-- Sidebar End -->
 			</div>
 		</div>
 	</div>
 	<!-- Blog End -->
-
 
 	<!-- Vendor Start -->
 	<div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
@@ -351,11 +323,11 @@
 				        			
 				        			count.append('<p class="container mt-2">전체 '+ res.count +'건</p>')
 				        			$.each(res.list_news, function(index, item) {
-  										card_news.append('<div class="col-md-6 wow slideInUp" data-wow-delay="0.1s"><div class="blog-item bg-light rounded overflow-hidden"><div class="blog-img position-relative overflow-hidden" onclick="location.href=\'http://localhost:8080/news/'
+				        				var d = (item.newsRegdate).substring(0,10)
+  										card_news.append('<div class="col-md-4 wow slideInUp space-down" data-wow-delay="0.1s"><div class="blog-item bg-light rounded-3 overflow-hidden"><div class="blog-img position-relative overflow-hidden" onclick="location.href=\'http://localhost:8080/news/'
    					 				+ item.newsPk + '\'"><img class="img-fluid" src="/' + item.filePath + '/' + item.fileName + '.' + item.fileContenttype + '" alt="img"><div class="p-4"><div class="d-flex mb-3"><small class="me-3"><i class="far fa-user text-primary me-2" id="count"></i>'
 									    + '조회수: ' + item.newsView + '</small><small><i class="far fa-calendar-alt text-primary me-2"></i>'
-									    + item.newsRegdate + '</small></div><h4 class="mb-3">' + item.newsTitle + '</h4><a class="text-uppercase" href="">'
-									    + 'Read More' + '<i class="bi bi-arrow-right"></i></a></div></div></div>');
+									    + d + '</small></div><h4 class="mb-3">' + item.newsTitle + '</h4><a class="text-uppercase" href="">');
 									});
 			        				/* $("#test").html(res);  */
 				        		},

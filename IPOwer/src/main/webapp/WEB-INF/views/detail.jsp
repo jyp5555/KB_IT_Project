@@ -33,6 +33,8 @@
 
     <!-- Template Stylesheet -->
     <link href="/resources/css/style.css" rel="stylesheet">
+    
+    <link href="/resources/css/card_detail.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -79,7 +81,7 @@
 
 
     <!-- Testimonial Start -->
-    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="carousel-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">
 			<div id="carouselExampleControls" class="carousel slide"
 				data-bs-ride="carousel" data-interval="false">
@@ -88,12 +90,12 @@
 				<button class="carousel-control-prev" type="button"
 					data-bs-target="#carouselExampleControls" data-bs-slide="prev">
 					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-					<span class="visually-hidden">Previous</span>
+					<!-- <span class="visually-hidden">Previous</span> -->
 				</button>
 				<button class="carousel-control-next" type="button"
 					data-bs-target="#carouselExampleControls" data-bs-slide="next">
 					<span class="carousel-control-next-icon" aria-hidden="true"></span>
-					<span class="visually-hidden">Next</span>
+					<!-- <span class="visually-hidden">Next</span> -->
 				</button>
 			</div>
 
@@ -102,25 +104,6 @@
     <!-- Testimonial End -->
 
 
-    <!-- Vendor Start -->
-    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container py-5 mb-5">
-            <div class="bg-white">
-                <div class="owl-carousel vendor-carousel">
-                    <img src="img/vendor-1.jpg" alt="">
-                    <img src="img/vendor-2.jpg" alt="">
-                    <img src="img/vendor-3.jpg" alt="">
-                    <img src="img/vendor-4.jpg" alt="">
-                    <img src="img/vendor-5.jpg" alt="">
-                    <img src="img/vendor-6.jpg" alt="">
-                    <img src="img/vendor-7.jpg" alt="">
-                    <img src="img/vendor-8.jpg" alt="">
-                    <img src="img/vendor-9.jpg" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Vendor End -->
     
 	<%@ include file="./footer.jsp"%>
 
@@ -137,8 +120,6 @@
     <script src="/resources/lib/counterup/counterup.min.js"></script>
     <script src="/resources/lib/owlcarousel/owl.carousel.min.js"></script>
 
-    <!-- Template Javascript -->
-   <!--  <script src="js/main.js"></script> -->
    <script type="text/javascript">	
 		var path = ${path}
 		var file_name = ${file_name}
