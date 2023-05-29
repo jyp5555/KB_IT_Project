@@ -35,6 +35,7 @@ public class RegisterUserService {
     	user.setUserPw(passwordEncoder.encode(userPw));
     	user.setUserName(userName);
     	user.setUserPhone(userPhone);
+    	System.out.println("service: "+user);
         validateDuplicateMember(user);
         userDao.save(user);
         return user.getUserId();    	

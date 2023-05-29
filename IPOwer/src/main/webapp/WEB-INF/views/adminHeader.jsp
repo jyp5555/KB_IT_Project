@@ -74,7 +74,6 @@
                      <li class="nav-item nav-link"><a href="/admin/newsContents">콘텐츠 관리</a></li>
                      <li class="nav-item nav-link"><sec:authorize access="isAuthenticated()"><a href="/logout">로그아웃</a></sec:authorize></li>
 				</div>
-                <!-- <butaton type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></butaton> -->
             </div>
         </nav>
 	</div>

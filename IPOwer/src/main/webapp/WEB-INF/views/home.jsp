@@ -263,18 +263,15 @@
                 navLinks: true, // can click day/week names to navigate views
                 editable: false,
                 eventClick: function(info){
-                	data1=[]
                 	$.ajax({
-                		url:"/company/detail",
+                		url:"/company/detail/"+info.event.title,
                 		type:"GET",
-                		data:{
-                			name: info.event.title
-                		},
-                		dataType: "json",
+                		dataType:"json",
                 		contentType:"application/json",
                 		success:function(result){
-                			
-                			$("#companyTicker").html(result.companyTicker);
+                			console.log('hi')
+                			console.log(result.companyTicker)
+                			$("#companyTicker").text(result.companyTicker);
             				$("#companyName").html(result.companyName);
             				$("#companySite").html("<a href="+result.companySite+" target='_blank'>"+result.companySite+"</a>");
             				$("#companyFaceprice").html(result.companyFaceprice+" 원");
@@ -303,7 +300,7 @@
             				}
             				$("#rating").html(rating)
             				$("#exampleModalLong").modal('toggle');
-            				
+            				data1=[]
             				data1.push(result.demandNoprice)
             				data1.push(result.demandUnderbottom)
             				data1.push(result.demandBottom)
@@ -312,8 +309,8 @@
             				data1.push(result.demandOvertop)
             				
             				const ctx = document.getElementById('myChart');
-            				
-            				new Chart(ctx, {
+
+            				var myChart = new Chart(ctx, {
             				    type: 'doughnut',
             				    data: {
             				      labels: ['가격 미제시', '밴드 하단 미만', '밴드 하단', '밴드 내', '밴드 상단', '밴드 상단 초과'],
@@ -340,15 +337,13 @@
             				    	}
             				    }
             				  });
-                		},
+/*             				myChart.update();
+ */                		},
                 		error:function(result){
                 			console.log(result)
                 			alert("error!")
                 		}
-                	})
-                	$("#exampleModalLongTitle").text(info.event.title)
-                	$("#exampleModalLong").modal(); 
-                	
+                	})                	
                 },
                 dayMaxEvents: true,
                 events: result,

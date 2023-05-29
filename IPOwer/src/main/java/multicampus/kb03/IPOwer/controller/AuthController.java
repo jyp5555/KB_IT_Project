@@ -34,7 +34,6 @@ public class AuthController {
     @PostMapping("/new")
     public @ResponseBody ResponseEntity<String> joinPost(@RequestBody UsersRoleDto dto){
     	try {
-//          return ResponseEntity.ok(userService.findUser(user));
         	registerUserService.join(dto.getUserId(), dto.getUserPw(), dto.getUserName(), dto.getUserPhone());
         	return ResponseEntity.ok("join success");
     	}catch(Exception e) {

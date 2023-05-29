@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>로그인</title>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
@@ -14,14 +15,10 @@
 <style>
 body {
 	min-height: 100vh;
-	. input-form { max-width : 680px;
-=======
-	background: linear-gradient(0deg, rgba(9,30,62,1) 0%, rgba(9,30,62,0.8) 25%, rgba(6,163,218,0.5) 60%, rgba(121,221,219,0.25) 100%);
 }
 
 .input-form {
 	max-width: 680px;
->>>>>>> refs/heads/jyp
 	margin-top: 80px;
 	padding: 32px;
 	background: #fff;
@@ -58,7 +55,7 @@ body {
 							<div class="mb-3">
 								<input class="form__email" type="text" required="required"
 									id="userName" name="userName" placeholder="이름" />
-								<div class="valid-feedback">이름을 입력해주세요.</div>
+								<div class="invalid-feedback">이름을 입력해주세요.</div>
 							</div>
 
 							<div class="mb-3">
@@ -101,6 +98,7 @@ body {
 				</div>
 			</div>
 		</div>
+	</div>
 </body>
 <script>
 	
@@ -154,7 +152,7 @@ body {
 	    document.querySelector("#userName").addEventListener("input", function(){
 	    	
 	    	let inputName=this.value;
-	    	
+	    	console.log(inputName)
 	    	if(inputName){
 	    		isName = true;
 	    		this.classList.remove("is-invalid");
@@ -183,39 +181,33 @@ body {
 	    	isAgree = this.checked;
 	    });
 	    
-	    const form = document.getElementById('join_form');
+	    const form = document.getElementById('join_form')
 	    
 	    form.addEventListener('submit', e => {
-	    	if(!isIdValid || !isPwValid || !isSamePw || !isName || !isPhone || !isAgree){
+ 	    	e.preventDefault();
+ 	    	if(!isIdValid || !isPwValid || !isSamePw || !isName || !isPhone || !isAgree){
+		    	console.log("hello"+form)
 	    		e.preventDefault();
 	    	}
 	    	
 	    	const data = new FormData(form);
 	    	const param = JSON.stringify(Object.fromEntries(data));
-	    	console.log(param)
+	    	console.log("hello2:"+param)
 	    	
-	    	fetch('/user/new',{
-	    		method: "POST",
-	    		body: param,
-	    		headers: {
-	    			"Content-Type": "application/json"
-	    		},
-	    		redirect: 'follow'
-	    	})
-	    	.then(response => {
-	    	})
-	    	.then(result=>{
-	    		if (result.message === 'SUCCESS') {
+	    	$.ajax({
+	    		url:'/user/new',
+	    		type:'POST',
+	    		data:param,
+	    		contentType:'application/json',
+	    		success: function(result){
 	    			alert("회원가입 성공")
-	    		}else{
-	    			throw result
+	    			$(location).attr('href',"/user/me");
+	    		},
+	    		error:function(request,status,error){
+	    			alert("회원가입 실패")
 	    		}
 	    	})
-	    	.catch(error=>{
-	    		console.log('회원 가입 실패')
-	    		error.text().then(msg => alert("회원가입 실패"+ msg))
-	    	})
-    	})   
+    	})    
     	
     </script>
 
