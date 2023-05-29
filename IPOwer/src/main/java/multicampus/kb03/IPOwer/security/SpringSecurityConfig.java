@@ -56,8 +56,9 @@ public class SpringSecurityConfig {
 		
 		http.csrf().disable().cors().disable()
 			.authorizeRequests()
-//				.antMatchers("/home/**", "/cards/**", "/user/new").permitAll()
-				.antMatchers("/**").permitAll()
+				.antMatchers("/home/**", "/news/**", "/user/new").permitAll()
+				.antMatchers("GET","/company/detail/**").permitAll()
+				.antMatchers("/resources/**").permitAll()
 				.antMatchers("POST", "/community/articles/**").hasAnyRole("USER")
 				.antMatchers("PUT", "/community/articles/**").hasAnyRole("USER")
 				.antMatchers("DELETE", "/community/articles/**").hasAnyRole("USER")
@@ -76,18 +77,18 @@ public class SpringSecurityConfig {
 				.permitAll()
 			.and()
 				.logout()
-				.logoutUrl("/logout");// 로그아웃 처리 URL (= form action url)
-//				.addLogoutHandler((request, response, authentication) -> { 
-//					// 사실 굳이 내가 세션 무효화하지 않아도 됨. LogoutFilter가 내부적으로 해줌.
-//					HttpSession session = request.getSession();
-//					if (session != null) {
-//						session.invalidate();
-//					}
-//				})  // 로그아웃 핸들러 추가
-//				.logoutSuccessHandler((request, response, authentication) -> {
-//					response.sendRedirect("/home");
-//				}) // 로그아웃 성공 핸들러
-//				.deleteCookies("remember-me");
+				.logoutUrl("/logout")// 로그아웃 처리 URL (= form action url)
+				.addLogoutHandler((request, response, authentication) -> { 
+					// 사실 굳이 내가 세션 무효화하지 않아도 됨. LogoutFilter가 내부적으로 해줌.
+					HttpSession session = request.getSession();
+					if (session != null) {
+						session.invalidate();
+					}
+				})  // 로그아웃 핸들러 추가
+				.logoutSuccessHandler((request, response, authentication) -> {
+					response.sendRedirect("/home");
+				}) // 로그아웃 성공 핸들러
+				.deleteCookies("remember-me");
 		return http.build();
     }
 }
