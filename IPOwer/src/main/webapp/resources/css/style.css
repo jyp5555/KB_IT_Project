@@ -535,8 +535,8 @@ table.type02 td {
 /*** detailreview ***/
 .container {
 	width: 800px;
-	height: 200px;
-}
+/* 	height: 200px;
+ */}
 
 .blog-left {
 	display: inline-block;

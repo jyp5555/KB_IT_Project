@@ -49,39 +49,6 @@ a, #newsTitle:hover {
 
 <%@ include file="./adminHeader.jsp"%>
 
-<%-- <div class="container">
-	<table class="table">
-		<thead>
-			<tr style="border:1px solid lightgray">
-				<th style="background-color: #2980b9; color: white;">번호</th>
-				<th style="background-color: #2980b9; color: white;">제목</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach var="i" begin="0" end="${count}">
-				<tr>
-					<td>${all[i].news_pk}</td>
-					<td><a href="#" onclick="sendDataToController('${all[i].news_pk}')">${all[i].news_title}</a></td>
-				</tr>
-			</c:forEach>
-			<c:if test="${count>0}">		
-			  <c:forEach var="i" begin="0" end="${count-1}">
-			    <tr style="border:1px solid lightgray">
-			      <td style="background-color: white; color: #2980b9;">${i+1}</td>
-			      <td>${all[i].newsPk}</td>
-			      <td style="background-color: white; color: #2980b9;"><a style="background-color: white; color: #2980b9;" href="#" onclick="sendDataToController('${all[i].newsPk}')">${all[i].newsTitle}</a></td>
-			    </tr>
-			  </c:forEach>
-			</c:if>
-		</tbody>
-	</table>
-
-	<hr>
-	<form action="newsCreate" method="GET">
-		<button class="btn" style="padding-left: 95%" type="submit">Create</button>
-	</form>
-</div> --%>
-<%-- <%@ include file="./adminFooter.jsp"%> --%>
 <!-- <div class="container"> -->
 <div class="container-md">
 
