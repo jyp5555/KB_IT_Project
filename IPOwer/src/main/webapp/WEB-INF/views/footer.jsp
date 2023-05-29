@@ -6,17 +6,18 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 </head>
 <body>
-<div class="container-fluid bg-dark text-light mt-5 wow fadeInUp" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+<div class="container-fluid bg-primary text-light mt-5 wow fadeInUp" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
         <div class="container">
             <div class="row gx-5">
                 <div class="col-lg-4 col-md-6 footer-about">
-                    <div class="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-primary p-4">
+                    <div class="d-flex flex-column align-items-center justify-content-center text-center h-80 bg-primary p-4">
                         <a href="index.html" class="navbar-brand">
                             <h1 class="m-0 text-white"><i class="fa fa-user-tie me-2"></i>IPOwer</h1>
                         </a>
-                        <p class="mt-3 mb-4">공모주 알리미 사이트는 투자자들에게 공모주 발행 정보와 관련된 소식을 제공하는 웹사이트입니다. 주요 공모주 정보와 예상 가격 범위, 기업 프로파일과 재무 정보, 실시간 업데이트된 공모주 일정과 알림 서비스를 통해 투자자들은 최신 정보를 받고 신중한 투자 결정을 할 수 있습니다. 커뮤니티 기능과 투자 교육 자료도 제공하여 투자자들 간의 정보 공유와 토론, 투자 실력 향상을 도울 수 있습니다.
+                        <p class="mt-3 mb-4" style="font-size: 15px">공모주 알리미 사이트는 투자자들에게 공모주 발행 정보와 관련 소식을 제공하는 웹사이트입니다. 주요 공모주 정보와 예상 가격 범위, 기업 프로파일과 재무 정보, 실시간 업데이트된 공모주 일정과 알림 서비스를 통해 투자자들은 최신 정보를 받고 신중한 투자 결정을 할 수 있습니다.
 
 
 
@@ -74,9 +75,11 @@
             <div class="row justify-content-end">
                 <div class="col-lg-8 col-md-6">
                     <div class="d-flex align-items-center justify-content-center" style="height: 75px;">
-                        <p class="mb-0"> <a class="text-white border-bottom" href="#">IPOwer</a>. All Rights Reserved. 
+                        <p class="mb-0"><span class="material-symbols-outlined">
+copyright
+</span> <a class="text-white border-bottom" href="#">IPOwer</a>. All Rights Reserved. 
 
-                        <!—/ This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. /—><a class="text-white border-bottom" href="https://htmlcodex.com"></a></p>
+                        <a class="text-white border-bottom" href="https://htmlcodex.com"></a></p>
                     </div>
                 </div>
             </div>

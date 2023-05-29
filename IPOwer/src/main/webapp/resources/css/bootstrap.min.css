@@ -72,7 +72,7 @@ hr:not ([size] ){
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 	margin-top: 0;
-	margin-bottom: 1.5rem;
+	margin-bottom: -0.1rem;
 	font-family: "Nunito", sans-serif;
 	font-weight: 500;
 	line-height: 1.2;
@@ -4596,8 +4596,8 @@ textarea.form-control-lg {
 .page-item.active .page-link {
 	z-index: 3;
 	color: #fff;
-	background-color: #0000a0;
-	border-color: #0000a0
+	background-color: #79dddb;
+	border-color: #79dddb
 }
 
 .page-item.disabled .page-link {
@@ -4804,7 +4804,7 @@ keyframes progress-bar-stripes { 0%{
 	color: #fff;
 	text-align: center;
 	white-space: nowrap;
-	background-color: #0000a0;
+	background-color: #000000;
 	transition: width 0.6s ease
 }
 
@@ -4895,8 +4895,8 @@ keyframes progress-bar-stripes { 0%{
 .list-group-item.active {
 	z-index: 2;
 	color: #fff;
-	background-color: #0000a0;
-	border-color: #0000a0
+	background-color: #000000;
+	border-color: #000000
 }
 
 .list-group-item+.list-group-item {
@@ -6229,7 +6229,7 @@ opacity
 }
 
 .link-primary {
-	color: #0000a0
+	color: #000000
 }
 
 .link-primary:hover, .link-primary:focus {
@@ -6647,7 +6647,7 @@ opacity
 }
 
 .border-primary {
-	border-color: #0000a0!important
+	border-color: #000000!important
 }
 
 .border-secondary {
@@ -7680,7 +7680,7 @@ opacity
 }
 
 .bg-primary {
-	background-color: #0000a0!important
+	background-color: #79dddb!important
 }
 
 .bg-secondary {
@@ -7714,6 +7714,7 @@ opacity
 .bg-body {
 	background-color: #fff !important
 }
+
 
 .bg-white {
 	background-color: #fff !important

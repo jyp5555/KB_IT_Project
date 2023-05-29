@@ -164,10 +164,16 @@
 					<div class="mb-5 wow slideInUp" data-wow-delay="0.1s">
 						<div class="input-group">
 						<form id="search_form" >
-							<input type="text"  class="form-control p-3" placeholder="검색" name="search_word">
+						<table>
+						<td>
+							<input type="text"  class="form-control p-3" placeholder="검색" name="search_word" >
+						</td>
+						<td>
 							<button type="submit" class="btn btn-primary px-4">
 								<i class="bi bi-search"></i>
 							</button> 
+							</td>
+						</table>
 						</form>
 						</div>
 					</div>
