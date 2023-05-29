@@ -6,6 +6,24 @@
 <head>
 <meta charset="UTF-8">
 
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<style>
+a, #newsTitle{
+	color: #0582ae;
+	font-weight: bolder;
+	text-decoration: none
+	
+}
+
+a, #newsTitle:hover {
+	color: #035060;
+	font-weight: bolder;
+	text-decoration: none
+	
+}
+</style>
+
 <title>adminCardNewsContents</title>
 </head>
 	<script>
@@ -64,6 +82,9 @@
 </div> --%>
 <%-- <%@ include file="./adminFooter.jsp"%> --%>
 <!-- <div class="container"> -->
+<div class="container-md">
+
+<div id="companyList">
 <div style="padding-top: 3%;
 			padding-left: 25%;
 			padding-right: 25%;
@@ -82,6 +103,7 @@
 			    <tr>
 			      <td>${i+1}</td>
 			      <%-- <td>${all[i].newsPk}</td> --%>
+<%-- 			      <td><a id="newsTitle" href="#" onclick="sendDataToController('${all[i].newsPk}')">${all[i].newsTitle}</a></td> --%>
 			      <td><a id="newsTitle" href="#" onclick="sendDataToController('${all[i].newsPk}')">${all[i].newsTitle}</a></td>
 			      <td>
 					<fmt:formatDate value="${all[i].newsRegdate}" pattern="yyyy-MM-dd" type="date" />
@@ -94,9 +116,15 @@
 
 	<hr>
 	<form action="newsCreate" method="GET">
-		<button class="btn" style="padding-left: 95%" type="submit">Create</button>
+		<button class="btn" style="margin-left: 95%" type="submit">Create</button>
 	</form>
 </div>
+<<<<<<< HEAD
 <%@ include file="./footer.jsp"%>
+=======
+</div>
+</div>
+<%@ include file="./adminFooter.jsp"%>
+>>>>>>> branch 'develop' of https://github.com/jyp5555/KB_IT_Project.git
 </body>
 </html>

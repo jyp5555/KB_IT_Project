@@ -17,7 +17,9 @@
                         <a href="index.html" class="navbar-brand">
                             <h1 class="m-0 text-white"><i class="fa fa-user-tie me-2"></i>IPOwer</h1>
                         </a>
+
                         <p class="mt-3 mb-4" style="font-size: 15px">공모주 알리미 사이트는 투자자들에게 공모주 발행 정보와 관련 소식을 제공하는 웹사이트입니다. 주요 공모주 정보와 예상 가격 범위, 기업 프로파일과 재무 정보, 실시간 업데이트된 공모주 일정과 알림 서비스를 통해 투자자들은 최신 정보를 받고 신중한 투자 결정을 할 수 있습니다.
+
 
 
 
