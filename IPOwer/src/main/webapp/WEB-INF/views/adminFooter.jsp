@@ -73,8 +73,12 @@
         <div class="container text-center">
             <div class="row justify-content-end">
                 <div class="col-lg-8 col-md-6">
+<!-- <<<<<<< HEAD
                     <div class="d-flex align-items-center justify-content-center" style="height:75px;">
                         <p class="mb-0"> <a class="text-white border-bottom" href="#">IPOwer</a>. All Rights Reserved. 
+======= -->
+                    <div class="d-flex align-items-center justify-content-center" style="height: 75px;">
+                        <div class="container-fluid" style="height: 20%"><p class="mb-0"> <a class="text-white border-bottom" href="#">IPOwer</a>. All Rights Reserved. 
 
                         <!--  This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. /—><a class="text-white border-bottom" href="https://htmlcodex.com"></a></p>-->
                     </div>

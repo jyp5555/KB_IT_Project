@@ -4,9 +4,8 @@ import java.util.Date;
 
 public class NewsFileDto {
 
-	private String newsTitle,newsWriter,fileName,fileContenttype;
+	private String newsTitle,newsWriter,fileName,fileContenttype, fileSize;
 	private int newsPk,newsView,filePk;
-	private double fileSize;
 	private Date newsRegdate;
 	private String filePath;
 
@@ -87,10 +86,10 @@ public class NewsFileDto {
 	public void setFileContenttype(String file_contenttype) {
 		this.fileContenttype = file_contenttype;
 	}
-	public double getFileSize() {
+	public String getFileSize() {
 		return fileSize;
 	}
-	public void setFileSize(double file_size) {
+	public void setFileSize(String file_size) {
 		this.fileSize = file_size;
 	}
 	@Override
