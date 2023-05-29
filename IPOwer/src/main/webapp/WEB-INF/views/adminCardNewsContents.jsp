@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="UTF-8">
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -119,12 +120,8 @@ a, #newsTitle:hover {
 		<button class="btn" style="margin-left: 95%" type="submit">Create</button>
 	</form>
 </div>
-<<<<<<< HEAD
+</div>
+</div>
 <%@ include file="./footer.jsp"%>
-=======
-</div>
-</div>
-<%@ include file="./adminFooter.jsp"%>
->>>>>>> branch 'develop' of https://github.com/jyp5555/KB_IT_Project.git
 </body>
 </html>
