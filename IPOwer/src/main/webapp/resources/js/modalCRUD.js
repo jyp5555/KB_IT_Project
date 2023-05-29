@@ -25,6 +25,7 @@ $(document).ready(function(){
 		type = 'PUT';
 		companyPk = e.target.value;
 		url = "/admin/company/"+companyPk
+		console.log(e.target.value)
 		
 		$.ajax({
 			url:url,
@@ -67,10 +68,10 @@ $(document).ready(function(){
 			type : 'DELETE',
 			complete:function(e){
 				console.log(e)
+				location.reload();
 			}
 		});
 		
-		location.reload();
 	})
 	
 	var formInputs = document.querySelectorAll("#frm input");

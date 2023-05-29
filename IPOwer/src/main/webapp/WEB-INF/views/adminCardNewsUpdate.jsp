@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -62,6 +63,11 @@ function removeFileDiv(index) {
 function deleteExistFile() {
 	  var newsPk = ${newsPk};
 	  var deletedFilePks = deletedFilePkList.length > 0 ? deletedFilePkList : [null];
+	  
+	  if (deletedFilePks.length > 0) {
+		  return false;
+	  }
+	  
 	  $.ajax({
 	    url: "deleteExistFile",
 	    type: "POST",
@@ -80,10 +86,9 @@ function deleteExistFile() {
 		  var newsPk = ${newsPk}; // Get the newsPk value from the JSP variable
 		  var newsTitle = $("input[name='newsTitle']").val(); // Get the news_title value from the input field
 
-		  if (newsTitle === "") {
-		    alert("뉴스 제목을 입력해주세요.");
+ 		  if (newsTitle === "") {
 		    return false; // Prevent form submission
-		  }
+		  } 
 		  
 		  $.ajax({
 		    url: "updateNewsTitle", // Controller URL for updating nickname
@@ -142,37 +147,28 @@ function deleteExistFile() {
 <title>adminCardNewsUpdate</title>
 </head>
 <body>
-	<h3>업데이트 페이지</h3>
-	
-		<div class="container">
-		<h2>다중파일 업로드</h2>
-		<div class="panel panel-default">
-			<div class="panel-heading">스프링을 이용한 다중 파일 업로드 구현</div>
+<%@ include file="./adminHeader.jsp"%>
+	<div class="container" style="padding-left: 20%;padding-right: 20%">
+		<!-- <h2>게시물 등록</h2> -->
+		<div class="panel panel-default"">
+			<div class="panel-heading" style="font-size: 16px;color:#ffffff;background-color:#79dddb;font-weight: 1000 ;">Card News Update</div>
 			<div class="panel-body">
 				<!-- <form class="form-horizontal" action="newsUpdate" method="post"> -->
+				
 				<form class="form-horizontal" action="newsUpdate" enctype="multipart/form-data" method="post" onsubmit="return validateForm();">
 					<div class="form-group">
-						<label class="control-label col-sm-2" for="newsTitle">뉴스 제목:</label>
+						<label class="control-label col-sm-2" for="newsTitle" style="font-size: 16px;font-weight: 1000 ;">뉴스 제목:</label>
 						<div class="col-sm-10">
 							<!-- <input type="text" class="form-control" name="news_title" value="${news_title}" placeholder="수정할 제목을 입력하세요." style="width: 30%;"> -->
-							<input type="text" class="form-control" name="newsTitle" value="${newsTitle}" style="width: 30%;">
+							<input type="text" class="form-control" name="newsTitle" value="${newsTitle}" style="width: 80%; font-size: 16px;">
 							<!-- <input type="button" value="뉴스 제목 수정" onclick="updateNewsTitle()" /> -->
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="control-label col-sm-2">파일추가:</label>
+						<label class="control-label col-sm-2" style="font-size: 16px;font-weight: 1000 ;">파일추가:</label>
 						<div class="col-sm-10">
-							<input type="button" value="파일추가" onClick="file_add()" /><br>
+							<input type="button" value="파일추가" onClick="file_add()" />
 							<input type="button" value="파일삭제" onClick="file_remove()" /><br>
-							
-							<%-- <c:if test="${selectAllFilesByNewsPkSize > 0}">
-								<c:forEach var="i" begin="0" end="${selectAllFilesByNewsPkSize-1}">
-									<div class="col-sm-10" id="file_${i}">
-										기존 파일: ${selectAllFilesByNewsPk[i].fileName}.${selectAllFilesByNewsPk[i].fileContenttype}
-										<input type="button" value="등록삭제" onclick="removeFileDiv(${i})"/>
-									</div>
-								</c:forEach>
-							</c:if> 기존--%>
 							<c:if test="${selectAllFilesByNewsPkSize > 0}">
 							  <c:forEach var="i" begin="0" end="${selectAllFilesByNewsPkSize-1}">
 							    <div class="col-sm-10" id="file_${i}" data-filepk="${selectAllFilesByNewsPk[i].filePk}">
@@ -186,15 +182,7 @@ function deleteExistFile() {
 						</div>
 					</div>
 					<input type="hidden" name="newsPk" value="${newsPk}">
-<!-- 					<div class="form-group">
-						<div class="col-sm-offset-2 col-sm-10">
-							<button type="submit" class="btn btn-default">수정</button>
-						</div>
-					</div> -->
-				<%-- <input type="button" value="파일수정" onclick="modifyFile(${i}, this),updateNewsTitleButton()"/> --%>
-				<!-- <button type="submit" value="파일수정" onclick="updateNewsTitleButton()">수정</button> -->
-				<!-- <button type="submit" value="파일수정" onclick="updateNewsTitle(),deleteExistFile()">수정</button> -->
-				<button type="submit" value="파일수정" onclick="updateNewsTitle(),deleteExistFile()">수정</button>
+					<button type="submit" value="파일수정" onclick="updateNewsTitle(),deleteExistFile()">수정</button>
 				</form>
 				<form action="newsDelete" method="POST">
 					<input type="hidden" name="newsPk" value="${newsPk}">
@@ -202,7 +190,7 @@ function deleteExistFile() {
 					<button type="submit" class="form-group">삭제</button>					
 				</form>
 			</div>
-			<div class="panel-footer">
+			<div class="panel-footer" style="color:#ffffff;background-color:#79dddb;font-weight: 1000 ;">
 				수정페이지JSP
 			</div>
 		</div>
