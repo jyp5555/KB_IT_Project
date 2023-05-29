@@ -10,7 +10,8 @@ $(document).ready(function(){
 		$("#exampleModalLong").modal("hide")
 	})
 // 새 글 쓰기 버튼 클릭
-	$("#btnSave").click(function(){
+	$("#btnCreate").click(function(e){
+		console.log(e.target.id)
 		action='create';
 		type = 'POST'
 		url="/admin/company"
@@ -30,6 +31,7 @@ $(document).ready(function(){
 			type:"GET",
 			dataType: "json",
 			success:function(result){
+				console.log(result)
 				
 				$("#exampleModalLongTitle").text("회사 정보 수정");
 				$("#exampleModalLong").modal('toggle');

@@ -39,7 +39,6 @@ public class AdminCompanyInfoController {
     @RequestMapping(value="/admin/company", method=RequestMethod.GET)
 	public String adminCompanyListGet(Model model) {
 		List<CompanyDto> companyList = companyInfoService.getCompanyList();
-		System.out.println(Arrays.deepToString(companyList.toArray()));
 		Collections.sort(companyList, (a, b) -> b.getCompanyPk() - a.getCompanyPk());
 		
 		model.addAttribute("companyList", companyList);
@@ -49,6 +48,7 @@ public class AdminCompanyInfoController {
     @RequestMapping(value="/admin/company/{id}", method=RequestMethod.GET)
 	public ResponseEntity<CompanyDemandDto> adminCompanyOneGet(@PathVariable("id") int id) {
     	try {
+    		System.out.println("here!" + id);
     		CompanyDemandDto company = companyInfoService.getCompanyOne(id);
     		return ResponseEntity.ok(company);
     	}catch(Exception e) {

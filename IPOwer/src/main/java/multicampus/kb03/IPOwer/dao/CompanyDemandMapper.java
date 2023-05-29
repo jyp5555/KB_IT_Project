@@ -40,7 +40,7 @@ public interface CompanyDemandMapper {
 	
 	@Insert("insert into company \r\n" + 
 			"values(\r\n" + 
-			"4,#{dto.companyTicker}, \r\n" + 
+			"company_seq.nextval,#{dto.companyTicker}, \r\n" + 
 			"#{dto.companyName}, \r\n" + 
 			"#{dto.companySite, jdbcType=VARCHAR}, \r\n" + 
 			"#{dto.companyFaceprice}, \r\n" + 
@@ -56,7 +56,7 @@ public interface CompanyDemandMapper {
 	int insertCompany(@Param("dto") CompanyDemandDto dto);
 	
 	@Insert("insert into demandforecast \r\n" + 
-			"values(4,4,\r\n" + 
+			"values(demand_seq.nextval,company_seq.currval,\r\n" + 
 			"#{dto.demandRatio},\r\n" + 
 			"#{dto.demandLockup},\r\n" + 
 			"#{dto.demandNoprice},\r\n" + 

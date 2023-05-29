@@ -3,6 +3,7 @@ package multicampus.kb03.IPOwer.controller;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -52,7 +54,11 @@ public class HomeController {
 			for (CompanyDto cd : all) { 
 				c_name.add("'"+cd.getCompanyName()+"'");
 				c_offering.add("'"+get_date(cd.getCompanyOfferingdate())+"'");
-				c_listing.add("'"+get_date(cd.getCompanyListingdate())+"'");
+				if(cd.getCompanyListingdate() == null) {
+					c_listing.add("''");
+				}else {
+                    c_listing.add("'"+get_date(cd.getCompanyListingdate())+"'");
+                }
 			}
 		model.addAttribute("all",all);
 		model.addAttribute("c_name",c_name);
@@ -71,11 +77,12 @@ public class HomeController {
     	}		
 	}
 	
-	@RequestMapping(value="/company/detail", method=RequestMethod.GET)
-	public @ResponseBody ResponseEntity<CompanyDemandDto> companyGet(@RequestParam("name") String companyName){
+	@RequestMapping(value="/company/detail/{name}", method=RequestMethod.GET)
+	public @ResponseBody ResponseEntity<CompanyDemandDto> companyGet(@PathVariable("name") String name ){
 		try {
-			CompanyDemandDto company = companyInfoService.getCompanyOneByName(companyName);
-			System.out.println(company);
+			System.out.println(name);
+			CompanyDemandDto company = companyInfoService.getCompanyOneByName(name);
+			System.out.println("here2"+company);
 			return ResponseEntity.ok(company);
 		}catch(Exception e) {
 			e.printStackTrace();
