@@ -1,5 +1,6 @@
 package multicampus.kb03.IPOwer.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -56,13 +57,15 @@ public class NewsFileController {
 			file_name.add("'"+nf.getFileName()+"'");
 			type.add("'"+nf.getFileContenttype()+"'");
 		}
-	
+		SimpleDateFormat dtFormat = new SimpleDateFormat("yyyy-MM-dd");
+		String formatDate = dtFormat.format(dto.getNewsRegdate());
+		model.addAttribute("date",formatDate);
 		model.addAttribute("files",pathAll);
 		model.addAttribute("dto",dto);
 		model.addAttribute("path",path);
 		model.addAttribute("file_name",file_name);
 		model.addAttribute("type",type);
-		return "detail";
+		return "cardNewsDetail";
 	}
 	
 	@RequestMapping(value="", method= RequestMethod.POST)
