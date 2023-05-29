@@ -4,8 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<style type="text/css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- <style type="text/css">
 body {
   font-family: "Helvetica Neue", Helvetica, Arial;
   font-size: 14px;
@@ -43,10 +43,10 @@ body {
 
 .row {
   display: table-row;
-  background: #f6f6f6;
+  /* background: #f6f6f6; */
 }
 .row:nth-of-type(odd) {
-  background: #e9e9e9;
+  /* background: #e9e9e9; */
 }
 .row.header {
   font-weight: 900;
@@ -97,7 +97,8 @@ body {
     display: block;
   }
 }
-
+</style> -->
+<style>
 a, #newsTitle{
 	color: #0582ae;
 	font-weight: bolder;
@@ -170,6 +171,9 @@ a, #newsTitle:hover {
 </div> --%>
 <%-- <%@ include file="./adminFooter.jsp"%> --%>
 <!-- <div class="container"> -->
+<div class="container-md">
+
+<div id="companyList">
 <div style="padding-top: 3%;
 			padding-left: 25%;
 			padding-right: 25%;
@@ -188,6 +192,7 @@ a, #newsTitle:hover {
 			    <tr>
 			      <td>${i+1}</td>
 			      <%-- <td>${all[i].newsPk}</td> --%>
+<%-- 			      <td><a id="newsTitle" href="#" onclick="sendDataToController('${all[i].newsPk}')">${all[i].newsTitle}</a></td> --%>
 			      <td><a id="newsTitle" href="#" onclick="sendDataToController('${all[i].newsPk}')">${all[i].newsTitle}</a></td>
 			      <td>
 					<fmt:formatDate value="${all[i].newsRegdate}" pattern="yyyy-MM-dd" type="date" />
@@ -200,8 +205,10 @@ a, #newsTitle:hover {
 
 	<hr>
 	<form action="newsCreate" method="GET">
-		<button class="btn" style="padding-left: 95%" type="submit">Create</button>
+		<button class="btn" style="margin-left: 95%" type="submit">Create</button>
 	</form>
+</div>
+</div>
 </div>
 <%@ include file="./adminFooter.jsp"%>
 </body>
