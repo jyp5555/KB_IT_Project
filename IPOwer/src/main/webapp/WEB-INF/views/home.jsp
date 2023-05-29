@@ -16,16 +16,6 @@
   </head>
   <body>
   	<%@ include file="./header.jsp" %>
-	<!-- <h3 class="overview-normalize">이</h3>
-    <p>
-        <button onclick="location.href='/admin'" class="btn btn-sm btn-success">ê´ë¦¬ì ì¤ì  íì´ì§(ê´ë¦¬ìë§)</button>
-        <button onclick="location.href='/home'" class="btn btn-sm btn-info">ì ì  ì¤ì  íì´ì§(ì ì ë§)</button>
-    </p>
-  
-    <hr/>
-    <form method="post" action="/logout">
-        <button class="btn btn-sm btn-danger btn-block" type="submit">ë¡ê·¸ìì</button>
-    </form> -->
     <div id='calendar' class='container-md' style="padding:15px"></div>
     
 	<%@ include file="./companyInfoModal.jsp"%>
@@ -269,6 +259,7 @@
                 		url:"/company/detail/"+info.event.title,
                 		type:"GET",
                 		dataType:"json",
+                		contentType:"application/json",
                 		success:function(result){
                 			console.log('hi')
                 			console.log(result.companyTicker)

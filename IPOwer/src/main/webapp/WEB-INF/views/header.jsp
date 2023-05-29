@@ -76,11 +76,11 @@
                 <div class="navbar-nav ms-auto py-0">
 					
                      <li class="nav-item nav-link"><a href="/home" class="custom">Home</a></li>
-                     <li class="nav-item nav-link"><a href="/community" class="custom">Community</a></li>
+                     <li class="nav-item nav-link"><a href="/board" class="custom">Community</a></li>
                      <li class="nav-item nav-link"><a href="/news" class="custom">Contents</a></li>
                      <li class="nav-item nav-link"><sec:authorize access="isAuthenticated()"><a href="/myPage" class="custom">My Page</a></sec:authorize></li>
 					<li class="nav-item nav-link"><sec:authorize access="isAnonymous()" ><a href="/user/me" class="custom">로그인</a></sec:authorize></li>
-					<li class="nav-item nav-link"><sec:authorize access="isAuthenticated()"><a href="/home" class="custom">로그아웃</a></sec:authorize></li>
+					<li class="nav-item nav-link"><sec:authorize access="isAuthenticated()"><a href="/logout" class="custom">로그아웃</a></sec:authorize></li>
 		
                    
                  

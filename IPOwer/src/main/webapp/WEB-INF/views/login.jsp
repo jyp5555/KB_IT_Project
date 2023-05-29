@@ -4,34 +4,37 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>로그인</title>
+<link href="/resources/css/login.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <%@ include file="./header.jsp" %>
-<div id="container ">
-<form id="login_form" action="/login-process" method="post" class="align-items-center">
-	<div class="row mb-3">
-    	<label for="inputEmail3" class="col-sm-2 col-form-label col-form-label-lg">아이디</label>
-    	<div class="col-sm col-md-3">
-      		<input type="text" class="form-control form-control-lg" required="required" name="userId">
-    	</div>
-  	</div>
-  	<div class="row mb-3">
-    	<label for="inputEmail3" class="col-sm-2 col-form-label col-form-label-lg">비밀번호</label>
-    	<div class="col-sm col-md-3">
-      		<input type="password" class="form-control form-control-lg" required="required" name="userPw" autocomplete="off">
-    	</div>
-  	</div>
-</form>
-	<div class="container-md">
-		<button form="login_form" class="btn btn-primary btn-lg" type="submit" id="login_btn">로그인</button>
-		<a href="/user/new" class="btn btn-lg btn-warning" role="button">회원가입</a>
-	</div>
+
+<div class="form">
+  <div class="form__box">
+    <div class="form__left">
+      <div class="form__padding"><img class="form__image" src="/resources/img/character.png"/></div>
+    </div>
+    <div class="form__right">
+
+      <div class="form__padding-right" style="line-height:70%;">
+       	<form action="/login-process" method="post">
+          <h1 class="form__title">Member Login</h1>
+          <input class="form__email" type="text" required="required" name="userId" placeholder="id"/><br>
+          <input class="form__password" type="password" required="required" name="userPw" placeholder="******"/><br>
+          <input class="form__submit-btn" type="submit" value="Login" id="login_btn"/><br>
+			</form>
+        <form class="form-signin" method="get" action="/user/new">  
+        <p> <a class="form__link" href="/user/new">Create your account</a></p>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
 <script>
 	const errorMsg = <%=request.getAttribute("errorMsg")%>
-	/* if (errorMsg.length>0){
+	if (errorMsg.length>0){
 		alert(errorMsg)
-	} */
+	}
 </script>
 </body>
 </html>
