@@ -92,6 +92,8 @@
     <script src="/resources/lib/counterup/counterup.min.js"></script>
     <script src="/resources/lib/owlcarousel/owl.carousel.min.js"></script>
     <script src="/resources/js/modalCRUD.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js"></script>
+    
 
     <!-- Template Javascript -->
   <script>
