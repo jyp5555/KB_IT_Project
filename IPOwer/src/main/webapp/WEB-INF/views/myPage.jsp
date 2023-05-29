@@ -116,6 +116,6 @@
 		</div>
 	</div>
 	<!-- Service End -->
-
+<%@ include file="./footer.jsp"%>
 </body>
 </html>
