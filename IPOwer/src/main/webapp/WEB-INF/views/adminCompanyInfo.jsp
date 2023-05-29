@@ -66,7 +66,7 @@
 	<!-- Vendor End -->
 
 
-	<%@ include file="./adminFooter.jsp"%>
+	<%@ include file="./footer.jsp"%>
 
 
 	<!-- Back to Top -->
