@@ -32,7 +32,11 @@
 </div>
 <script>
 	const errorMsg = <%=request.getAttribute("errorMsg")%>
+<<<<<<< HEAD
 	if (errorMsg.length){
+=======
+	if (errorMsg.length>0){
+>>>>>>> refs/heads/jyp
 		alert(errorMsg)
 	}
 </script>

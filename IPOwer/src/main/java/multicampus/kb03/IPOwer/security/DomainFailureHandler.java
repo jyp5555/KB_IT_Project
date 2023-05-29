@@ -26,12 +26,10 @@ public class DomainFailureHandler implements AuthenticationFailureHandler {
                                         HttpServletResponse response,
                                         AuthenticationException exception) throws IOException, ServletException {
 
-	// 실패로직 핸들링
 
         exception.printStackTrace();
         request.setAttribute("errorMsg", getExceptionMessage(exception));
         response.sendRedirect("/user/me?error=true");
-//        request.getRequestDispatcher("/user/me?error=true").forward(request, response);;
     }
 
     private String getExceptionMessage(AuthenticationException exception) {

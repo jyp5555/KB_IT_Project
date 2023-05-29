@@ -73,7 +73,6 @@
                 	<li class="nav-item nav-link"><sec:authorize access="isAuthenticated()"><a href="/myPage">My Page</a></sec:authorize></li>
 					<li class="nav-item nav-link"><sec:authorize access="isAnonymous()" ><a href="/user/me">로그인</a></sec:authorize></li>
 					<li class="nav-item nav-link"><sec:authorize access="isAuthenticated()"><a href="/logout">로그아웃</a></sec:authorize></li>
-
                    
                  
                 </div>
@@ -92,6 +91,8 @@
     <script src="/resources/lib/waypoints/waypoints.min.js"></script>
     <script src="/resources/lib/counterup/counterup.min.js"></script>
     <script src="/resources/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="/resources/js/modalCRUD.js"></script>
+
     <!-- Template Javascript -->
   <script>
   (function ($) {

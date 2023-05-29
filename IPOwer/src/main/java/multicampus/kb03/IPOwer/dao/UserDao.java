@@ -30,7 +30,10 @@ public class UserDao {
 	}
 
 	public void save(UsersRoleDto user) {
-
-		mapper.save(user);
+		try {
+			mapper.save(user);		
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

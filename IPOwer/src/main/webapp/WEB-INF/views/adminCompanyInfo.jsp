@@ -41,7 +41,7 @@
 		<hr>
 		<div>
 			<!-- Button trigger modal -->
-			<button type="button" id="btnSave" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong" data-whatever="회사 정보 입력">회사 정보 입력</button>
+			<button type="button" id="btnCreate" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong" data-whatever="회사 정보 입력">회사 정보 입력</button>
 			<%@ include file="./adminCompanyInfoModal.jsp"%>
 		</div>
 
