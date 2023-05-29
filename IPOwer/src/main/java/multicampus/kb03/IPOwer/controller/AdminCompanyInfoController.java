@@ -72,6 +72,7 @@ public class AdminCompanyInfoController {
     @RequestMapping(value="/admin/company/{id}", method=RequestMethod.PUT)
     public @ResponseBody ResponseEntity<String> adminCompanyPut(@RequestBody CompanyDemandDto companyDemandDto, @PathVariable("id") int id) {
     	try {
+    		System.out.println("controller id:"+id);
     		companyInfoService.updateCompanyDemand(companyDemandDto,id);
         	return ResponseEntity.ok("update company success");
     	}catch(Exception e) {

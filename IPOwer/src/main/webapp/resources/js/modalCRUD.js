@@ -1,6 +1,7 @@
 var action = '';
 var url = '';
 var type = '';
+
 var companyPk = 0;
 
 $(document).ready(function(){
@@ -10,8 +11,7 @@ $(document).ready(function(){
 		$("#exampleModalLong").modal("hide")
 	})
 // 새 글 쓰기 버튼 클릭
-	$("#btnCreate").click(function(e){
-		console.log(e.target.id)
+	$("#btnSave").click(function(){
 		action='create';
 		type = 'POST'
 		url="/admin/company"
@@ -25,13 +25,13 @@ $(document).ready(function(){
 		type = 'PUT';
 		companyPk = e.target.value;
 		url = "/admin/company/"+companyPk
+		console.log(e.target.value)
 		
 		$.ajax({
 			url:url,
 			type:"GET",
 			dataType: "json",
 			success:function(result){
-				console.log(result)
 				
 				$("#exampleModalLongTitle").text("회사 정보 수정");
 				$("#exampleModalLong").modal('toggle');
@@ -68,10 +68,10 @@ $(document).ready(function(){
 			type : 'DELETE',
 			complete:function(e){
 				console.log(e)
+				location.reload();
 			}
 		});
 		
-		location.reload();
 	})
 	
 	var formInputs = document.querySelectorAll("#frm input");

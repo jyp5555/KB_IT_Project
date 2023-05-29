@@ -64,6 +64,7 @@
 </script>
 </head>
 <body>
+<%@ include file="./adminHeader.jsp"%>
 	<div class="container">
 		<h2>다중파일 업로드</h2>
 		<div class="panel panel-default">

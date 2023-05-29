@@ -4,7 +4,7 @@
 
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8">         
 <title>Insert title here</title>
 </head>
 <body>
@@ -16,7 +16,7 @@
                         <a href="index.html" class="navbar-brand">
                             <h1 class="m-0 text-white"><i class="fa fa-user-tie me-2"></i>IPOwer</h1>
                         </a>
-                        <p class="mt-3 mb-4">공모주 알리미 사이트는 투자자들에게 공모주 발행 정보와 관련된 소식을 제공하는 웹사이트입니다. 주요 공모주 정보와 예상 가격 범위, 기업 프로파일과 재무 정보, 실시간 업데이트된 공모주 일정과 알림 서비스를 통해 투자자들은 최신 정보를 받고 신중한 투자 결정을 할 수 있습니다. 커뮤니티 기능과 투자 교육 자료도 제공하여 투자자들 간의 정보 공유와 토론, 투자 실력 향상을 도울 수 있습니다.
+                        <p class="mt-3 mb-4" style="font-size: 12px">공모주 알리미 사이트는 투자자들에게 공모주 발행 정보와 관련된 소식을 제공하는 웹사이트입니다. 주요 공모주 정보와 예상 가격 범위, 기업 프로파일과 재무 정보, 실시간 업데이트된 공모주 일정과 알림 서비스를 통해 투자자들은 최신 정보를 받고 신중한 투자 결정을 할 수 있습니다. 커뮤니티 기능과 투자 교육 자료도 제공하여 투자자들 간의 정보 공유와 토론, 투자 실력 향상을 도울 수 있습니다.
 
 
 
@@ -55,9 +55,12 @@
                                 <h3 class="text-light mb-0">Quick Links</h3>
                             </div>
                             <div class="link-animated d-flex flex-column justify-content-start">
-                                <a class="text-light mb-2" href="/admin/company"><i class="bi bi-arrow-right text-primary me-2"></i>회사 정보 관리</a>
-                                <a class="text-light mb-2" href="/admin/cards"><i class="bi bi-arrow-right text-primary me-2"></i>카드 콘텐츠 관리</a>
-                                <sec:authorize access="isAuthenticated()"><a class="text-light mb-2" href="/logout"><i class="bi bi-arrow-right text-primary me-2"></i>로그 아웃</a></sec:authorize>
+                                <a class="text-light mb-2" href="/home"><i class="bi bi-arrow-right text-primary me-2"></i>Home</a>
+                                <a class="text-light mb-2" href="/community"><i class="bi bi-arrow-right text-primary me-2"></i>Community</a>
+                                <a class="text-light mb-2" href="/cards"><i class="bi bi-arrow-right text-primary me-2"></i>Contents</a>
+                                <sec:authorize access="isAuthenticated()"><a class="text-light mb-2" href="/myPage"><i class="bi bi-arrow-right text-primary me-2"></i>My Page</a></sec:authorize>
+
+
                             </div>
                         </div>
 
@@ -80,6 +83,14 @@
         </div>
     </div>
     <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded back-to-top" style="display: inline;"><i class="bi bi-arrow-up"></i></a>
-    <script src="/resources/js/main.js"></script>
+
+    <!-- JavaScript Libraries --><!-- 
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/resources/lib/wow/wow.min.js"></script>
+    <script src="/resources/lib/easing/easing.min.js"></script>
+    <script src="/resources/lib/waypoints/waypoints.min.js"></script>
+    <script src="/resources/lib/counterup/counterup.min.js"></script>
+    <script src="/resources/lib/owlcarousel/owl.carousel.min.js"></script>
 </body>
 </html>
