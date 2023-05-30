@@ -12,7 +12,15 @@
     
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.7/index.global.min.js'></script>
     <script src='fullcalendar/core/locales/ko.js'></script>
-
+	<style>
+	td>div>div>a{
+	    color:gray;
+	}
+	.fc-event-title-container{
+		cursor:pointer;
+	}
+	
+	</style>
   </head>
   <body>
   	<%@ include file="./header.jsp" %>
