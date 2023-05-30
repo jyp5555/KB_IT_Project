@@ -16,7 +16,7 @@ $(document).ready(function(){
 		type = 'POST'
 		url="/admin/company"
 		$("#exampleModalLongTitle").text("회사 정보 입력");
-		$("#exampleModalLong").modal();
+		$("#exampleModalLong").modal('show');
 	});
 	
 	// 수정하기 버튼 클릭
