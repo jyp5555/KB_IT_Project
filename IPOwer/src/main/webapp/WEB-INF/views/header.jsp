@@ -46,8 +46,8 @@
                 <div class="d-inline-flex align-items-center" style="height: 45px;">
                     <a class="btn btn-sm btn-outline-dark btn-sm-square rounded-circle me-2" href=""><i class="fab fa-twitter fw-normal"></i></a>
                     <a class="btn btn-sm btn-outline-dark btn-sm-square rounded-circle me-2" href=""><i class="fab fa-facebook-f fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-dark btn-sm-square rounded-circle me-2" href=""><i class="fab fa-linkedin-in fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-dark btn-sm-square rounded-circle me-2" href=""><i class="fab fa-instagram fw-normal"></i></a>
+                    <a href="http://blog.naver.com/thdfb98" class="btn btn-sm btn-outline-dark btn-sm-square rounded-circle me-2" href=""><i class="fab fa-linkedin-in fw-normal"></i></a>
+                    <a  class="btn btn-sm btn-outline-dark btn-sm-square rounded-circle me-2" href=""><i class="fab fa-instagram fw-normal"></i></a>
                     <a class="btn btn-sm btn-outline-dark btn-sm-square rounded-circle" href=""><i class="fab fa-youtube fw-normal"></i></a>
                 
                 </div>
