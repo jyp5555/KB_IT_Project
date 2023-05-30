@@ -102,7 +102,7 @@
 		<%-- <h2>카드 뉴스</h2>
 		<p class="container mt-2" id="count">전체 ${count+1}건</p> --%>
 		<div class="container py-5">
-			<h2 id="count" class="display-6 animated zoomIn">전체 ${count+1}건 </h2>
+			<h2 id="count" class="display-6 animated zoomIn mb-4">전체 ${count+1}건 </h2>
 			<div class="row g-5">
 				<!-- Blog list Start -->
 				<div class="col-lg-8">
@@ -119,7 +119,7 @@
 										
 
 										<div class="p-3">
-											<div class="d-flex mb-3">
+											<div class="d-block mb-3">
 												<small class="me-3"><i
 													class="far fa-user text-primary me-2" id="count"></i>조회수 : ${all[i].newsView }</small>
 												<small><i
@@ -127,7 +127,7 @@
 												<fmt:formatDate value="${all[i].newsRegdate}"
 														pattern="yyyy-MM-dd" type="date" /></small>
 											</div>
-											<h4 class="mb-3">${all[i].newsTitle }</h4>
+											<h5 class="mb-3">${all[i].newsTitle }</h5>
 
 										
 										</div>
@@ -193,7 +193,7 @@
 								<img class="img-fluid" src="/${item.filePath}/${item.fileName}.${item.fileContenttype}"
 									style="width: 70px; height: 70px; object-fit: cover;" alt="">
 								<a href='http://localhost:8080/news/${item.newsPk}'
-									class="h5 fw-semi-bold d-flex align-items-center bg-light px-3 mb-0" style="width:70%">${item.newsTitle }</a>
+									class="h6 fw-semi-bold d-flex align-items-center bg-light px-3 mb-0" style="width:70%">${item.newsTitle }</a>
 							</div> 
 							
 							</c:if>
@@ -333,7 +333,7 @@
   										card_news.append('<div class="col-md-4 wow slideInUp space-down" data-wow-delay="0.1s"><div class="blog-item bg-light rounded-3 overflow-hidden"><div class="blog-img position-relative overflow-hidden" onclick="location.href=\'http://localhost:8080/news/'
    					 				+ item.newsPk + '\'"><img class="img-fluid" src="/' + item.filePath + '/' + item.fileName + '.' + item.fileContenttype + '" alt="img"><div class="p-4"><div class="d-flex mb-3"><small class="me-3"><i class="far fa-user text-primary me-2" id="count"></i>'
 									    + '조회수: ' + item.newsView + '</small><small><i class="far fa-calendar-alt text-primary me-2"></i>'
-									    + d + '</small></div><h4 class="mb-3">' + item.newsTitle + '</h4><a class="text-uppercase" href="">');
+									    + d + '</small></div><h5 class="mb-3">' + item.newsTitle + '</h5><a class="text-uppercase" href="">');
 									});
 			        				/* $("#test").html(res);  */
 				        		},
