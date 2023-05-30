@@ -8,8 +8,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
-<link rel='stylesheet'
-	href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css'>
+
+<!-- <link rel='stylesheet'
+	href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css'> -->
 <script
 	src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
 <script
@@ -146,7 +147,7 @@ function deleteExistFile() {
 <head>
 <title>adminCardNewsUpdate</title>
 </head>
-<body>
+<%-- <body>
 <%@ include file="./adminHeader.jsp"%>
 	<div class="container" style="padding-left: 20%;padding-right: 20%">
 		<!-- <h2>게시물 등록</h2> -->
@@ -195,5 +196,51 @@ function deleteExistFile() {
 			</div>
 		</div>
 	</div>
+</body> --%>
+<body>
+  <%@ include file="./adminHeader.jsp"%>
+  <div class="container" style="padding-top: 5%;padding-left: 20%;padding-right: 20%">
+    <div class="panel panel-default">
+      <div class="panel-heading" style="font-size: 16px;color:#ffffff;background-color:#79dddb;font-weight: 1000 ;">Card News 업데이트</div>
+      <div class="panel-body">
+        <form class="form-horizontal" action="newsUpdate" enctype="multipart/form-data" method="post" onsubmit="return validateForm();">
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="newsTitle" style="font-size: 16px;font-weight: 1000 ;">뉴스 제목:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="newsTitle" value="${newsTitle}" style="width: 80%; font-size: 16px;">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-2" style="font-size: 16px;font-weight: 1000 ;">파일추가:</label>
+            <div class="col-sm-10">
+              <input type="button" value="파일추가" onClick="file_add()" />
+              <input type="button" value="파일삭제" onClick="file_remove()" /><br>
+              <c:if test="${selectAllFilesByNewsPkSize > 0}">
+                <c:forEach var="i" begin="0" end="${selectAllFilesByNewsPkSize-1}">
+                  <div class="col-sm-10" id="file_${i}" data-filepk="${selectAllFilesByNewsPk[i].filePk}">
+                    기존 파일: ${selectAllFilesByNewsPk[i].fileName}.${selectAllFilesByNewsPk[i].fileContenttype}
+                    <input type="hidden" name="filePk" value="${selectAllFilesByNewsPk[i].filePk}">
+                    <input type="button" value="등록삭제" onclick="removeFileDiv(${i})"/>
+                  </div>
+                </c:forEach>
+              </c:if>
+              <div id="add_file"></div>
+            </div>
+          </div>
+          <input type="hidden" name="newsPk" value="${newsPk}">
+          <button type="submit" value="파일수정" onclick="updateNewsTitle(),deleteExistFile()" class="btn btn-default">수정</button>
+        </form>
+        <form action="newsDelete" method="POST">
+          <input type="hidden" name="newsPk" value="${newsPk}">
+          <input type="hidden" name="selectAllFilesBynewsPk" value="${selectAllFilesBynewsPk}">
+          <button type="submit" class="form-group btn btn-default">삭제</button>
+        </form>
+      </div>
+      <div class="panel-footer" style="color:#ffffff;background-color:#79dddb;font-weight: 1000 ;">
+        수정페이지JSP
+      </div>
+    </div>
+  </div>
 </body>
+
 </html>
