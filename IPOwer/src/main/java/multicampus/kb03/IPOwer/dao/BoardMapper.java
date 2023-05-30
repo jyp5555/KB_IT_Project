@@ -44,6 +44,7 @@ public interface BoardMapper {
     
     @Select("SELECT MAX(ARTICLE_PK) FROM ARTICLE")
     int getLastArticlePk();
+
     
     //게시물 번호 자동 증가하는건 나중에 ...
     @Select("SELECT a.ARTICLE_PK, a.USER_NAME, a.ARTICLE_TITLE, a.ARTICLE_CONTENT, a.ARTICLE_REGDATE, a.ARTICLE_VIEW, u.USER_NAME " +
@@ -100,6 +101,8 @@ public interface BoardMapper {
     @Select("SELECT * FROM ARTICLE WHERE ${searchType} LIKE '%'||#{keyword}||'%'")
     List<BoardDto> searchBoards(@Param("searchType") String searchType, @Param("keyword") String keyword);
 
+    @Select("SELECT * FROM articles WHERE ARTICLE_PK = #{articlePk}")
+    BoardDto getArticleById(int articlePk);
     
     
     

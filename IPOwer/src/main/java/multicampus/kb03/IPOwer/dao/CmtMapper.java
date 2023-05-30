@@ -18,6 +18,9 @@ public interface CmtMapper {
 	@Select("SELECT c.COMMENT_CONTENT, c.COMMENT_REGDATE, U.USER_NAME FROM comments c JOIN USERS U ON c.USER_PK = U.USER_PK WHERE c.ARTICLE_PK =#{ARTICLE_PK}")
     List<CmtDto> getCommentsByArticle(@Param("ARTICLE_PK") int ARTICLE_PK);
 
-    @Insert("INSERT INTO comments (COMMENT_CONTENT) VALUES (#{dto.COMMENT_CONTENT})")
+    @Insert("INSERT INTO comments (COMMENT_REGDATE,COMMENT_CONTENT,COMMENT_PK,ARTICLE_PK,USER_PK) "
+    		+ "VALUES (sysdate,#{dto.commentContent},CMT_SEQ.NEXTVAL,#{dto.articlePk}, #{dto.userPk})")
     void addComment(@Param("dto") CmtDto comment);
+    
+   
 }
