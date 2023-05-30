@@ -5,12 +5,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -188,25 +190,38 @@ public class BoardController {
 	        return "edit";
 	    }
 	    //댓글등록
-	    @PostMapping("/cmtpost")
-	    public String postComment(@ModelAttribute("commentForm") CmtDto comment, Model model) {
-	        // 댓글 등록 로직
-	    	cmtDao.addComment(comment);
+	    @PostMapping("/cmtpost/{articlePk}")
+	    public @ResponseBody ResponseEntity<List<CmtDto>> postComment(@PathVariable("articlePk") int articlePk ,@RequestBody CmtDto comment, Model model) {
+	    	
+	    	try {
+				comment.setArticlePk(articlePk);
+				comment.setUserPk(userdao.getUserPkByUserId(comment.getUserId()));
+				cmtDao.addComment(comment);
+				
+				return ResponseEntity.ok(cmtDao.getCommentsByArticleId(articlePk));
+			} catch (Exception e) {
+				
+				e.printStackTrace();
+				return ResponseEntity.badRequest().body(null);
+			}
 
-	    	// 등록된 댓글을 포함한 게시글과 댓글 목록을 다시 조회하여 모델에 추가
-	        int articlePk = comment.getArticlePk();
+//	    	cmtDao.addComment(comment);
+//	        // 댓글 등록 로직
+//	    	cmtDao.addComment(comment);
+//
+//	    	// 등록된 댓글을 포함한 게시글과 댓글 목록을 다시 조회하여 모델에 추가
+//	        int articlePk = comment.getArticlePk();
+//
+//	        BoardDto article = BoardDao.getArticleById(articlePk);
+//	        model.addAttribute("article", article);
+//
+//	        
+//	        List<CmtDto> comments = cmtDao.getCommentsByArticleId(articlePk);
+//	        model.addAttribute("comments", comments);
+//
+//	        // 댓글 작성 폼 초기화
+//	        model.addAttribute("commentForm", new CmtDto());
 
-	        BoardDto article = BoardDao.getArticleById(articlePk);
-	        model.addAttribute("article", article);
-
-	        
-	        List<CmtDto> comments = cmtDao.getCommentsByArticleId(articlePk);
-	        model.addAttribute("comments", comments);
-
-	        // 댓글 작성 폼 초기화
-	        model.addAttribute("commentForm", new CmtDto());
-
-	        return "detail.jsp";
 	    }
 	    
 	}

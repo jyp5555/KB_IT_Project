@@ -33,7 +33,7 @@ public interface UsersMapper {
 	UsersRoleDto findByUserId(@Param("id") String userId);
 	
 	@Select("SELECT USER_PK FROM USERS WHERE USER_ID = #{userId}")
-	int getUserPkByUserId(String userId);
+	int getUserPkByUserId(@Param("userId") String userId);
 	
 	@Insert("INSERT INTO USERS(USER_PK, USER_ID, USER_PW, USER_NAME, USER_PHONE, USER_REGDATE, ROLE_PK) VALUES(user_seq.nextval,#{user.userId},#{user.userPw},#{user.userName},#{user.userPhone},SYSDATE,1)")
 	int save(@Param("user") UsersRoleDto user);

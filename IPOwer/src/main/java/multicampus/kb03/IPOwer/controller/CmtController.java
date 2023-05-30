@@ -20,13 +20,15 @@ import multicampus.kb03.IPOwer.service.BoardService;
 @Controller
 @RequestMapping("/board")
 public class CmtController {
-	    private final CmtDao Cmtdao;
-	    private final UserDao userdao;
-	    @Autowired
-	    public CmtController(CmtDao cmtdao,UserDao userdao) {
-	        this.userdao = userdao;
-			this.Cmtdao = cmtdao;
-	    }
+	private final CmtDao Cmtdao;
+	private final UserDao userdao;
+
+	@Autowired
+	public CmtController(CmtDao cmtdao, UserDao userdao) {
+		this.userdao = userdao;
+		this.Cmtdao = cmtdao;
+	}
+	    
 //	    //댓글작성 
 //	    @PostMapping("/cmtpost")
 //	    public String write(CmtDto cmtDto, Principal principal) throws Exception {
@@ -56,8 +58,5 @@ public class CmtController {
 //	    }
 //	    
 	    //댓글삭제
-	    
-	    
-	    
 	    
 }

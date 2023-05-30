@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -144,8 +145,10 @@ location.href = "/board/deleteBoard?ARTICLE_PK=" + articlePk;
   <td colspan="4" class="text-right">
     <form id="myForm" method="post">
           <input type="button" class="btn btn-sm btn-primary"  value="목록" style="font-size: 17px; color: white; background-color: #79dddb;" id="btnList">
+          <sec:authorize access="isAuthenticated()">
 			<input type="button" class="btn btn-sm btn-primary"  value="수정" style="font-size: 17px; color: white; background-color: #79dddb;" id="btnUpdate" name="${detail1.articlePk}">
 			<input type="button" class="btn btn-sm btn-primary"  value="삭제" style="font-size: 17px; color: white; background-color: #79dddb;" id="btnDelete" name="${detail1.articlePk}">
+			</sec:authorize>
             <!-- <a href="#" class="btn btn-sm btn-primary" style="font-size: 17px; color: white; background-color: #79dddb;">수정</a>
             <a href="#" class="btn btn-sm btn-primary" style="font-size: 17px; color: white; background-color: #79dddb;">삭제</a>
             <a href="/board" id="btnList" class="btn btn-sm btn-primary" style="font-size: 17px; color: white; background-color: #79dddb;">목록</a> -->
@@ -166,13 +169,16 @@ location.href = "/board/deleteBoard?ARTICLE_PK=" + articlePk;
 <div class="container">
 <div class="mb-5">
                         <div class="section-title section-title-sm position-relative pb-3 mb-4">
-                            <h3 class="mb-0">3 Comments</h3>
+                            <h3 class="mb-0">
+                            	<element>
+                            		${fn:length(reply)} Comments
+                            	</element></h3>
                         </div>
                         <c:forEach items="${reply}" var="r">
                         <div class="d-flex mb-4">
                           
                             <div class="ps-3" >
-                                <h6>${r.userName}<small><i style="padding:20px"> ${r.commentRegdate}</i></small></h6>
+                                <h6>${r.userId}<small><i style="padding:20px"> ${r.commentRegdate}</i></small></h6>
                                 <p>${r.commentContent}</p>
                                 <button class="btn btn-sm btn-light">Reply</button>
                             </div>
@@ -184,12 +190,13 @@ location.href = "/board/deleteBoard?ARTICLE_PK=" + articlePk;
                         <div class="section-title section-title-sm position-relative pb-3 mb-4">
                             <h3 class="mb-0">Leave A Comment</h3>
                         </div>
-                        <form method="post" action="/board/cmtpost">
+                        <sec:authorize access="isAuthenticated()">
+                        
+                        <form id="commentForm1" name="${detail1.articlePk}">
                             <div class="row g-3">
-                                <div class="col-12 col-sm-6">
-                                <sec:authentication var="user" property="principal"/>
-							<input type="text" name="userId" class="form-control"
-                        id="inputAuthor" value="${user.username}"/>
+                                <div class="col-12">
+                                	<sec:authentication var="user" property="principal"/>
+									<input type="text" class="form-control" id="inputAuthor" name="userId" value="${user.username}" readonly="readonly"/>
                                    <!--  <input type="text" class="form-control bg-white border-0" name="comment" placeholder="Your Name" style="height: 55px;"> -->
                                 </div>
                                 
@@ -201,6 +208,10 @@ location.href = "/board/deleteBoard?ARTICLE_PK=" + articlePk;
                                 </div>
                             </div>
                         </form>
+                        </sec:authorize>
+                        <sec:authorize access="isAnonymous()">
+                        <p>회원만 댓글을 달 수 있습니다.</p>
+                        </sec:authorize>
                     </div>
                     </div>
    
@@ -229,4 +240,21 @@ location.href = "/board/deleteBoard?ARTICLE_PK=" + articlePk;
 	<%@ include file="./footer.jsp"%>
 
 </body>
+<script>
+	$("#commentForm1").submit(function(e){
+		e.preventDefault();
+		commentData = JSON.stringify(Object.fromEntries(new FormData(this)))
+		console.log(commentData)
+		$.ajax({
+			url:"/board/cmtpost/"+e.target.name,
+			type:"POST",
+			data:commentData,
+			contentType:"application/json",
+			success: function(result){
+				location.reload()
+			}
+		})
+		
+	})
+</script>
 </html>
