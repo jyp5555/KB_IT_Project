@@ -66,93 +66,83 @@ public class AdminNewsFileController {
 
     @PostMapping("/newsCreate")
     public String adminNewsCreatePost(
-            MultipartHttpServletRequest multipartRequest, 
-            HttpServletRequest request, 
-            @RequestParam("newsTitle") String newsTitle,
-            Model model) throws IOException {
-        AdminNewsFileDto dto = new AdminNewsFileDto();
-        AdminNewsFileDao.saveCreateNews(newsTitle);
-        
-        String UPLOAD_DIR = "img";    
-        
-        // UPLOAD_DIR의 실제 경로 가져오는 것.
-        //String uploadPath = request.getServletContext().getRealPath("") + File.separator + UPLOAD_DIR;
-        //String uploadPath = request.getServletContext().getRealPath("/WEB-INF/")+ UPLOAD_DIR;
-        
-        //String uploadPath = request.getServletContext().getRealPath("/resources/");
-        String uploadDbPath = "resources/"+UPLOAD_DIR;
-        String uploadImgPath = request.getServletContext().getRealPath("/resources/")+ UPLOAD_DIR;
 
-        // 1. id, name 파라미터 읽어오기
-        Map map = new HashMap();    // (KEY, Value)
-        //String multipartRequestid = multipartRequest.getParameter("id");
-        //String multipartRequestname = multipartRequest.getParameter("name");
-        Enumeration<String> e = multipartRequest.getParameterNames();
-        
-        while (e.hasMoreElements()) {
-            String name = e.nextElement();
-            String value = multipartRequest.getParameter(name);
-            
-            map.put(name, value);
-        }
-        
-        // 2. 파일 담고있는 파라미터 읽어오기
-        Iterator<String> it = multipartRequest.getFileNames();
-        //List<String> fileList = new ArrayList<String>();
-        
-        while (it.hasNext()) {
-            List<String> fileList = new ArrayList<String>();
-            String paramfName = it.next();
-            MultipartFile mFile = multipartRequest.getFile(paramfName);
-            String originName = mFile.getOriginalFilename();    // 실제 업로드된 파일 이름
-            String oName = originName.split("\\.")[0];
-//            String oContentType = mFile.getContentType();    // 실제 업로드된 파일 확장자
-//            oContentType = oContentType.split("/")[1];
-            String oContentType = originName.split("\\.")[1];    // 실제 업로드된 파일 확장자
-            long fileSizeBytes = mFile.getSize(); // 파일 크기(byte)를 가져옴
-            String oSize = ""; // 파일 크기(byte)를 가져옴
-            if(fileSizeBytes/(1024*1024)>0) {
-                long fileSizeMegabytes = fileSizeBytes / (1024*1024); // 바이트를 키로바이트로 변환                
-                oSize = Long.toString(fileSizeMegabytes)+"MB"; // 메가바이트 크기를 문자열로 변환
-            }else if(fileSizeBytes/(1024)>0){
-                long fileSizeKilobytes = fileSizeBytes / (1024); // 바이트를 키로바이트로 변환                        
-                oSize = Long.toString(fileSizeKilobytes)+"KB"; // 메가바이트 크기를 문자열로 변환        
-            }
-            
-            // 파일 업로드할 경로 확인
-            File file = new File(uploadImgPath + "\\" + paramfName);
-            
-            if (mFile.getSize() != 0) {
-                if (!file.exists()) {
-                    if (file.getParentFile().mkdirs()) {
-                        file.createNewFile();     // 임시로 파일을 생성한다.
-                    }
-                }
-                mFile.transferTo(new File(uploadImgPath + "\\" + originName));    // 파일 업로드
-                System.out.println("File saved at: " + uploadImgPath);
-            }
-            /*
-             * fileList.add(oName); fileList.add(oContentType); fileList.add(oSize);
-             * fileList.add(uploadPath);
-             * 
-             * System.out.println("newsTitle 출력:"+newsTitle);
-             * System.out.println("fileList 출력:"+fileList.toString()); map.put("fileList",
-             * fileList);
-             * 
-             * //여기서 files테이블에 insert문으로 파일 하나씩 추가.
-             * System.out.println("★★★맵★★★맵★★★"+map.toString()+"★★★맵★★★맵★★★");
-             */
-            
-            dto.setFileName(oName);
-            dto.setFileContenttype(oContentType);
-            dto.setFileSize(oSize);
-            dto.setFilePath(uploadDbPath);
-            System.out.println("before:"+dto);
-            AdminNewsFileDao.saveCreateFiles(dto);
-        }
-        //map.put("fileList", fileList);
-        model.addAttribute("dto", dto);
-            
+    		MultipartHttpServletRequest multipartRequest, 
+			HttpServletRequest request, 
+			@RequestParam("newsTitle") String newsTitle,
+			Model model) throws IOException {
+    	AdminNewsFileDto dto = new AdminNewsFileDto();
+    	AdminNewsFileDao.saveCreateNews(newsTitle);
+    	
+    	String UPLOAD_DIR = "img";	
+    	
+		// UPLOAD_DIR의 실제 경로 가져오는 것.
+		//String uploadPath = request.getServletContext().getRealPath("") + File.separator + UPLOAD_DIR;
+    	//String uploadPath = request.getServletContext().getRealPath("/WEB-INF/")+ UPLOAD_DIR;
+    	
+    	//String uploadPath = request.getServletContext().getRealPath("/resources/");
+    	String uploadDbPath = "resources/"+UPLOAD_DIR;
+    	String uploadImgPath = request.getServletContext().getRealPath("/resources/")+ UPLOAD_DIR;
+
+		// 1. id, name 파라미터 읽어오기
+		Map map = new HashMap();	// (KEY, Value)
+		//String multipartRequestid = multipartRequest.getParameter("id");
+		//String multipartRequestname = multipartRequest.getParameter("name");
+		Enumeration<String> e = multipartRequest.getParameterNames();
+		
+		while (e.hasMoreElements()) {
+			String name = e.nextElement();
+			String value = multipartRequest.getParameter(name);
+			
+			map.put(name, value);
+		}
+		
+		// 2. 파일 담고있는 파라미터 읽어오기
+		Iterator<String> it = multipartRequest.getFileNames();
+		//List<String> fileList = new ArrayList<String>();
+		
+		while (it.hasNext()) {
+			List<String> fileList = new ArrayList<String>();
+			String paramfName = it.next();
+			MultipartFile mFile = multipartRequest.getFile(paramfName);
+			String originName = mFile.getOriginalFilename();	// 실제 업로드된 파일 이름
+			String oName = originName.split("\\.")[0];
+//			String oContentType = mFile.getContentType();	// 실제 업로드된 파일 확장자
+//			oContentType = oContentType.split("/")[1];
+			String oContentType = originName.split("\\.")[1];	// 실제 업로드된 파일 확장자
+			long fileSizeBytes = mFile.getSize(); // 파일 크기(byte)를 가져옴
+			String oSize = ""; // 파일 크기(byte)를 가져옴
+			if(fileSizeBytes/(1024*1024)>0) {
+				long fileSizeMegabytes = fileSizeBytes / (1024*1024); // 바이트를 키로바이트로 변환				
+				oSize = Long.toString(fileSizeMegabytes)+"MB"; // 메가바이트 크기를 문자열로 변환
+			}else if(fileSizeBytes/(1024)>0){
+				long fileSizeKilobytes = fileSizeBytes / (1024); // 바이트를 키로바이트로 변환						
+				oSize = Long.toString(fileSizeKilobytes)+"KB"; // 메가바이트 크기를 문자열로 변환		
+			}
+			
+			// 파일 업로드할 경로 확인
+			File file = new File(uploadImgPath + "\\" + paramfName);
+			
+			if (mFile.getSize() != 0) {
+				if (!file.exists()) {
+					if (file.getParentFile().mkdirs()) {
+						file.createNewFile(); 	// 임시로 파일을 생성한다.
+					}
+				}
+				mFile.transferTo(new File(uploadImgPath + "\\" + originName));	// 파일 업로드
+				System.out.println("File saved at: " + uploadImgPath);
+			}
+			
+			
+			dto.setFileName(oName);
+			dto.setFileContenttype(oContentType);
+			dto.setFileSize(oSize);
+			dto.setFilePath(uploadDbPath);
+			System.out.println("before:"+dto);
+			AdminNewsFileDao.saveCreateFiles(dto);
+		}
+		//map.put("fileList", fileList);
+		model.addAttribute("dto", dto);
         return "redirect:newsContents";
     }
     @GetMapping("/newsUpdate")
@@ -180,101 +170,92 @@ public class AdminNewsFileController {
 
     @PostMapping("/newsUpdate")
     public String adminNewsUpdatePost(
-            MultipartHttpServletRequest multipartRequest, 
-            HttpServletRequest request, 
-            @RequestParam("newsPk") int newsPk,
-            @RequestParam("filePk") int filePk,
-            Model model) throws IOException {
-        AdminNewsFileDto dto = new AdminNewsFileDto();
-        
-        String UPLOAD_DIR = "img";    
-        
-        // UPLOAD_DIR의 실제 경로 가져오는 것.
-        //String uploadPath = request.getServletContext().getRealPath("") + File.separator + UPLOAD_DIR;
-        //String uploadPath = request.getServletContext().getRealPath("/WEB-INF/")+ UPLOAD_DIR;
-        
-        String uploadDbPath = "resources/"+UPLOAD_DIR;
-        String uploadImgPath = request.getServletContext().getRealPath("/resources/")+ UPLOAD_DIR;
+    		MultipartHttpServletRequest multipartRequest, 
+			HttpServletRequest request, 
+    		@RequestParam("newsPk") int newsPk,
+    		@RequestParam("filePk") int filePk,
+			Model model) throws IOException {
+    	AdminNewsFileDto dto = new AdminNewsFileDto();
+    	
+    	String UPLOAD_DIR = "img";	
+    	
+		// UPLOAD_DIR의 실제 경로 가져오는 것.
+		//String uploadPath = request.getServletContext().getRealPath("") + File.separator + UPLOAD_DIR;
+    	//String uploadPath = request.getServletContext().getRealPath("/WEB-INF/")+ UPLOAD_DIR;
+    	
+    	String uploadDbPath = "resources/"+UPLOAD_DIR;
+    	String uploadImgPath = request.getServletContext().getRealPath("/resources/")+ UPLOAD_DIR;
 
-        // 1. id, name 파라미터 읽어오기
-        Map map = new HashMap();    // (KEY, Value)
-        //String multipartRequestid = multipartRequest.getParameter("id");
-        //String multipartRequestname = multipartRequest.getParameter("name");
-        Enumeration<String> e = multipartRequest.getParameterNames();
-        
-        while (e.hasMoreElements()) {
-            String name = e.nextElement();
-            String value = multipartRequest.getParameter(name);
-            
-            map.put(name, value);
-        }
-        
-        // 2. 파일 담고있는 파라미터 읽어오기
-        Iterator<String> it = multipartRequest.getFileNames();
-        //List<String> fileList = new ArrayList<String>();
-        
-        while (it.hasNext()) {
-            List<String> fileList = new ArrayList<String>();
-            String paramfName = it.next();
-            MultipartFile mFile = multipartRequest.getFile(paramfName);
-            String originName = mFile.getOriginalFilename();    // 실제 업로드된 파일 이름
-            String oName = originName.split("\\.")[0];
-//            String oContentType = mFile.getContentType();    // 실제 업로드된 파일 확장자
-//            oContentType = oContentType.split("/")[1];
-            String oContentType = originName.split("\\.")[1];    // 실제 업로드된 파일 확장자
-            long fileSizeBytes = mFile.getSize(); // 파일 크기(byte)를 가져옴
-            String oSize = ""; // 파일 크기(byte)를 가져옴
-            if(fileSizeBytes/(1024*1024)>0) {
-                long fileSizeMegabytes = fileSizeBytes / (1024*1024); // 바이트를 키로바이트로 변환                
-                oSize = Long.toString(fileSizeMegabytes)+"MB"; // 메가바이트 크기를 문자열로 변환
-            }else if(fileSizeBytes/(1024)>0){
-                long fileSizeKilobytes = fileSizeBytes / (1024); // 바이트를 키로바이트로 변환                        
-                oSize = Long.toString(fileSizeKilobytes)+"KB"; // 메가바이트 크기를 문자열로 변환        
-            }
-            
-            // 파일 업로드할 경로 확인
-            File file = new File(uploadImgPath + "\\" + paramfName);
-            
-            if (mFile.getSize() != 0) {
-                if (!file.exists()) {
-                    if (file.getParentFile().mkdirs()) {
-                        file.createNewFile();     // 임시로 파일을 생성한다.
-                    }
-                }
-                mFile.transferTo(new File(uploadImgPath + "\\" + originName));    // 파일 업로드
-                System.out.println("File saved at: " + uploadImgPath);
-            }
-            /*
-             * fileList.add(oName); fileList.add(oContentType); fileList.add(oSize);
-             * fileList.add(uploadPath);
-             * 
-             * System.out.println("newsTitle 출력:"+newsTitle);
-             * System.out.println("fileList 출력:"+fileList.toString()); map.put("fileList",
-             * fileList);
-             * 
-             * //여기서 files테이블에 insert문으로 파일 하나씩 추가.
-             * System.out.println("★★★맵★★★맵★★★"+map.toString()+"★★★맵★★★맵★★★");
-             */
-            System.out.println("여기는 업데이트다!!!!!!!!");
-            dto.setNewsPk(newsPk);
-            dto.setFilePk(filePk);
-            dto.setFileName(oName);
-            dto.setFileContenttype(oContentType);
-            dto.setFileSize(oSize);
-            dto.setFilePath(uploadDbPath);
-            System.out.println("before:"+dto);
-            AdminNewsFileDao.saveUpdateFiles(dto);
-            System.out.println("after:"+dto);
-        }
-        //map.put("fileList", fileList);
-        model.addAttribute("dto", dto);
-            
-        AdminNewsFileDto selectByNewsPk = AdminNewsFileDao.selectByNewsPk(newsPk);
-        System.out.println("중요한 값인가?: newPK,selectByNewsPk:"+newsPk+","+selectByNewsPk);
-        model.addAttribute("newsPk", newsPk);
-        model.addAttribute("selectByNewsPk",selectByNewsPk);
-        //return "redirect:newsContents";
-        return "redirect:newsContents";
+
+		// 1. id, name 파라미터 읽어오기
+		Map map = new HashMap();	// (KEY, Value)
+		//String multipartRequestid = multipartRequest.getParameter("id");
+		//String multipartRequestname = multipartRequest.getParameter("name");
+		Enumeration<String> e = multipartRequest.getParameterNames();
+		
+		while (e.hasMoreElements()) {
+			String name = e.nextElement();
+			String value = multipartRequest.getParameter(name);
+			
+			map.put(name, value);
+		}
+		
+		// 2. 파일 담고있는 파라미터 읽어오기
+		Iterator<String> it = multipartRequest.getFileNames();
+		//List<String> fileList = new ArrayList<String>();
+		
+		while (it.hasNext()) {
+			List<String> fileList = new ArrayList<String>();
+			String paramfName = it.next();
+			MultipartFile mFile = multipartRequest.getFile(paramfName);
+			String originName = mFile.getOriginalFilename();	// 실제 업로드된 파일 이름
+			String oName = originName.split("\\.")[0];
+//			String oContentType = mFile.getContentType();	// 실제 업로드된 파일 확장자
+//			oContentType = oContentType.split("/")[1];
+			String oContentType = originName.split("\\.")[1];	// 실제 업로드된 파일 확장자
+			long fileSizeBytes = mFile.getSize(); // 파일 크기(byte)를 가져옴
+			String oSize = ""; // 파일 크기(byte)를 가져옴
+			if(fileSizeBytes/(1024*1024)>0) {
+				long fileSizeMegabytes = fileSizeBytes / (1024*1024); // 바이트를 키로바이트로 변환				
+				oSize = Long.toString(fileSizeMegabytes)+"MB"; // 메가바이트 크기를 문자열로 변환
+			}else if(fileSizeBytes/(1024)>0){
+				long fileSizeKilobytes = fileSizeBytes / (1024); // 바이트를 키로바이트로 변환						
+				oSize = Long.toString(fileSizeKilobytes)+"KB"; // 메가바이트 크기를 문자열로 변환		
+			}
+			
+			// 파일 업로드할 경로 확인
+			File file = new File(uploadImgPath + "\\" + paramfName);
+			
+			if (mFile.getSize() != 0) {
+				if (!file.exists()) {
+					if (file.getParentFile().mkdirs()) {
+						file.createNewFile(); 	// 임시로 파일을 생성한다.
+					}
+				}
+				mFile.transferTo(new File(uploadImgPath + "\\" + originName));	// 파일 업로드
+				System.out.println("File saved at: " + uploadImgPath);
+			}
+			
+			System.out.println("여기는 업데이트다!!!!!!!!");
+			dto.setNewsPk(newsPk);
+			dto.setFilePk(filePk);
+			dto.setFileName(oName);
+			dto.setFileContenttype(oContentType);
+			dto.setFileSize(oSize);
+			dto.setFilePath(uploadDbPath);
+			System.out.println("before:"+dto);
+			AdminNewsFileDao.saveUpdateFiles(dto);
+			System.out.println("after:"+dto);
+		}
+		//map.put("fileList", fileList);
+		model.addAttribute("dto", dto);
+    		
+    	AdminNewsFileDto selectByNewsPk = AdminNewsFileDao.selectByNewsPk(newsPk);
+    	System.out.println("중요한 값인가?: newPK,selectByNewsPk:"+newsPk+","+selectByNewsPk);
+    	model.addAttribute("newsPk", newsPk);
+    	model.addAttribute("selectByNewsPk",selectByNewsPk);
+    	//return "redirect:newsContents";
+    	return "redirect:newsContents";
     }
     
     @GetMapping("/updateNewsTitle")
