@@ -117,7 +117,7 @@
 									href="/board/detailreview?ARTICLE_PK=${contactBoard.articlePk}">${contactBoard.articleTitle}</a>
 								</td>
 								<td>${contactBoard.userName}</td>
-								<td>${contactBoard.articleRegdate}</td>
+								<td><fmt:formatDate value="${contactBoard.articleRegdate}" pattern="yyyy-MM-DD hh:mm:ss"/></td>
 								<td>${contactBoard.articleView}</td>
 							</tr>
 						</c:forEach>
@@ -129,11 +129,13 @@
 <br>
 	
 	<div style="text-align: right; margin-right: 20%;">
+		<sec:authorize access="isAuthenticated()">
 		<a href="${contextPath}/board/write"> 
 		<input type="button"
 			value="글쓰기" class="btn btn-sm btn-primary"
 			style="font-size: 17px; color: white; background-color: #79dddb;">
 			</a>
+			</sec:authorize>
 <a href="/board">
           <input type="button" class="btn btn-sm btn-primary"  value="목록" style="font-size: 17px; color: white; background-color: #79dddb;" id="btnList">
 		</a>
