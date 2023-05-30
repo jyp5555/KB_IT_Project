@@ -43,6 +43,7 @@
 <link href="/resources/css/style.css" rel="stylesheet" type="text/css">
 <link href="/resources/css/bootstrap.min.css" rel="stylesheet"
 	type="text/css">
+	
 </head>
 <body>
 
@@ -117,7 +118,8 @@
 									href="/board/detailreview?ARTICLE_PK=${contactBoard.articlePk}">${contactBoard.articleTitle}</a>
 								</td>
 								<td>${contactBoard.userName}</td>
-								<td>${contactBoard.articleRegdate}</td>
+								<td><fmt:formatDate value="${contactBoard.articleRegdate}" pattern="yyyy-MM-dd" type="date" /></td>
+								
 								<td>${contactBoard.articleView}</td>
 							</tr>
 						</c:forEach>

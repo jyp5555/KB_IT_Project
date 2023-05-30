@@ -11,12 +11,12 @@ $(document).ready(function(){
 		$("#exampleModalLong").modal("hide")
 	})
 // 새 글 쓰기 버튼 클릭
-	$("#btnSave").click(function(){
+	$("#btnCreate").click(function(){
 		action='create';
 		type = 'POST'
 		url="/admin/company"
 		$("#exampleModalLongTitle").text("회사 정보 입력");
-		$("#exampleModalLong").modal();
+		$("#exampleModalLong").modal('show');
 	});
 	
 	// 수정하기 버튼 클릭

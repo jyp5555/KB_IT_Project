@@ -222,6 +222,7 @@
   </body>
       <script>
     	var data1= []
+    	var myChart = null
     	document.addEventListener('DOMContentLoaded', function() {
         	var calendarEl = document.getElementById('calendar');
         	var c_name = ${c_name}
@@ -310,7 +311,7 @@
             				
             				const ctx = document.getElementById('myChart');
 
-            				var myChart = new Chart(ctx, {
+            				myChart = new Chart(ctx, {
             				    type: 'doughnut',
             				    data: {
             				      labels: ['가격 미제시', '밴드 하단 미만', '밴드 하단', '밴드 내', '밴드 상단', '밴드 상단 초과'],
