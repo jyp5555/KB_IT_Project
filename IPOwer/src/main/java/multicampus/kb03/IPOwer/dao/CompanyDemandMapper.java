@@ -39,7 +39,7 @@ public interface CompanyDemandMapper {
 			"join users u on l.user_pk = u.user_pk where u.user_id=#{userId}")
 	List<CompanyUserDto> findLikeAll(@Param("userId") String userId);
 	
-	@Insert("insert into likecompany values(1,#{companyPk},#{userPk})")
+	@Insert("insert into likecompany values(likecompany_seq.nextval,#{companyPk},#{userPk})")
 	int insertLike(@Param("userPk") int userPk, @Param("companyPk") int companyPk);
 	
 	@Select("select c.*, d.*\r\n" + 
