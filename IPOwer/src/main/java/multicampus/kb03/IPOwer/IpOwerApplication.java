@@ -1,5 +1,6 @@
 package multicampus.kb03.IPOwer;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -7,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class IpOwerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(IpOwerApplication.class, args);
-	}
-
+        SpringApplication.run(IpOwerApplication.class, args);
+    }
+    
 }

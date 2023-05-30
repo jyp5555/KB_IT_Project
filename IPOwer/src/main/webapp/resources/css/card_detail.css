@@ -1,0 +1,32 @@
+.carousel-item img {
+  /* width: 35%; */
+  width: 400px;
+  height: 400px;
+}
+hr {
+ border: 10px solid #ff0000;
+  background-color: black;
+}
+
+/*  .carousel-control-prev,
+.carousel-control-next {
+  top: 40%;
+  transform: translateY(50%);
+}  */
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(100%);
+}
+
+.carousel-inner {
+  text-align: center;
+} 
+
+.carousel-fluid{
+	width: 60%;
+	padding-right: var(- -bs-gutter-x, .75rem);
+	padding-left: var(- -bs-gutter-x, .75rem);
+	margin-right: auto;
+	margin-left: auto
+}
