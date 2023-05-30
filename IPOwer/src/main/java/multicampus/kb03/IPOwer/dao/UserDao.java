@@ -37,7 +37,13 @@ public class UserDao {
 		}
 	}
 
-	public int getUserPkByUserId(String userId) {
-		return mapper.getUserPkByUserId(userId);
+	public Integer getUserPkByUserId(String userId) {
+		try {
+			return mapper.getUserPkByUserId(userId);
+
+		}catch(Exception e) {
+			e.printStackTrace();
+			return 0;
+		}
 	}
 }

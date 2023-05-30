@@ -8,11 +8,13 @@ import multicampus.kb03.IPOwer.dto.CmtDto;
 
 @Component
 public class CmtDao {
+	
 	private final CmtMapper mapper;
-@Autowired
-public CmtDao(CmtMapper mapper) {
-	this.mapper = mapper;
-}
+	
+	@Autowired
+	public CmtDao(CmtMapper mapper) {
+		this.mapper = mapper;
+	}
 
 	public List<CmtDto> getCommentsByArticle(int aRTICLE_PK) {
 		// TODO Auto-generated method stub
