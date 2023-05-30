@@ -77,7 +77,11 @@ public class AdminNewsFileController {
     	
 		// UPLOAD_DIR의 실제 경로 가져오는 것.
 		//String uploadPath = request.getServletContext().getRealPath("") + File.separator + UPLOAD_DIR;
-    	String uploadPath = request.getServletContext().getRealPath("/WEB-INF/")+ UPLOAD_DIR;
+    	//String uploadPath = request.getServletContext().getRealPath("/WEB-INF/")+ UPLOAD_DIR;
+    	
+    	//String uploadPath = request.getServletContext().getRealPath("/resources/");
+    	String uploadDbPath = "resources/"+UPLOAD_DIR;
+    	String uploadImgPath = request.getServletContext().getRealPath("/resources/")+ UPLOAD_DIR;
 
 		// 1. id, name 파라미터 읽어오기
 		Map map = new HashMap();	// (KEY, Value)
@@ -116,7 +120,7 @@ public class AdminNewsFileController {
 			}
 			
 			// 파일 업로드할 경로 확인
-			File file = new File(uploadPath + "\\" + paramfName);
+			File file = new File(uploadImgPath + "\\" + paramfName);
 			
 			if (mFile.getSize() != 0) {
 				if (!file.exists()) {
@@ -124,8 +128,8 @@ public class AdminNewsFileController {
 						file.createNewFile(); 	// 임시로 파일을 생성한다.
 					}
 				}
-				mFile.transferTo(new File(uploadPath + "\\" + originName));	// 파일 업로드
-				System.out.println("File saved at: " + uploadPath);
+				mFile.transferTo(new File(uploadImgPath + "\\" + originName));	// 파일 업로드
+				System.out.println("File saved at: " + uploadImgPath);
 			}
 			/*
 			 * fileList.add(oName); fileList.add(oContentType); fileList.add(oSize);
@@ -142,7 +146,7 @@ public class AdminNewsFileController {
 			dto.setFileName(oName);
 			dto.setFileContenttype(oContentType);
 			dto.setFileSize(oSize);
-			dto.setFilePath(uploadPath);
+			dto.setFilePath(uploadDbPath);
 			System.out.println("before:"+dto);
 			AdminNewsFileDao.saveCreateFiles(dto);
 		}
@@ -187,7 +191,10 @@ public class AdminNewsFileController {
     	
 		// UPLOAD_DIR의 실제 경로 가져오는 것.
 		//String uploadPath = request.getServletContext().getRealPath("") + File.separator + UPLOAD_DIR;
-    	String uploadPath = request.getServletContext().getRealPath("/WEB-INF/")+ UPLOAD_DIR;
+    	//String uploadPath = request.getServletContext().getRealPath("/WEB-INF/")+ UPLOAD_DIR;
+    	
+    	String uploadDbPath = "resources/"+UPLOAD_DIR;
+    	String uploadImgPath = request.getServletContext().getRealPath("/resources/")+ UPLOAD_DIR;
 
 		// 1. id, name 파라미터 읽어오기
 		Map map = new HashMap();	// (KEY, Value)
@@ -226,7 +233,7 @@ public class AdminNewsFileController {
 			}
 			
 			// 파일 업로드할 경로 확인
-			File file = new File(uploadPath + "\\" + paramfName);
+			File file = new File(uploadImgPath + "\\" + paramfName);
 			
 			if (mFile.getSize() != 0) {
 				if (!file.exists()) {
@@ -234,8 +241,8 @@ public class AdminNewsFileController {
 						file.createNewFile(); 	// 임시로 파일을 생성한다.
 					}
 				}
-				mFile.transferTo(new File(uploadPath + "\\" + originName));	// 파일 업로드
-				System.out.println("File saved at: " + uploadPath);
+				mFile.transferTo(new File(uploadImgPath + "\\" + originName));	// 파일 업로드
+				System.out.println("File saved at: " + uploadImgPath);
 			}
 			/*
 			 * fileList.add(oName); fileList.add(oContentType); fileList.add(oSize);
@@ -254,7 +261,7 @@ public class AdminNewsFileController {
 			dto.setFileName(oName);
 			dto.setFileContenttype(oContentType);
 			dto.setFileSize(oSize);
-			dto.setFilePath(uploadPath);
+			dto.setFilePath(uploadDbPath);
 			System.out.println("before:"+dto);
 			AdminNewsFileDao.saveUpdateFiles(dto);
 			System.out.println("after:"+dto);

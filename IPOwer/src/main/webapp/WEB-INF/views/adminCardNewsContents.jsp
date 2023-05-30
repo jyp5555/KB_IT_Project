@@ -6,10 +6,10 @@
 <head>
 
 <meta charset="UTF-8">
-
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<style>
+<style type="text/css">
+
 a, #newsTitle{
 	color: #0582ae;
 	font-weight: bolder;
@@ -49,17 +49,19 @@ a, #newsTitle:hover {
 
 <%@ include file="./adminHeader.jsp"%>
 
+
 <!-- <div class="container"> -->
 <div class="container-md">
 
 <div id="companyList">
+
 <div style="padding-top: 3%;
 			padding-left: 25%;
 			padding-right: 25%;
 			padding-bottom: 3%">
 	<table class="table" style="text-align: center;">
 		<thead style="background-color: #79dddb;">
-			<tr>
+			<tr style="color: white;">
 				<th>번호</th>
 				<th>제목</th>
 				<th>작성일</th>
