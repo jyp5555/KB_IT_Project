@@ -11,7 +11,7 @@ $(document).ready(function(){
 		$("#exampleModalLong").modal("hide")
 	})
 // 새 글 쓰기 버튼 클릭
-	$("#btnSave").click(function(){
+	$("#btnCreate").click(function(){
 		action='create';
 		type = 'POST'
 		url="/admin/company"

@@ -178,7 +178,7 @@ location.href = "/board/deleteBoard?ARTICLE_PK=" + articlePk;
                         <div class="d-flex mb-4">
                           
                             <div class="ps-3" >
-                                <h6>${r.userName}<small><i style="padding:20px"> ${r.commentRegdate}</i></small></h6>
+                                <h6>${r.userId}<small><i style="padding:20px"> ${r.commentRegdate}</i></small></h6>
                                 <p>${r.commentContent}</p>
                                 <button class="btn btn-sm btn-light">Reply</button>
                             </div>
@@ -192,11 +192,11 @@ location.href = "/board/deleteBoard?ARTICLE_PK=" + articlePk;
                         </div>
                         <sec:authorize access="isAuthenticated()">
                         
-                        <form method="post" action="/board/cmtpost/${detail1.articlePk}">
+                        <form id="commentForm1" name="${detail1.articlePk}">
                             <div class="row g-3">
                                 <div class="col-12">
-                                <sec:authentication var="user" property="principal"/>
-							<input type="text" class="form-control" id="inputAuthor" name="userName" value="${user.username}" disabled="disabled"/>
+                                	<sec:authentication var="user" property="principal"/>
+									<input type="text" class="form-control" id="inputAuthor" name="userId" value="${user.username}" readonly="readonly"/>
                                    <!--  <input type="text" class="form-control bg-white border-0" name="comment" placeholder="Your Name" style="height: 55px;"> -->
                                 </div>
                                 
@@ -240,4 +240,21 @@ location.href = "/board/deleteBoard?ARTICLE_PK=" + articlePk;
 	<%@ include file="./footer.jsp"%>
 
 </body>
+<script>
+	$("#commentForm1").submit(function(e){
+		e.preventDefault();
+		commentData = JSON.stringify(Object.fromEntries(new FormData(this)))
+		console.log(commentData)
+		$.ajax({
+			url:"/board/cmtpost/"+e.target.name,
+			type:"POST",
+			data:commentData,
+			contentType:"application/json",
+			success: function(result){
+				location.reload()
+			}
+		})
+		
+	})
+</script>
 </html>
