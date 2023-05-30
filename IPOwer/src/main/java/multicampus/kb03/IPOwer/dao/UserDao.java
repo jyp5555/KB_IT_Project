@@ -36,4 +36,8 @@ public class UserDao {
 			e.printStackTrace();
 		}
 	}
+
+	public int getUserPkByUserId(String userId) {
+		return mapper.getUserPkByUserId(userId);
+	}
 }

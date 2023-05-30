@@ -1,68 +1,67 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+<!DOCTYPE html>
+<html>
 <head>
-	<meta charset="utf-8">
+    <meta charset="utf-8">
     <title>IPOwer</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
-    
+	
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous" />
 	
-	<!-- Favicon -->
+    <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
-    
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-    
     <!-- Libraries Stylesheet -->
     <link href="/resources/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="/resources/lib/animate/animate.min.css" rel="stylesheet">
-    
+
     <link href="/resources/css/style.css" rel="stylesheet" type="text/css">
 	<link href="/resources/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-	
-	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-	<script src="/resources/js/modalCRUD.js"></script>
 </head>
+
+<body>
+  
 <sec:authentication property="principal" var="prc"/>
-<!-- Topbar Start -->
-    <div class="container-fluid bg-dark px-5 d-none d-lg-block">
+    <!-- Topbar Start -->
+    <div class="container-fluid bg-white px-5 d-none d-lg-block">
         <div class="row gx-0">
             <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
                 <div class="d-inline-flex align-items-center" style="height: 45px;">
-                    <small class="me-3 text-light"><i class="fa fa-map-marker-alt me-2"></i>서울 강남구 선릉로 428</small>
-                    <small class="me-3 text-light"><i class="fa fa-phone-alt me-2"></i>+012 345 6789</small>
-                    <small class="text-light"><i class="fa fa-envelope-open me-2"></i>IPOwer@naver.com</small>
+                    <small class="me-3 text-dark"><i class="fa fa-map-marker-alt me-2"></i>서울 강남구 선릉로 428</small>
+                    <small class="me-3 text-dark"><i class="fa fa-phone-alt me-2"></i>+012 345 6789</small>
+                    <small class="text-dark"><i class="fa fa-envelope-open me-2"></i>IPOwer@naver.com</small>
                 </div>
             </div>
             <div class="col-lg-4 text-center text-lg-end">
                 <div class="d-inline-flex align-items-center" style="height: 45px;">
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-twitter fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-facebook-f fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-linkedin-in fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-instagram fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle" href=""><i class="fab fa-youtube fw-normal"></i></a>
-				</div>
-			</div>
-		</div>
+                    <a class="btn btn-sm btn-outline-dark btn-sm-square rounded-circle me-2" href=""><i class="fab fa-twitter fw-normal"></i></a>
+                    <a class="btn btn-sm btn-outline-dark btn-sm-square rounded-circle me-2" href=""><i class="fab fa-facebook-f fw-normal"></i></a>
+                    <a class="btn btn-sm btn-outline-dark btn-sm-square rounded-circle me-2" href=""><i class="fab fa-linkedin-in fw-normal"></i></a>
+                    <a class="btn btn-sm btn-outline-dark btn-sm-square rounded-circle me-2" href=""><i class="fab fa-instagram fw-normal"></i></a>
+                    <a class="btn btn-sm btn-outline-dark btn-sm-square rounded-circle" href=""><i class="fab fa-youtube fw-normal"></i></a>
+                
+                </div>
+            </div>
+        </div>
     </div>
     <!-- Topbar End -->
+    <!-- Navbar Start -->
     <!-- Navbar Start -->
     <div class="container-fluid position-relative p-0">
         <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
             <a href="/" class="navbar-brand p-0">
-                <h1 class="m-0"><i class="fa fa-user-tie me-2"></i>IPOwer</h1>
+               <img src="/resources/img/character.png" width="40"><!-- <img src="/resources/img/icon.png" width="30"><img src="/resources/img/icon.png" width="20"> -->
+               <h1 style="display: inline;color:white;" class="m-0"> IPOwer</h1>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="fa fa-bars"></span>
@@ -78,20 +77,27 @@
         </nav>
 	</div>
 	<!-- Navbar End -->
-    <!-- JavaScript Libraries --><!-- 
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
+   
+    
+    
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js"></script>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/resources/lib/wow/wow.min.js"></script>
     <script src="/resources/lib/easing/easing.min.js"></script>
     <script src="/resources/lib/waypoints/waypoints.min.js"></script>
     <script src="/resources/lib/counterup/counterup.min.js"></script>
     <script src="/resources/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="/resources/js/modalCRUD.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js"></script>
+    
 
     <!-- Template Javascript -->
   <script>
   (function ($) {
 	    "use strict";
-
 	    // Spinner
 	    var spinner = function () {
 	        setTimeout(function () {
@@ -105,8 +111,6 @@
 	    
 	    // Initiate the wowjs
 	    new WOW().init();
-
-
 	    // Sticky Navbar
 	    $(window).scroll(function () {
 	        if ($(this).scrollTop() > 45) {
@@ -142,8 +146,6 @@
 	            $dropdown.off("mouseenter mouseleave");
 	        }
 	    });
-
-
 	    // Facts counter
 	    $('[data-toggle="counter-up"]').counterUp({
 	        delay: 10,
@@ -163,8 +165,6 @@
 	        $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
 	        return false;
 	    });
-
-
 	    // Testimonials carousel
 	    $(".testimonial-carousel").owlCarousel({
 	        autoplay: true,
@@ -187,8 +187,6 @@
 	            }
 	        }
 	    });
-
-
 	    // Vendor carousel
 	    $('.vendor-carousel').owlCarousel({
 	        loop: true,
@@ -214,9 +212,7 @@
 	    });
 	    
 	})(jQuery);
-
-
   
   </script>
-
 </body>
+</html>

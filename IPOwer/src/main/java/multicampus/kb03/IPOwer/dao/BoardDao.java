@@ -16,14 +16,21 @@ import multicampus.kb03.IPOwer.dto.BoardDto;
 
 @Component
 public class BoardDao {
-private final BoardMapper mapper;
-private final SqlSessionTemplate sqlSessionTemplate;
+private BoardMapper mapper;
 
-    @Autowired
-    public BoardDao(BoardMapper mapper) {
-		this.sqlSessionTemplate = null;
-		this.mapper = mapper;
+@Autowired
+private SqlSessionTemplate sqlSessionTemplate;
+  
+
+@Autowired
+public BoardDao(SqlSessionTemplate sqlSessionTemplate, BoardMapper mapper) {
+    try {
+        this.sqlSessionTemplate = sqlSessionTemplate;
+        this.mapper = mapper;
+    } catch (Exception e) {
+        e.printStackTrace(); // 예외 처리를 위해 예외 내용을 출력합니다. 실제로는 다른 예외 처리 로직을 적용해야
     }
+}
 
     public List<BoardDto> selectAll() {
 		List<BoardDto> dto = mapper.selectAll();
@@ -54,32 +61,10 @@ private final SqlSessionTemplate sqlSessionTemplate;
     	return mapper.updatereviewcnt(articlePk,articleview);
     }
     
-    
-    
-//    public int insert() {
-//		BoardDto dto = new BoardDto();
-//		dto.setARTICLE_PK(2);
-//		dto.setARTICLE_TITLE("title2");
-//		dto.setARTICLE_VIEW(0);
-//		dto.setUSER_PK("관리자");
-//		return mapper.save(dto);
-//		
-//	}
         
         public void insert(BoardDto boardDto) {
             mapper.write(boardDto);
         }
-       
-        //검색
-//        public List<BoardDto> selectsearchByTitle(String title){
-//		List<BoardDto> dto = mapper.selectsearchByTitle(title);
-//		return dto;
-//        }
-//		public List<BoardDto> selectdateByTitleDate(String start_date,String end_date,String title){
-//			List<BoardDto> dto = mapper.selectdateByTitleDate(start_date,end_date,title);
-//			return dto;
-//		}
-		
 		 public List<BoardDto> getAllBoards() {
 		        return mapper.getAllBoards();
 		    }
@@ -92,7 +77,12 @@ private final SqlSessionTemplate sqlSessionTemplate;
 				// TODO Auto-generated method stub
 				return mapper.getLastArticlePk();
 			}
-	
+
+			public static BoardDto getArticleById(int articlePk) {
+				// TODO Auto-generated method stub
+				return null;
+			}
+			
         
       //목록 (페이지 나누기, 검색 기능 포함)
         //매개변수는 시작 레코드번호, 끝번호, 옵션과 키워드가 들어간다)

@@ -24,4 +24,10 @@ public CmtDao(CmtMapper mapper) {
          mapper.addComment(dto);
      }
 
+	public List<CmtDto> getCommentsByArticleId(int articlePk) {
+		List<CmtDto> dto=mapper.getCommentsByArticle(articlePk);
+		return dto;
+	}
+	
+
 }

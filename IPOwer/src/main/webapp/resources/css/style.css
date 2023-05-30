@@ -661,3 +661,162 @@ table.type02 td {
   -o-transition: all .55s ease;
   transition: all .55s ease;
 }
+
+/*** ¼Û·ùÄÚµå ***/
+#mainWrapper body {
+  line-height: 5em;
+  font-family: "¸¼Àº °íµñ";
+}
+
+#mainWrapper ul,
+#mainWrapper li {
+  list-style: none;
+  text-align: center;
+  padding: 0;
+  margin: 10;
+}
+
+#mainWrapper ul li:first-child {
+  text-align: center;
+  font-size: 14pt;
+  height: 50px;
+  vertical-align: middle;
+  line-height: 40px;
+}
+
+#mainWrapper #ulTable {
+  margin-top: 40px;
+}
+
+#mainWrapper #ulTable > li:first-child > ul > li {
+  background-color: #79dddb;
+  font-weight: bold;
+  text-align: center;
+  height: 50px;
+  line-height: 40px;
+  font-size: 14pt;
+  color: white;
+  font-family: "¸¼Àº °íµñ";
+}
+
+#mainWrapper #ulTable > li > ul {
+  clear: both;
+  padding: auto;
+  position: relative;
+  min-width: 40px;
+  font-size: 14pt;
+  height: 30px;
+}
+
+#mainWrapper #ulTable > li > ul > li {
+  float: left;
+  font-size: 14pt;
+  border-bottom: 1px solid silver;
+  vertical-align: middle;
+}
+
+#mainWrapper #ulTable > li > ul > li:first-child {
+  width: 10%;
+}
+
+#mainWrapper #ulTable > li > ul > li:first-child + li {
+  width: 45%;
+}
+
+#mainWrapper #ulTable > li > ul > li:first-child + li + li {
+  width: 20%;
+}
+
+#mainWrapper #ulTable > li > ul > li:first-child + li + li + li {
+  width: 15%;
+}
+
+#mainWrapper #ulTable > li > ul > li:first-child + li + li + li + li {
+  width: 10%;
+}
+
+
+
+#mainWrapper #liSearchOption {
+  clear: both;
+}
+
+#mainWrapper #liSearchOption > div {
+  margin: 0 auto;
+  margin-top: 30px;
+  width: 100%;
+  height: 100px;
+  float: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#mainWrapper .left {
+  text-align: left;
+}
+
+#mainWrapper .field-container {
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#mainWrapper .btn {
+  background-color: #79dddb;
+  border: none;
+  color: white;
+  font-size: 12pt;
+  font-weight: bold;
+  font-family: "¸¼Àº °íµñ";
+}
+
+#mainWrapper .SearchDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+#divPaging {
+  clear: both;
+  margin: 0 auto;
+  width: 220px;
+  height: 50px;
+}
+
+#divPaging > div {
+  float: left;
+  width: 30px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#ulTable {
+	width: 80%;
+  margin: 0 auto;
+	
+}
+#ulTable thead {
+  background-color: #79dddb;
+  color: white;
+  font-weight: bold;
+}
+
+#ulTable th {
+  padding: 10px;
+}
+
+#ulTable tbody tr {
+  height: 50px;
+}
+#ulTable tbody a {
+  color: #6b6a75;
+  font-weight: bolder;
+  text-decoration: none;
+}
+
+#ulTable tbody a:hover {
+  color:#79dddb;
+}

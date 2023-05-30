@@ -38,12 +38,13 @@ public interface BoardMapper {
 //	int insert(@Param("dto") BoardDto dto);
     
     //작성
-    @Insert("INSERT INTO ARTICLE (ARTICLE_PK,ARTICLE_TITLE,USER_PK,ARTICLE_CONTENT,ARTICLE_REGDATE) " +
-            "VALUES (BOARD_SEQ.NEXTVAL, #{dto.articleTitle},#{dto.userPk}, #{dto.articleContent},sysdate)")
+    @Insert("INSERT INTO ARTICLE (ARTICLE_PK,ARTICLE_TITLE,USER_PK,ARTICLE_CONTENT,ARTICLE_REGDATE,ARTICLE_VIEW) " +
+            "VALUES (BOARD_SEQ.NEXTVAL, #{dto.articleTitle},#{dto.userPk}, #{dto.articleContent},sysdate,0)")
    int write(@Param("dto") BoardDto boardDto);
     
     @Select("SELECT MAX(ARTICLE_PK) FROM ARTICLE")
     int getLastArticlePk();
+
     
     //게시물 번호 자동 증가하는건 나중에 ...
     @Select("SELECT a.ARTICLE_PK, a.USER_NAME, a.ARTICLE_TITLE, a.ARTICLE_CONTENT, a.ARTICLE_REGDATE, a.ARTICLE_VIEW, u.USER_NAME " +
@@ -100,6 +101,8 @@ public interface BoardMapper {
     @Select("SELECT * FROM ARTICLE WHERE ${searchType} LIKE '%'||#{keyword}||'%'")
     List<BoardDto> searchBoards(@Param("searchType") String searchType, @Param("keyword") String keyword);
 
+    @Select("SELECT * FROM articles WHERE ARTICLE_PK = #{articlePk}")
+    BoardDto getArticleById(int articlePk);
     
     
     
