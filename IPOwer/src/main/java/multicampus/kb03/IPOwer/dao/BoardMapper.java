@@ -38,8 +38,8 @@ public interface BoardMapper {
 //	int insert(@Param("dto") BoardDto dto);
     
     //작성
-    @Insert("INSERT INTO ARTICLE (ARTICLE_PK,ARTICLE_TITLE,USER_PK,ARTICLE_CONTENT,ARTICLE_REGDATE) " +
-            "VALUES (BOARD_SEQ.NEXTVAL, #{dto.articleTitle},#{dto.userPk}, #{dto.articleContent},sysdate)")
+    @Insert("INSERT INTO ARTICLE (ARTICLE_PK,ARTICLE_TITLE,USER_PK,ARTICLE_CONTENT,ARTICLE_REGDATE,ARTICLE_VIEW) " +
+            "VALUES (BOARD_SEQ.NEXTVAL, #{dto.articleTitle},#{dto.userPk}, #{dto.articleContent},sysdate,0)")
    int write(@Param("dto") BoardDto boardDto);
     
     @Select("SELECT MAX(ARTICLE_PK) FROM ARTICLE")
