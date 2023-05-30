@@ -121,9 +121,6 @@
 						</div>
 					</div>
 				</form>
-				<form id="frm" method="post" onsubmit="return validationForm()">
-					<input id="test" name="test" required="required">
-				</form>
 			</div>
 			<div class="modal-footer">
 				<button type="submit" class="btn btn-primary" form="frm" id="btnSave" data-dismiss="modal">저장</button>

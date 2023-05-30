@@ -69,7 +69,8 @@
 </div>
 <script>
 	$(".close").click(function(e){
-		$("#exampleModalLong").modal("hide")
+		$("#exampleModalLong").modal("hide");
+		myChart.destroy();
 	})
 	
 	$("button[name=btnLikeCompany]").click(function(e){
