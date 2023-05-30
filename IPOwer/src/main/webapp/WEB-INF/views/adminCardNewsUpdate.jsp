@@ -8,12 +8,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
-<link rel='stylesheet'
-	href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css'>
 <script
 	src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
-<script
-	src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js'></script>
+
 <script>
 var cnt = 1;
 var existingFilesCount=${selectAllFilesByNewsPkSize};
@@ -148,7 +145,7 @@ function deleteExistFile() {
 </head>
 <body>
 <%@ include file="./adminHeader.jsp"%>
-	<div class="container" style="padding-left: 20%;padding-right: 20%">
+	<div class="container" style="padding-top: 7%; padding-left: 20%;padding-right: 20%">
 		<!-- <h2>게시물 등록</h2> -->
 		<div class="panel panel-default"">
 			<div class="panel-heading" style="font-size: 16px;color:#ffffff;background-color:#79dddb;font-weight: 1000 ;">Card News Update</div>
