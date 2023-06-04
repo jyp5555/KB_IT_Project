@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class NewsFileDto {
 
-	private String newsTitle,newsWriter,fileName,fileContenttype, fileSize;
+	private String newsTitle,newsWriter,fileName,fileContenttype,fileSize;
 	private int newsPk,newsView,filePk;
 	private Date newsRegdate;
 	private String filePath;

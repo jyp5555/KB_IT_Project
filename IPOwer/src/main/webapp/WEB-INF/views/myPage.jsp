@@ -116,6 +116,7 @@
 	</div>
 	<!-- Service End -->
 <%@ include file="./companyInfoModal.jsp"%>
+
 <%@ include file="./footer.jsp"%>
 </body>
 <script>
