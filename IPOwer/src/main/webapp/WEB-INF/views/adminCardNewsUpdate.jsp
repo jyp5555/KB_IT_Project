@@ -68,19 +68,28 @@ function deleteExistFile() {
 	  if (deletedFilePks.length > 0) {
 		  return false;
 	  }
+	  console.log("hello")
+	  console.log(deletedFilePks)
 	  
-	  $.ajax({
+	  /* $.ajax({
 	    url: "deleteExistFile",
 	    type: "POST",
 	    data: {
-	      newsPk: newsPk,
+	      "newsPk1": newsPk,
 	      //deletedFilePkList: deletedFilePkList
-	      deletedFilePkList: deletedFilePks
+	      "deletedFilePkList": deletedFilePks
 	    },
+	    dataType:"json",
 	    success: function(response) {
 	      // ...
+	      
+	      console.log(response)
+	      
+	    },
+	    done: function(response){
+	    	console.log(response)
 	    }
-	  });
+	  }); */
 	}
 
  	function updateNewsTitle() {
@@ -91,7 +100,7 @@ function deleteExistFile() {
 		    return false; // Prevent form submission
 		  } 
 		  
-		  $.ajax({
+		  /* $.ajax({
 		    url: "updateNewsTitle", // Controller URL for updating nickname
 		    type: "POST",
 		    data: {
@@ -107,8 +116,19 @@ function deleteExistFile() {
                 // Perform any other necessary actions after the modification
                 // ...
             }
-		});
+		}); */
 	} 
+ 	
+ 	$("#frm").submit(function(e){
+ 		
+ 		let returnResult = validateForm();
+ 		
+ 		updateNewsTitle();
+ 		deleteExistFile();
+ 		
+ 		
+ 		return returnResult;
+ 	})
 
  		function validateForm() {
  			  var fileInputs = $("input[type='file']");
@@ -203,7 +223,7 @@ function deleteExistFile() {
     <div class="panel panel-default">
       <div class="panel-heading" style="font-size: 16px;color:#ffffff;background-color:#79dddb;font-weight: 1000 ;">Card News 업데이트</div>
       <div class="panel-body">
-        <form class="form-horizontal" action="newsUpdate" enctype="multipart/form-data" method="post" onsubmit="return validateForm();">
+        <form id="frm" class="form-horizontal" action="newsUpdate" enctype="multipart/form-data" method="post" >
           <div class="form-group">
             <label class="control-label col-sm-2" for="newsTitle" style="font-size: 16px;font-weight: 1000 ;">뉴스 제목:</label>
             <div class="col-sm-10">
@@ -228,7 +248,7 @@ function deleteExistFile() {
             </div>
           </div>
           <input type="hidden" name="newsPk" value="${newsPk}">
-          <button type="submit" value="파일수정" onclick="updateNewsTitle(),deleteExistFile()" class="btn btn-default">수정</button>
+          <button id="btnTitleFileUpdate" type="submit" value="파일수정" class="btn btn-default">수정</button>
         </form>
         <form action="newsDelete" method="POST">
           <input type="hidden" name="newsPk" value="${newsPk}">
