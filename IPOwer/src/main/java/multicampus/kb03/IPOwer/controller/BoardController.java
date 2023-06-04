@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -190,13 +191,19 @@ public class BoardController {
 	    }
 	    //댓글등록
 	    @PostMapping("/cmtpost/{articlePk}")
-	    public String postComment(@PathVariable("articlePk") int articlePk ,@ModelAttribute("commentForm") CmtDto comment, Model model) {
+	    public @ResponseBody ResponseEntity<List<CmtDto>> postComment(@PathVariable("articlePk") int articlePk ,@RequestBody CmtDto comment, Model model) {
 	    	
-	    	System.out.println(comment);
-	    	comment.setArticlePk(articlePk);
-	    	System.out.println(comment.getUserName());
-	    	comment.setUserPk(userdao.getUserPkByUserId(comment.getUserName()));
-	    	System.out.println("댓글 등록 됐나?: "+comment);
+	    	try {
+				comment.setArticlePk(articlePk);
+				comment.setUserPk(userdao.getUserPkByUserId(comment.getUserId()));
+				cmtDao.addComment(comment);
+				
+				return ResponseEntity.ok(cmtDao.getCommentsByArticleId(articlePk));
+			} catch (Exception e) {
+				
+				e.printStackTrace();
+				return ResponseEntity.badRequest().body(null);
+			}
 
 //	    	cmtDao.addComment(comment);
 //	        // 댓글 등록 로직
@@ -215,7 +222,6 @@ public class BoardController {
 //	        // 댓글 작성 폼 초기화
 //	        model.addAttribute("commentForm", new CmtDto());
 
-	        return "redirect:/board";
 	    }
 	    
 	}

@@ -214,11 +214,11 @@
 			<div class="bg-white">
 				<div class="owl-carousel vendor-carousel">
 					<img src="/resources/img/samsung.png" alt=""> <img
-						src="/resources/img/2.png" alt=""> <img src="/resources/img/2.png"
-						alt=""> <img src="/resources/img/2.png" alt=""> <img
-						src="/resources/img/2.png" alt=""> <img src="/resources/img/2.png"
-						alt=""> <img src="/resources/img/2.png" alt=""> <img
-						src="/resources/img/2.png" alt=""> <img src="/resources/img/2.png"
+						src="/resources/img/naver.png" alt=""> <img src="/resources/img/apple.png"
+						alt=""> <img src="/resources/img/kakaogames.png" alt=""> <img
+						src="/resources/img/kbcard.png" alt=""> <img src="/resources/img/shinhan.png"
+						alt=""> <img src="/resources/img/kb.png" alt=""> <img
+						src="/resources/img/google.png" alt=""> <img src="/resources/img/baemin.png"
 						alt="">
 				</div>
 			</div>

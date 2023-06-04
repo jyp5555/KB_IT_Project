@@ -9,10 +9,17 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.7/index.global.min.js'></script>
     <script src='fullcalendar/core/locales/ko.js'></script>
-
+	<style>
+	td>div>div>a{
+	    color:gray;
+	}
+	.fc-event-title-container{
+		cursor:pointer;
+	}
+	
+	</style>
   </head>
   <body>
   	<%@ include file="./header.jsp" %>
@@ -25,11 +32,11 @@
 			<div class="bg-white">
 				<div class="owl-carousel vendor-carousel">
 					<img src="/resources/img/samsung.png" alt=""> <img
-						src="/resources/img/2.png" alt=""> <img src="/resources/img/2.png"
-						alt=""> <img src="/resources/img/2.png" alt=""> <img
-						src="/resources/img/2.png" alt=""> <img src="/resources/img/2.png"
-						alt=""> <img src="/resources/img/2.png" alt=""> <img
-						src="/resources/img/2.png" alt=""> <img src="/resources/img/2.png"
+						src="/resources/img/naver.png" alt=""> <img src="/resources/img/apple.png"
+						alt=""> <img src="/resources/img/kakaogames.png" alt=""> <img
+						src="/resources/img/kbcard.png" alt=""> <img src="/resources/img/shinhan.png"
+						alt=""> <img src="/resources/img/kb.png" alt=""> <img
+						src="/resources/img/google.png" alt=""> <img src="/resources/img/baemin.png"
 						alt="">
 				</div>
 			</div>

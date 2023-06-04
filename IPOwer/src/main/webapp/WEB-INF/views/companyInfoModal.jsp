@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+<style>
+td > a, #companySite{
+	color:#6B6A75;
+}
+</style>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
@@ -23,7 +28,7 @@
   							<th>회사명</th><td id="companyName" class="align-middle"></td>
   						<tr>
   						<tr>
-  							<th>사이트</th><td id="companySite" class="align-middle"></td>
+  							<th>사이트</th><td id="companySite" class="align-middle""></td>
   						<tr>
   					</table>
 				</div>

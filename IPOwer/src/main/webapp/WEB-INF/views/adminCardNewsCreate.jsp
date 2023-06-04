@@ -7,12 +7,53 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
-<link rel='stylesheet'
-	href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css'>
+<style>
+  .panel-group {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+  }
+
+  .panel-group .panel {
+    margin-bottom: 0;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  }
+
+  .panel-group .panel-heading {
+    padding: 5px 15px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    background-color: #f5f5f5;
+    color: #333;
+  }
+
+  .panel-group .panel-body {
+    padding: 5px 15px;
+    font-size: 14px;
+  }
+
+  .panel-group .panel-footer {
+    padding: 5px 15px;
+    border-top: 1px solid transparent;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    background-color: #f5f5f5;
+    color: #333;
+  }
+
+  
+</style>
+
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
 <script
 	src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+
 <script
 	src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js'></script>
+
 <script>
 	var cnt = 1;
 
@@ -65,10 +106,13 @@
 </head>
 <body>
 <%@ include file="./adminHeader.jsp"%>
-	<div class="container">
+
+
+<div class="container" style="margin-top:2em;">
+	<div class="panel-group">
 		<h2>다중파일 업로드</h2>
 		<div class="panel panel-default">
-			<div class="panel-heading">스프링을 이용한 다중 파일 업로드 구현</div>
+			<div class="panel-heading">파일 업로드</div>
 			<div class="panel-body">
 				<form class="form-horizontal" action="newsCreate" enctype="multipart/form-data" method="post" onsubmit="return validateForm();">
 					<div class="form-group">
@@ -85,7 +129,7 @@
 							<div id="add_file"></div>
 						</div>
 					</div>
-					<div class="form-group">
+					<div class="form-group;">
 						<div class="col-sm-offset-2 col-sm-10">
 							<button type="submit" class="btn btn-default">업로드</button>
 						</div>
@@ -95,5 +139,9 @@
 			<div class="panel-footer">다중파일 등록</div>
 		</div>
 	</div>
+</div>
+
+
+
 </body>
 </html>

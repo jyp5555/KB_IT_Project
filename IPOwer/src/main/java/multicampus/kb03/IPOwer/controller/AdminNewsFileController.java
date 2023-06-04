@@ -292,11 +292,11 @@ public class AdminNewsFileController {
 
     @PostMapping("/deleteExistFile")
     public String adminNewsDeleteSaveFilePost(
-            @RequestParam("newsPk") int newsPk,
-            @RequestParam("deletedFilePkList[]") int[] deletedFilePkList,
+            @RequestParam("newsPk1") int newsPk,
+            @RequestParam("deletedFilePkList") int[] deletedFilePkList,
             Model model) {
         System.out.println("adminNewsDeleteSaveFilePost() 실행");
-        System.out.println("newsPk: " + newsPk);
+        System.out.println("&&&&&&dkdkdkd newsPk: " + newsPk);
         //System.out.println("filePk: " + Arrays.toString(filePk));
         if(deletedFilePkList.length==0) {
             System.out.println("등록삭제한 파일이 없습니다.");            
